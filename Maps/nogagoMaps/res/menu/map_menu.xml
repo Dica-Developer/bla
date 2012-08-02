@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <group
+        android:id="@+id/map_context_menu"
+        android:menuCategory="container" >
+        <item
+            android:id="@+id/map_where_am_i"
+            android:icon="@android:drawable/ic_menu_mylocation"
+            android:title="@string/where_am_i">
+        </item>
+        
+        <item
+            android:id="@+id/map_specify_point"
+            android:icon="@android:drawable/ic_menu_search"
+            android:title="@string/search_button">
+        </item>
+        <item
+            android:id="@+id/map_layers"
+            android:icon="@android:drawable/ic_menu_mapmode"
+            android:title="@string/menu_layers">
+        </item>
+        <item
+            android:id="@+id/map_show_settings"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="@string/settings_Button">
+        </item>
+
+        <!-- not visible by default -->
+        <item
+            android:id="@+id/map_navigate_to_point"
+            android:icon="@android:drawable/ic_menu_close_clear_cancel"
+            android:title="@string/stop_navigation"
+            android:visible="false">
+        </item>
+        <item
+            android:id="@+id/map_mute"
+            android:title="@string/menu_mute_off"
+            android:visible="false">
+        </item>
+        <item
+            android:id="@+id/map_animate_route"
+            android:title="@string/animate_route"
+            android:visible="false">
+        </item>
+        
+        <!-- 
+        <item
+            android:id="@+id/map_get_directions"
+            android:icon="@android:drawable/ic_menu_directions"
+            android:title="@string/get_directions">
+        </item>
+        <item
+            android:id="@+id/map_show_gps_status"
+            android:icon="@android:drawable/ic_menu_compass"
+            android:title="@string/show_gps_status">
+        </item>
+        <item
+            android:id="@+id/map_show_point_options"
+            android:title="@string/show_point_options">
+        </item>
+         -->
+    </group>
+
+</menu>

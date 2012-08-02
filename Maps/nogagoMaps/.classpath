@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/DataExtractionOSM"/>
+	<classpathentry exported="true" kind="lib" path="libs/bsh-core-2.0b4.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/bzip2-20090327.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/commons-io-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/junidecode-0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/mytrackslib.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/tuprolog.jar"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
