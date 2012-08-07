@@ -1,0 +1,130 @@
+# view res/xml/recording_settings.xml #generated:26
+-keep class com.google.android.apps.mytracks.AutoCompleteTextPreference { <init>(...); }
+
+# view res/xml/recording_settings.xml #generated:32
+# view res/xml/recording_settings.xml #generated:38
+# view res/xml/recording_settings.xml #generated:44
+# view res/xml/recording_settings.xml #generated:50
+# view res/xml/recording_settings.xml #generated:56
+-keep class com.google.android.apps.mytracks.IntegerListPreference { <init>(...); }
+
+# view res/layout/map.xml #generated:21
+-keep class com.google.android.maps.MapView { <init>(...); }
+
+# view AndroidManifest.xml #generated:208
+-keep class com.nogago.android.tracks.AccountChooserActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:139
+-keep class com.nogago.android.tracks.AggregatedStatsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:198
+-keep class com.nogago.android.tracks.BackupActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:211
+-keep class com.nogago.android.tracks.BackupSettingsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:232
+-keep class com.nogago.android.tracks.BootReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:212
+-keep class com.nogago.android.tracks.ChartSettingsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:204
+-keep class com.nogago.android.tracks.ChooseMapActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:209
+-keep class com.nogago.android.tracks.ConfirmSharingActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:142
+-keep class com.nogago.android.tracks.HelpActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:145
+-keep class com.nogago.android.tracks.ImportActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:213
+-keep class com.nogago.android.tracks.MapSettingsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:163
+-keep class com.nogago.android.tracks.MarkerDetailActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:161
+-keep class com.nogago.android.tracks.MarkerEditActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:164
+-keep class com.nogago.android.tracks.MarkerListActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:215
+-keep class com.nogago.android.tracks.RecordingSettingsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:199
+-keep class com.nogago.android.tracks.RestoreActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:200
+-keep class com.nogago.android.tracks.RestoreChooserActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:202
+-keep class com.nogago.android.tracks.SaveActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:169
+-keep class com.nogago.android.tracks.SearchListActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:201
+-keep class com.nogago.android.tracks.SendDocsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:203
+-keep class com.nogago.android.tracks.SendFusionTablesActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:207
+-keep class com.nogago.android.tracks.SendMapsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:216
+-keep class com.nogago.android.tracks.SensorSettingsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:180
+-keep class com.nogago.android.tracks.SensorStateActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:214
+-keep class com.nogago.android.tracks.SettingsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:218
+-keep class com.nogago.android.tracks.SharingSettingsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:217
+-keep class com.nogago.android.tracks.StatsSettingsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:184
+-keep class com.nogago.android.tracks.TrackDetailActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:185
+-keep class com.nogago.android.tracks.TrackEditActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:187
+-keep class com.nogago.android.tracks.TrackListActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:126
+-keep class com.nogago.android.tracks.TracksApplication { <init>(...); }
+
+# view AndroidManifest.xml #generated:126
+-keep class com.nogago.android.tracks.TracksBackupAgent { <init>(...); }
+
+# view AndroidManifest.xml #generated:210
+-keep class com.nogago.android.tracks.UploadResultActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:250
+-keep class com.nogago.android.tracks.content.MyTracksProvider { <init>(...); }
+
+# view AndroidManifest.xml #generated:257
+-keep class com.nogago.android.tracks.content.SearchEngineProvider { <init>(...); }
+
+# view AndroidManifest.xml #generated:220
+-keep class com.nogago.android.tracks.services.ControlRecordingService { <init>(...); }
+
+# view AndroidManifest.xml #generated:223
+-keep class com.nogago.android.tracks.services.RemoveTempFilesService { <init>(...); }
+
+# view AndroidManifest.xml #generated:224
+-keep class com.nogago.android.tracks.services.TrackRecordingService { <init>(...); }
+
+# view AndroidManifest.xml #generated:237
+-keep class com.nogago.android.tracks.widgets.TrackWidgetProvider { <init>(...); }
+
