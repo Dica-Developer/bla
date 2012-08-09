@@ -36,7 +36,6 @@ import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.StringUtils;
 import com.google.android.apps.mytracks.util.TrackIconUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
-import com.nogago.android.tracks.R;
 import com.nogago.android.tracks.content.SearchEngineProvider;
 
 import android.app.SearchManager;
@@ -271,7 +270,7 @@ public class SearchListActivity extends AbstractMyTracksActivity implements Dele
     Long markerId = (Long) item.get(MARKER_ID_FIELD);
     Intent intent;
     switch (itemId) {
-      case R.id.list_context_menu_show_on_map:
+     /* case R.id.list_context_menu_show_on_map:
         if (markerId != null) {
           intent = IntentUtils.newIntent(this, TrackDetailActivity.class)
               .putExtra(TrackDetailActivity.EXTRA_MARKER_ID, markerId);
@@ -281,6 +280,7 @@ public class SearchListActivity extends AbstractMyTracksActivity implements Dele
         }
         startActivity(intent);
         return true;
+        */
       case R.id.list_context_menu_edit:
         if (markerId != null) {
           intent = IntentUtils.newIntent(this, MarkerEditActivity.class)

@@ -26,7 +26,6 @@ import com.google.android.apps.mytracks.util.ApiAdapterFactory;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.ListItemUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
-import com.nogago.android.tracks.R;
 
 import android.content.Context;
 import android.content.Intent;
@@ -234,11 +233,13 @@ public class MarkerListActivity extends AbstractMyTracksActivity {
   private boolean handleContextItem(int itemId, long markerId) {
     Intent intent;
     switch (itemId) {
+      /*
       case R.id.list_context_menu_show_on_map:
         intent = IntentUtils.newIntent(this, TrackDetailActivity.class)
             .putExtra(TrackDetailActivity.EXTRA_MARKER_ID, markerId);
         startActivity(intent);
         return true;
+        */
       case R.id.list_context_menu_edit:
         intent = IntentUtils.newIntent(this, MarkerEditActivity.class)
             .putExtra(MarkerEditActivity.EXTRA_MARKER_ID, markerId);

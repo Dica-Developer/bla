@@ -22,7 +22,6 @@ import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.fragments.DeleteOneMarkerDialogFragment;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.StatsUtils;
-import com.nogago.android.tracks.R;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -110,11 +109,12 @@ public class MarkerDetailActivity extends AbstractMyTracksActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
     Intent intent;
     switch (item.getItemId()) {
-      case R.id.marker_detail_show_on_map:
+      /*case R.id.marker_detail_show_on_map:
         intent = IntentUtils.newIntent(this, TrackDetailActivity.class)
             .putExtra(TrackDetailActivity.EXTRA_MARKER_ID, markerId);
         startActivity(intent);
         return true;
+        */
       case R.id.marker_detail_edit:
         intent = IntentUtils.newIntent(this, MarkerEditActivity.class)
             .putExtra(MarkerEditActivity.EXTRA_MARKER_ID, markerId);

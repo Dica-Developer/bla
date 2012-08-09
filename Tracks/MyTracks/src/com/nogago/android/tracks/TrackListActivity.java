@@ -267,7 +267,6 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         resourceCursorAdapter.swapCursor(null);
       }
     });
-
     showStartupDialogs();
   }
 
@@ -473,11 +472,12 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   private boolean handleContextItem(int itemId, long trackId) {
     Intent intent;
     switch (itemId) {
-      case R.id.list_context_menu_show_on_map:
+      /*case R.id.list_context_menu_show_on_map:
         intent = IntentUtils.newIntent(this, TrackDetailActivity.class)
             .putExtra(TrackDetailActivity.EXTRA_TRACK_ID, trackId);
         startActivity(intent);
         return true;
+        */
       case R.id.list_context_menu_edit:
         intent = IntentUtils.newIntent(this, TrackEditActivity.class)
             .putExtra(TrackEditActivity.EXTRA_TRACK_ID, trackId);

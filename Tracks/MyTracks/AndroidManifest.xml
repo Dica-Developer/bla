@@ -184,7 +184,9 @@ limitations under the License.
     <activity android:name=".TrackDetailActivity" />
     <activity
       android:name=".TrackEditActivity" />
-    <activity android:name=".TrackListActivity" >
+    
+    <activity android:name=".TrackListActivity" />
+    <!-- 
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
@@ -194,7 +196,21 @@ limitations under the License.
       <meta-data
         android:name="android.app.default_searchable"
         android:value="com.nogago.android.tracks.SearchListActivity" />
+    </activity>   
+    -->
+    
+    <activity android:name=".MainMenuActivity">
+    	<intent-filter>
+    	    <action android:name="android.intent.action.MAIN" />
+    	    <category android:name="android.intent.category.LAUNCHER" />
+    	</intent-filter>
+    	
+    	<meta-data 
+    	    android:name="android.app.default_searchable"
+    	    android:value="com.nogago.android.tracks.SearchListActivity" />
     </activity>
+    
+    
     <activity android:name=".BackupActivity" />
     <activity android:name=".RestoreActivity" />
     <activity android:name=".RestoreChooserActivity" />

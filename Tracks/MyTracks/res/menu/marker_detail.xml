@@ -15,11 +15,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-  <item
+  <!-- <item
     android:icon="@drawable/menu_show_on_map"
     android:id="@+id/marker_detail_show_on_map"
     android:showAsAction="ifRoom"
     android:title="@string/menu_show_on_map"/>
+     -->
   <item
     android:icon="@drawable/menu_edit"
     android:id="@+id/marker_detail_edit"
