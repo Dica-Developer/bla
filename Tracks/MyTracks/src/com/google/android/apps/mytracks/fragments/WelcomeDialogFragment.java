@@ -53,10 +53,17 @@ public class WelcomeDialogFragment extends DialogFragment {
         .setMessage(R.string.welcome_message)
         .create();
   }
-
+/*
+  private void onDone() {
+    EulaUtils.setShowWelcome(getActivity());
+    MainMenuActivity mainMenuActivity = (MainMenuActivity) getActivity();
+    mainMenuActivity.showStartupDialogs();
+  }*/
+  
   private void onDone() {
     EulaUtils.setShowWelcome(getActivity());
     TrackListActivity trackListActivity = (TrackListActivity) getActivity();
     trackListActivity.showStartupDialogs();
   }
+  
 }

@@ -33,7 +33,12 @@ interface ITrackRecordingService {
   /**
    * Checks and returns whether we're currently recording a track.
    */
-  boolean isRecording();
+  boolean isRecording();  
+  
+  /**
+   * Checks and returns whether we're currently recording a track.
+   */
+  boolean isStartNewRecording();
 
   /**
    * Returns the track ID of the track currently being recorded, or -1 if none

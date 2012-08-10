@@ -36,10 +36,12 @@ limitations under the License.
   
   <PreferenceCategory
     	  android:title="@string/other_settings" >
+ <!-- 
   <Preference
     android:key="@string/settings_map_key"
     android:persistent="false"
     android:title="@string/track_detail_map_tab" />
+ -->
   <Preference
     android:key="@string/settings_chart_key"
     android:persistent="false"

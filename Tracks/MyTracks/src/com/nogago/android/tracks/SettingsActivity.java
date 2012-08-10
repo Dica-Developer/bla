@@ -54,7 +54,7 @@ public class SettingsActivity extends AbstractSettingsActivity {
   protected void onCreate(Bundle bundle) {
     super.onCreate(bundle);
     addPreferencesFromResource(R.xml.settings);
-
+/*
     Preference mapPreference = findPreference(getString(R.string.settings_map_key));
     mapPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
         @Override
@@ -64,7 +64,7 @@ public class SettingsActivity extends AbstractSettingsActivity {
         return true;
       }
     });
-
+*/
     Preference chartPreference = findPreference(getString(R.string.settings_chart_key));
     chartPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
         @Override

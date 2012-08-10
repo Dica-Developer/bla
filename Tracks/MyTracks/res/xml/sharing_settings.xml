@@ -26,7 +26,4 @@ limitations under the License.
     android:summaryOff="@string/settings_sharing_allow_access_summary_off"
     android:summaryOn="@string/settings_sharing_allow_access_summary_on"
     android:title="@string/settings_sharing_allow_access" />
-  <!-- nogago -->
-  <PreferenceCategory android:title="@string/nogago_label"/>
- 
 </PreferenceScreen>

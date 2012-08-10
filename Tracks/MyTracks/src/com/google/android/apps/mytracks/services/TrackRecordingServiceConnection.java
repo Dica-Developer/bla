@@ -38,6 +38,9 @@ import android.util.Log;
  * @author Rodrigo Damazio
  */
 public class TrackRecordingServiceConnection {
+
+  private boolean startNewRecording = false;
+  
   private ITrackRecordingService boundService;
 
   private final DeathRecipient deathRecipient = new DeathRecipient() {
@@ -88,6 +91,7 @@ public class TrackRecordingServiceConnection {
    * Binds to the service, starting it if necessary.
    */
   public void startAndBind() {
+    startNewRecording = true;
     bindService(true);
   }
 
@@ -102,6 +106,7 @@ public class TrackRecordingServiceConnection {
    * Unbinds from and stops the service.
    */
   public void stop() {
+    startNewRecording = false;
     unbind();
 
     Log.d(TAG, "Stopping service");
@@ -162,6 +167,14 @@ public class TrackRecordingServiceConnection {
     Intent intent = new Intent(context, TrackRecordingService.class);
     int flags = BuildConfig.DEBUG ? Context.BIND_DEBUG_UNBIND : 0;
     context.bindService(intent, serviceConnection, flags);
+  }
+
+  public boolean isStartNewRecording() {
+    return startNewRecording;
+  }
+
+  public void setStartNewRecording(boolean startNewRecording) {
+    this.startNewRecording = startNewRecording;
   }
 
   private void setBoundService(ITrackRecordingService service) {

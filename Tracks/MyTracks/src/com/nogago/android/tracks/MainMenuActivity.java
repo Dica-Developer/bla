@@ -1,62 +1,23 @@
 package com.nogago.android.tracks;
 
-import com.google.android.apps.mytracks.fragments.CheckUnitsDialogFragment;
-import com.google.android.apps.mytracks.fragments.WelcomeDialogFragment;
-import com.google.android.apps.mytracks.util.EulaUtils;
-
-import com.google.android.apps.mytracks.ContextualActionModeCallback;
-import com.google.android.apps.mytracks.content.TracksColumns;
-import com.google.android.apps.mytracks.fragments.DeleteAllTrackDialogFragment;
-import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment;
-import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment.DeleteOneTrackCaller;
-import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
 import com.google.android.apps.mytracks.services.ITrackRecordingService;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
-import com.google.android.apps.mytracks.util.AnalyticsUtils;
-import com.google.android.apps.mytracks.util.ApiAdapterFactory;
 import com.google.android.apps.mytracks.util.IntentUtils;
-import com.google.android.apps.mytracks.util.ListItemUtils;
-import com.google.android.apps.mytracks.util.PreferencesUtils;
-import com.google.android.apps.mytracks.util.StringUtils;
-import com.google.android.apps.mytracks.util.TrackIconUtils;
-import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
-
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.database.Cursor;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.speech.tts.TextToSpeech;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.ResourceCursorAdapter;
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.AdapterContextMenuInfo;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.Toast;
 
-public class MainMenuActivity extends Activity {
+public class MainMenuActivity extends FragmentActivity {
 
 	private static final String FIRST_TIME_APP_RUN = "FIRST_TIME_APP_RUN"; //$NON-NLS-1$
 	private static final String VECTOR_INDEXES_CHECK = "VECTOR_INDEXES_CHECK"; //$NON-NLS-1$
@@ -69,8 +30,37 @@ public class MainMenuActivity extends Activity {
 	public static final int APP_EXIT_CODE = 4;
 	public static final String APP_EXIT_KEY = "APP_EXIT_KEY";
 	
+	private TrackRecordingServiceConnection trackRecordingServiceConnection;
+	private static final String TAG = TrackListActivity.class.getSimpleName();
+	private long recordingTrackId;
+	  // Callback when the trackRecordingServiceConnection binding changes.
+	  private final Runnable bindChangedCallback = new Runnable() {
+	    @Override
+	    public void run() {
+//	      if (!startNewRecording) {
+//	        return;
+//	      }
 
-	
+	      ITrackRecordingService service = trackRecordingServiceConnection.getServiceIfBound();
+	      if (service == null) {
+	        Log.d(TAG, "service not available to start a new recording");
+	        return;
+	      }      try {
+	        recordingTrackId = service.startNewTrack();
+//	        startNewRecording = false;
+	        Intent intent = IntentUtils.newIntent(MainMenuActivity.this, TrackDetailActivity.class)
+	            .putExtra(TrackDetailActivity.EXTRA_TRACK_ID, recordingTrackId);
+	        startActivity(intent);
+	        Toast.makeText(
+	            MainMenuActivity.this, R.string.track_list_record_success, Toast.LENGTH_SHORT).show();
+	      } catch (Exception e) {
+	        Toast.makeText(MainMenuActivity.this, R.string.track_list_record_error, Toast.LENGTH_LONG)
+	            .show();
+	        Log.e(TAG, "Unable to start a new recording.", e);
+	      }
+	    }
+	  };
+		
 	/*
 	public void checkPreviousRunsForExceptions(boolean firstTime) {
 		long size = getPreferences(MODE_WORLD_READABLE).getLong(EXCEPTION_FILE_SIZE, 0);
@@ -118,7 +108,7 @@ public class MainMenuActivity extends Activity {
 		}
 	}
 	*/
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -162,6 +152,10 @@ public class MainMenuActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+	    trackRecordingServiceConnection = new TrackRecordingServiceConnection(
+	        this, bindChangedCallback);
+
+		
 		boolean exit = false;
 		if(getIntent() != null){
 			Intent intent = getIntent();
@@ -179,15 +173,16 @@ public class MainMenuActivity extends Activity {
 
 		Window window = getWindow();
 		final Activity activity = this;
+
 		View showMap = window.findViewById(R.id.MapButton); //LO_RecordTrackService
 		showMap.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				final Intent mapIndent = new Intent(activity, TrackListActivity.class);
-				activity.startActivityForResult(mapIndent, 0);
+			    trackRecordingServiceConnection.startAndBind();
+			    bindChangedCallback.run();
 			}
 		});
-		View settingsButton = window.findViewById(R.id.SettingsButton); //LU_Settings
+		View settingsButton = window.findViewById(R.id.SettingsButton); //RU_Settings
 		settingsButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -196,7 +191,7 @@ public class MainMenuActivity extends Activity {
 			}
 		});
 
-		View favouritesButton = window.findViewById(R.id.FavoritesButton); //RU_Statistics
+		View favouritesButton = window.findViewById(R.id.FavoritesButton); //LU_Statistics
 		favouritesButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

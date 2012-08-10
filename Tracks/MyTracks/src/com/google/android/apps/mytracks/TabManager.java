@@ -160,7 +160,7 @@ public class TabManager implements TabHost.OnTabChangeListener {
         Intent intent = pm.getLaunchIntentForPackage("com.nogago.android.maps");
         this.fragmentActivity.startActivity(intent);
         
-        //falls nicht installiert, fragen, ob installeirt werden soll
+        //falls nicht installiert, fragen, ob installiert werden soll
       } catch (NullPointerException e) {
         
        alert.show();

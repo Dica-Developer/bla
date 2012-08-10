@@ -62,6 +62,14 @@ reply.writeNoException();
 reply.writeInt(((_result)?(1):(0)));
 return true;
 }
+case TRANSACTION_isStartNewRecording:
+{
+data.enforceInterface(DESCRIPTOR);
+boolean _result = this.isStartNewRecording();
+reply.writeNoException();
+reply.writeInt(((_result)?(1):(0)));
+return true;
+}
 case TRANSACTION_getRecordingTrackId:
 {
 data.enforceInterface(DESCRIPTOR);
@@ -173,6 +181,26 @@ boolean _result;
 try {
 _data.writeInterfaceToken(DESCRIPTOR);
 mRemote.transact(Stub.TRANSACTION_isRecording, _data, _reply, 0);
+_reply.readException();
+_result = (0!=_reply.readInt());
+}
+finally {
+_reply.recycle();
+_data.recycle();
+}
+return _result;
+}
+/**
+   * Checks and returns whether we're currently recording a track.
+   */
+public boolean isStartNewRecording() throws android.os.RemoteException
+{
+android.os.Parcel _data = android.os.Parcel.obtain();
+android.os.Parcel _reply = android.os.Parcel.obtain();
+boolean _result;
+try {
+_data.writeInterfaceToken(DESCRIPTOR);
+mRemote.transact(Stub.TRANSACTION_isStartNewRecording, _data, _reply, 0);
 _reply.readException();
 _result = (0!=_reply.readInt());
 }
@@ -328,12 +356,13 @@ return _result;
 }
 static final int TRANSACTION_startNewTrack = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
 static final int TRANSACTION_isRecording = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
-static final int TRANSACTION_getRecordingTrackId = (android.os.IBinder.FIRST_CALL_TRANSACTION + 2);
-static final int TRANSACTION_insertWaypoint = (android.os.IBinder.FIRST_CALL_TRANSACTION + 3);
-static final int TRANSACTION_recordLocation = (android.os.IBinder.FIRST_CALL_TRANSACTION + 4);
-static final int TRANSACTION_endCurrentTrack = (android.os.IBinder.FIRST_CALL_TRANSACTION + 5);
-static final int TRANSACTION_getSensorData = (android.os.IBinder.FIRST_CALL_TRANSACTION + 6);
-static final int TRANSACTION_getSensorState = (android.os.IBinder.FIRST_CALL_TRANSACTION + 7);
+static final int TRANSACTION_isStartNewRecording = (android.os.IBinder.FIRST_CALL_TRANSACTION + 2);
+static final int TRANSACTION_getRecordingTrackId = (android.os.IBinder.FIRST_CALL_TRANSACTION + 3);
+static final int TRANSACTION_insertWaypoint = (android.os.IBinder.FIRST_CALL_TRANSACTION + 4);
+static final int TRANSACTION_recordLocation = (android.os.IBinder.FIRST_CALL_TRANSACTION + 5);
+static final int TRANSACTION_endCurrentTrack = (android.os.IBinder.FIRST_CALL_TRANSACTION + 6);
+static final int TRANSACTION_getSensorData = (android.os.IBinder.FIRST_CALL_TRANSACTION + 7);
+static final int TRANSACTION_getSensorState = (android.os.IBinder.FIRST_CALL_TRANSACTION + 8);
 }
 /**
    * Starts recording a new track.
@@ -345,6 +374,10 @@ public long startNewTrack() throws android.os.RemoteException;
    * Checks and returns whether we're currently recording a track.
    */
 public boolean isRecording() throws android.os.RemoteException;
+/**
+   * Checks and returns whether we're currently recording a track.
+   */
+public boolean isStartNewRecording() throws android.os.RemoteException;
 /**
    * Returns the track ID of the track currently being recorded, or -1 if none
    * is being recorded. This ID can then be used to read track data from the

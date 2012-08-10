@@ -63,10 +63,10 @@ import android.os.Binder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.Process;
+import android.os.RemoteException;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
@@ -1275,6 +1275,11 @@ public class TrackRecordingService extends Service {
         return Sensor.SensorState.NONE.getNumber();
       }
       return service.sensorManager.getSensorState().getNumber();
+    }
+
+    @Override
+    public boolean isStartNewRecording() throws RemoteException {
+      return false;
     }
   }
 

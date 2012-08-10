@@ -43,6 +43,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.os.RemoteException;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -87,18 +88,21 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   private final Runnable bindChangedCallback = new Runnable() {
     @Override
     public void run() {
-      if (!startNewRecording) {
-        return;
-      }
-
       ITrackRecordingService service = trackRecordingServiceConnection.getServiceIfBound();
       if (service == null) {
         Log.d(TAG, "service not available to start a new recording");
         return;
       }
       try {
+        if (!service.isStartNewRecording()) {
+          return;
+        }
+      } catch (RemoteException e1) {
+
+        e1.printStackTrace();
+      }
+      try {
         recordingTrackId = service.startNewTrack();
-        startNewRecording = false;
         Intent intent = IntentUtils.newIntent(TrackListActivity.this, TrackDetailActivity.class)
             .putExtra(TrackDetailActivity.EXTRA_TRACK_ID, recordingTrackId);
         startActivity(intent);
@@ -161,7 +165,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   private ResourceCursorAdapter resourceCursorAdapter;
 
   // True to start a new recording.
-  private boolean startNewRecording = false;
+ // private boolean startNewRecording = false;
 
   private MenuItem recordTrackMenuItem;
   private MenuItem stopRecordingMenuItem;
@@ -496,7 +500,6 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
    * Starts a new recording.
    */
   private void startRecording() {
-    startNewRecording = true;
     trackRecordingServiceConnection.startAndBind();
 
     /*
