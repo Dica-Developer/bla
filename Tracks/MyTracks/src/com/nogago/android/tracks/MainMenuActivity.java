@@ -1,12 +1,16 @@
 package com.nogago.android.tracks;
 
+import com.google.android.apps.mytracks.fragments.CheckUnitsDialogFragment;
+import com.google.android.apps.mytracks.fragments.WelcomeDialogFragment;
 import com.google.android.apps.mytracks.services.ITrackRecordingService;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
+import com.google.android.apps.mytracks.util.EulaUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
@@ -33,33 +37,39 @@ public class MainMenuActivity extends FragmentActivity {
 	private TrackRecordingServiceConnection trackRecordingServiceConnection;
 	private static final String TAG = TrackListActivity.class.getSimpleName();
 	private long recordingTrackId;
-	  // Callback when the trackRecordingServiceConnection binding changes.
-	  private final Runnable bindChangedCallback = new Runnable() {
-	    @Override
-	    public void run() {
-//	      if (!startNewRecording) {
-//	        return;
-//	      }
+//	private boolean startNewRecording = false;
+	
+	
+  // Callback when the trackRecordingServiceConnection binding changes.
+  private final Runnable bindChangedCallback = new Runnable() {
+//    @Override
+    public void run() {
+//       if (!startNewRecording) {
+//         return;
+//       }
 
-	      ITrackRecordingService service = trackRecordingServiceConnection.getServiceIfBound();
-	      if (service == null) {
-	        Log.d(TAG, "service not available to start a new recording");
-	        return;
-	      }      try {
-	        recordingTrackId = service.startNewTrack();
-//	        startNewRecording = false;
-	        Intent intent = IntentUtils.newIntent(MainMenuActivity.this, TrackDetailActivity.class)
-	            .putExtra(TrackDetailActivity.EXTRA_TRACK_ID, recordingTrackId);
-	        startActivity(intent);
-	        Toast.makeText(
-	            MainMenuActivity.this, R.string.track_list_record_success, Toast.LENGTH_SHORT).show();
-	      } catch (Exception e) {
-	        Toast.makeText(MainMenuActivity.this, R.string.track_list_record_error, Toast.LENGTH_LONG)
-	            .show();
-	        Log.e(TAG, "Unable to start a new recording.", e);
-	      }
-	    }
-	  };
+      ITrackRecordingService service = trackRecordingServiceConnection.getServiceIfBound();
+      if (service == null) {
+        Log.d(TAG, "service not available to start a new recording");
+        return;
+      }
+      try {
+        recordingTrackId = service.startNewTrack();
+//        startNewRecording = true;
+        Intent intent = IntentUtils.newIntent(MainMenuActivity.this, TrackDetailActivity.class)
+            .putExtra(TrackDetailActivity.EXTRA_TRACK_ID, recordingTrackId);
+        startActivity(intent);
+        Toast.makeText(MainMenuActivity.this, R.string.track_record_notification, Toast.LENGTH_LONG).show();
+       
+        
+
+      } catch (Exception e) {
+        Toast.makeText(MainMenuActivity.this, R.string.track_list_record_error, Toast.LENGTH_LONG)
+            .show();
+        Log.e(TAG, "Unable to start a new recording.", e);
+      }
+    }
+  };
 		
 	/*
 	public void checkPreviousRunsForExceptions(boolean firstTime) {
@@ -163,7 +173,7 @@ public class MainMenuActivity extends FragmentActivity {
 				exit = true;
 				finish();
 			}
-//			showStartupDialogs();
+			showStartupDialogs();
 		}
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -233,7 +243,7 @@ public class MainMenuActivity extends FragmentActivity {
 			return;
 		}
 	}
-	/*
+	
   
     public void showStartupDialogs() {
 
@@ -253,8 +263,8 @@ public class MainMenuActivity extends FragmentActivity {
               getSupportFragmentManager(), CheckUnitsDialogFragment.CHECK_UNITS_DIALOG_TAG);
         }
       } else {
-        enableEmptyView();
+        return;
       }
     }
-    */
+    
 }

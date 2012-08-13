@@ -18,17 +18,14 @@ package com.nogago.android.tracks;
 
 import com.google.android.apps.mytracks.ContextualActionModeCallback;
 import com.google.android.apps.mytracks.content.TracksColumns;
-import com.google.android.apps.mytracks.fragments.CheckUnitsDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteAllTrackDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment.DeleteOneTrackCaller;
-import com.google.android.apps.mytracks.fragments.WelcomeDialogFragment;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
 import com.google.android.apps.mytracks.services.ITrackRecordingService;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
 import com.google.android.apps.mytracks.util.AnalyticsUtils;
 import com.google.android.apps.mytracks.util.ApiAdapterFactory;
-import com.google.android.apps.mytracks.util.EulaUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.ListItemUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
@@ -43,9 +40,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.os.RemoteException;
 import android.speech.tts.TextToSpeech;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
@@ -61,9 +56,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
 /**
  * An activity displaying a list of tracks.
@@ -83,37 +76,40 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
       TracksColumns.TOTALDISTANCE,
       TracksColumns.TOTALTIME,
       TracksColumns.ICON};
+  private boolean startNewRec = true;
 
   // Callback when the trackRecordingServiceConnection binding changes.
   private final Runnable bindChangedCallback = new Runnable() {
     @Override
     public void run() {
+      if (!startNewRec) {
+        return;
+      }
+      
       ITrackRecordingService service = trackRecordingServiceConnection.getServiceIfBound();
       if (service == null) {
         Log.d(TAG, "service not available to start a new recording");
         return;
+      }  else {
+        return;
       }
-      try {
-        if (!service.isStartNewRecording()) {
-          return;
-        }
-      } catch (RemoteException e1) {
-
-        e1.printStackTrace();
-      }
+/*
       try {
         recordingTrackId = service.startNewTrack();
+        startNewRec = false;
         Intent intent = IntentUtils.newIntent(TrackListActivity.this, TrackDetailActivity.class)
             .putExtra(TrackDetailActivity.EXTRA_TRACK_ID, recordingTrackId);
         startActivity(intent);
-        Toast.makeText(
-            TrackListActivity.this, R.string.track_list_record_success, Toast.LENGTH_SHORT).show();
+        Toast.makeText(TrackListActivity.this, R.string.track_list_record_success,
+            Toast.LENGTH_SHORT).show();
       } catch (Exception e) {
         Toast.makeText(TrackListActivity.this, R.string.track_list_record_error, Toast.LENGTH_LONG)
             .show();
         Log.e(TAG, "Unable to start a new recording.", e);
-      }
+      } 
+      */
     }
+    
   };
 
   /*
@@ -190,14 +186,14 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         this, R.string.metric_units_key, PreferencesUtils.METRIC_UNITS_DEFAULT);
     recordingTrackId = PreferencesUtils.getLong(this, R.string.recording_track_id_key);
 
-    ImageButton recordImageButton = (ImageButton) findViewById(R.id.track_list_record_button);
-    recordImageButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        updateMenuItems(true);
-        startRecording();
-      }
-    });
+//    ImageButton recordImageButton = (ImageButton) findViewById(R.id.track_list_record_button);
+//    recordImageButton.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        updateMenuItems(true);
+//        startRecording();
+//      }
+//    });
 
     listView = (ListView) findViewById(R.id.track_list);
     listView.setEmptyView(findViewById(R.id.track_list_empty));  
@@ -287,7 +283,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
             .show(getSupportFragmentManager(), EulaDialogFragment.EULA_DIALOG_TAG);
       }
     }
-    */
+    
     if (EulaUtils.getShowWelcome(this)) {
       Fragment fragment = getSupportFragmentManager()
           .findFragmentByTag(WelcomeDialogFragment.WELCOME_DIALOG_TAG);
@@ -304,8 +300,8 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
             getSupportFragmentManager(), CheckUnitsDialogFragment.CHECK_UNITS_DIALOG_TAG);
       }
     } else {
+    */
       enableEmptyView();
-    }
   }
   
   /**
@@ -314,8 +310,8 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   private void enableEmptyView() {
     View emptyMessage = findViewById(R.id.track_list_empty_message);
     emptyMessage.setVisibility(View.VISIBLE);
-    View recordButton = findViewById(R.id.track_list_record_button);
-    recordButton.setVisibility(View.VISIBLE);
+//    View recordButton = findViewById(R.id.track_list_record_button);
+//    recordButton.setVisibility(View.VISIBLE);
   }
 
   @Override
@@ -343,7 +339,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     menu.findItem(R.id.track_list_save_all_tcx)
         .setTitle(getString(R.string.menu_save_format, fileTypes[3]));
     
-    recordTrackMenuItem = menu.findItem(R.id.track_list_record_track);
+//    recordTrackMenuItem = menu.findItem(R.id.track_list_record_track);
     stopRecordingMenuItem = menu.findItem(R.id.track_list_stop_recording);
     searchMenuItem = menu.findItem(R.id.track_list_search);
     importMenuItem = menu.findItem(R.id.track_list_import);
@@ -390,11 +386,11 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   public boolean onOptionsItemSelected(MenuItem item) {
     Intent intent;
     switch (item.getItemId()) {
-      case R.id.track_list_record_track:
-        AnalyticsUtils.sendPageViews(this, "/action/record_track");
-        updateMenuItems(true);
-        startRecording();
-        return true;
+//      case R.id.track_list_record_track:
+//        AnalyticsUtils.sendPageViews(this, "/action/record_track");
+//        updateMenuItems(true);
+//        startRecording();
+//        return true;
       case R.id.track_list_stop_recording:
         updateMenuItems(false);
         TrackRecordingServiceConnectionUtils.stop(this, trackRecordingServiceConnection, true);
@@ -499,8 +495,9 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   /**
    * Starts a new recording.
    */
-  private void startRecording() {
-    trackRecordingServiceConnection.startAndBind();
+ 
+//  private void startRecording() {
+//    trackRecordingServiceConnection.startAndBind();
 
     /*
      * If the binding has happened, then invoke the callback to start a new
@@ -508,8 +505,8 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
      * will have no effect. But when the binding occurs, the callback will get
      * invoked.
      */
-    bindChangedCallback.run();
-  }
+//    bindChangedCallback.run();
+//  }
 
   @Override
   public boolean onKeyUp(int keyCode, KeyEvent event) {
@@ -525,4 +522,5 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   public TrackRecordingServiceConnection getTrackRecordingServiceConnection() {
     return trackRecordingServiceConnection;
   }
+  
 }

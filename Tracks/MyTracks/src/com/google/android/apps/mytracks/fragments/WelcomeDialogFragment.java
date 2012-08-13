@@ -17,8 +17,8 @@
 package com.google.android.apps.mytracks.fragments;
 
 import com.google.android.apps.mytracks.util.EulaUtils;
+import com.nogago.android.tracks.MainMenuActivity;
 import com.nogago.android.tracks.R;
-import com.nogago.android.tracks.TrackListActivity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -53,17 +53,17 @@ public class WelcomeDialogFragment extends DialogFragment {
         .setMessage(R.string.welcome_message)
         .create();
   }
-/*
+
   private void onDone() {
     EulaUtils.setShowWelcome(getActivity());
     MainMenuActivity mainMenuActivity = (MainMenuActivity) getActivity();
     mainMenuActivity.showStartupDialogs();
-  }*/
-  
+  }
+  /*
   private void onDone() {
     EulaUtils.setShowWelcome(getActivity());
     TrackListActivity trackListActivity = (TrackListActivity) getActivity();
     trackListActivity.showStartupDialogs();
   }
-  
+  */
 }

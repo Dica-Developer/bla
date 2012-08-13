@@ -18,8 +18,8 @@ package com.google.android.apps.mytracks.fragments;
 
 import com.google.android.apps.mytracks.util.EulaUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
+import com.nogago.android.tracks.MainMenuActivity;
 import com.nogago.android.tracks.R;
-import com.nogago.android.tracks.TrackListActivity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -69,9 +69,16 @@ public class CheckUnitsDialogFragment extends DialogFragment {
   /**
    * Tasks to perform when done.
    */
+  /*
   private void onDone() {
     EulaUtils.setShowCheckUnits(getActivity());
     TrackListActivity trackListActivity = (TrackListActivity) getActivity();
     trackListActivity.showStartupDialogs();   
+  }
+  */
+  private void onDone() {
+    EulaUtils.setShowCheckUnits(getActivity());
+    MainMenuActivity mainMenuActivity = (MainMenuActivity) getActivity();
+    mainMenuActivity.showStartupDialogs();
   }
 }
