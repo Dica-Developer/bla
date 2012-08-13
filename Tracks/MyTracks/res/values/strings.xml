@@ -2237,7 +2237,7 @@ limitations under the License.
   <string name="track_list_empty_message"
     translation_description="When the track list is empty, the message informing the user to click
       on the record button to start a new recording">
-    Your track list is empty, click the record button to start recording your next adventure.
+    Your track list is empty, click the record button in main menu to start recording your first adventure.
   </string>
   <string name="track_list_record_error"
     translation_description="When starting a new track recording, the error message informing the
@@ -2988,6 +2988,10 @@ limitations under the License.
     Welcome to nogago Tracks  
   </string>
   <!-- nogago -->
+  <string name="already_recording_track"
+      translation_description="Toast message when click on record in main menu and a track is already recorded">
+      You already record a track.
+  </string>
   <string name="nogago_label">Your nogago.com credentials</string>
   <string name="nogago_register">Register with nogago.com to upload Tracks</string>
   <string name="nogago_register_title">Register with nogago.com</string>

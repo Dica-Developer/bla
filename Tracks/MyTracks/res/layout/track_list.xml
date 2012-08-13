@@ -33,6 +33,7 @@ limitations under the License.
       android:visibility="gone"
       style="@style/ListEmptyTextView" >
     </TextView>
+    <!-- 
     <ImageButton
       android:background="@color/transparent"
       android:contentDescription="@string/menu_record_track"
@@ -43,5 +44,6 @@ limitations under the License.
       android:src="@drawable/menu_record_track"
       android:visibility="gone"
       style="@android:style/Widget.DeviceDefault.ImageButton" />
+       -->
   </LinearLayout>
 </merge>

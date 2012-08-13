@@ -418,10 +418,13 @@
     <string name="track_list_empty_message" 
         translation_description="When the track list is empty, the message
          informing the user to click on the record button to start a new recording">
-        Ihre Trackliste ist leer, klicken Sie auf die Schaltfläche \"Track aufzeichnen\" um Ihr nächstes Abenteuer aufzuzeichnen.
+        Ihre Trackliste ist leer, klicken Sie auf die Schaltfläche \"Track aufzeichnen\" im Hauptmenü um Ihr erstes Abenteuer aufzuzeichnen.
     </string>
     <string name="track_list_record_error" translation_description="When starting a new track recording, the error message informing the       user not able to record and asking the user to try again.">Die Aufzeichnung kann nicht gestartet werden, da kein GPS-Signal verfügbar ist. Bitte versuchen Sie es erneut.</string>
-    <string name="track_list_record_success" translation_description="When starting a new track recording, a status message indicating       success.">Es wird gerade ein neuer Track aufgezeichnet.</string>
+    <string name="track_list_record_success" 
+        translation_description="When starting a new track recording, a status message indicating success.">
+        Es wird gerade ein neuer Track aufgezeichnet.
+    </string>
     <string name="track_name_format" translation_description="When creating a new track, the string format to name the track.        %1$d: track number. E.g., &apos;1&apos;.">Track %1$d</string>
     <string name="track_record_notification" translation_description="When recording a track, the message on the My Tracks notification       informing the user that My Tracks is actively recording his track.">Der Track wird aufgezeichnet...</string>
     <string name="unit_feet" translation_description="Abbreviation for feet. E.g., &apos;2 ft&apos;.">Fuß</string>
@@ -561,6 +564,10 @@
     und teilen Sie Ihre Routen mit Freunden.\n\nViel Spaß beim Erkunden!\nIhr nogago Tracks-Team</string>
     <string name="welcome_title" translation_description="The title of the welcome dialog.">Willkommen bei nogago Tracks</string>
     <!-- new for nogago -->
+      <string name="already_recording_track"
+      translation_description="Toast message when click on record in main menu and a track is already recorded">
+      Sie zeichnen bereits einen Track auf.
+  </string>
     <string name="nogago_label">Ihre nogago.com Zugangsdaten</string>
     <string name="nogago_register">Registrieren Sie sich bei nogago.com um Tracks hochzuladen</string>
     <string name="nogago_register_title">Bei nogago.com anmelden</string>
