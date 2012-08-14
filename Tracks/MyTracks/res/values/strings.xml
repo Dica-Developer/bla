@@ -567,11 +567,31 @@ limitations under the License.
     translation_description="The body in the 'Terms of Service. See http://m.google.com/toscountry.
 
       %1$s: host name, 'm.google.com'">
-    By using Google\'s mobile products and services ("Services"), you agree to be bound by a) the
-    YouTube Terms of Use (%1$s/tos_youtube) for YouTube-related Services, b) the Google Maps Terms
-    and Conditions (%1$s/tos_maps) for mapping, local and location-based Services, c) the Google
-    Books Terms of Service (%1$s/tos_books) for Books-related Services, and e) the Google Terms of
-    Service (%1$s/utos) for all other Services, as updated from time to time.
+Your use of the NOGAGO plattform (nogago.com) is bound to the following terms of service. If you register as a user of NOGAGO, you agree to these terms of service. Please do not register, if you do not agree to these terms. The terms of service may change at any time. You will be notified by e-mail two weeks in advance of any change.
+
+PLEASE NOTE THAT THE GERMAN VERSION (ACCESSIBLE BY CLICKING “DEUTSCH” IN THE UPPER LEFT CORNER) IS LEGALLY BINDING. THE ENGLISH TRANSLATION IS PROVIDED FOR INFORMATION ONLY.
+
+Terms of service for nogago.com
+
+Version 1.0
+Date: June 17, 2011
+
+    Your registration allows to use the nogago.com without incurring additional charges. The download of apps and
+    tracks is free of charge.
+    We are offering serial keys for applications for purchasing. A serial key is valid for one product on one device and is valid for all future versions of the product on the same device. A serial key is sold for 7.99 USD/EUR (incl. German sales tax where applicable in Germany and the EU).
+    We sell offline maps for our applications nogago Guide and nogago Outdoor GPS. Offline maps provide offline mapping capabilities for a region of choice. Each offline map is sold at 4.95 USD / EUR (incl. German sales tax where applicable in Germany and the EU) and can be downloaded as many times as the user wishes.
+    You can pay using Paypal. Paypal allows to settle payment with all major credit and debit cards world-wide.
+    We keep the right to stop the nogago.com at any time or to request charges for the use of additional features of nogago.com and the nogago software applications. You will be notified when new charges are requested and our offering changes.
+    You can cancel your registration at nogago.com at any time. After cancellation of your user account, you can still use our software applications and the maps you have purchased. However, you can no longer access nogago.com and receive updates for the software applications and your maps.
+    We do not provide guarantees for any functionality of our offer. In particular, we do not guarantee the fitness of maps and tracks for commercial purposes. The functionalities of our applications can come and go at any time.
+    We create maps and search for tracks on your behalf. We need to store personal data for that purpose. Therefore, you may not share your logins with any third party.
+    As we search tracks on the web and create maps and guides based on Wikipedia and OpenStreetMap data, we do not take any responsibility for the quality of sight descriptions, tracks and maps. We are not connected with the content providers in any way. If we are made aware that the content provided violates copyright or other laws in Germany, we will delete the content from nogago.com.
+    Our liability is excluded as far as allowed by German law, that is unless we damage you on purpose or with gross negligence. All other liabilities are waved.
+    NOGAGO is a registered trademark of nogago GmbH in the US, EU, Japan and China. The use of the name NOGAGO, the NOGAGO logo or NOGAGO artwork requires our prior written permission.
+    Nogago GmbH, her users and the content providers of tracks and maps are independent parties. Neither by these terms of service nor by use of our services any partnership between organizations, or contractual relationships are constituted.
+    These terms of service are bound by German law. The United Nations Convention on Contracts for the International Sale of Goods ( CISG ) are excluded. Seat of court is Landgericht Baden-Baden, Germany.
+    The terms, conditions and warranties contained in this Agreement that by their sense and context are intended to survive the performance hereof shall so survive the completion of performance or termination of this Agreement.
+
   </string>
   <string name="eula_copyright_year"
     translation_description="The copyright year in the 'Terms of Service'. See
@@ -2113,7 +2133,7 @@ limitations under the License.
   </string>
   <string name="stats_average_speed"
     translation_description="In the 'Stats' page, the average speed.">
-    Average speed
+    \u00D8 speed
   </string>
   <string name="stats_elevation"
     translation_description="In the 'Stats' page, the elevation.
@@ -3002,6 +3022,14 @@ limitations under the License.
   <string name="button_no">No</string>
   <string name="maps_not_installed">NogagoMaps is not installed on your Phone, do your want to install for free?</string>
   <string name="wanna_start_maps">Start nogago Maps?</string>
+  <string name="ok_button">OK</string>
+  <string name="wrong_credential">Credentials error</string>
+  <string name="error_username">You need to set up your nogago.com credentials first before downloading a map.</string>
+  <string name="task_cancelled">Task cancelled on your request.</string>
+  <string name="error_track_does_not_exist">Track does not exist!</string>
+  <string name="error_operation_cancelled">Operation cancelled</string>
+  <string name="progressbar_title">Uploading Track...</string>
+  <string name="successfully_uploaded_track">Your track was successfully uploaded to nogago!</string>
     <!-- new for Menu -->
   <string name="help">Help</string>
   <string name="close">Close</string>
@@ -3009,4 +3037,5 @@ limitations under the License.
   <string name="show_tracklist_button">Tracklist</string>
   <string name="show_statistics_button">Aggregated statistics</string>
   <string name="show_settings_button">Settings</string>
+  <string name="error_network">Apologies, you cannot access the Internet.</string>
 </resources>

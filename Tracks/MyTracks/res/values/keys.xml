@@ -81,4 +81,7 @@ limitations under the License.
   <string name="settings_sharing_key">settingsSharing</string>
   <string name="settings_stats_key">settingsStats</string>
   <string name="settings_register_key">settingsRegister</string>
+  
+  <string name="user_name">user_name</string>
+  <string name="user_password">user_password</string>
 </resources>

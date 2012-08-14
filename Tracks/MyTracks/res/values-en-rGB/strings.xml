@@ -243,7 +243,10 @@ partial map. Tracks, represented as simple lines, can still be recorded even if 
     <string name="menu_save_all" translation_description="In the menu, to save all the tracks to the SD card. This menu item has       a submenu.        Character limit: ~21 (1 line)">Save all to SD card</string>
     <string name="menu_save_format" translation_description="Under the save to SD card menu option, the option to save a track as a       certain file format.        %1$s: file format. &apos;GPX&apos;, &apos;KML&apos;, &apos;CSV&apos;, or &apos;TCX&apos;.       Character limit: ~21 (1 line)">Save as %1$s</string>
     <string name="menu_search" translation_description="In the menu, to start a textual search for tracks or markers.        Character limit: ~21 (1 line)">Search</string>
-    <string name="menu_send_google" translation_description="In the menu, to send a track to Google.        Character limit: ~21 (1 line)">Send to Google</string>
+    <string name="menu_send_google" 
+        translation_description="In the menu, to send a track to Google. 
+          Character limit: ~21 (1 line)">
+          Send to nogago.com</string>
     <string name="menu_sensor_state" translation_description="In the menu, to go to the sensor state page.        Character limit: ~21 (1 line)">Sensor state</string>
     <string name="menu_settings" translation_description="In the menu, to go to the settings page.        Character limit: ~21 (1 line)">Settings</string>
     <string name="menu_share" translation_description="In the menu, to share a track.        Character limit: ~21 (1 line)">Share</string>

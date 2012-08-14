@@ -24,11 +24,11 @@ limitations under the License.
 	      android:summary="@string/nogago_register" 
 	      android:persistent="false"/>
 	  <EditTextPreference 
-		android:key="user_name" 
+		android:key="@string/user_name" 
       	android:dialogTitle="@string/username_label" 
       	android:title="@string/username_label"/>
   	  <EditTextPreference 
-      	android:key="user_password"
+      	android:key="@string/user_password"
       	android:dialogTitle="@string/password_label"
       	android:password="true"
       	android:title="@string/password_label"/>

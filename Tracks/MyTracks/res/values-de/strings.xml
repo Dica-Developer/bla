@@ -108,7 +108,33 @@
     <string name="description_track_point" translation_description="Label for a track point">Punkt</string>
     <string name="description_track_segment" translation_description="Label for a track segment">Segment</string>
     <string name="eula_accept" translation_description="In the &apos;Terms of Service&apos; dialog, the button to accept.">Zustimmen</string>
-    <string name="eula_body" translation_description="The body in the &apos;Terms of Service. See http://m.google.com/toscountry.        %1$s: host name, &apos;m.google.com&apos;">Durch die Nutzung der mobilen Produkte und Dienstleistungen von Google (\"Dienste\") verpflichten Sie sich zur Einhaltung a) der YouTube-Nutzungsbedingungen (%1$s/tos_youtube) für Dienste im Zusammenhang mit YouTube, b) der Google Maps-Nutzungsbedingungen (%1$s/tos_maps) für Kartendienste, lokale und standortbezogene Dienste, c) der Google Books-Nutzungsbedingungen (%1$s/tos_books) für Dienste im Zusammenhang mit Google Books und d) der Google-Nutzungsbedingungen (%1$s/utos) für alle anderen Dienste in der jeweils aktuellen Version.</string>
+    <string name="eula_body" 
+        translation_description="The body in the &apos;Terms of Service. See http://m.google.com/toscountry.
+                %1$s: host name, &apos;m.google.com&apos;">
+                Für die Nutzung der NOGAGO Plattform (www.nogago.com) gelten ausschließlich unsere Allgemeinen Geschäftsbedingungen („AGB“), die der Benutzer im Rahmen seiner Registrierung akzeptiert. Die bei Anmeldung gewählten Zugangsdaten (user name, password) sind vom Benutzer geheim zu halten und vor dem Zugriff Dritter angemessen zu schützen. Entgegenstehende Vertragsbedingungen des Benutzers werden nicht Vertragsbestandteil, auch wenn wir ihnen nicht widersprechen. Bitte registrieren Sie sich nicht und nutzen Sie unser Internetangebot nicht weiter, wenn Sie mit unseren AGB nicht einverstanden sind.
+
+Allgemeine Geschäftsbedingungen der Nogago GmbH für die Nutzung der NOGAGO Plattform
+
+Version 1.0
+Stand: 17. Juni 2011
+
+    Die NOGAGO Plattform bietet Ihnen den Download von Anwendungen für Smartphones, von Offline Karten für den Planeten Erde und von Routen an. Mit Ihrer Registrierung sind Sie zur kostenlosen Nutzung der Internetseite nogago.com berechtigt.
+    Sie können kostenlos Anwendungen für Smartphones und Routen herunterladen. Der Download von Offline Karten ist gebührenpflichtig und kostet 4,95 EUR (inkl. MwSt. in der EU) bzw. 4,95 USD (exkl. MwSt. außerhalb der EU).
+    Durch Kauf eines Lizenzschlüsseln für unserer Anwendungen können zusätzliche Funktionen genutzt werden. Lizenzschlüssel sind gebührenpflichtig und kosten 7,99 EUR (inkl. MwSt. in der EU) bzw. 7,99 USD (exkl. MwSt. außerhalb der EU). Lizenzschlüssel sind gebunden an einzelne Anwendungen und Geräte und ermöglichen die Nutzung des Produkts und zukünftiger Versionen des Produkts auf dem jeweiligen Gerät.
+    Der Benutzer stellt sicher, dass sein Endgerät die für den Download von Offline-Karten erforderlichen technischen Eigenschaften – wie auf der NOGAGO Plattform dargestellt – erfüllt.
+    Der Benutzer stellt sicher, dass die Geräte-ID seines Geräts, die bei Kauf des Lizenzschlüssels angegeben werden muss, korrekt ist.
+    Die Gebühren müssen vor dem Download mit Paypal bezahlt werden.
+    Wir übernehmen keine Garantie und sichern keine Eigenschaft unseres Angebots zu, insbesondere nicht die kommerzielle Verwendbarkeit von NOGAGO. Funktionalitäten unserer Anwendungen und Webseite können jederzeit hinzukommen und wegfallen.
+    Weil NOGAGO lediglich Routen aus Inhalten Dritter sucht bzw. Karten aus OpenStreetMap-Daten visualisiert, übernehmen wir keine Verantwortung für die Qualität der Routen und Karten. Insbesondere sind wir mit den Inhalte-Anbietern in keiner Art verbunden. Werden wir auf Verstöße aufmerksam gemacht, so werden wir alle Nutzer und beobachteten Inhalte löschen, die gegen geltendes deutsches Recht verstoßen
+    Wir haften nur für Schäden, falls der Schaden (i) auf grobe Fahrlässigkeit oder Vorsatz zurückzuführen ist oder (ii) im Falle von leichter Fahrlässigkeit, soweit es sich um eine Pflichtverletzung handelt, deren Erfüllung die ordnungsgemäße Durchführung des Vertrages überhaupt erst ermöglicht, deren Verletzung die Erreichung des Vertragszwecks gefährdet und auf deren Einhaltung der Kunde regelmäßig vertraut. Im Falle von (ii) ist unsere Haftung der Höhe nach auf solche vertragstypischen Schäden begrenzt, die zum Zeitpunkt Ihrer Registrierung für uns vernünftigerweise vorhersehbar waren; dies gilt auch für den Schadensumfang. Die gesetzliche Haftung für Personenschäden sowie nach zwingenden gesetzlichen Vorschriften einschließlich des Produkthaftungsgesetzes bleibt unberührt.
+    Wir behalten uns das Recht vor, NOGAGO jederzeit einzustellen oder zukünftig für weitere Dienste Nutzungsentgelte zu erheben. Über die Veränderung unseres Angebots und der damit verbundenen AGB werden Sie vorher rechtzeitig informiert.
+    Sie können Ihre Registrierung bei nogago.com jederzeit kündigen. Ihre per Download erhaltenen Karten und die installierten Anwendungen bleiben von der Kündigung unberührt. Sie dürfen die erworbenen Karten weiter nutzen und die Software-Anwendungen von nogago weiter nutzen. Allerdings können sie Ihre Software und Karten nach Abmeldung nicht mehr aktualisieren.
+    Wir erstellen Karten und suchen nach Routen in Ihrem Auftrag. Dazu ist es notwendig persönliche Inhalte zwischenzuspeichern. Ihre Daten werden wir im zur Vertragsdurchführung erforderlichen Umfang und auf der Grundlage der Datenschutzvorschriften nutzen.
+     NOGAGO ist ein eingetragenes Warenzeichen der nogago GmbH in Deutschland, der EU, USA, China und Japan. Die Nutzung des Namens NOGAGO und des NOGAGO Logo oder der NOGAGO Grafiken erfordert unsere vorherige schriftliche Zustimmung.
+     Die Nogago GmbH, die Benutzer der NOGAGO Plattform und die Anbieter von Routen und Karten sind voneinander unabhängige Parteien. Weder aus unseren AGB noch aus der Nutzung unserer Dienste kann eine Partnerschaft zwischen Unternehmen, ein Dienst- oder Werkvertrag oder ein Arbeitsverhältnis hergeleitet werden.
+    Diese AGB unterliegen deutschem Recht. Das UN Kaufrecht wird ausgeschlossen. Gerichtsstand ist Baden-Baden, sofern Sie eingetragener Kaufmann sind und die Nutzung von NOGAGO zum Betrieb Ihres Handelsgewerbes gehört.
+    Sollte eine Bestimmung dieser AGB unwirksam sein oder werden, so bleibt die Rechtswirksamkeit der übrigen Bestimmungen hiervon unberührt.
+</string>
     <string name="eula_copyright_year" translation_description="The copyright year in the &apos;Terms of Service&apos;. See       http://m.google.com/toscountry. \u00A9 is the unicode value for the copyright symbol.">\u00A9 2012</string>
     <string name="eula_date" translation_description="The date in the &apos;Terms of Service&apos;. See       http://m.google.com/toscountry.">1. März 2012</string>
     <string name="eula_decline" translation_description="In the &apos;Terms of Service&apos; dialog, the button to decline.">Ablehnen</string>
@@ -229,7 +255,11 @@
     <string name="menu_save_all" translation_description="In the menu, to save all the tracks to the SD card. This menu item has       a submenu.        Character limit: ~21 (1 line)">Alle auf SD-Karte speichern</string>
     <string name="menu_save_format" translation_description="Under the save to SD card menu option, the option to save a track as a       certain file format.        %1$s: file format. &apos;GPX&apos;, &apos;KML&apos;, &apos;CSV&apos;, or &apos;TCX&apos;.       Character limit: ~21 (1 line)">Als %1$s speichern</string>
     <string name="menu_search" translation_description="In the menu, to start a textual search for tracks or markers.        Character limit: ~21 (1 line)">Suche</string>
-    <string name="menu_send_google" translation_description="In the menu, to send a track to Google.        Character limit: ~21 (1 line)">An Google senden</string>
+    <string name="menu_send_google" 
+        translation_description="In the menu, to send a track to Google.
+           Character limit: ~21 (1 line)">
+           An nogago.com senden
+           </string>
     <string name="menu_sensor_state" translation_description="In the menu, to go to the sensor state page.        Character limit: ~21 (1 line)">Sensorstatus</string>
     <string name="menu_settings" translation_description="In the menu, to go to the settings page.        Character limit: ~21 (1 line)">Einstellungen</string>
     <string name="menu_share" translation_description="In the menu, to share a track.        Character limit: ~21 (1 line)">Teilen</string>
@@ -310,7 +340,7 @@
     <string name="settings_map_medium" translation_description="In the &apos;Map&apos; settings, under the &apos;Fixed thresholds&apos; configurations, the       option for configuring the top medium speed.        Character limit: ~23 (1 line)">Max. mittlere Geschwin.</string>
     <string name="settings_map_percentage" translation_description="In the &apos;Map&apos; settings, under the &apos;Dynamic thresholds&apos; configurations,       the option for configuring the percentage from the average speed for the medium speed range.        Character limit: ~23 (1 line)">% vom Durchschnitt</string>
     <string name="settings_map_percentage_summary" translation_description="In the &apos;Map&apos; settings, under the &apos;Dynamic thresholds&apos; configurations,       the summary for the &apos;Percentage from average&apos; option explaining that it sets the percentage       from the average speed for the medium speed range. The &apos;Dynamic thresholds&apos; track color mode       uses different colors to color a track depending on whether the speed is above, in, or below       the medium speed range.">Prozentsatz der durchschnittlichen Geschwindigkeit für den mittleren Geschwindigkeitsbereich</string>
-    <string name="settings_map_slow" translation_description="In the &apos;Map&apos; settings, under the &apos;Fixed thresholds&apos; configurations, the       option for configuring the top slow speed.        Character limit: ~23 (1 line)">Min. Geschwindigkeit</string>
+    <string name="settings_map_slow" translation_description="In the &apos;Map&apos; settings, under the &apos;Fixed thresholds&apos; configurations, the       option for configuring the top slow speed.        Character limit: ~23 (1 line)">Min. Geschw.</string>
     <string name="settings_map_track_color_mode" translation_description="In the &apos;Map&apos; settings, the option to select a track color mode for how       to use different colors to color a track based on slow, medium, and fast speed.        Character limit: ~23 (1 line)">Track-Farbe</string>
     <string name="settings_map_track_color_mode_dynamic" translation_description="In the &apos;Map&apos; settings, for the &apos;Track color mode&apos; dropdown, the option       to use different colors to color a track based on dynamically determined speed thresholds.        Character limit: ~21 (1 line)">Dynamische Grenzwerte</string>
     <string name="settings_map_track_color_mode_fixed" translation_description="In the &apos;Map&apos; settings, for the &apos;Track color mode&apos; dropdown, the option       to use different colors to color a track based on fixed speed thresholds.        Character limit: ~21 (1 line)">Feste Grenzwerte</string>
@@ -390,18 +420,21 @@
     <string name="share_track_subject" translation_description="When sharing a track with friends, the subject line.">Ich möchte einen Track mit dir teilen</string>
     <string name="stats_average_moving_pace" translation_description="In the &apos;Stats&apos; page, the average moving pace.">Durchschnittliches Bewegungstempo</string>
     <string name="stats_average_moving_speed" translation_description="In the &apos;Stats&apos; page, the average moving speed.">Durchschnittliche Bewegungsgeschwindigkeit</string>
-    <string name="stats_average_pace" translation_description="In the &apos;Stats&apos; page, the average pace.">Durchschnittliches Tempo</string>
-    <string name="stats_average_speed" translation_description="In the &apos;Stats&apos; page, the average speed.">Durchschnittliche Geschwindigkeit</string>
+    <string name="stats_average_pace" translation_description="In the &apos;Stats&apos; page, the average pace.">&#216;Tempo</string>
+    <string name="stats_average_speed"
+         translation_description="In the &apos;Stats&apos; 
+         page, the average speed.">
+         \u00D8 Geschw.</string>
     <string name="stats_elevation" translation_description="In the &apos;Stats&apos; page, the elevation.        Character limit: ~23 (1 line)">Höhe</string>
-    <string name="stats_elevation_gain" translation_description="In the &apos;Stats&apos; page, the elevation gain.">Höhenunterschied</string>
+    <string name="stats_elevation_gain" translation_description="In the &apos;Stats&apos; page, the elevation gain.">Höhenuntersch.</string>
     <string name="stats_fastest_pace" translation_description="In the &apos;Stats&apos; page, the fastest pace.">Schnellstes Tempo</string>
     <string name="stats_latitude" translation_description="In the &apos;Stats&apos; page, the latitude.">Breitengrad</string>
     <string name="stats_longitude" translation_description="In the &apos;Stats&apos; page, the longitude.">Längengrad</string>
-    <string name="stats_max_elevation" translation_description="In the &apos;Stats&apos; page, the maximum elevation.">Maximale Höhe</string>
-    <string name="stats_max_grade" translation_description="In the &apos;Stats&apos; page, the maximum grade.">Maximales Gefälle</string>
-    <string name="stats_max_speed" translation_description="In the &apos;Stats&apos; page, the maximum speed.">Höchstgeschwin-digkeit</string>
-    <string name="stats_min_elevation" translation_description="In the &apos;Stats&apos; page, the minimum elevation.">Minimale Höhe</string>
-    <string name="stats_min_grade" translation_description="In the &apos;Stats&apos; page, the minimum grade.">Minimales Gefälle</string>
+    <string name="stats_max_elevation" translation_description="In the &apos;Stats&apos; page, the maximum elevation.">Max. Höhe</string>
+    <string name="stats_max_grade" translation_description="In the &apos;Stats&apos; page, the maximum grade.">Max. Gefälle</string>
+    <string name="stats_max_speed" translation_description="In the &apos;Stats&apos; page, the maximum speed.">Höchstgeschw.</string>
+    <string name="stats_min_elevation" translation_description="In the &apos;Stats&apos; page, the minimum elevation.">Min. Höhe</string>
+    <string name="stats_min_grade" translation_description="In the &apos;Stats&apos; page, the minimum grade.">Min. Gefälle</string>
     <string name="stats_moving_time" translation_description="In the &apos;Stats&apos; page, the moving time.">Bewegungszeit</string>
     <string name="stats_pace" translation_description="In the &apos;Stats&apos; page, the pace like hours per mile.        Character limit: ~23 (1 line)">Tempo</string>
     <string name="stats_speed" translation_description="In the &apos;Stats&apos; page, the speed like miles per hour.        Character limit: ~23 (1 line)">Geschwindigkeit</string>
@@ -581,6 +614,11 @@
     <string name="button_no">Nein</string>
     <string name="maps_not_installed">NogagoMaps ist nicht installiert, möchten Sie es kostenlos instalieren?</string>
 	<string name="wanna_start_maps">Wollen Sie nogago Maps starten?</string>
+	<string name="ok_button">OK</string>
+  <string name="wrong_credential">Zugangsdatenfehler</string>
+  <string name="error_username">Bitte prüfen Sie Ihre nogago Kontodaten.</string>
+      <string name="progressbar_title">Der Track wird gesendet...</string>
+      <string name="successfully_uploaded_track">Ihr Track wurde erfolgreich zu nogago.com hochgeladen!</string>
     <!-- new for Menu -->
     <string name="help">Hilfe</string>
     <string name="close">Schließen</string>
@@ -588,5 +626,5 @@
     <string name="show_tracklist_button">Trackliste</string>
     <string name="show_statistics_button">Gesamtstatistik</string>
     <string name="show_settings_button">Einstellungen</string>
-
+	<string name="error_network">Leider können sie nicht auf das Internet zugreifen, dies ist hierfür notwendig.</string>
 </resources>

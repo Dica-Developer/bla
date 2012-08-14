@@ -17,8 +17,6 @@ package com.google.android.apps.mytracks.io.file;
 
 import static com.nogago.android.tracks.Constants.TAG;
 
-import com.nogago.android.tracks.Constants;
-import com.nogago.android.tracks.R;
 import com.google.android.apps.mytracks.content.MyTracksLocation;
 import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
 import com.google.android.apps.mytracks.content.MyTracksProviderUtils.LocationIterator;
@@ -26,6 +24,8 @@ import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.LocationUtils;
+import com.nogago.android.tracks.Constants;
+import com.nogago.android.tracks.R;
 
 import android.app.Activity;
 import android.content.Context;
@@ -33,17 +33,18 @@ import android.database.Cursor;
 import android.location.Location;
 import android.util.Log;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 /**
- * This class exports tracks to the SD card.  It is intended to be format-
+ * This class exports tracks to the SD card. It is intended to be format-
  * neutral -- it handles creating the output file and reading the track to be
  * exported, but requires an instance of {@link TrackFormatWriter} to actually
  * format the data.
- *
+ * 
  * @author Sandor Dornbush
  * @author Rodrigo Damazio
  */
@@ -59,8 +60,8 @@ class TrackWriterImpl implements TrackWriter {
   private OnWriteListener onWriteListener;
   private Thread writeThread;
 
-  TrackWriterImpl(Context context, MyTracksProviderUtils providerUtils,
-      Track track, TrackFormatWriter writer) {
+  TrackWriterImpl(Context context, MyTracksProviderUtils providerUtils, Track track,
+      TrackFormatWriter writer) {
     this.context = context;
     this.providerUtils = providerUtils;
     this.track = track;
@@ -149,8 +150,7 @@ class TrackWriterImpl implements TrackWriter {
   }
 
   /*
-   * Helper methods:
-   * ===============
+   * Helper methods: ===============
    */
 
   /**
@@ -164,7 +164,7 @@ class TrackWriterImpl implements TrackWriter {
 
   /**
    * Opens the file and prepares the format writer for it.
-   *
+   * 
    * @return true on success, false otherwise (and errorMessage is set)
    */
   protected boolean openFile() {
@@ -173,11 +173,10 @@ class TrackWriterImpl implements TrackWriter {
     }
 
     // Make sure the file doesn't exist yet (possibly by changing the filename)
-    String fileName = FileUtils.buildUniqueFileName(
-        directory, track.getName(), writer.getExtension());
+    String fileName = FileUtils.buildUniqueFileName(directory, track.getName(),
+        writer.getExtension());
     if (fileName == null) {
-      Log.e(Constants.TAG,
-          "Unable to get a unique filename for " + track.getName());
+      Log.e(Constants.TAG, "Unable to get a unique filename for " + track.getName());
       return false;
     }
 
@@ -197,8 +196,7 @@ class TrackWriterImpl implements TrackWriter {
    */
   protected boolean canWriteFile() {
     if (directory == null) {
-      String dirName =
-          FileUtils.buildExternalDirectoryPath(writer.getExtension());
+      String dirName = FileUtils.buildExternalDirectoryPath(writer.getExtension());
       directory = newFile(dirName);
     }
 
@@ -218,11 +216,10 @@ class TrackWriterImpl implements TrackWriter {
 
   /**
    * Creates a new output stream to write to the given filename.
-   *
+   * 
    * @throws FileNotFoundException if the file could't be created
    */
-  protected OutputStream newOutputStream(String fileName)
-      throws FileNotFoundException {
+  protected OutputStream newOutputStream(String fileName) throws FileNotFoundException {
     file = new File(directory, fileName);
     return new FileOutputStream(file);
   }
@@ -236,7 +233,7 @@ class TrackWriterImpl implements TrackWriter {
 
   /**
    * Writes the waypoints for the given track.
-   *
+   * 
    * @param trackId the ID of the track to write waypoints for
    */
   private void writeWaypoints(long trackId) {
@@ -245,8 +242,7 @@ class TrackWriterImpl implements TrackWriter {
     // problem because we don't try to load them into objects all at the
     // same time.
     Cursor cursor = null;
-    cursor = providerUtils.getWaypointsCursor(trackId, 0,
-        Constants.MAX_LOADED_WAYPOINTS_POINTS);
+    cursor = providerUtils.getWaypointsCursor(trackId, 0, Constants.MAX_LOADED_WAYPOINTS_POINTS);
     boolean hasWaypoints = false;
     if (cursor != null) {
       try {
@@ -311,7 +307,8 @@ class TrackWriterImpl implements TrackWriter {
           currentLocation.reset();
         }
       }
-    };
+    }
+    ;
 
     TrackWriterLocationFactory locationFactory = new TrackWriterLocationFactory();
     LocationIterator it = providerUtils.getLocationIterator(track.getId(), 0, false,
@@ -376,4 +373,23 @@ class TrackWriterImpl implements TrackWriter {
       it.close();
     }
   }
+
+  public String writeTrackAsString() {
+    ByteArrayOutputStream boas = new ByteArrayOutputStream();
+    // Open the input and output
+    success = false;
+    errorMessage = R.string.error_track_does_not_exist;
+    if (track != null) {
+      writer.prepare(track, boas);
+      try {
+        writeDocument();
+      } catch (InterruptedException e) {
+        Log.i(Constants.TAG, "The track write was interrupted");
+        success = false;
+        errorMessage = R.string.error_operation_cancelled;
+      }
+    }
+    return boas.toString();
+  }
+
 }

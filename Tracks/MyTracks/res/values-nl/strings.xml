@@ -214,7 +214,10 @@
     <string name="menu_save_all" translation_description="In the menu, to save all the tracks to the SD card. This menu item has       a submenu.        Character limit: ~21 (1 line)">Alles opslaan op SD</string>
     <string name="menu_save_format" translation_description="Under the save to SD card menu option, the option to save a track as a       certain file format.        %1$s: file format. &apos;GPX&apos;, &apos;KML&apos;, &apos;CSV&apos;, or &apos;TCX&apos;.       Character limit: ~21 (1 line)">Opslaan als %1$s</string>
     <string name="menu_search" translation_description="In the menu, to start a textual search for tracks or markers.        Character limit: ~21 (1 line)">Zoeken</string>
-    <string name="menu_send_google" translation_description="In the menu, to send a track to Google.        Character limit: ~21 (1 line)">Verzenden naar Google</string>
+    <string name="menu_send_google" 
+        translation_description="In the menu, to send a track to Google.
+          Character limit: ~21 (1 line)">
+          Verzenden naar nogago.com</string>
     <string name="menu_sensor_state" translation_description="In the menu, to go to the sensor state page.        Character limit: ~21 (1 line)">Status van sensor</string>
     <string name="menu_settings" translation_description="In the menu, to go to the settings page.        Character limit: ~21 (1 line)">Instellingen</string>
     <string name="menu_share" translation_description="In the menu, to share a track.        Character limit: ~21 (1 line)">Delen</string>
@@ -374,7 +377,7 @@
     <string name="stats_average_moving_pace" translation_description="In the &apos;Stats&apos; page, the average moving pace.">Gemiddeld verplaatsingstempo</string>
     <string name="stats_average_moving_speed" translation_description="In the &apos;Stats&apos; page, the average moving speed.">Gemiddelde verplaatsingssnelheid</string>
     <string name="stats_average_pace" translation_description="In the &apos;Stats&apos; page, the average pace.">Gemiddeld tempo</string>
-    <string name="stats_average_speed" translation_description="In the &apos;Stats&apos; page, the average speed.">Gemiddelde snelheid</string>
+    <string name="stats_average_speed" translation_description="In the &apos;Stats&apos; page, the average speed.">\u00D8 snelheid</string>
     <string name="stats_elevation" translation_description="In the &apos;Stats&apos; page, the elevation.        Character limit: ~23 (1 line)">Hoogte</string>
     <string name="stats_elevation_gain" translation_description="In the &apos;Stats&apos; page, the elevation gain.">Hoogteverschil</string>
     <string name="stats_fastest_pace" translation_description="In the &apos;Stats&apos; page, the fastest pace.">Snelste tempo</string>
@@ -553,14 +556,22 @@
     <string name="button_no">Neen</string>
     <string name="maps_not_installed">Nogago Maps is niet geinstalleerd, wil je het gratis installeren?</string>
     <string name="wanna_start_maps">nogago Maps starten?</string>
+    <string name="wrong_credential">Login-gegevens error</string>
+     <string name="error_username">om een kaart te kunnen downloaden, moet je eerst je nogago.com login-gegevens instellen.</string>
+     <string name="successfully_uploaded_track">Your track was successfully uploaded to nogago!</string>
     <!-- new for Menu -->
+    <string name="progressbar_title">Uploading Track...</string>
     <string name="help">Help</string>
     <string name="close">Sluiten</string>
     <string name="rec_track_button">Een route opnemen</string>
     <string name="show_tracklist_button">Routelijst</string>
     <string name="show_statistics_button">Statistieken</string>
     <string name="show_settings_button">Instellingen</string>
-    <string name="track_list_empty_message" translation_description="When the track list is empty, the message informing the user to click
-      on the record button to start a new recording">Je routelijst is leeg, klik op opname in het hoofdmenu om je eerste avontuur op te nemen.</string>
-
+    <string name="track_list_empty_message" 
+        translation_description="When the track list is empty, the message informing the user to click
+      on the record button to start a new recording">
+      Je routelijst is leeg, klik op opname in het hoofdmenu om je eerste avontuur op te nemen.
+      </string>
+      <string name="error_network">Sorry, je hebt geen internet-toegang.</string>
+	
 </resources>
