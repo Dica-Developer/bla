@@ -20,7 +20,7 @@
   <string name="button_yes">Ja</string>
   <string name="button_no">Nein</string>
   <string name="maps_not_installed">NogagoMaps ist nicht installiert, möchten Sie es kostenlos instalieren?</string>
-  
+  <string name="wanna_start_maps">Start nogago Maps?</string>
   <!-- new for Menu -->
   <string name="help">Help</string>
   <string name="close">Close</string>

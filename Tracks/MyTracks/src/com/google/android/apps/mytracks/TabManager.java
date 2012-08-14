@@ -133,15 +133,33 @@ public class TabManager implements TabHost.OnTabChangeListener {
 
   @Override
   public void onTabChanged(String tabId) {
-
-    AlertDialog.Builder builder = new AlertDialog.Builder(fragmentActivity);
-    builder.setMessage(R.string.maps_not_installed)
+    // Alert if nogago Maps isnt installed
+    AlertDialog.Builder notInstalled = new AlertDialog.Builder(fragmentActivity);
+    notInstalled.setMessage(R.string.maps_not_installed)
     .setCancelable(false)
     .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
       public void onClick(DialogInterface dialog, int id) {
         Uri uri = Uri.parse(Constants.MAPS_DOWNLOAD_URL);
         Intent showUri = new Intent(Intent.ACTION_VIEW, uri);
         fragmentActivity.startActivity(showUri);
+      }
+    })
+    .setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
+      public void onClick(DialogInterface dialog, int id) {
+           dialog.cancel();
+      }
+    });
+    AlertDialog alertnotInstalled = notInstalled.create();
+    
+    // Alert if nogago Maps is installed
+    AlertDialog.Builder builder = new AlertDialog.Builder(fragmentActivity);
+    builder.setMessage(R.string.wanna_start_maps)
+    .setCancelable(false)
+    .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
+      public void onClick(DialogInterface dialog, int id) {
+        PackageManager pm = fragmentActivity.getPackageManager();
+        Intent intent = pm.getLaunchIntentForPackage("com.nogago.android.maps");
+        fragmentActivity.startActivity(intent);
       }
     })
     .setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
@@ -156,14 +174,11 @@ public class TabManager implements TabHost.OnTabChangeListener {
         tabId = StatsFragment.STATS_FRAGMENT_TAG;
         // nogagoMaps aufrufen
         this.tabHost.setCurrentTab(1);
-        PackageManager pm = this.fragmentActivity.getPackageManager();
-        Intent intent = pm.getLaunchIntentForPackage("com.nogago.android.maps");
-        this.fragmentActivity.startActivity(intent);
-        
+        alert.show();
         //falls nicht installiert, fragen, ob installiert werden soll
       } catch (NullPointerException e) {
         
-       alert.show();
+        notInstalled.show();
       
       }
     }

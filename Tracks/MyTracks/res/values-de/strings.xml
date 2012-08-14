@@ -128,7 +128,10 @@
     <string name="generic_save" translation_description="The text on a button to say save.">Speichern</string>
     <string name="generic_success_title" translation_description="The title on an alert dialog indicating success.">Erfolgreich</string>
     <string name="gps_need_to_enable" translation_description="In the main view, the message on the top asking the user to enable       GPS.">Tippen Sie hier, um die Einstellungen für \"Standortdienste\" aufzurufen und die Option \"GPS-Satelliten\" zu aktivieren. Drücken Sie die Zurück-Taste, um zurückzukehren.</string>
-    <string name="gps_not_found" translation_description="On application start, message when there is no GPS on the device.">Das Gerät sendet kein GPS-Signal.</string>
+    <string name="gps_not_found" 
+        translation_description="On application start, message when there is no GPS on the device.">
+        Das Gerät sendet kein GPS-Signal.
+    </string>
     <string name="gps_wait_for_signal" translation_description="In the main view, the message on the top indicating My Tracks is       waiting for a better GPS signal.">Es wird auf ein besseres GPS-Signal gewartet. Achten Sie darauf, dass der Himmel sichtbar ist.</string>
     <string name="help_about" translation_description="In the &apos;Help&apos; page, the button on the bottom to open the &apos;About My       Tracks&apos; dialog.">Über nogago Tracks</string>
     <string name="help_battery_life_answer" translation_description="In the &apos;Help&apos; page, the answer on battery life.">Der GPS-Empfänger verbraucht viel Strom, sodass die Laufzeit für einen voll aufgeladenen Akku in der Regel weniger als 5 Stunden beträgt. Sie hängt von vielen Faktoren ab, einschließlich der Signalstärke, des Akkuladezustands und parallel ausgeführter Aufgaben. Deaktivieren Sie einige oder alle Schnittstellen des Telefons, um die Akkulaufzeit zu verlängern. Der Flugmodus erzielt die besten Ergebnisse.</string>
@@ -577,7 +580,7 @@
     <string name="button_yes">Ja</string>
     <string name="button_no">Nein</string>
     <string name="maps_not_installed">NogagoMaps ist nicht installiert, möchten Sie es kostenlos instalieren?</string>
-
+	<string name="wanna_start_maps">Wollen Sie nogago Maps starten?</string>
     <!-- new for Menu -->
     <string name="help">Hilfe</string>
     <string name="close">Schließen</string>

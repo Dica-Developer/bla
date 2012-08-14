@@ -3001,6 +3001,7 @@ limitations under the License.
   <string name="button_yes">Yes</string>
   <string name="button_no">No</string>
   <string name="maps_not_installed">NogagoMaps is not installed on your Phone, do your want to install for free?</string>
+  <string name="wanna_start_maps">Start nogago Maps?</string>
     <!-- new for Menu -->
   <string name="help">Help</string>
   <string name="close">Close</string>
