@@ -596,7 +596,7 @@ partial map. Tracks, represented as simple lines, can still be recorded even if 
     <string name="close">Close</string>
     <string name="rec_track_button">Record a track</string>
     <string name="show_tracklist_button">Tracklist</string>
-    <string name="show_statistics_button">Statistics</string>
+    <string name="show_statistics_button">aggregated statistics</string>
     <string name="show_settings_button">Settings</string>
 
 </resources>

@@ -586,7 +586,7 @@
     <string name="close">Schließen</string>
     <string name="rec_track_button">Track \n aufzeichnen</string>
     <string name="show_tracklist_button">Trackliste</string>
-    <string name="show_statistics_button">Statistiken</string>
+    <string name="show_statistics_button">Gesamtstatistik</string>
     <string name="show_settings_button">Einstellungen</string>
 
 </resources>

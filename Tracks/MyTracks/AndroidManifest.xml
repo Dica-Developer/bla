@@ -135,13 +135,16 @@ limitations under the License.
     <meta-data
       android:name="com.google.android.backup.api_key"
       android:value="AEdPqrEAAAAIH-rZvFVJn4IjD4XSb3ElseX47n5aadM963zHlg" />
+    
     <!-- Activities -->
     <activity
       android:label="@string/menu_aggregated_statistics"
-      android:name=".AggregatedStatsActivity" />
+      android:name=".AggregatedStatsActivity" 
+      android:theme="@android:style/Theme.Light"/>
     <activity
       android:label="@string/menu_help"
-      android:name=".HelpActivity" />
+      android:name=".HelpActivity"
+      android:theme="@android:style/Theme.Light" />
     <activity
       android:name=".ImportActivity" >
       <intent-filter>
@@ -181,7 +184,8 @@ limitations under the License.
       android:label="@string/menu_sensor_state"
       android:name=".SensorStateActivity" />
     
-    <activity android:name=".TrackDetailActivity" />
+    <activity android:name=".TrackDetailActivity" 
+         android:theme="@android:style/Theme.Light"/>
     <activity
       android:name=".TrackEditActivity" />
     
