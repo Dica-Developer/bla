@@ -82,7 +82,7 @@ limitations under the License.
 
   <uses-sdk
     android:minSdkVersion="7"
-    android:targetSdkVersion="15" />
+    android:targetSdkVersion="16" />
   <!-- Required features -->
   <uses-feature
     android:name="android.hardware.location"
@@ -139,12 +139,10 @@ limitations under the License.
     <!-- Activities -->
     <activity
       android:label="@string/menu_aggregated_statistics"
-      android:name=".AggregatedStatsActivity" 
-      android:theme="@android:style/Theme.Light"/>
+      android:name=".AggregatedStatsActivity"/>
     <activity
       android:label="@string/menu_help"
-      android:name=".HelpActivity"
-      android:theme="@android:style/Theme.Light" />
+      android:name=".HelpActivity" />
     <activity
       android:name=".ImportActivity" >
       <intent-filter>
@@ -184,8 +182,7 @@ limitations under the License.
       android:label="@string/menu_sensor_state"
       android:name=".SensorStateActivity" />
     
-    <activity android:name=".TrackDetailActivity" 
-         android:theme="@android:style/Theme.Light"/>
+    <activity android:name=".TrackDetailActivity" />
     <activity
       android:name=".TrackEditActivity" />
     

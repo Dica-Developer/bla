@@ -22,7 +22,8 @@ limitations under the License.
     android:layout_width="fill_parent"
     android:padding="8dp"
     android:shrinkColumns="0,2"
-    android:stretchColumns="0,2" >
+    android:stretchColumns="0,2" 
+    android:background="@color/white">
     <!-- Speed on one line -->
     <TableRow>
       <TextView
