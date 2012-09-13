@@ -2,6 +2,8 @@
 <resources>
     
         <!--  Fehlende Uebersetzungen -->
+
+    
     <string name="send_files_to_osm">GPX Datei an OSM schicken ?</string>
     <string name="gpx_visibility_txt">Sichtbarkeit</string>
     <string name="gpx_tags_txt">Tags</string>

@@ -419,6 +419,7 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
    
 	public void backToMainMenu() {
 		final Dialog dlg = new Dialog(this, R.style.Dialog_Fullscreen);
+		final Activity activity = this; 
 		final View menuView = (View) getLayoutInflater().inflate(R.layout.menu, null);
 		menuView.setBackgroundColor(Color.argb(200, 150, 150, 150));
 		dlg.setContentView(menuView);
@@ -470,6 +471,15 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 				favorites.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 				MapActivity.this.startActivity(favorites);
 				dlg.dismiss();
+			}
+		});
+		View helpButton = dlg.findViewById(R.id.HelpButton);
+		helpButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				TipsAndTricksActivity tactivity = new TipsAndTricksActivity(activity);
+				Dialog dlg = tactivity.getDialogToShowTips(false, true);
+				dlg.show();
 			}
 		});
 

@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--  Fehlende Uebersetzungen -->
+    <string name="accessibility_preferences_descr">Accessibility related preferences</string>
+    <string name="accessibility_preferences">Accessibility</string>
+    
+    
     <string name="copying_voicedata">Spraakaanwijzingen copieren</string>
 	<string name="voicedata_can_not_be_copied">Spraakaanwijzingen kunnen niet gecopieerd worden, gelieve handmatig te installeren</string>	
     <string name="send_files_to_osm">GPX bestand aan OSM sturen ?</string>

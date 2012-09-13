@@ -26,7 +26,7 @@
                 <ImageView
                     android:id="@+id/HelpButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="52dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="0dp"
                     android:layout_weight="0.03"
@@ -49,7 +49,7 @@
                 <ImageView
                     android:id="@+id/CloseButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="52dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center|center_vertical"
                     android:layout_marginLeft="0dp"
                     android:layout_marginRight="2dp"
@@ -69,11 +69,11 @@
 
             <TableRow
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" >
+                android:layout_marginTop="0dp" >
 
                 <LinearLayout
                     android:id="@+id/MapButton"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
                     android:layout_weight="3"
                     android:background="@drawable/bg_leftr"
                     android:clickable="true"
@@ -84,7 +84,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="10dp"
+                        android:layout_margin="3dp"
                         android:layout_weight="1"
                         android:scaleType="center"
                         android:src="@drawable/button_icon_map" />
@@ -106,7 +106,7 @@
 
                 <LinearLayout
                     android:id="@+id/SearchButton"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
                     android:layout_weight="3"
                     android:background="@drawable/bg_rightr"
                     android:clickable="true"
@@ -117,7 +117,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="10dp"
+                        android:layout_margin="3dp"
                         android:layout_weight="1"
                         android:scaleType="center"
                         android:src="@drawable/button_icon_search" />
@@ -130,7 +130,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|top"
+                            android:layout_gravity="bottom|center"
                             android:text="@string/search_button"
                             android:textColor="#000000"
                             android:textSize="18sp" />
@@ -140,11 +140,11 @@
 
             <TableRow
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp" >
+                android:layout_marginTop="0dp" >
 
                 <LinearLayout
                     android:id="@+id/FavoritesButton"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
                     android:layout_weight="3"
                     android:background="@drawable/bg_leftr"
                     android:clickable="true"
@@ -155,7 +155,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
-                        android:layout_margin="10dp"
+                        android:layout_margin="3dp"
                         android:layout_weight="1"
                         android:scaleType="center"
                         android:src="@drawable/button_icon_favorites" />
@@ -168,7 +168,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|top"
+                            android:layout_gravity="bottom|center"
                             android:text="@string/favorites_Button"
                             android:textColor="#000000"
                             android:textSize="18sp" />
@@ -188,7 +188,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="10dp"
+                        android:layout_margin="3dp"
                         android:layout_weight="1"
                         android:scaleType="center"
                         android:src="@drawable/button_icon_settings" />
@@ -201,7 +201,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|top"
+                            android:layout_gravity="bottom|center"
                             android:text="@string/settings_Button"
                             android:textColor="#000000"
                             android:textSize="18sp" />
@@ -221,7 +221,7 @@
             <ImageView
                 android:id="@+id/MapManager"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:src="@drawable/button_icon_map_manager" />
         </LinearLayout>
     </LinearLayout>
