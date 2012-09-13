@@ -26,8 +26,8 @@ public class Constants {
 	
 	public static final int MAX_LOADED_WAYPOINTS_POINTS = 10000;
 	
-	public static final String MYTRACKS_SERVICE_PACKAGE = "com.google.android.maps.mytracks";
-	public static final String MYTRACKS_SERVICE_CLASS = "com.google.android.apps.mytracks.services.TrackRecordingService";
+	public static final String MYTRACKS_SERVICE_PACKAGE = "com.nogago.android.tracks";
+	public static final String MYTRACKS_SERVICE_CLASS = "com.nogago.android.tracks.services.TrackRecordingService";
 	public static final long BAD_MYTRACKS_TRACK_ID = -1L;
 	
 	//nogago Map Downloader
