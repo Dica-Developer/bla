@@ -149,7 +149,7 @@ public class TabManager implements TabHost.OnTabChangeListener {
            dialog.cancel();
       }
     });
-    AlertDialog alertnotInstalled = notInstalled.create();
+    final AlertDialog alertnotInstalled = notInstalled.create();
     
     // Alert if nogago Maps is installed
     AlertDialog.Builder builder = new AlertDialog.Builder(fragmentActivity);
@@ -157,9 +157,13 @@ public class TabManager implements TabHost.OnTabChangeListener {
     .setCancelable(false)
     .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
       public void onClick(DialogInterface dialog, int id) {
+        try {
         PackageManager pm = fragmentActivity.getPackageManager();
         Intent intent = pm.getLaunchIntentForPackage("com.nogago.android.maps");
         fragmentActivity.startActivity(intent);
+        } catch (NullPointerException e) {
+          alertnotInstalled.show();
+        }
       }
     })
     .setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
@@ -178,7 +182,7 @@ public class TabManager implements TabHost.OnTabChangeListener {
         //falls nicht installiert, fragen, ob installiert werden soll
       } catch (NullPointerException e) {
         
-        notInstalled.show();
+        alertnotInstalled.show();
       
       }
     }
