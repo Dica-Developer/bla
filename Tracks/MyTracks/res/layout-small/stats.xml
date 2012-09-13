@@ -15,15 +15,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-  style="@style/ScrollView"  
-    android:background="@color/white">
+  style="@style/ScrollView"
+  android:background="@color/white" >
   
   <TableLayout
     android:layout_height="wrap_content"
     android:layout_width="fill_parent"
     android:padding="8dp"
     android:shrinkColumns="0,2"
-    android:stretchColumns="0,2">
+    android:stretchColumns="0,2" 
+    android:background="@color/white">
     <!-- Speed on one line -->
     <TableRow>
       <TextView

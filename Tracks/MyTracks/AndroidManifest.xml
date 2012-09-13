@@ -19,6 +19,8 @@ limitations under the License.
   android:versionCode="48"
   android:versionName="2.0"
   package="com.nogago.android.tracks" >
+  <supports-screens android:normalScreens="true"
+      android:smallScreens="true"/>
 
   <!-- Permission to initialize services -->
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
