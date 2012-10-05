@@ -1,8 +1,9 @@
-﻿<renderingStyle name="bicycle" depends="default" defaultColor="#F5FFFF" version="1">
+﻿<renderingStyle name="hiking" depends="default" defaultColor="#F5FFFF" version="1">
 
 	<line>
 		<group>
-			<filter tag="route" value="bicycle" maxzoom="20" color="#009DFF"/>
+			<filter tag="route" value="hiking" maxzoom="20" color="#009DFF"/>
+			<filter tag="route" value="foot" maxzoom="20" color="#009DFF"/>
 			<groupFilter cap="ROUND">
 				<filter minzoom="10" maxzoom="10" strokeWidth="4"/>
 				<filter minzoom="11" maxzoom="11" strokeWidth="4"/>
