@@ -365,8 +365,8 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 		routeServiceEnabled =(CheckBoxPreference) screen.findPreference(OsmandSettings.SERVICE_OFF_ENABLED);
 		routeServiceEnabled.setOnPreferenceChangeListener(this);
 		applicationDir = (EditTextPreference) screen.findPreference(OsmandSettings.EXTERNAL_STORAGE_DIR);
-		screen.removePreference(applicationDir); // Hide it
-		// applicationDir.setOnPreferenceChangeListener(this);
+//		screen.removePreference(applicationDir); // Hide it
+		applicationDir.setOnPreferenceChangeListener(this);
 		// localOpenstreetmapPoints = (Preference) screen.findPreference(OsmandSettings.LOCAL_OPENSTREETMAP_POINTS);
 		//localOpenstreetmapPoints.setOnPreferenceClickListener(this);
 		/*

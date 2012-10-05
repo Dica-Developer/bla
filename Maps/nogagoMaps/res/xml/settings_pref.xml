@@ -230,9 +230,8 @@
                 </CheckBoxPreference>
        -->
                 <EditTextPreference
-                    android:enabled="false"
+                    android:enabled="true"
                     android:key="external_storage_dir"
-                    android:selectable="false"
                     android:title="@string/application_dir" >
                 </EditTextPreference>
                 
