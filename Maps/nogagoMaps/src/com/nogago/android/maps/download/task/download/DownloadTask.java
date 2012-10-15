@@ -25,6 +25,8 @@ import org.apache.http.params.HttpParams;
 
 import com.nogago.android.maps.Constants;
 import com.nogago.android.maps.download.task.TrackableTask;
+import com.nogago.android.maps.plus.OsmandApplication;
+import com.nogago.android.maps.plus.ResourceManager;
 
 import android.os.Environment;
 import android.os.StatFs;
@@ -70,7 +72,8 @@ public class DownloadTask extends TrackableTask {
 	@Override
 	protected Object doInBackground(Object... args) {
 		int a = (Integer)args[0];
-		File tempFile = new File(Environment.getExternalStorageDirectory().toString() + Constants.TEMP_PATH + System.currentTimeMillis());
+//		File tempFile = new File(Environment.getExternalStorageDirectory().toString() + Constants.TEMP_PATH + System.currentTimeMillis());
+		File tempFile = new File(OsmandApplication.getSettings().extendOsmandPath(Constants.TEMP_PATH).toString() + System.currentTimeMillis());
 		try {
 			SchemeRegistry schemeRegistry = new SchemeRegistry();
 			schemeRegistry.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
@@ -144,7 +147,8 @@ public class DownloadTask extends TrackableTask {
 	public static long getExternalAvailableSpaceInBytes() {
 		long availableSpace = -1L;
 		try {
-			StatFs stat = new StatFs(Environment.getExternalStorageDirectory().getPath());
+//			StatFs stat = new StatFs(Environment.getExternalStorageDirectory().getPath());
+			StatFs stat = new StatFs(OsmandApplication.getSettings().extendOsmandPath(ResourceManager.APP_DIR).getPath());
 			//stat.restat(Environment.getDataDirectory().getPath());
 			availableSpace = (long) stat.getAvailableBlocks() * (long) stat.getBlockSize();
 		} catch (Exception e) {

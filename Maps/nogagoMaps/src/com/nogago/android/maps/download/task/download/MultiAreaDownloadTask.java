@@ -28,6 +28,9 @@ import org.apache.http.params.HttpParams;
 import com.nogago.android.maps.Constants;
 import com.nogago.android.maps.download.task.TrackableTask;
 import com.nogago.android.maps.download.task.readareas.Area;
+import com.nogago.android.maps.plus.OsmandApplication;
+import com.nogago.android.maps.plus.OsmandSettings;
+import com.nogago.android.maps.plus.ResourceManager;
 
 import android.os.Environment;
 
@@ -130,7 +133,8 @@ public class MultiAreaDownloadTask extends TrackableTask {
 		long i = 0;
 		// Determine west east north
 		// Create the file or overwrite
-		File tempFile = new File(Environment.getExternalStorageDirectory().toString() + Constants.TEMP_PATH + System.currentTimeMillis());
+//		File tempFile = new File(Environment.getExternalStorageDirectory().toString() + Constants.TEMP_PATH + System.currentTimeMillis());
+		File tempFile = new File(OsmandApplication.getSettings().extendOsmandPath(Constants.TEMP_PATH).toString() + "///" + System.currentTimeMillis());
 		OutputStream out = new BufferedOutputStream(new FileOutputStream(tempFile.getAbsolutePath()));
 		long len = entity.getContentLength();
 		if (len < DownloadTask.getExternalAvailableSpaceInBytes()) {

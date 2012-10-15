@@ -10,9 +10,13 @@ import com.nogago.android.maps.Constants;
 import com.nogago.android.maps.R;
 import com.nogago.android.maps.download.task.readareas.Area;
 import com.nogago.android.maps.download.task.readareas.ReadAreasTask;
+import com.nogago.android.maps.plus.OsmandApplication;
+import com.nogago.android.maps.plus.OsmandSettings;
+import com.nogago.android.maps.plus.ResourceManager;
 
 import android.content.Context;
 import android.os.Environment;
+import android.preference.PreferenceActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,9 +35,10 @@ public class MapFileListAdapter extends BaseAdapter implements ListAdapter{
 		this.context = context;
 		readMapsFromDisk();
 	}
-	
+
 	private void readMapsFromDisk() {
-		File dir = new File(Environment.getExternalStorageDirectory().toString() + Constants.STORAGE_PATH);
+		File dir = new File(OsmandApplication.getSettings().extendOsmandPath(ResourceManager.APP_DIR).toString());
+//		File dir = new File(Environment.getExternalStorageDirectory().toString() + Constants.STORAGE_PATH);
 		File[] filelist = dir.listFiles();
 		mapFiles = new ArrayList<MapFile>();
 		for (int i = 0; i < filelist.length; i++) {

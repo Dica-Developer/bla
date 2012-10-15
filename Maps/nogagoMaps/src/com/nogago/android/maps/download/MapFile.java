@@ -3,6 +3,9 @@ package com.nogago.android.maps.download;
 import java.io.File;
 
 import com.nogago.android.maps.Constants;
+import com.nogago.android.maps.plus.OsmandApplication;
+import com.nogago.android.maps.plus.OsmandSettings;
+import com.nogago.android.maps.plus.ResourceManager;
 
 import android.os.Environment;
 
@@ -31,8 +34,8 @@ public class MapFile {
 		name = parts[0].replace('_', ' ');
 		part = parts[1];
 		mapId = new Integer(parts[2]).intValue();
-		poiPath = Environment.getExternalStorageDirectory().toString()
-					+ Constants.POI_PATH + fullName.substring(0, fullName.lastIndexOf(".")) + Constants.POI_FILE_EXTENSION;
+		poiPath = OsmandApplication.getSettings().extendOsmandPath(Constants.POI_PATH).toString()
+					+ fullName.substring(0, fullName.lastIndexOf(".")) + Constants.POI_FILE_EXTENSION;
 		
 		}
 	

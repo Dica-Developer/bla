@@ -35,6 +35,7 @@ import com.nogago.android.maps.download.task.update.UpdateMapException;
 import com.nogago.android.maps.download.task.update.UpdateMapTask;
 import com.nogago.android.maps.plus.AmenityIndexRepositoryOdb;
 import com.nogago.android.maps.plus.OsmandApplication;
+import com.nogago.android.maps.plus.ResourceManager;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -104,9 +105,9 @@ public class MapManagerActivity extends ListActivity implements
 	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		FileUtils.deleteQuietly(new File(Environment
-				.getExternalStorageDirectory().toString()
+		/*
+		FileUtils.deleteQuietly(new File(Environment.getExternalStorageDirectory().
+				toString()
 				+ Constants.TEMP_PATH));
 		createDirectory(Environment.getExternalStorageDirectory()
 				.toString() + Constants.STORAGE_PATH);
@@ -114,6 +115,11 @@ public class MapManagerActivity extends ListActivity implements
 				.toString() + Constants.TEMP_PATH);
 		createDirectory(Environment.getExternalStorageDirectory()
 				.toString() + Constants.POI_PATH);
+		*/
+		FileUtils.deleteQuietly(new File(OsmandApplication.getSettings().extendOsmandPath(Constants.TEMP_PATH).toString()));
+		createDirectory(OsmandApplication.getSettings().extendOsmandPath(ResourceManager.APP_DIR).toString());
+		createDirectory(OsmandApplication.getSettings().extendOsmandPath(Constants.TEMP_PATH).toString());
+		createDirectory(OsmandApplication.getSettings().extendOsmandPath(ResourceManager.POI_PATH).toString());
 		
 		this.preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
