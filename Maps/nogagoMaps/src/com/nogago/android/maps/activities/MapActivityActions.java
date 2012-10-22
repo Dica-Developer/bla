@@ -442,7 +442,7 @@ public class MapActivityActions implements DialogProvider {
     	
     	View view = mapActivity.getLayoutInflater().inflate(R.layout.calculate_route, null);
     	final ToggleButton[] buttons = new ToggleButton[ApplicationMode.values().length];
-    	//buttons[ApplicationMode.CAR.ordinal()] = (ToggleButton) view.findViewById(R.id.CarButton);
+    	buttons[ApplicationMode.CAR.ordinal()] = (ToggleButton) view.findViewById(R.id.CarButton);
     	buttons[ApplicationMode.BICYCLE.ordinal()] = (ToggleButton) view.findViewById(R.id.BicycleButton);
     	buttons[ApplicationMode.PEDESTRIAN.ordinal()] = (ToggleButton) view.findViewById(R.id.PedestrianButton);
     	ApplicationMode appMode = settings.getApplicationMode();

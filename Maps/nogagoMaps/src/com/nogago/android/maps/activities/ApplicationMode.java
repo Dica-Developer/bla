@@ -10,7 +10,7 @@ public enum ApplicationMode {
 	 */
 
 	//DEFAULT(R.string.app_mode_default), 
-	//CAR(R.string.app_mode_car), 
+	CAR(R.string.app_mode_hiking), 
 	PEDESTRIAN(R.string.app_mode_pedestrian),
 	BICYCLE(R.string.app_mode_bicycle) ;
 

@@ -25,7 +25,7 @@ import net.osmand.router.BinaryRoutePlanner;
 import net.osmand.router.BinaryRoutePlanner.RouteSegment;
 import net.osmand.router.CarRouter;
 import net.osmand.router.HikingRouter;
-import net.osmand.router.PedestrianRouter;
+import net.osmand.router.MtbRouter;
 import net.osmand.router.RouteSegmentResult;
 import net.osmand.router.RoutingContext;
 
@@ -673,8 +673,8 @@ public class RouteProvider {
 			ctx.setRouter(new BicycleRouter());
 			ctx.setUseStrategyOfIncreasingRoadPriorities(false);
 			ctx.setUseDynamicRoadPrioritising(true);
-		} else if (mode == ApplicationMode.PEDESTRIAN) {
-			ctx.setRouter(new HikingRouter());
+		} else if (mode == ApplicationMode.CAR) {
+			ctx.setRouter(new MtbRouter());
 			ctx.setUseStrategyOfIncreasingRoadPriorities(false);
 			ctx.setUseDynamicRoadPrioritising(true);
 			ctx.setHeuristicCoefficient(2);
@@ -686,7 +686,7 @@ public class RouteProvider {
 		} else 
 		*/
 		else {
-			ctx.setRouter(new CarRouter());
+			ctx.setRouter(new HikingRouter());
 			ctx.setUseStrategyOfIncreasingRoadPriorities(true);
 			ctx.setUseDynamicRoadPrioritising(true);
 		} 

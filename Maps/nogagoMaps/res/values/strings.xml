@@ -872,6 +872,8 @@ Have fun with our apps, maps and tracks for your next adventures !
 <string name="Closest_Amenities">Closest amenities</string>
 <string name="app_mode_default">Default</string>
 <string name="app_mode_car">Car</string>
+<string name="app_mode_mtb">MTB</string>
+<string name="app_mode_hiking">Hiking</string>
 <string name="app_mode_bicycle">Bicycle</string>
 <string name="app_mode_pedestrian">Pedestrian</string>
 <string name="position_on_map_center">Center</string>

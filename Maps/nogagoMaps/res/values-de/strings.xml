@@ -879,6 +879,8 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 <string name="Closest_Amenities">Umliegende Einrichtungen</string>
 <string name="app_mode_default">Standard</string>
 <string name="app_mode_car">Auto</string>
+<string name="app_mode_mtb">MTB</string>
+<string name="app_mode_hiking">Wandern</string>
 <string name="app_mode_bicycle">Fahrrad</string>
 <string name="app_mode_pedestrian">Fußgänger</string>
 <string name="position_on_map_center">Mitte</string>
