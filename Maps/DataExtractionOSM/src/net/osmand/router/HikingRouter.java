@@ -32,14 +32,14 @@ public class HikingRouter extends VehicleRouter {
 		pedestrianNotDefinedValues.put("path", 4d);
 		pedestrianNotDefinedValues.put("living_street", 1d);
 		pedestrianNotDefinedValues.put("pedestrian", 2d);
-		pedestrianNotDefinedValues.put("footway", 2d);
+		pedestrianNotDefinedValues.put("footway", 3.5d);
 		pedestrianNotDefinedValues.put("byway", 1.8d);
 		pedestrianNotDefinedValues.put("cycleway", 0.6d);
 		pedestrianNotDefinedValues.put("bridleway", 0.6d);
 		pedestrianNotDefinedValues.put("services", 1d);
 		pedestrianNotDefinedValues.put("steps", 1d);
-		pedestrianNotDefinedValues.put("hiking", 8d);
-		pedestrianNotDefinedValues.put("foot", 8d);
+		pedestrianNotDefinedValues.put("hiking", 16d);
+		pedestrianNotDefinedValues.put("foot", 16d);
 		
 		
 
@@ -61,14 +61,14 @@ public class HikingRouter extends VehicleRouter {
 		pedestrianPriorityValues.put("path", 4d);
 		pedestrianPriorityValues.put("living_street", 1d);
 		pedestrianPriorityValues.put("pedestrian", 2d);
-		pedestrianPriorityValues.put("footway", 2d);
+		pedestrianPriorityValues.put("footway", 3.5d);
 		pedestrianPriorityValues.put("byway", 1.8);
 		pedestrianPriorityValues.put("cycleway", 0.6);
 		pedestrianPriorityValues.put("bridleway", 0.6);
 		pedestrianPriorityValues.put("services", 1d);
 		pedestrianPriorityValues.put("steps", 1d);
-		pedestrianPriorityValues.put("hiking", 8d);
-		pedestrianPriorityValues.put("foot", 8d);
+		pedestrianPriorityValues.put("hiking", 16d);
+		pedestrianPriorityValues.put("foot", 16d);
 	}
 	
 		@Override

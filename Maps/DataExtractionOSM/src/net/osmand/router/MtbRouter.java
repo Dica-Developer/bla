@@ -8,7 +8,7 @@ import net.osmand.binary.BinaryMapIndexReader.TagValuePair;
 import net.osmand.osm.MapRenderingTypes;
 import net.osmand.router.BinaryRoutePlanner.RouteSegment;
 
-public class BicycleRouter extends VehicleRouter {
+public class MtbRouter extends VehicleRouter {
 	// no distinguish for speed in city/outside city (for now)
 	private Map<String, Double> bicycleNotDefinedValues = new LinkedHashMap<String, Double>();
 	private Map<String, Double> bicyclePriorityValues = new LinkedHashMap<String, Double>();
@@ -45,27 +45,27 @@ public class BicycleRouter extends VehicleRouter {
 //		bicyclePriorityValues.put("motorway_link", 0.7);
 //		bicyclePriorityValues.put("trunk", 0.7);
 //		bicyclePriorityValues.put("trunk_link", 0.7);
-		bicyclePriorityValues.put("primary", 0.2);
-		bicyclePriorityValues.put("primary_link", 0.2);
-		bicyclePriorityValues.put("secondary", 1d);
-		bicyclePriorityValues.put("secondary_link", 1d);
-		bicyclePriorityValues.put("tertiary", 1.2d);
-		bicyclePriorityValues.put("tertiary_link", 1.2d);
-		bicyclePriorityValues.put("residential", 1.3d);
-		bicyclePriorityValues.put("service", 1.3d);
-		bicyclePriorityValues.put("unclassified", 0.9d);
-		bicyclePriorityValues.put("road", 1.3d);
-		bicyclePriorityValues.put("track", 0.1d);
-		bicyclePriorityValues.put("path", 0.1d);
-		bicyclePriorityValues.put("living_street", 1.4d);
-		bicyclePriorityValues.put("pedestrian", 0.9d);
-		bicyclePriorityValues.put("footway", 0.9d);
-		bicyclePriorityValues.put("byway", 1.5d);
-		bicyclePriorityValues.put("cycleway", 4d);
-		bicyclePriorityValues.put("bridleway", 0.8d);
-		bicyclePriorityValues.put("services", 1.3d);
-		bicyclePriorityValues.put("steps", 0.4d);
-		bicyclePriorityValues.put("bicycle", 16d);
+		bicyclePriorityValues.put("primary", 0.1);
+		bicyclePriorityValues.put("primary_link", 0.1);
+		bicyclePriorityValues.put("secondary", 0.1d);
+		bicyclePriorityValues.put("secondary_link", 0.1d);
+		bicyclePriorityValues.put("tertiary", 0.5d);
+		bicyclePriorityValues.put("tertiary_link", 0.5d);
+		bicyclePriorityValues.put("residential", 0.8d);
+		bicyclePriorityValues.put("service", 0.8d);
+		bicyclePriorityValues.put("unclassified", 1d);
+		bicyclePriorityValues.put("road", 0.8d);
+		bicyclePriorityValues.put("track", 4d);
+		bicyclePriorityValues.put("path", 4d);
+		bicyclePriorityValues.put("living_street", 0.6d);
+		bicyclePriorityValues.put("pedestrian", 0.1d);
+		bicyclePriorityValues.put("footway", 0.6d);
+		bicyclePriorityValues.put("byway", 1d);
+		bicyclePriorityValues.put("cycleway", 2d);
+		bicyclePriorityValues.put("bridleway", 0.5);
+		bicyclePriorityValues.put("services", 0.8d);
+		bicyclePriorityValues.put("steps", 0.6d);
+		bicyclePriorityValues.put("mtb", 16d);
 	}
 
 	@Override
@@ -122,7 +122,7 @@ public class BicycleRouter extends VehicleRouter {
 		double priority = 0;
 		if (road.getTypes().length > 1) {
 			pairRoute = road.getTagValue(1);
-			if (pairRoute.value.equals("bicycle")) {
+			if (pairRoute.value.equals("mtb")) {
 				priority = bicyclePriorityValues.get(pairRoute.value);
 			}
 		} else {
