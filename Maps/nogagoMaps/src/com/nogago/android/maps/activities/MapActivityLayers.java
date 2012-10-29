@@ -340,9 +340,9 @@ public class MapActivityLayers {
 		iconList.add(R.drawable.list_activities_favorites);
 		selectedList.add(settings.SHOW_FAVORITES.get() ? 1 : 0);
 		
-		layers.add(R.string.layer_gpx_layer);
-		selectedList.add(getApplication().getGpxFileToDisplay() != null ? 1 : 0);
-		iconList.add(R.drawable.list_activities_gpx_tracks);
+//		layers.add(R.string.layer_gpx_layer);
+//		selectedList.add(getApplication().getGpxFileToDisplay() != null ? 1 : 0);
+//		iconList.add(R.drawable.list_activities_gpx_tracks);
 		
 		if(routeInfoLayer.couldBeVisible()){
 			layers.add(R.string.layer_route);

@@ -26,18 +26,19 @@ public class MtbRouter extends VehicleRouter {
 		bicycleNotDefinedValues.put("tertiary_link", 6d);
 		bicycleNotDefinedValues.put("residential", 6d);
 		bicycleNotDefinedValues.put("road", 6d);
-		bicycleNotDefinedValues.put("service", 5d);
-		bicycleNotDefinedValues.put("unclassified", 5d);
-		bicycleNotDefinedValues.put("track", 4d);
-		bicycleNotDefinedValues.put("path", 4d);
-		bicycleNotDefinedValues.put("living_street", 5d);
-		bicycleNotDefinedValues.put("pedestrian", 3d);
-		bicycleNotDefinedValues.put("footway", 4d);
-		bicycleNotDefinedValues.put("byway", 4d);
+		bicycleNotDefinedValues.put("service", 6d);
+		bicycleNotDefinedValues.put("unclassified", 6d);
+		bicycleNotDefinedValues.put("track", 6d);
+		bicycleNotDefinedValues.put("path", 6d);
+		bicycleNotDefinedValues.put("living_street", 6d);
+		bicycleNotDefinedValues.put("pedestrian", 6d);
+		bicycleNotDefinedValues.put("footway", 6d);
+		bicycleNotDefinedValues.put("byway", 6d);
 		bicycleNotDefinedValues.put("cycleway", 6d);
-		bicycleNotDefinedValues.put("bridleway", 3d);
-		bicycleNotDefinedValues.put("services", 5d);
-		bicycleNotDefinedValues.put("steps", 1d);
+		bicycleNotDefinedValues.put("bridleway", 6d);
+		bicycleNotDefinedValues.put("services", 6d);
+		bicycleNotDefinedValues.put("steps", 6d);
+		bicycleNotDefinedValues.put("mtb", 6d);
 		
 		
 
@@ -49,29 +50,31 @@ public class MtbRouter extends VehicleRouter {
 		bicyclePriorityValues.put("primary_link", 0.1);
 		bicyclePriorityValues.put("secondary", 0.1d);
 		bicyclePriorityValues.put("secondary_link", 0.1d);
-		bicyclePriorityValues.put("tertiary", 0.5d);
-		bicyclePriorityValues.put("tertiary_link", 0.5d);
-		bicyclePriorityValues.put("residential", 0.8d);
-		bicyclePriorityValues.put("service", 0.8d);
-		bicyclePriorityValues.put("unclassified", 1d);
+		bicyclePriorityValues.put("tertiary", 0.1d);
+		bicyclePriorityValues.put("tertiary_link", 0.1d);
+		bicyclePriorityValues.put("residential", 0.5d);
+		bicyclePriorityValues.put("service", 0.5d);
+		bicyclePriorityValues.put("unclassified", 0.5d);
 		bicyclePriorityValues.put("road", 0.8d);
-		bicyclePriorityValues.put("track", 4d);
-		bicyclePriorityValues.put("path", 4d);
-		bicyclePriorityValues.put("living_street", 0.6d);
+		bicyclePriorityValues.put("track", 2.5d);
+		bicyclePriorityValues.put("path", 3d);
+		bicyclePriorityValues.put("living_street", 0.5d);
 		bicyclePriorityValues.put("pedestrian", 0.1d);
-		bicyclePriorityValues.put("footway", 0.6d);
+		bicyclePriorityValues.put("footway", 0.5d);
 		bicyclePriorityValues.put("byway", 1d);
 		bicyclePriorityValues.put("cycleway", 2d);
 		bicyclePriorityValues.put("bridleway", 0.5);
-		bicyclePriorityValues.put("services", 0.8d);
-		bicyclePriorityValues.put("steps", 0.6d);
-		bicyclePriorityValues.put("mtb", 16d);
+		bicyclePriorityValues.put("services", 0.5d);
+		bicyclePriorityValues.put("steps", 0.4d);
+		bicyclePriorityValues.put("mtb", 3.5d);
 	}
 
 	@Override
 	public boolean acceptLine(TagValuePair pair) {
-		if (pair.tag.equals("highway") || pair.tag.equals("route")) {
+		if (pair.tag.equals("highway")) {
 			return bicycleNotDefinedValues.containsKey(pair.value);
+		} else if (pair.tag.equals("route") && pair.value.equals("mtb")) {
+			return true;
 		}
 		return false;
 	}
@@ -126,7 +129,7 @@ public class MtbRouter extends VehicleRouter {
 				priority = bicyclePriorityValues.get(pairRoute.value);
 			}
 		} else {
-			priority = highway && bicyclePriorityValues.containsKey(pair.value) ? bicyclePriorityValues.get(pair.value): 1d; 
+			priority = highway && bicyclePriorityValues.containsKey(pair.value) ? bicyclePriorityValues.get(pair.value): 0.1d; 
 		}
 		return priority;
 	}
@@ -146,7 +149,7 @@ public class MtbRouter extends VehicleRouter {
 				speed = value;
 			}
 		}
-		return speed * priority;
+		return speed;
 	}
 
 	/**

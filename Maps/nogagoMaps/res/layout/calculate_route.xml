@@ -41,7 +41,7 @@
             android:contentDescription="@string/app_mode_bicycle"
             android:textOff=""
             android:textOn="" />
-
+<!-- MTB-Router
         <ToggleButton
             android:id="@+id/CarButton"
             android:layout_width="wrap_content"
@@ -51,6 +51,7 @@
             android:contentDescription="@string/app_mode_mtb"
             android:textOff=""
             android:textOn="" />
+-->
     </LinearLayout>
 
 </LinearLayout>

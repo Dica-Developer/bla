@@ -333,7 +333,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 		for(int i=0; i<entries.length; i++){
 			entries[i] = ApplicationMode.values()[i].toHumanString(this);
 		}
-		registerListPreference(osmandSettings.APPLICATION_MODE, screen, entries, ApplicationMode.values());
+//		registerListPreference(osmandSettings.APPLICATION_MODE, screen, entries, ApplicationMode.values());
 		
 		Collection<String> rendererNames = getMyApplication().getRendererRegistry().getRendererNames();
 		entries = (String[]) rendererNames.toArray(new String[rendererNames.size()]);
@@ -341,8 +341,8 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 		
 		// createCustomRenderingProperties(false);
 		
-		applicationModePreference = (ListPreference) screen.findPreference(osmandSettings.APPLICATION_MODE.getId());
-		applicationModePreference.setOnPreferenceChangeListener(this);
+//		applicationModePreference = (ListPreference) screen.findPreference(osmandSettings.APPLICATION_MODE.getId());
+//		applicationModePreference.setOnPreferenceChangeListener(this);
 
 		tileSourcePreference = (ListPreference) screen.findPreference(osmandSettings.MAP_TILE_SOURCES.getId());
 		if(tileSourcePreference != null)tileSourcePreference.setOnPreferenceChangeListener(this);
@@ -515,7 +515,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 		
 		updateApplicationDirTextAndSummary();
 
-		applicationModePreference.setTitle(getString(R.string.settings_preset) + "  [" + osmandSettings.APPLICATION_MODE.get().toHumanString(this) + "]");
+//		applicationModePreference.setTitle(getString(R.string.settings_preset) + "  [" + osmandSettings.APPLICATION_MODE.get().toHumanString(this) + "]");
 		dayNightModePreference.setTitle(getString(R.string.daynight) + "  [" + osmandSettings.DAYNIGHT_MODE.get().toHumanString(this) + "]");
 		dayNightModePreference.setSummary(getString(R.string.daynight_descr));
 	//	routerServicePreference.setSummary(getString(R.string.router_service_descr) + "  [" + osmandSettings.ROUTER_SERVICE.get() + "]");
@@ -631,8 +631,8 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 					} else {
 						getMyApplication().showDialogInitializingCommandPlayer(this, false);
 					}
-				} else if (listPref.getId().equals(osmandSettings.APPLICATION_MODE.getId())) {
-					updateAllSettings();
+//				} else if (listPref.getId().equals(osmandSettings.APPLICATION_MODE.getId())) {
+//					updateAllSettings();
 				} else if (listPref.getId().equals(osmandSettings.PREFERRED_LOCALE.getId())) {
 					// restart application to update locale
 					getMyApplication().checkPrefferedLocale();
@@ -798,7 +798,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 			if(title.startsWith("-")){
 				title = title.substring(1);
 			}
-			scr.getDialog().setTitle("   " + title + " [" + osmandSettings.APPLICATION_MODE.get().toHumanString(this) + "]");
+//			scr.getDialog().setTitle("   " + title + " [" + osmandSettings.APPLICATION_MODE.get().toHumanString(this) + "]");
 		}
 		
 		if (preference == applicationDir) {
