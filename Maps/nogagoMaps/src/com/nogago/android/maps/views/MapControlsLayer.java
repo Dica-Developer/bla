@@ -127,7 +127,7 @@ public class MapControlsLayer extends OsmandMapLayer {
 			zoomOutButton.setEnabled(zoomOutEnabled);
 		}
 		
-		drawApplicationMode(canvas);
+//		drawApplicationMode(canvas); //app-mode-Switcher in MapView
 		
 		if(view.isZooming()){
 			showZoomLevel = true;

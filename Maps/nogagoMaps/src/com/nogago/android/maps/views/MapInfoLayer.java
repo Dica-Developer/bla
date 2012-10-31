@@ -151,7 +151,7 @@ public class MapInfoLayer extends OsmandMapLayer {
 		rightStack.addStackView(createAltitudeControl());
 		rightStack.addStackView(createDistanceControl());
 		rightStack.addCollapsedView(createSpeedControl());
-		rightStack.addCollapsedView(createTimeControl());
+//		rightStack.addCollapsedView(createTimeControl());
 		
 		leftStack = new MapStackControl(view.getContext());
 		leftStack.addStackView(createNextInfoControl());

@@ -673,21 +673,18 @@ public class RouteProvider {
 			ctx.setRouter(new BicycleRouter());
 			ctx.setUseStrategyOfIncreasingRoadPriorities(false);
 			ctx.setUseDynamicRoadPrioritising(true);
-		} else if (mode == ApplicationMode.CAR) {
+		} 
+		//MTB-Router
+		/* else if (mode == ApplicationMode.CAR) {
 			ctx.setRouter(new MtbRouter());
 			ctx.setUseStrategyOfIncreasingRoadPriorities(false);
 			ctx.setUseDynamicRoadPrioritising(true);
 			ctx.setHeuristicCoefficient(2);
 		} 
-		/*else if (mode == ApplicationMode.HIKING) {
-			ctx.setRouter(new HikingRouter());
-			ctx.setUseStrategyOfIncreasingRoadPriorities(false);
-			ctx.setUseDynamicRoadPrioritising(true);		
-		} else 
 		*/
 		else {
 			ctx.setRouter(new HikingRouter());
-			ctx.setUseStrategyOfIncreasingRoadPriorities(true);
+			ctx.setUseStrategyOfIncreasingRoadPriorities(false);
 			ctx.setUseDynamicRoadPrioritising(true);
 		} 
 		RouteSegment st = router.findRouteSegment(start.getLatitude(),

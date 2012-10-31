@@ -20,14 +20,15 @@
         
   </PreferenceCategory>
     <PreferenceCategory
-        android:key="profile_dep_cat"
+        android:key="profile_dep_cat" 
         android:title="@string/profile_settings" >
+<!-- Profile-chooser
         <ListPreference
             android:key="application_mode"
             android:summary="@string/settings_preset_descr"
             android:title="@string/settings_preset" >
         </ListPreference>
-
+ -->
 
         <PreferenceScreen
             android:key="map_settings"
