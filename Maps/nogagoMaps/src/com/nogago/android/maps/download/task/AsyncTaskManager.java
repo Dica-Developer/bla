@@ -1,5 +1,11 @@
 package com.nogago.android.maps.download.task;
 
+import com.nogago.android.maps.R;
+import com.nogago.android.maps.activities.MapManagerActivity;
+import com.nogago.android.maps.download.task.download.DeleteMapTask;
+
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -38,7 +44,23 @@ public final class AsyncTaskManager implements IProgressTracker,
 		else
 			mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		mProgressDialog.setProgress(0);
-		mProgressDialog.setCancelable(true);
+		mProgressDialog.setCancelable(false);
+		mProgressDialog.setButton(context.getString(R.string.button_cancel), new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				if (mProgressDialog.isShowing())
+					mProgressDialog.dismiss();
+				if (mAsyncTask == null) {
+					return;
+				}
+				mAsyncTask.cancel(true);
+				// Notify activity about completion
+				mTaskCompleteListener.onTaskComplete(mAsyncTask);
+				// Reset task
+				mAsyncTask = null;
+			}
+		});
 		mProgressDialog.setOnCancelListener(this);
 	}
 
@@ -71,20 +93,23 @@ public final class AsyncTaskManager implements IProgressTracker,
 	}
 
 	/** Call back to notify of cancellation */
+	
 	@Override
 	public void onCancel(DialogInterface dialog) {
+		
 		// Cancel task
 		if(mProgressDialog.isShowing()) mProgressDialog.dismiss();
 		if(mAsyncTask == null) {
 			return;
 		}
 		mAsyncTask.cancel(true);
-		// Notify activity about completion
+//		 Notify activity about completion
 		mTaskCompleteListener.onTaskComplete(mAsyncTask);
 		// Reset task
-		mAsyncTask = null;
+		mAsyncTask = null;	
 	}
 
+	
 	/** Call back to notify of completion */
 	@Override
 	public void onComplete() {
