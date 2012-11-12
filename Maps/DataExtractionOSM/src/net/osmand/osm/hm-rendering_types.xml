@@ -624,4 +624,10 @@
   <subtype id="47" point="true" tag="sport" value="volleyball" minzoom="15" />
   <subtype id="50" point="true" tag="sport" minzoom="15" />
  </type>
+ 	<type name="route" id="28">
+		<subtype id="1" polyline="true" tag="route" value="foot" minzoom="10" />
+		<subtype id="2" polyline="true" tag="route" value="hiking" minzoom="10" />
+		<subtype id="3" polyline="true" tag="route" value="bicycle" minzoom="10" />
+		<subtype id="4" polyline="true" tag="route" value="mtb" minzoom="10" />
+	</type>
 </osmand_types>

@@ -451,8 +451,8 @@ public class OsmandRenderer {
 			int subtype = MapRenderingTypes.getObjectSubType(mainType);
 			TagValuePair pair = obj.getMapIndex().decodeType(type, subtype);
 			if (t == MapRenderingTypes.POINT_TYPE && !drawOnlyShadow) {
-				//Nogago changed
-				//drawPoint(obj, render, canvas, rc, pair, renderText);
+				//Nogago changed, but why?!
+				drawPoint(obj, render, canvas, rc, pair, renderText);
 			} else if (t == MapRenderingTypes.POLYLINE_TYPE) {
 				int layer = MapRenderingTypes.getNegativeWayLayer(mainType);
 				drawPolyline(obj, render, canvas, rc, pair, layer, drawOnlyShadow);

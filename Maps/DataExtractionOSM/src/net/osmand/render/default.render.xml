@@ -352,7 +352,7 @@
 		<group textColor="#000000">
 			<filter minzoom="4" textSize="20" textBold="true" textDy="1" textWrapWidth="20" tag="place" value="city" textOrder="4"/>
 			<filter minzoom="6" textSize="16" textBold="true" textDy="1" textWrapWidth="20" tag="place" value="town" textOrder="5"/>
-			<filter minzoom="11" textSize="14" tag="place" value="village" textOrder="10"/>
+			<filter minzoom="8" textSize="14" textWrapWidth="20" tag="place" value="village" textOrder="6"/>
 			<groupFilter nightMode="true" textColor="#ffffff"/>
 		</group>
 		<group textColor="#777777">
@@ -582,6 +582,7 @@
 		<filter minzoom="16" icon="parking" tag="amenity" value="bicycle_parking"/>
 
 		<!-- Buildings -->
+		<!-- 
 		<filter minzoom="16" icon="restaurant" tag="amenity" value="restaurant"/>
 		<filter minzoom="16" icon="cafe" tag="amenity" value="cafe"/>
 		<filter minzoom="16" icon="fast_food" tag="amenity" value="fast_food"/>
@@ -638,8 +639,9 @@
 		<filter minzoom="16" icon="barrier_entrance" tag="building" value="entrance"/>
 		<filter minzoom="16" icon="townhall" tag="amenity" value="townhall"/>
 		<filter minzoom="16" icon="amenity_court" tag="amenity" value="courthouse"/>
-
+ -->
 		<!-- Shops -->
+		<!-- 
 			<filter appMode="car" minzoom="16" icon="shop_bakery" tag="shop" value="bakery"/>
 		<filter minzoom="17" icon="shop_bakery" tag="shop" value="bakery"/>
 			<filter appMode="car" minzoom="16" icon="shop_butcher" tag="shop" value="butcher"/>
@@ -687,21 +689,23 @@
 		<filter minzoom="16" icon="shop_copyshop" tag="shop" value="copyshop"/>
 		<filter minzoom="16" icon="shop_greengrocer" tag="shop" value="greengrocer"/>
 		<filter minzoom="16" icon="shop_mobile_phone" tag="shop" value="mobile_phone"/>
-
+ -->
 		<!-- Nature -->
+<!-- 
 		<filter minzoom="11" icon="peak" tag="natural" value="peak"/>
 		<filter minzoom="15" icon="cave_entrance" tag="natural" value="cave_entrance"/>
 		<filter minzoom="14" icon="spring" tag="natural" value="spring"/>
 		<filter minzoom="16" maxzoom="16" icon="tree" tag="natural" value="tree"/>
 			<filter minzoom="17" icon="tree2" tag="natural" value="tree"/>
 		<filter minzoom="11" icon="volcano" tag="natural" value="volcano"/>
-
+ -->
 		<!-- Water -->
 		<filter minzoom="15" icon="slipway" tag="leisure" value="slipway"/>
 		<filter minzoom="15" icon="lock_gate" tag="waterway" value="lock_gate"/>
 		<filter minzoom="15" icon="lock_gate" tag="waterway" value="lock"/>
 
 		<!-- Outdoor, tourism, leisure -->
+		<!-- 
 		<filter minzoom="14" icon="camp_site" tag="tourism" value="camp_site"/>
 		<filter minzoom="14" icon="caravan_park" tag="tourism" value="caravan_site"/>
 		<filter minzoom="14" icon="picnic_site" tag="tourism" value="picnic_site"/>
@@ -733,7 +737,7 @@
 		<filter minzoom="16" icon="amenity_bench" tag="amenity" value="bench"/>
 		<filter minzoom="15" icon="leisure_sports_centre" tag="leisure" value="sports_centre"/>
 		<filter minzoom="16" icon="bird_hide" tag="leisure" value="bird_hide"/>
-
+-->
 		<!-- Railway -->
 		<filter minzoom="12" maxzoom="12" icon="halt" tag="railway" value="station"/>
 			<filter minzoom="13" maxzoom="14" icon="station_small" tag="railway" value="station"/>
