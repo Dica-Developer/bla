@@ -256,6 +256,7 @@
 	<string name="poi_query_by_name_matches_categories">Several POI categories found matching the query :</string>
 	<string name="data_to_search_poi_not_available">Local data to search POI is not present.</string>
 	<string name="poi_filter_by_name">Search by name</string>
+	<string name="poi_filter_by_category">Search by category</string>
 	<string name="old_poi_file_should_be_deleted">The POI data file \'%1$s\' is redundant and can be deleted.</string>
 	<string name="update_poi_file_not_found">Local file to maintain POI changes not found and could not be created.</string>
 
@@ -604,7 +605,7 @@ Have fun with our apps, maps and tracks for your next adventures !
 	<string name="no_vector_map_loaded">Vector maps were not loaded</string>
 	
 	<string name="map_route_by_gpx">Navigate using GPX</string>
-	<string name="gpx_files_not_found">GPX files not found in /tracks directory</string>
+	<string name="gpx_files_not_found">GPX files not found in /gpx directory</string>
 	<string name="layer_gpx_layer">GPX track&#8230;</string>
 	<string name="error_reading_gpx">Error reading GPX data</string>
 

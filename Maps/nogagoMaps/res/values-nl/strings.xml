@@ -248,6 +248,7 @@
 	<string name="poi_query_by_name_matches_categories">Meerdere interessepunt categorieën gevonden in zoekaktie :</string>
 	<string name="data_to_search_poi_not_available">Locale gegevens voor het zoeken van interessepunten is niet aanwezig.</string>
 	<string name="poi_filter_by_name">Zoek op naam</string>
+	<string name="poi_filter_by_category">Zoek op categorie</string>
 	<string name="old_poi_file_should_be_deleted">Het interessepunten gegevensbestand \'%1$s\' is redundant en kan worden verwijderd.</string>
 	<string name="update_poi_file_not_found">Locaal bestand voor het bijhouden van wijzigingen van interessepunten niet gevonden en kan ook niet worden aangemaakt.</string>
 	<string name="update_poi_does_not_change_indexes">Wijzigingen van interessepunten in het programma hebben geen invloed op de gedownloade kaartbestanden, wijzigingen worden in een locaal bestand opgeslagen.</string>
@@ -597,7 +598,7 @@ Veel plezier tijdens je volgende avonturen met onze apps, kaarten en tracks!
 	<string name="no_vector_map_loaded">Geen vectorkaarten geladen</string>
 	
 	<string name="map_route_by_gpx">Toon route van een GPX</string>
-	<string name="gpx_files_not_found">GPX bestanden niet gevonden in de /tracks directory</string>
+	<string name="gpx_files_not_found">GPX bestanden niet gevonden in de /gpx directory</string>
 	<string name="layer_gpx_layer">GPX spoor&#8230;</string>
 	<string name="error_reading_gpx">Fout bij het lezen van GPX gegevens</string>
 
@@ -890,6 +891,7 @@ Veel plezier tijdens je volgende avonturen met onze apps, kaarten en tracks!
 <string name="context_menu_item_update_map">Actualiseer kaart</string>
 <string name="context_menu_item_open_bug">Open OSM bug</string>
 <string name="context_menu_item_create_poi">Creëer interessepunt</string>
+<string name="context_menu_item_delete_location">Vergeten locatie</string>
 
 <string name="default_buttons_yes">Ja</string>
 <string name="default_buttons_cancel">Annuleer</string>

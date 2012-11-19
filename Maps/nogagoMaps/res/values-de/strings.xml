@@ -268,6 +268,7 @@
 	<string name="poi_query_by_name_matches_categories">Mehrere passende Kategorien von Sehenswürdigkeiten gefunden :</string>
 	<string name="data_to_search_poi_not_available">Lokale Daten für die Suche nach Sehenswertem nicht vorhanden.</string>
 	<string name="poi_filter_by_name">Nach Namen suchen</string>
+	<string name="poi_filter_by_category">In Kategorien suchen</string>
 	<string name="old_poi_file_should_be_deleted">Die Datei \'%1$s\' wird nicht mehr benötigt und kann gelöscht werden.</string>
 	<string name="update_poi_file_not_found">Lokale Datei für Änderungen nicht gefunden und konnte nicht erstellt werden.</string>
 
@@ -605,7 +606,7 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 	<string name="voice">Ansagen</string>
 	<string name="no_vector_map_loaded">Offline-Daten wurden nicht geladen</string>
 	<string name="map_route_by_gpx">Navigation mittels GPX</string>
-	<string name="gpx_files_not_found">Keine GPX-Dateien gefunden in /tracks-Ordner</string>
+	<string name="gpx_files_not_found">Keine GPX-Dateien gefunden in /gpx-Ordner</string>
 	<string name="layer_gpx_layer">GPX-Track …</string>
 	<string name="error_reading_gpx">Fehler beim Lesen der GPX-Daten</string>
 
@@ -908,6 +909,7 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 <string name="context_menu_item_update_map">Karte aktualisieren</string>
 <string name="context_menu_item_open_bug">OSM Fehlerbericht einsenden</string>
 <string name="context_menu_item_create_poi">POI einsenden</string>
+<string name="context_menu_item_delete_location">Lokation löschen</string>
 
 <string name="default_buttons_yes">Ja</string>
 <string name="default_buttons_cancel">Abbrechen</string>
