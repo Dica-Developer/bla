@@ -111,6 +111,7 @@ public class MapActivityLayers {
 	private MyTracksProviderUtils myTracksProviderUtils;
 	private Intent mytrackIntent;
 	private OsmandMapTileView mapView;
+	int i = 0;
 	
 
 	private ITrackRecordingService myTracksService = null;
@@ -340,9 +341,9 @@ public class MapActivityLayers {
 		iconList.add(R.drawable.list_activities_favorites);
 		selectedList.add(settings.SHOW_FAVORITES.get() ? 1 : 0);
 		
-//		layers.add(R.string.layer_gpx_layer);
-//		selectedList.add(getApplication().getGpxFileToDisplay() != null ? 1 : 0);
-//		iconList.add(R.drawable.list_activities_gpx_tracks);
+		layers.add(R.string.layer_gpx_layer);
+		selectedList.add(getApplication().getGpxFileToDisplay() != null ? 1 : 0);
+		iconList.add(R.drawable.list_activities_gpx_tracks);
 		
 		if(routeInfoLayer.couldBeVisible()){
 			layers.add(R.string.layer_route);
@@ -623,7 +624,14 @@ public class MapActivityLayers {
 	public void selectGPXFileLayer(final CallbackWithObject<GPXFile> callbackWithObject, final boolean convertCloudmade, final boolean showCurrentGpx) {
 		final List<String> list = new ArrayList<String>();
 		final OsmandSettings settings = getApplication().getSettings();
-		final File dir = settings.extendOsmandPath(ResourceManager.GPX_PATH);
+		boolean extraVal = activity.extraVal;
+		final File dir;
+		if (extraVal == true && i < 1){
+			i++;
+			dir = settings.extendOsmandPath(ResourceManager.GPX_TEMP_PATH);
+		} else {
+			dir = settings.extendOsmandPath(ResourceManager.GPX_PATH);
+		}
 		if (dir != null && dir.canRead()) {
 			File[] files = dir.listFiles();
 			if (files != null) {
@@ -652,7 +660,7 @@ public class MapActivityLayers {
 		if(!list.isEmpty() || showCurrentGpx){
 			Builder builder = new AlertDialog.Builder(activity);
 			if(showCurrentGpx){
-				list.add(0, getString(R.string.show_current_gpx_title));
+//				list.add(0, getString(R.string.show_current_gpx_title));
 			}
 			builder.setItems(list.toArray(new String[list.size()]), new DialogInterface.OnClickListener() {
 				@Override

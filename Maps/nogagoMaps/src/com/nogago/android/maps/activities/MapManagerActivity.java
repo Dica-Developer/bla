@@ -258,13 +258,16 @@ public class MapManagerActivity extends ListActivity implements
 	}
 
 	@Override
-	public void onTaskComplete(AsyncTask task) {
+	public void onTaskComplete(final AsyncTask task) {
+
 		if(task == null){
 			
-		}else if (task.isCancelled()) {
-			if(task instanceof TrackableTask) ((TrackableTask)task).cleanup();
+		} else if (task.isCancelled()) {
+	    	  if (task instanceof TrackableTask) {
+	    		  ((TrackableTask)task).cleanup();
+	    	  }		
 			// Report about cancel
-			Toast.makeText(this, R.string.task_cancelled, Toast.LENGTH_LONG).show();
+	    	 Toast.makeText(this, R.string.task_cancelled, Toast.LENGTH_LONG).show();
 		} else {
 			Object result = new Object();
 			try {

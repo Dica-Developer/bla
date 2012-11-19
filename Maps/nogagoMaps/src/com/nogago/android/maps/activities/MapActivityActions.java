@@ -753,5 +753,4 @@ public class MapActivityActions implements DialogProvider {
 			break;
 		}
 	}
-
 }

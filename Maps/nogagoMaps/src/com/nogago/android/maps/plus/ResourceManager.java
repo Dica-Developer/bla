@@ -66,7 +66,8 @@ public class ResourceManager {
 	public static final String APP_DIR = "nogago/"; //$NON-NLS-1$
 	public static final String POI_PATH = APP_DIR + IndexConstants.POI_INDEX_DIR; 
 	public static final String VOICE_PATH = APP_DIR + IndexConstants.VOICE_INDEX_DIR;
-	public static final String GPX_PATH = APP_DIR + "tracks";
+	public static final String GPX_PATH = APP_DIR + "gpx";
+	public static final String GPX_TEMP_PATH = APP_DIR + "gpx/" + "tmp";
 	public static final String MAPS_PATH = APP_DIR;
 	public static final String BACKUP_PATH = APP_DIR + "backup/";
 	public static final String TILES_PATH = APP_DIR+"tiles/"; //$NON-NLS-1$
