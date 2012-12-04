@@ -526,7 +526,7 @@ public class MapActivityActions implements DialogProvider {
 			}
     	};
     	
-		/*
+		
 		DialogInterface.OnClickListener useGpxNavigation = new DialogInterface.OnClickListener(){
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -534,12 +534,12 @@ public class MapActivityActions implements DialogProvider {
 				navigateUsingGPX(mode);
 			}
 		};
-    	*/
+    	
     	builder.setView(view);
 	builder.setTitle(R.string.get_directions);
     	if (followEnabled) {
 			builder.setPositiveButton(R.string.follow, followCall);
-			// builder.setNeutralButton(R.string.gpx_navigation, useGpxNavigation);
+			builder.setNeutralButton(R.string.gpx_navigation, useGpxNavigation);
 			builder.setNegativeButton(R.string.only_show, onlyShowCall);
 		} else {
 			// view.findViewById(R.id.TextView).setVisibility(View.GONE);
@@ -601,7 +601,7 @@ public class MapActivityActions implements DialogProvider {
 						}
 						
 						LatLon endPoint = endForRouting;
-						if(endPoint == null || !useDestination){
+						if(endPoint == null || !useDestination) {
 							LatLon point = gpxRoute.getLastPoint();
 							if(point != null){
 								endPoint = point;

@@ -624,9 +624,13 @@ public class MapActivityLayers {
 	public void selectGPXFileLayer(final CallbackWithObject<GPXFile> callbackWithObject, final boolean convertCloudmade, final boolean showCurrentGpx) {
 		final List<String> list = new ArrayList<String>();
 		final OsmandSettings settings = getApplication().getSettings();
-		boolean extraVal = activity.extraVal;
+		boolean extraVal = activity.SHOW_TRACK_FROM_TRACKS;
+		boolean followTrack = activity.FOLLOW_TRACK_FROM_TRACKS;
 		final File dir;
 		if (extraVal == true && i < 1){
+			i++;
+			dir = settings.extendOsmandPath(ResourceManager.GPX_TEMP_PATH);
+		} else if (followTrack == true && i<1) {
 			i++;
 			dir = settings.extendOsmandPath(ResourceManager.GPX_TEMP_PATH);
 		} else {
@@ -660,7 +664,7 @@ public class MapActivityLayers {
 		if(!list.isEmpty() || showCurrentGpx){
 			Builder builder = new AlertDialog.Builder(activity);
 			if(showCurrentGpx){
-//				list.add(0, getString(R.string.show_current_gpx_title));
+				list.add(0, getString(R.string.show_current_gpx_title));
 			}
 			builder.setItems(list.toArray(new String[list.size()]), new DialogInterface.OnClickListener() {
 				@Override

@@ -99,7 +99,8 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 	private static final int AUTO_FOLLOW_MSG_ID = 8; 
 	private static final int LOST_LOCATION_MSG_ID = 10;
 	private static final long LOST_LOCATION_CHECK_DELAY = 20000;
-	public static boolean extraVal = false;
+	public static boolean SHOW_TRACK_FROM_TRACKS = false;
+	static boolean FOLLOW_TRACK_FROM_TRACKS = false;
 	
 //	private static final int LONG_KEYPRESS_MSG_ID = 28;
 //	private static final int LONG_KEYPRESS_DELAY = 500;
@@ -158,7 +159,8 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();
-		extraVal = intent.getBooleanExtra("from Tracks", false);
+		SHOW_TRACK_FROM_TRACKS = intent.getBooleanExtra("from Tracks", false);
+		FOLLOW_TRACK_FROM_TRACKS = intent.getBooleanExtra("follow", false);
 			
 		settings = getMyApplication().getSettings();		
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 
@@ -219,9 +221,12 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 		mapView.setMapLocationListener(this);
 		mapLayers.createLayers(mapView);
 		
-		if (extraVal == true ){
+		if (SHOW_TRACK_FROM_TRACKS == true ){
 //			mapLayers.openLayerSelectionDialog(mapView);
 			mapLayers.showGPXFileLayer(mapView);
+		}
+		if (FOLLOW_TRACK_FROM_TRACKS) {
+			mapActions.navigateUsingGPX(ApplicationMode.PEDESTRIAN);
 		}
 		
 		if(!settings.isLastKnownMapLocation()){
