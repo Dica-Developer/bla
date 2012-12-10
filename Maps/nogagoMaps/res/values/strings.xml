@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
+    <string name="tracks_not_installed">nogagoTracks is not installed, do you want to install?</string>
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
+    <string name="wanna_start_tracks">Do you want to start nogagoTracks?</string>
     <string name="send_files_to_osm">Send GPX files to OSM?</string>
     <string name="gpx_visibility_txt">Visibility</string>
     <string name="gpx_tags_txt">Tags</string>
@@ -861,6 +865,9 @@ Have fun with our apps, maps and tracks for your next adventures !
 <string name="settings_Button">Settings</string>
 <string name="favorites_Button">Favorites</string>
 <string name="search_button">Search</string>
+<string name="mapManager_Button">Map-Download</string>
+<string name="navigation_Button">Navigation</string>
+<string name="toTracks_Button">Record a Track</string>
 <string name="search_activity">Search</string>
 
 <string name="searchpoi_activity">Choose POI</string>

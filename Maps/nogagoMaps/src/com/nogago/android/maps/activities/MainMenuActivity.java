@@ -24,6 +24,8 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -125,20 +127,25 @@ public class MainMenuActivity extends Activity {
 	
 	public static void onCreateMainMenu(Window window, final Activity activity){
 		View head = (View) window.findViewById(R.id.Headliner);
-		head.startAnimation(getAnimation(0, -1));
+//		head.startAnimation(getAnimation(0, -1));
 		
 		View leftview = (View) window.findViewById(R.id.MapButton);
-		leftview.startAnimation(getAnimation(-1, 0));
+//		leftview.startAnimation(getAnimation(0, -1));
 		leftview = (View) window.findViewById(R.id.FavoritesButton);
-		leftview.startAnimation(getAnimation(-1, 0));
+//		leftview.startAnimation(getAnimation(-1, 0));
+		leftview = (View) window.findViewById(R.id.MapManagerButton);
+//		leftview.startAnimation(getAnimation(0, 1));
 		
-		View rightview = (View) window.findViewById(R.id.SettingsButton);
-		rightview.startAnimation(getAnimation(1, 0));
-		rightview = (View) window.findViewById(R.id.SearchButton);
-		rightview.startAnimation(getAnimation(1, 0));
+
+		View rightview = (View) window.findViewById(R.id.SearchButton);
+//		rightview.startAnimation(getAnimation(0, -1));
+		rightview = (View) window.findViewById(R.id.SettingsButton);
+//		rightview.startAnimation(getAnimation(1, 0));
+		rightview = (View) window.findViewById(R.id.ToTracksButton);
+//		rightview.startAnimation(getAnimation(0, 1));
 		
-		View footer = (View) window.findViewById(R.id.MapManager);
-		footer.startAnimation(getAnimation(0, 1));
+//		View footer = (View) window.findViewById(R.id.MapManager);
+//		footer.startAnimation(getAnimation(0, 1));
 		
 
 		/*
@@ -181,6 +188,23 @@ public class MainMenuActivity extends Activity {
 				finish();
 			}
 		}
+		final Activity activity = this;
+		// Alert if nogago Tracks isnt installed
+	    AlertDialog.Builder notInstalled = new AlertDialog.Builder(this);
+	    notInstalled.setMessage(R.string.tracks_not_installed).setCancelable(false)
+	        .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
+	          public void onClick(DialogInterface dialog, int id) {
+	            Uri uri = Uri.parse(Constants.TRACKS_DOWNLOAD_URL);
+	            Intent showUri = new Intent(Intent.ACTION_VIEW, uri);
+	            activity.startActivity(showUri);
+	          }
+	        }).setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
+	          public void onClick(DialogInterface dialog, int id) {
+	            dialog.cancel();
+	          }
+	        });
+	    final AlertDialog alertnotInstalled = notInstalled.create();
+	   
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.menu);
@@ -188,7 +212,7 @@ public class MainMenuActivity extends Activity {
 		onCreateMainMenu(getWindow(), this);
 
 		Window window = getWindow();
-		final Activity activity = this;
+		//final Activity activity = this;
 		View showMap = window.findViewById(R.id.MapButton);
 		showMap.setOnClickListener(new OnClickListener() {
 			@Override
@@ -213,6 +237,44 @@ public class MainMenuActivity extends Activity {
 				final Intent favorites = new Intent(activity, FavouritesActivity.class);
 				favorites.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 				activity.startActivity(favorites);
+			}
+		});
+		View mapManagerButton = window.findViewById(R.id.MapManagerButton);
+		mapManagerButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				final Intent mapManager = new Intent(activity, MapManagerActivity.class);
+				mapManager.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+				activity.startActivity(mapManager);
+			}
+		});
+		View toTracksButton = window.findViewById(R.id.ToTracksButton);
+		toTracksButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				 // Alert if nogago Maps is installed
+			    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+			    builder.setMessage(R.string.wanna_start_tracks).setCancelable(false)
+			        .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
+			          public void onClick(DialogInterface dialog, int id) {
+			            try {
+				            String nogagoPackage = "com.nogago.android.tracks";
+				            String TracksActivity = ".MainMenuActivity";
+				            final Intent toTracks = new Intent();
+							toTracks.setComponent(new ComponentName(nogagoPackage, nogagoPackage + TracksActivity));
+							toTracks.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+							activity.startActivity(toTracks);
+			            } catch (ActivityNotFoundException e) {
+			              alertnotInstalled.show();
+			            }
+			          }
+			        }).setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
+			          public void onClick(DialogInterface dialog, int id) {
+			            dialog.cancel();
+			          }
+			        });
+			    AlertDialog alert = builder.create();
+				alert.show();
 			}
 		});
 		
@@ -254,16 +316,16 @@ public class MainMenuActivity extends Activity {
 		if(exit){
 			return;
 		}
-		
-		View mapManagerButton = window.findViewById(R.id.MapManager);
-		mapManagerButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				final Intent mapManager = new Intent(activity, MapManagerActivity.class);
-				mapManager.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-				activity.startActivity(mapManager);
-			}
-		});
+//		
+//		View mapManagerButton = window.findViewById(R.id.MapManager);
+//		mapManagerButton.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				final Intent mapManager = new Intent(activity, MapManagerActivity.class);
+//				mapManager.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//				activity.startActivity(mapManager);
+//			}
+//		});
 		
 		startProgressDialog = new ProgressDialog(this);
 		getMyApplication().checkApplicationIsBeingInitialized(this, startProgressDialog);

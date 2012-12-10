@@ -852,6 +852,9 @@ Veel plezier tijdens je volgende avonturen met onze apps, kaarten en tracks!
 <string name="settings_Button">Instellingen</string>
 <string name="favorites_Button">Favorieten</string>
 <string name="search_button">Zoeken</string>
+<string name="mapManager_Button">Kaart-downloadt</string>
+<string name="navigation_Button">Navigatie</string>
+<string name="toTracks_Button">record track</string>
 <string name="search_activity">Zoeken</string>
 
 <string name="searchpoi_activity">Selecteer interessepunt</string>

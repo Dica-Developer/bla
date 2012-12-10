@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nogago.android.maps.Constants;
 import com.nogago.android.maps.GPXUtilities;
 import com.nogago.android.maps.LogUtil;
 import com.nogago.android.maps.R;
@@ -454,6 +455,22 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 		anim.setDuration(700);
 		anim.setInterpolator(new AccelerateInterpolator());
 		menuView.setAnimation(anim);
+		
+		// Alert if nogago Tracks isnt installed
+	    AlertDialog.Builder notInstalled = new AlertDialog.Builder(this);
+	    notInstalled.setMessage(R.string.tracks_not_installed).setCancelable(false)
+	        .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
+	          public void onClick(DialogInterface dialog, int id) {
+	            Uri uri = Uri.parse(Constants.TRACKS_DOWNLOAD_URL);
+	            Intent showUri = new Intent(Intent.ACTION_VIEW, uri);
+	            activity.startActivity(showUri);
+	          }
+	        }).setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
+	          public void onClick(DialogInterface dialog, int id) {
+	            dialog.cancel();
+	          }
+	        });
+	    final AlertDialog alertnotInstalled = notInstalled.create();
 
 		View showMap = dlg.findViewById(R.id.MapButton);
 		showMap.setOnClickListener(new OnClickListener() {
@@ -463,15 +480,15 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 			}
 		});
 		
-		View mapManagerButton = dlg.findViewById(R.id.MapManager);
-		mapManagerButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				final Intent mapManager = new Intent(MapActivity.this, MapManagerActivity.class);
-				MapActivity.this.startActivity(mapManager);
-				dlg.dismiss();
-			}
-		});
+//		View mapManagerButtononMap = dlg.findViewById(R.id.MapManager);
+//		mapManagerButtononMap.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				final Intent mapManager = new Intent(MapActivity.this, MapManagerActivity.class);
+//				MapActivity.this.startActivity(mapManager);
+//				dlg.dismiss();
+//			}
+//		});
 		
 		View settingsButton = dlg.findViewById(R.id.SettingsButton);
 		settingsButton.setOnClickListener(new OnClickListener() {
@@ -500,6 +517,44 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 				TipsAndTricksActivity tactivity = new TipsAndTricksActivity(activity);
 				Dialog dlg = tactivity.getDialogToShowTips(false, true);
 				dlg.show();
+			}
+		});
+		View mapManagerButton = dlg.findViewById(R.id.MapManagerButton);
+		mapManagerButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				final Intent mapManager = new Intent(activity, MapManagerActivity.class);
+				mapManager.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+				activity.startActivity(mapManager);
+			}
+		});
+		View toTracksButton = dlg.findViewById(R.id.ToTracksButton);
+		toTracksButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				 // Alert if nogago Maps is installed
+			    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+			    builder.setMessage(R.string.wanna_start_tracks).setCancelable(false)
+			        .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
+			          public void onClick(DialogInterface dialog, int id) {
+			            try {
+				            String nogagoPackage = "com.nogago.android.tracks";
+				            String TracksActivity = ".MainMenuActivity";
+				            final Intent toTracks = new Intent();
+							toTracks.setComponent(new ComponentName(nogagoPackage, nogagoPackage + TracksActivity));
+							toTracks.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+							activity.startActivity(toTracks);
+			            } catch (ActivityNotFoundException e) {
+			              alertnotInstalled.show();
+			            }
+			          }
+			        }).setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
+			          public void onClick(DialogInterface dialog, int id) {
+			            dialog.cancel();
+			          }
+			        });
+			    AlertDialog alert = builder.create();
+				alert.show();
 			}
 		});
 

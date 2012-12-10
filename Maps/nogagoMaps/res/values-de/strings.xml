@@ -5,6 +5,10 @@
 
     
     <string name="send_files_to_osm">GPX Datei an OSM schicken ?</string>
+    <string name="tracks_not_installed">nogagoTracks ist nicht installiert, möchten Sie es installieren?</string>
+    <string name="button_yes">Ja</string>
+    <string name="button_no">Nein</string>
+    <string name="wanna_start_tracks">Möchten Sie nogagoTracks starten?</string>
     <string name="gpx_visibility_txt">Sichtbarkeit</string>
     <string name="gpx_tags_txt">Tags</string>
     <string name="gpx_description_txt">Beschreibung</string>
@@ -863,6 +867,10 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 <string name="settings_Button">Einstellungen</string>
 <string name="favorites_Button">Favoriten</string>
 <string name="search_button">Suche</string>
+<string name="mapManager_Button">Kartendownload</string>
+<string name="navigation_Button">Navigation</string>
+<string name="toTracks_Button">Track aufnehmen</string>
+
 <color name="menu_background">#FF9030</color>
 <color name="color_light_gray">#d7d7d7</color>
 <color name="color_black">#000000</color>
