@@ -578,6 +578,9 @@ public class MapRenderingTypes {
 				}
 			}
 		}
+		if (name==null) {
+			name=e.getTag(OSMTagKey.ELE);
+		}
 		
 		return name;
 	}

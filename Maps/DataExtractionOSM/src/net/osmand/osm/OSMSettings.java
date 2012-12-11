@@ -3,6 +3,7 @@ package net.osmand.osm;
 public class OSMSettings {
 	
 	public enum OSMTagKey {
+		ELE("ele"), //$NON-NLS-1$
 		NAME("name"), //$NON-NLS-1$
 		NAME_EN("name:en"), //$NON-NLS-1$
 		

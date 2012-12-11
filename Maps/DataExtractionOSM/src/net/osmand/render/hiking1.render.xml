@@ -1,5 +1,5 @@
 ﻿<renderingStyle name="hiking" depends="default" defaultColor="#F5FFFF" version="1">
-
+   	
 	<line>
 		<group>
 			<filter tag="route" value="hiking" maxzoom="20" color="#009DFF"/>
@@ -22,6 +22,7 @@
 		</group>
 		
 		<group>
+			
 			<filter tag="contour_ext" value="elevation_minor" maxzoom="20" color="#676459"/>
 			<groupFilter cap="ROUND">
 				<filter minzoom="15" maxzoom="15" strokeWidth="1"/>
@@ -49,7 +50,11 @@
 
 			</groupFilter>
 		</group>
-		
-		
 	</line>
+	
+	<text>
+		<filter minzoom="13" textSize="12" textColor="#292929" textOnPath="true" textHaloRadius="1" tag="contour_ext" value="elevation_major" textOrder="10"/>
+		<filter minzoom="17" textSize="14" textColor="#292929" textOnPath="true" textHaloRadius="1" tag="contour_ext" value="elevation_minor" textOrder="10"/>
+	</text>
+	
 </renderingStyle>
