@@ -879,7 +879,7 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 <color name="color_white">#FFFFFF</color>
 <color name="color_red">#FF0000</color>
 <string name="searchpoi_activity">Kategorien von Sehenswertem wählen</string>
-<string name="search_POI_level_btn">Finde mehr</string>
+<string name="search_POI_level_btn">Umkreis erweitern</string>
 <string name="incremental_search_city">Suche Stadt inkrementell. Um Städte/Postleitzahlen zu finden mindestens 3 Zeichen eingeben.</string>
 <string name="incremental_search_street">Suche Straße inkrementell</string>
 <string name="incremental_search_building">Suche Hausnr. inkrementell</string>

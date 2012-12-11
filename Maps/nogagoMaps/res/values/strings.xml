@@ -871,7 +871,7 @@ Have fun with our apps, maps and tracks for your next adventures !
 <string name="search_activity">Search</string>
 
 <string name="searchpoi_activity">Choose POI</string>
-<string name="search_POI_level_btn">Find more</string>
+<string name="search_POI_level_btn">Expand area</string>
 <string name="incremental_search_city">Search city incrementally. To find towns/postcodes, enter the first 3 or more characters.</string>
 <string name="incremental_search_street">Search street incrementally</string>
 <string name="incremental_search_building">Search building incrementally</string>

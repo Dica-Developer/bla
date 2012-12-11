@@ -858,7 +858,7 @@ Veel plezier tijdens je volgende avonturen met onze apps, kaarten en tracks!
 <string name="search_activity">Zoeken</string>
 
 <string name="searchpoi_activity">Selecteer interessepunt</string>
-<string name="search_POI_level_btn">Zoek meer</string>
+<string name="search_POI_level_btn">Gebied uitbreiden</string>
 <string name="incremental_search_city">Zoek meer steden. Om postcodes te zoeken, type de eerste 3 of meer tekens.</string>
 <string name="incremental_search_street">Zoek meer straten</string>
 <string name="incremental_search_building">Zoek meer gebouwen</string>
