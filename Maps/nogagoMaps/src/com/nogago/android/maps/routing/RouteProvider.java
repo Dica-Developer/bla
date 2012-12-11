@@ -276,27 +276,34 @@ public class RouteProvider {
 			float[] d = new float[3];
 			Location.distanceBetween(start.getLatitude(), start.getLongitude(),
 					end.getLatitude(), end.getLongitude(), d);
-			if (d[0] <= 100000.0) {
-				// If distance is less than 100 km route offline 
-				try {
-					res = findVectorMapsRoute(start, end, mode, fast,
-							(OsmandApplication) ctx.getApplicationContext());
-					addMissingTurnsToRoute(res, start, end, mode, ctx);
-				} catch (IOException e) {
-					log.error("Failed to find route ", e); //$NON-NLS-1$
+			
+			if(gpxRoute != null && !gpxRoute.points.isEmpty()){
+				res = calculateGpxRoute(start, end, gpxRoute);
+				addMissingTurnsToRoute(res, start, end, mode, ctx);
+			} else {
+
+				if (d[0] <= 100000.0) {
+					// If distance is less than 100 km route offline
+					try {
+						res = findVectorMapsRoute(start, end, mode, fast,
+								(OsmandApplication) ctx.getApplicationContext());
+						addMissingTurnsToRoute(res, start, end, mode, ctx);
+					} catch (IOException e) {
+						log.error("Failed to find route ", e); //$NON-NLS-1$
+					}
 				}
-			}
-			if (res == null || res.getLocations() == null
-					|| res.getLocations().size() < 2) {
-				try {
-					res = findYOURSRoute(start, end, mode, fast);
-					addMissingTurnsToRoute(res, start, end, mode, ctx);
-				} catch (IOException e) {
-					log.error("Failed to find route ", e); //$NON-NLS-1$
-				} catch (ParserConfigurationException e) {
-					log.error("Failed to find route ", e); //$NON-NLS-1$
-				} catch (SAXException e) {
-					log.error("Failed to find route ", e); //$NON-NLS-1$
+				if (res == null || res.getLocations() == null
+						|| res.getLocations().size() < 2) {
+					try {
+						res = findYOURSRoute(start, end, mode, fast);
+						addMissingTurnsToRoute(res, start, end, mode, ctx);
+					} catch (IOException e) {
+						log.error("Failed to find route ", e); //$NON-NLS-1$
+					} catch (ParserConfigurationException e) {
+						log.error("Failed to find route ", e); //$NON-NLS-1$
+					} catch (SAXException e) {
+						log.error("Failed to find route ", e); //$NON-NLS-1$
+					}
 				}
 			}
 			routeList = res.getLocations();

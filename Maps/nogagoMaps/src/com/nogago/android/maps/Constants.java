@@ -11,6 +11,7 @@ public class Constants {
 	
 	public static final String NOGAGO_MAP_MANAGER_COMPONENT = "com.nogago.android.download";
 	public static final String NOGAGO_MAP_DOWNLOADER_ACTIVITY = "com.nogago.android.download.ui.SplashActivity";
+	public static final String TRACKS_DOWNLOAD_URL = "market://search?q=pname:com.nogago.android.tracks";
 	
 	public static final String STRING_LONGITUDE = "longitude";
 	public static final String STRING_LATITUDE = "latitude";
