@@ -866,10 +866,10 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 <string name="map_Button">Karte</string>
 <string name="settings_Button">Einstellungen</string>
 <string name="favorites_Button">Favoriten</string>
-<string name="search_button">Suche</string>
+<string name="search_button">Navigation</string>
 <string name="mapManager_Button">Kartendownload</string>
 <string name="navigation_Button">Navigation</string>
-<string name="toTracks_Button">Track aufnehmen</string>
+<string name="toTracks_Button">Track aufzeichnen</string>
 
 <color name="menu_background">#FF9030</color>
 <color name="color_light_gray">#d7d7d7</color>
@@ -1302,12 +1302,14 @@ Viel Spass bei Ihrem nächsten Abenteuer !
   </string> 
   
   <!-- nogago Map Downloader -->
-  <string name="run_task">FÜhre aus</string>
+  <string name="run_task">Führe aus</string>
+  <string name="load_contours_also_title">Möchten Sie die zugehörigen Höhenlinien ebenfalls herunterladen?</string>
     <string name="task_working">Arbeite an %1$d...</string>
     <string name="task_starting">Starte...</string>
     <string name="task_cancelled">Auf Ihren Wunsch hin abgebrochen.</string>
     <string name="task_completed">Aufgabe mit Ergebnis (%1$s) abgeschlossen</string>
     <string name="task_download">Lade %1$s ...</string>
+    <string name="task_download_contour">Lade %1$s mit Höhenlinien</string>
     <string name="hint_query">Stadt herunterladen</string>
     <string name="list_empty">Kein Ergebnis</string>
     <string name="error_network">Leider können sie nicht auf das Internet zugreifen, dies ist hierfür notwendig.</string>
@@ -1319,6 +1321,7 @@ Viel Spass bei Ihrem nächsten Abenteuer !
     <string name="c">Hauptteil</string>
     <string name="se">Südost</string>
     <string name="nw">Nordwest</string>
+    <string name="contour">Höhenlinien</string>
     <string name="ne">Nordost</string>
     <string name="sw">Südwest</string>
     <string name="e">Osten</string>

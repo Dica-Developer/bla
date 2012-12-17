@@ -186,7 +186,7 @@ public class SearchPOIActivity extends OsmandListActivity implements SensorEvent
 					amenityAdapter.getFilter().filter(s);
 				} else {
 					searchPOILevel.setEnabled(true);
-					searchPOILevel.setText(R.string.search_button);
+					searchPOILevel.setText(R.string.search_activity);
 				}
 			}
 			@Override
@@ -342,7 +342,7 @@ public class SearchPOIActivity extends OsmandListActivity implements SensorEvent
 			searchPOILevel.setEnabled(currentSearchTask.getStatus() != Status.RUNNING &&
 					filter.isSearchFurtherAvailable());
 		} else {
-			searchPOILevel.setText(R.string.search_button);
+			searchPOILevel.setText(R.string.search_activity);
 			searchPOILevel.setEnabled(currentSearchTask.getStatus() != Status.RUNNING && 
 					filter.isSearchFurtherAvailable());
 		}

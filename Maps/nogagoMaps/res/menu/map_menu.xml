@@ -12,7 +12,7 @@
         
         <item
             android:id="@+id/map_specify_point"
-            android:icon="@android:drawable/ic_menu_search"
+            android:icon="@drawable/button_icon_navigation_grey"
             android:title="@string/search_button">
         </item>
         <item
@@ -22,7 +22,7 @@
         </item>
         <item
             android:id="@+id/map_show_settings"
-            android:icon="@android:drawable/ic_menu_preferences"
+            android:icon="@drawable/button_icon_settings_grey"
             android:title="@string/settings_Button">
         </item>
 

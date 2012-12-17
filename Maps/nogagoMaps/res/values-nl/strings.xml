@@ -851,7 +851,7 @@ Veel plezier tijdens je volgende avonturen met onze apps, kaarten en tracks!
 <string name="map_Button">Kaart</string>
 <string name="settings_Button">Instellingen</string>
 <string name="favorites_Button">Favorieten</string>
-<string name="search_button">Zoeken</string>
+<string name="search_button">Navigatie</string>
 <string name="mapManager_Button">Kaart-downloadt</string>
 <string name="navigation_Button">Navigatie</string>
 <string name="toTracks_Button">record track</string>
@@ -1278,11 +1278,13 @@ Veel plezier tijdens je volgende avonturen met onze apps, kaarten en tracks!
   
   <!-- nogago Map Downloader -->
   <string name="run_task">Start</string>
+  <string name="load_contours_also_title">Do you also want to load the contours for this area?</string>
     <string name="task_working">Bezig met %1$d...</string>
     <string name="task_starting">Start...</string>
     <string name="task_cancelled">Opdracht geannuleerd zoals gevraagd.</string>
     <string name="task_completed">Opdracht afgewerkt met resultaat (%1$s)</string>
     <string name="task_download">Downloadt %1$s ...</string>
+    <string name="task_download_contour">Downloading %1$s en contouren</string>
     <string name="hint_query">Download stad</string>
     <string name="list_empty">Geen resultaten</string>
     <string name="error_network">Sorry, je hebt geen internet-toegang. Zorg dat je internet-toegang hebt om een kaart te downloaden.</string>
@@ -1296,6 +1298,7 @@ Veel plezier tijdens je volgende avonturen met onze apps, kaarten en tracks!
     <string name="nw">noord-west</string>
     <string name="ne">noord-oost</string>
     <string name="sw">zuid-west</string>
+    <string name="contour">contouren</string>
     <string name="e">oost</string>
     <string name="n">noord</string>
     <string name="w">west</string>

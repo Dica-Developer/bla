@@ -40,6 +40,7 @@ public class SearchPoiFilterActivity extends ListActivity {
 
 	public static final String SEARCH_LAT = SearchActivity.SEARCH_LAT;
 	public static final String SEARCH_LON = SearchActivity.SEARCH_LON;
+	public boolean startEditingPoiActivity = false;
 	
 
 	
@@ -108,30 +109,36 @@ public class SearchPoiFilterActivity extends ListActivity {
 			newIntent.putExtra(EditPOIFilterActivity.AMENITY_FILTER, poi.getFilterId());
 			updateIntentToLaunch(newIntent);
 			startActivityForResult(newIntent, 0);
-		}
+		} 
 	}
 
 	@Override
 	public void onListItemClick(ListView parent, View v, int position, long id) {
-		final PoiFilter filter = ((AmenityAdapter) getListAdapter()).getItem(position);
+		final PoiFilter filter = ((AmenityAdapter) getListAdapter())
+				.getItem(position);
 		/*
-		if (filter.getFilterId().equals(PoiFilter.CUSTOM_FILTER_ID)) {
-			filter.clearFilter();
-			showEditActivity(filter);
-			return;
-		}
-		if(!(filter instanceof SearchByNameFilter)){
-			ResourceManager rm = ((OsmandApplication) getApplication()).getResourceManager();
-			if(!rm.containsAmenityRepositoryToSearch(filter instanceof NameFinderPoiFilter)){
-				AccessibleToast.makeText(this, R.string.data_to_search_poi_not_available, Toast.LENGTH_LONG);
-				return;
-			}
+		if (position == 1) {
+			Intent newIntent = new Intent(SearchPoiFilterActivity.this, EditPOIFilterActivity.class);
+			newIntent.putExtra(EditPOIFilterActivity.AMENITY_FILTER, filter.getFilterId());
+			updateIntentToLaunch(newIntent);
+			startActivityForResult(newIntent, 0);
 		}
 		*/
-		final Intent newIntent = new Intent(SearchPoiFilterActivity.this, SearchPOIActivity.class);
-		newIntent.putExtra(SearchPOIActivity.AMENITY_FILTER, filter.getFilterId());
-		updateIntentToLaunch(newIntent);
-		startActivityForResult(newIntent, 0);
+		/*
+		 * if (filter.getFilterId().equals(PoiFilter.CUSTOM_FILTER_ID)) {
+		 * filter.clearFilter(); showEditActivity(filter); return; } if(!(filter
+		 * instanceof SearchByNameFilter)){ ResourceManager rm =
+		 * ((OsmandApplication) getApplication()).getResourceManager();
+		 * if(!rm.containsAmenityRepositoryToSearch(filter instanceof
+		 * NameFinderPoiFilter)){ AccessibleToast.makeText(this,
+		 * R.string.data_to_search_poi_not_available, Toast.LENGTH_LONG);
+		 * return; } }
+		 */
+		
+			final Intent newIntent = new Intent(SearchPoiFilterActivity.this, SearchPOIActivity.class);
+			newIntent.putExtra(SearchPOIActivity.AMENITY_FILTER, filter.getFilterId());
+			updateIntentToLaunch(newIntent);
+			startActivityForResult(newIntent, 0);
 	}
 
 
@@ -153,13 +160,19 @@ public class SearchPoiFilterActivity extends ListActivity {
 			label.setText(model.getDisplaySubtype());
 			icon.setImageBitmap(model.getIcon());
 			
-			
-			
 			if(model.getFilterId().equals(SearchByNameFilter.FILTER_ID)) {
 				label.setText(model.getName());
 				icon.setImageResource(R.drawable.tab_icon_favourite_menu);
+				
+				
 			}
-			
+			/*
+			if (position == 1) {
+				startEditingPoiActivity = true;
+				label.setText(getString(R.string.poi_filter_by_category));
+				icon.setImageResource(R.drawable.tab_icon_favourite_menu);
+			}
+			*/
 			/*
 			if(model.getFilterId().equals(PoiFilter.CUSTOM_FILTER_ID)) {
 				icon.setImageResource(android.R.drawable.ic_input_get);
