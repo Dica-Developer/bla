@@ -23,7 +23,7 @@ import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
 import com.google.android.apps.mytracks.util.StringUtils;
 import com.google.android.apps.mytracks.util.SystemUtils;
-import com.nogago.android.tracks.lib.R;
+import com.nogago.android.tracks.R;
 
 import android.content.Context;
 import android.location.Location;
@@ -77,6 +77,7 @@ public class TcxTrackWriter implements TrackFormatWriter {
 
   // My Tracks categories that are considered as TCX running sport type.
   private static final int TCX_SPORT_RUNNING_IDS[] = {
+      
       R.string.activity_type_running,
       R.string.activity_type_speed_walking,
       R.string.activity_type_street_running,

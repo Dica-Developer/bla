@@ -63,7 +63,7 @@ public class FileUtils {
   }
 
   /**
-   * Builds a path inside the My Tracks directory in the SD card.
+   * Builds a path inside the nogagoTracks directory in the SD card.
    *
    * @param components the path components inside the mytracks directory
    * @return the full path to the destination

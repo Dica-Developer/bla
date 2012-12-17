@@ -16,8 +16,8 @@ limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   android:installLocation="auto"
-  android:versionCode="48"
-  android:versionName="2.0"
+  android:versionCode="51"
+  android:versionName="2.0.1"
   package="com.nogago.android.tracks" >
   <supports-screens android:normalScreens="true"
       android:smallScreens="true"/>
@@ -236,6 +236,7 @@ limitations under the License.
     <activity android:name=".SensorSettingsActivity" />
     <activity android:name=".StatsSettingsActivity" />
     <activity android:name=".SharingSettingsActivity" />
+    <activity android:name=".MapManagerActivity" />
     <!-- Services -->
     <service
       android:exported="false"
@@ -246,8 +247,7 @@ limitations under the License.
       android:exported="true"
       android:icon="@drawable/arrow_320"
       android:label="@string/my_tracks_recording_service"
-      android:name="com.nogago.android.tracks.services.TrackRecordingService"
-      android:permission="com.google.android.apps.mytracks.WRITE_TRACK_DATA" />
+      android:name="com.nogago.android.tracks.services.TrackRecordingService" />
     <!-- Receivers -->
     <receiver android:name="com.nogago.android.tracks.BootReceiver" >
       <intent-filter>

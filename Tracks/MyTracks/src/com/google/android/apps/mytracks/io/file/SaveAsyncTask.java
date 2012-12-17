@@ -46,6 +46,7 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
   private final TrackFileFormat trackFileFormat;
   private final long trackId;
   private final boolean useTempDir;
+  private final boolean onlyOne;
 
   private final Context context;
   private final MyTracksProviderUtils myTracksProviderUtils;
@@ -73,11 +74,12 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
    * @param useTempDir true to use the temp directory
    */
   public SaveAsyncTask(SaveActivity saveActivity, TrackFileFormat trackFileFormat, long trackId,
-      boolean useTempDir) {
+      boolean useTempDir, boolean onlyOne) {
     this.saveActivity = saveActivity;
     this.trackFileFormat = trackFileFormat;
     this.trackId = trackId;
     this.useTempDir = useTempDir;
+    this.onlyOne = onlyOne;
     context = saveActivity.getApplicationContext();
     
     myTracksProviderUtils = MyTracksProviderUtils.Factory.get(saveActivity);

@@ -18,16 +18,16 @@ package com.nogago.android.tracks;
 
 import com.google.android.apps.mytracks.io.file.KmlTrackWriter;
 import com.google.android.apps.mytracks.io.file.SaveAsyncTask;
-import com.google.android.apps.mytracks.io.file.TrackWriterFactory;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
 import com.google.android.apps.mytracks.util.DialogUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
-import com.nogago.android.tracks.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -46,6 +46,8 @@ public class SaveActivity extends Activity {
   public static final String EXTRA_TRACK_FILE_FORMAT = "track_file_format";
   public static final String EXTRA_TRACK_ID = "track_id";
   public static final String EXTRA_PLAY_TRACK = "play_track";
+  public static final String EXTRA_SHOW_TRACK = "show_track";
+  public static final String EXTRA_FOLLOW_TRACK = "follow_track";
 
   public static final String GOOGLE_EARTH_KML_MIME_TYPE = "application/vnd.google-earth.kml+xml";
   public static final String GOOGLE_EARTH_PACKAGE = "com.google.earth";
@@ -61,6 +63,8 @@ public class SaveActivity extends Activity {
   private TrackFileFormat trackFileFormat;
   private long trackId;
   private boolean playTrack;
+  private boolean showTrack;
+  private boolean followTrack;
 
   private SaveAsyncTask saveAsyncTask;
   private ProgressDialog progressDialog;
@@ -82,14 +86,31 @@ public class SaveActivity extends Activity {
     trackFileFormat = intent.getParcelableExtra(EXTRA_TRACK_FILE_FORMAT);
     trackId = intent.getLongExtra(EXTRA_TRACK_ID, -1L);
     playTrack = intent.getBooleanExtra(EXTRA_PLAY_TRACK, false);
+    showTrack = intent.getBooleanExtra(EXTRA_SHOW_TRACK, false);
+    followTrack = intent.getBooleanExtra(EXTRA_FOLLOW_TRACK, false);
 
     Object retained = getLastNonConfigurationInstance();
     if (retained instanceof SaveAsyncTask) {
       saveAsyncTask = (SaveAsyncTask) retained;
       saveAsyncTask.setActivity(this);
     } else {
-      saveAsyncTask = new SaveAsyncTask(this, trackFileFormat, trackId, playTrack);
-      saveAsyncTask.execute();
+      if (showTrack == true) {
+        playTrack = showTrack;
+        boolean onlyOne = true;
+        saveAsyncTask = new SaveAsyncTask(this, trackFileFormat, trackId, playTrack, onlyOne);
+        saveAsyncTask.execute();
+        playTrack = false;
+      } if (followTrack == true) {
+        playTrack = followTrack;
+        boolean onlyOne = true;
+        saveAsyncTask = new SaveAsyncTask(this, trackFileFormat, trackId, playTrack, onlyOne);
+        saveAsyncTask.execute();
+        playTrack = false;
+      } else {
+        boolean onlyOne = false;
+        saveAsyncTask = new SaveAsyncTask(this, trackFileFormat, trackId, playTrack, onlyOne);
+        saveAsyncTask.execute();
+      }
     }
   }
 
@@ -193,14 +214,51 @@ public class SaveActivity extends Activity {
    * To be invoked after showing the result dialog.
    */
   private void onPostResultDialog() {
-    if (success && playTrack) {
-      Intent intent = new Intent()
-          .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)
-          .putExtra(GOOGLE_EARTH_TOUR_FEATURE_ID, KmlTrackWriter.TOUR_FEATURE_ID)
-          .setClassName(GOOGLE_EARTH_PACKAGE, GOOGLE_EARTH_CLASS)
-          .setDataAndType(Uri.fromFile(new File(savedPath)), GOOGLE_EARTH_KML_MIME_TYPE);
-      startActivity(intent);
+    String nogagoPackage = "com.nogago.android.maps";
+    String mapActivity = ".activities.MapActivity";
+    // Alert if nogago Maps is not installed
+    AlertDialog.Builder notInstalled = new AlertDialog.Builder(this);
+    notInstalled.setMessage(R.string.maps_not_installed).setCancelable(false)
+        .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
+          public void onClick(DialogInterface dialog, int id) {
+            Uri uri = Uri.parse(Constants.MAPS_DOWNLOAD_URL);
+            Intent showUri = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(showUri);
+          }
+        }).setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
+          public void onClick(DialogInterface dialog, int id) {
+            dialog.cancel();
+            Intent intent = new Intent();
+            intent.setComponent(new ComponentName("com.nogago.android.tracks", "com.nogago.android.tracks.TrackListActivity"));
+            startActivity(intent);
+          }
+        });
+    final AlertDialog alertnotInstalled = notInstalled.create();
+    
+    try {
+      if (success && playTrack) {
+        Intent intent = new Intent()
+            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)
+            .putExtra(GOOGLE_EARTH_TOUR_FEATURE_ID, KmlTrackWriter.TOUR_FEATURE_ID)
+            .setClassName(GOOGLE_EARTH_PACKAGE, GOOGLE_EARTH_CLASS)
+            .setDataAndType(Uri.fromFile(new File(savedPath)), GOOGLE_EARTH_KML_MIME_TYPE);
+        startActivity(intent);
+      } else if (success && showTrack) {
+        Intent intent = new Intent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setComponent(new ComponentName(nogagoPackage, nogagoPackage + mapActivity));
+        intent.putExtra("from Tracks", true);
+        startActivity(intent);
+      } else if (success && followTrack) {
+        Intent intent = new Intent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setComponent(new ComponentName(nogagoPackage, nogagoPackage + mapActivity));
+        intent.putExtra("follow", true);
+        startActivity(intent);
+      }
+      finish();
+    } catch (ActivityNotFoundException e) {
+      alertnotInstalled.show();
     }
-    finish();
   }
 }

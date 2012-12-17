@@ -44,7 +44,6 @@ import com.nogago.android.task.OnTaskCompleteListener;
 import com.nogago.android.task.TrackableTask;
 import com.nogago.android.tracks.io.GPXUploadTask;
 import com.nogago.android.tracks.io.UploadTaskException;
-import com.nogago.android.tracks.lib.R;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -92,8 +91,10 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   private TrackRecordingServiceConnection trackRecordingServiceConnection;
   private TabHost tabHost;
   private TabManager tabManager;
-  private long trackId;
+  public long trackId;
+  public static long TRACK_ID = -1L;
   private long markerId;
+  public static boolean RECORDING = false;
 
   private MenuItem stopRecordingMenuItem;
   private MenuItem insertMarkerMenuItem;
@@ -139,11 +140,23 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   protected boolean isLocationDisplayed() {
     return true;
   }
+  public long returnTrackId() {
+    if (trackId > 0) {
+      TRACK_ID = trackId;
+      return TRACK_ID;
+    } 
+    return -1L;
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     handleIntent(getIntent());
+    returnTrackId();
+    Intent intent2 = getIntent();
+    Intent intent;
+    boolean clicked = intent2.getBooleanExtra("clicked", false);
+    boolean fromTrackList = intent2.getBooleanExtra("fromTrackList", false);
     ApiAdapterFactory.getApiAdapter().hideTitle(this);
     setContentView(R.layout.track_detail);
 
@@ -176,6 +189,24 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       tabHost.setCurrentTabByTag(savedInstanceState.getString(CURRENT_TAG_KEY));
     }
     showMarker();
+    if(clicked == true) {
+      AnalyticsUtils.sendPageViews(this, "/action/play");
+      intent = IntentUtils.newIntent(this, SaveActivity.class)
+          .putExtra(SaveActivity.EXTRA_TRACK_ID, TRACK_ID)
+          .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.GPX)
+          .putExtra(SaveActivity.EXTRA_SHOW_TRACK, true)
+          .putExtra("EXTRA_RECORDING", RECORDING);
+      startActivity(intent);
+    }
+    if(fromTrackList == true) {
+      AnalyticsUtils.sendPageViews(this, "/action/play");
+      intent = IntentUtils.newIntent(this, SaveActivity.class)
+          .putExtra(SaveActivity.EXTRA_TRACK_ID, TRACK_ID)
+          .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.GPX)
+          .putExtra(SaveActivity.EXTRA_FOLLOW_TRACK, true)
+          .putExtra("EXTRA_RECORDING", RECORDING);
+      startActivity(intent);
+    }
   }
 
   @Override
@@ -481,6 +512,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     String title;
     if (isRecording) {
       title = getString(R.string.track_detail_title_recording);
+      RECORDING = true;
     } else {
       Track track = MyTracksProviderUtils.Factory.get(this).getTrack(trackId);
       title = track != null ? track.getName() : getString(R.string.my_tracks_app_name);
@@ -532,14 +564,14 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
    * 
    * @param trackFileFormat the track file format
    */
-  private void startSaveActivity(TrackFileFormat trackFileFormat) {
+  public void startSaveActivity(TrackFileFormat trackFileFormat) {
+    
     AnalyticsUtils.sendPageViews(this, "/action/save");
     Intent intent = IntentUtils.newIntent(this, SaveActivity.class)
         .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
         .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) trackFileFormat);
     startActivity(intent);
   }
-
   /**
    * Returns true if Google Earth app is installed.
    */

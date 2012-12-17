@@ -21,6 +21,7 @@ import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
 import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
 import com.nogago.android.tracks.R;
+import com.nogago.android.tracks.SaveActivity;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -102,5 +103,10 @@ public class IntentUtils {
             context.getString(R.string.share_track_share_file_body, trackDescription))
         .putExtra(context.getString(R.string.track_id_broadcast_extra), trackId)
         .setType(trackFileFormat.getMimeType());
+  }
+
+  public static Intent saveActivity(Class<SaveActivity> cls) {
+    return new Intent().addFlags(
+        Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
   }
 }

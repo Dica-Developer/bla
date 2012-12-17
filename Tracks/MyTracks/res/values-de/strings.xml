@@ -108,10 +108,8 @@
     <string name="description_track_point" translation_description="Label for a track point">Punkt</string>
     <string name="description_track_segment" translation_description="Label for a track segment">Segment</string>
     <string name="eula_accept" translation_description="In the &apos;Terms of Service&apos; dialog, the button to accept.">Zustimmen</string>
-    <string name="eula_body" 
-        translation_description="The body in the &apos;Terms of Service. See http://m.google.com/toscountry.
-                %1$s: host name, &apos;m.google.com&apos;">
-                Für die Nutzung der NOGAGO Plattform (www.nogago.com) gelten ausschließlich unsere Allgemeinen Geschäftsbedingungen („AGB“), die der Benutzer im Rahmen seiner Registrierung akzeptiert. Die bei Anmeldung gewählten Zugangsdaten (user name, password) sind vom Benutzer geheim zu halten und vor dem Zugriff Dritter angemessen zu schützen. Entgegenstehende Vertragsbedingungen des Benutzers werden nicht Vertragsbestandteil, auch wenn wir ihnen nicht widersprechen. Bitte registrieren Sie sich nicht und nutzen Sie unser Internetangebot nicht weiter, wenn Sie mit unseren AGB nicht einverstanden sind.
+    <string name="eula_body" translation_description="The body in the &apos;Terms of Service. See http://m.google.com/toscountry.
+                %1$s: host name, &apos;m.google.com&apos;">                Für die Nutzung der NOGAGO Plattform (www.nogago.com) gelten ausschließlich unsere Allgemeinen Geschäftsbedingungen („AGB“), die der Benutzer im Rahmen seiner Registrierung akzeptiert. Die bei Anmeldung gewählten Zugangsdaten (user name, password) sind vom Benutzer geheim zu halten und vor dem Zugriff Dritter angemessen zu schützen. Entgegenstehende Vertragsbedingungen des Benutzers werden nicht Vertragsbestandteil, auch wenn wir ihnen nicht widersprechen. Bitte registrieren Sie sich nicht und nutzen Sie unser Internetangebot nicht weiter, wenn Sie mit unseren AGB nicht einverstanden sind.
 
 Allgemeine Geschäftsbedingungen der Nogago GmbH für die Nutzung der NOGAGO Plattform
 
@@ -133,8 +131,7 @@ Stand: 17. Juni 2011
      NOGAGO ist ein eingetragenes Warenzeichen der nogago GmbH in Deutschland, der EU, USA, China und Japan. Die Nutzung des Namens NOGAGO und des NOGAGO Logo oder der NOGAGO Grafiken erfordert unsere vorherige schriftliche Zustimmung.
      Die Nogago GmbH, die Benutzer der NOGAGO Plattform und die Anbieter von Routen und Karten sind voneinander unabhängige Parteien. Weder aus unseren AGB noch aus der Nutzung unserer Dienste kann eine Partnerschaft zwischen Unternehmen, ein Dienst- oder Werkvertrag oder ein Arbeitsverhältnis hergeleitet werden.
     Diese AGB unterliegen deutschem Recht. Das UN Kaufrecht wird ausgeschlossen. Gerichtsstand ist Baden-Baden, sofern Sie eingetragener Kaufmann sind und die Nutzung von NOGAGO zum Betrieb Ihres Handelsgewerbes gehört.
-    Sollte eine Bestimmung dieser AGB unwirksam sein oder werden, so bleibt die Rechtswirksamkeit der übrigen Bestimmungen hiervon unberührt.
-</string>
+    Sollte eine Bestimmung dieser AGB unwirksam sein oder werden, so bleibt die Rechtswirksamkeit der übrigen Bestimmungen hiervon unberührt.</string>
     <string name="eula_copyright_year" translation_description="The copyright year in the &apos;Terms of Service&apos;. See       http://m.google.com/toscountry. \u00A9 is the unicode value for the copyright symbol.">\u00A9 2012</string>
     <string name="eula_date" translation_description="The date in the &apos;Terms of Service&apos;. See       http://m.google.com/toscountry.">1. März 2012</string>
     <string name="eula_decline" translation_description="In the &apos;Terms of Service&apos; dialog, the button to decline.">Ablehnen</string>
@@ -154,10 +151,7 @@ Stand: 17. Juni 2011
     <string name="generic_save" translation_description="The text on a button to say save.">Speichern</string>
     <string name="generic_success_title" translation_description="The title on an alert dialog indicating success.">Erfolgreich</string>
     <string name="gps_need_to_enable" translation_description="In the main view, the message on the top asking the user to enable       GPS.">Tippen Sie hier, um die Einstellungen für \"Standortdienste\" aufzurufen und die Option \"GPS-Satelliten\" zu aktivieren. Drücken Sie die Zurück-Taste, um zurückzukehren.</string>
-    <string name="gps_not_found" 
-        translation_description="On application start, message when there is no GPS on the device.">
-        Das Gerät sendet kein GPS-Signal.
-    </string>
+    <string name="gps_not_found" translation_description="On application start, message when there is no GPS on the device.">        Das Gerät sendet kein GPS-Signal.</string>
     <string name="gps_wait_for_signal" translation_description="In the main view, the message on the top indicating My Tracks is       waiting for a better GPS signal.">Es wird auf ein besseres GPS-Signal gewartet. Achten Sie darauf, dass der Himmel sichtbar ist.</string>
     <string name="help_about" translation_description="In the &apos;Help&apos; page, the button on the bottom to open the &apos;About My       Tracks&apos; dialog.">Über nogago Tracks</string>
     <string name="help_battery_life_answer" translation_description="In the &apos;Help&apos; page, the answer on battery life.">Der GPS-Empfänger verbraucht viel Strom, sodass die Laufzeit für einen voll aufgeladenen Akku in der Regel weniger als 5 Stunden beträgt. Sie hängt von vielen Faktoren ab, einschließlich der Signalstärke, des Akkuladezustands und parallel ausgeführter Aufgaben. Deaktivieren Sie einige oder alle Schnittstellen des Telefons, um die Akkulaufzeit zu verlängern. Der Flugmodus erzielt die besten Ergebnisse.</string>
@@ -245,25 +239,19 @@ Stand: 17. Juni 2011
     <string name="menu_map_mode" translation_description="In the menu, to switch the display to the map mode.        Character limit: ~21 (1 line)">Kartenmodus</string>
     <string name="menu_markers" translation_description="In the menu, to show a list of markers for the current track.        Character limit: ~21 (1 line)">Markierungen</string>
     <string name="menu_play" translation_description="In the menu, to play a track.        Character limit: ~21 (1 line)">Wiedergeben</string>
-    <string name="menu_record_track" 
-        translation_description="In the menu, to start recording a track.
-          Character limit: ~21 (1 line)">
-       	Track aufzeichnen
-   	</string>
+    <string name="menu_record_track" translation_description="In the menu, to start recording a track.
+          Character limit: ~21 (1 line)">       	Track aufzeichnen</string>
     <string name="menu_satellite_mode" translation_description="In the menu, to switch the display to the satellite mode.        Character limit: ~21 (1 line)">Satellitenmodus</string>
     <string name="menu_save" translation_description="In the menu, to save a track to the SD card. This menu item has a       submenu.        Character limit: ~21 (1 line)">Auf SD-Karte speichern</string>
     <string name="menu_save_all" translation_description="In the menu, to save all the tracks to the SD card. This menu item has       a submenu.        Character limit: ~21 (1 line)">Alle auf SD-Karte speichern</string>
     <string name="menu_save_format" translation_description="Under the save to SD card menu option, the option to save a track as a       certain file format.        %1$s: file format. &apos;GPX&apos;, &apos;KML&apos;, &apos;CSV&apos;, or &apos;TCX&apos;.       Character limit: ~21 (1 line)">Als %1$s speichern</string>
     <string name="menu_search" translation_description="In the menu, to start a textual search for tracks or markers.        Character limit: ~21 (1 line)">Suche</string>
-    <string name="menu_send_google" 
-        translation_description="In the menu, to send a track to Google.
-           Character limit: ~21 (1 line)">
-           An nogago.com senden
-           </string>
+    <string name="menu_send_google" translation_description="In the menu, to send a track to Google.
+           Character limit: ~21 (1 line)">           An nogago.com senden</string>
     <string name="menu_sensor_state" translation_description="In the menu, to go to the sensor state page.        Character limit: ~21 (1 line)">Sensorstatus</string>
     <string name="menu_settings" translation_description="In the menu, to go to the settings page.        Character limit: ~21 (1 line)">Einstellungen</string>
     <string name="menu_share" translation_description="In the menu, to share a track.        Character limit: ~21 (1 line)">Teilen</string>
-    <string name="menu_show_on_map" translation_description="In the menu, to show a track or a marker on the map.        Character limit: ~21 (1 line)">Auf Karte anzeigen</string>
+    <string name="menu_show_on_map" translation_description="In the menu, to show a track or a marker on the map.        Character limit: ~21 (1 line)">Track folgen</string>
     <string name="menu_split_frequency" translation_description="In the menu, to configure the split frequency, how frequent to insert a       split marker.        Character limit: ~21 (1 line)">Wegpunkthäufigkeit</string>
     <string name="menu_stop_recording" translation_description="In the menu, to stop recording a track.        Character limit: ~21 (1 line)">Aufzeichnung beenden</string>
     <string name="menu_voice_frequency" translation_description="In the menu, to configure the voice frequency, how frequent to announce       status.        Character limit: ~21 (1 line)">Ansagehäufigkeit</string>
@@ -421,10 +409,8 @@ Stand: 17. Juni 2011
     <string name="stats_average_moving_pace" translation_description="In the &apos;Stats&apos; page, the average moving pace.">Durchschnittliches Bewegungstempo</string>
     <string name="stats_average_moving_speed" translation_description="In the &apos;Stats&apos; page, the average moving speed.">Durchschnittliche Bewegungsgeschwindigkeit</string>
     <string name="stats_average_pace" translation_description="In the &apos;Stats&apos; page, the average pace.">&#216;Tempo</string>
-    <string name="stats_average_speed"
-         translation_description="In the &apos;Stats&apos; 
-         page, the average speed.">
-         \u00D8 Geschw.</string>
+    <string name="stats_average_speed" translation_description="In the &apos;Stats&apos; 
+         page, the average speed.">         \u00D8 Geschw.</string>
     <string name="stats_elevation" translation_description="In the &apos;Stats&apos; page, the elevation.        Character limit: ~23 (1 line)">Höhe</string>
     <string name="stats_elevation_gain" translation_description="In the &apos;Stats&apos; page, the elevation gain.">Höhenuntersch.</string>
     <string name="stats_fastest_pace" translation_description="In the &apos;Stats&apos; page, the fastest pace.">Schnellstes Tempo</string>
@@ -451,16 +437,10 @@ Stand: 17. Juni 2011
     <string name="track_edit_activity_type_hint" translation_description="In the page to edit a track, the hint in the &apos;Activity type&apos; text field       when it is empty.">Art der Aktivität</string>
     <string name="track_edit_new_track_title" translation_description="The title of the track edit page when saving a new track.">Neuer Track</string>
     <string name="track_list_delete_all_confirm_message" translation_description="When deleting all the tracks, the confirmation dialog message informing       the user that all tracks and markers will be permanently deleted from the phone.">Alle Tracks und Markierungen werden endgültig vom Telefon gelöscht.</string>
-    <string name="track_list_empty_message" 
-        translation_description="When the track list is empty, the message
-         informing the user to click on the record button to start a new recording">
-        Ihre Trackliste ist leer, klicken Sie auf die Schaltfläche \"Track aufzeichnen\" im Hauptmenü um Ihr erstes Abenteuer aufzuzeichnen.
-    </string>
+    <string name="track_list_empty_message" translation_description="When the track list is empty, the message
+         informing the user to click on the record button to start a new recording">        Ihre Trackliste ist leer, klicken Sie auf die Schaltfläche \"Track aufzeichnen\" im Hauptmenü um Ihr erstes Abenteuer aufzuzeichnen.</string>
     <string name="track_list_record_error" translation_description="When starting a new track recording, the error message informing the       user not able to record and asking the user to try again.">Die Aufzeichnung kann nicht gestartet werden, da kein GPS-Signal verfügbar ist. Bitte versuchen Sie es erneut.</string>
-    <string name="track_list_record_success" 
-        translation_description="When starting a new track recording, a status message indicating success.">
-        Es wird gerade ein neuer Track aufgezeichnet.
-    </string>
+    <string name="track_list_record_success" translation_description="When starting a new track recording, a status message indicating success.">        Es wird gerade ein neuer Track aufgezeichnet.</string>
     <string name="track_name_format" translation_description="When creating a new track, the string format to name the track.        %1$d: track number. E.g., &apos;1&apos;.">Track %1$d</string>
     <string name="track_record_notification" translation_description="When recording a track, the message on the My Tracks notification       informing the user that My Tracks is actively recording his track.">Der Track wird aufgezeichnet...</string>
     <string name="unit_feet" translation_description="Abbreviation for feet. E.g., &apos;2 ft&apos;.">Fuß</string>
@@ -600,10 +580,7 @@ Stand: 17. Juni 2011
     und teilen Sie Ihre Routen mit Freunden.\n\nViel Spaß beim Erkunden!\nIhr nogago Tracks-Team</string>
     <string name="welcome_title" translation_description="The title of the welcome dialog.">Willkommen bei nogago Tracks</string>
     <!-- new for nogago -->
-      <string name="already_recording_track"
-      translation_description="Toast message when click on record in main menu and a track is already recorded">
-      Sie zeichnen bereits einen Track auf.
-  </string>
+    <string name="already_recording_track" translation_description="Toast message when click on record in main menu and a track is already recorded">      Sie zeichnen bereits einen Track auf.</string>
     <string name="nogago_label">Ihre nogago.com Zugangsdaten</string>
     <string name="nogago_register">Registrieren Sie sich bei nogago.com um Tracks hochzuladen</string>
     <string name="nogago_register_title">Bei nogago.com anmelden</string>
@@ -613,12 +590,12 @@ Stand: 17. Juni 2011
     <string name="button_yes">Ja</string>
     <string name="button_no">Nein</string>
     <string name="maps_not_installed">NogagoMaps ist nicht installiert, möchten Sie es kostenlos instalieren?</string>
-	<string name="wanna_start_maps">Wollen Sie nogago Maps starten?</string>
-	<string name="ok_button">OK</string>
-  <string name="wrong_credential">Zugangsdatenfehler</string>
-  <string name="error_username">Bitte prüfen Sie Ihre nogago Kontodaten.</string>
-      <string name="progressbar_title">Der Track wird gesendet...</string>
-      <string name="successfully_uploaded_track">Ihr Track wurde erfolgreich zu nogago.com hochgeladen!</string>
+    <string name="wanna_start_maps">Wollen Sie nogago Maps starten?</string>
+    <string name="ok_button">OK</string>
+    <string name="wrong_credential">Zugangsdatenfehler</string>
+    <string name="error_username">Bitte prüfen Sie Ihre nogago Kontodaten.</string>
+    <string name="progressbar_title">Der Track wird gesendet...</string>
+    <string name="successfully_uploaded_track">Ihr Track wurde erfolgreich zu nogago.com hochgeladen!</string>
     <!-- new for Menu -->
     <string name="help">Hilfe</string>
     <string name="close">Schließen</string>
@@ -626,5 +603,6 @@ Stand: 17. Juni 2011
     <string name="show_tracklist_button">Trackliste</string>
     <string name="show_statistics_button">Gesamtstatistik</string>
     <string name="show_settings_button">Einstellungen</string>
-	<string name="error_network">Leider können sie nicht auf das Internet zugreifen, dies ist hierfür notwendig.</string>
+    <string name="error_network">Leider können sie nicht auf das Internet zugreifen, dies ist hierfür notwendig.</string>
+
 </resources>

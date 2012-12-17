@@ -33,6 +33,7 @@ import com.google.android.apps.mytracks.util.StringUtils;
 import com.google.android.apps.mytracks.util.TrackIconUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -472,12 +473,27 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   private boolean handleContextItem(int itemId, long trackId) {
     Intent intent;
     switch (itemId) {
-      /*case R.id.list_context_menu_show_on_map:
-        intent = IntentUtils.newIntent(this, TrackDetailActivity.class)
-            .putExtra(TrackDetailActivity.EXTRA_TRACK_ID, trackId);
+      
+      case R.id.list_context_menu_show_on_map:
+        intent = new Intent();
+        intent = IntentUtils.newIntent(this, TrackDetailActivity.class);
+        intent.putExtra(TrackDetailActivity.EXTRA_TRACK_ID, trackId);
+        /** directly to MapActivity
+        String nogagoPackage = "com.nogago.android.maps";
+        String mapActivity = ".activities.MapActivity";
+        intent.setComponent(new ComponentName(nogagoPackage, nogagoPackage + mapActivity));
+        intent.putExtra("follow", true);
+        startActivity(intent);
+        */
+        String trackPackage ="com.nogago.android.tracks";
+        String trackDetailActivity = ".TrackDetailActivity";
+        intent.setComponent(new ComponentName(trackPackage, trackPackage+trackDetailActivity));
+        intent.putExtra("fromTrackList", true);
+        
         startActivity(intent);
         return true;
-        */
+        
+        
       case R.id.list_context_menu_edit:
         intent = IntentUtils.newIntent(this, TrackEditActivity.class)
             .putExtra(TrackEditActivity.EXTRA_TRACK_ID, trackId);
