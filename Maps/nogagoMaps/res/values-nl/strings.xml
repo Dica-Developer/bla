@@ -445,7 +445,7 @@
 
 	<string name="tip_search">Zoeken</string>
 	<string name="tip_search_t">\tU kunt direct op de kaart naar plaatsen zoeken or zoeken naar een adres, een locatie, een interessepunt of een favoriet.
-\n\tDoor in het hoofdmenu op \'Zoeken\' te drukken, worden de zoekacties geopend. Voor elk gevonden resultaat, biedt het contextmenu 2 opties: \'Selecteer als bestemming\' of \'Toon op kaart\'.</string>
+\n\tDoor in het hoofdmenu op \'Navigatie\' te drukken, worden de zoekacties geopend. Voor elk gevonden resultaat, biedt het contextmenu 2 opties: \'Selecteer als bestemming\' of \'Toon op kaart\'.</string>
 
 	<string name="tip_map_context_menu">Kaart-ContextMenu</string>
 	<string name="tip_map_context_menu_t">\tHet kaart-contextmenu is beschikbaar door een lange druk op de kaart of door op de trackball knop te drukken.
@@ -1341,6 +1341,7 @@ Veel plezier tijdens je volgende avonturen met onze apps, kaarten en tracks!
     <string name="nogago_register_desc">Registreer bij nogago.com om kaarten te downloaden op je telefoon.</string>
     <string name="wrong_credential">Login-gegevens error</string>
     <string name="tip_imprint">Help voor nogago Maps</string>
+    <string name="not_available_on_BB"> Deze functie is nog niet beschikbaar voor BlackBerry apparaten</string>
 	<string name="tip_imprint_t">
 
 
@@ -1357,6 +1358,16 @@ Veel plezier tijdens je volgende avonturen met onze apps, kaarten en tracks!
 \nDe firma nogago GmbH is opgegeven bij het kantongerecht Mannheim onder de firmanummer HRB 712259 met bedrijfszetel in Loffenau in het Zwarte Woud, Duitsland. De leiding over de zaak heeft Dr. Raphael Volz, en de belastingen op de toegevoegde waarde lopen onder de EU belastingsnummer DE268271181. nogago is een dochterfirma van Volz Innovation GmbH.
 \n
 \nnogago Maps is Open Source en is onderhevig aan de GNU GPL v3 Licentie, zie http://www.gnu.org/copyleft/gpl.html. nogago Maps baseert op OSMAND.
+\n
+\nDe kaartgegevens die onder de ODBL-licentie staan, zijn afgeleid uit het Openstreetmap-project.
+\n
+\nDe hoogtelijnen zijn afkomstig van de „2000 Shuttle Radar Topography Mission“ von Nasa en werden handmatig bewerkt door http://www.viewfinderpanoramas.org.
+\nJonathan de Ferranti BA
+\nLochmill Farm
+\nNewburgh
+\nFife
+\nKY14 6EX
+\nUnited Kingdom
 	</string>
 
 </resources>

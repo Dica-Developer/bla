@@ -204,7 +204,7 @@
 	<string name="download_files_question_space">Free space now {2} MB! Download {0} file(s) ({1} MB)?</string>
 	
 	<string name="tip_select_destination_point">Select Destination</string>
-	<string name="tip_select_destination_point_t">\tYou can select a destination directly in the map (context menu, then \'Set as destination\'), in all search activities, or via long pressing an entry in your \'List of Favorite Points\'. 
+	<string name="tip_select_destination_point_t">\tYou can select a destination directly in the map (context menu, then \'Set as destination\'), in all navigation activities, or via long pressing an entry in your \'List of Favorite Points\'. 
 \n\tThe destination is marked as an orange disk on the map and nogago Maps displays the distance to it and the direction to it (orange triangle).</string> 
 
 	<string name="tip_recent_changes_0_6_9_t">Changes in 0.6.9 :
@@ -452,7 +452,7 @@
 
 	<string name="tip_search">Searching</string>
 	<string name="tip_search_t">\tYou can search for places directly on the map, or by address, by location, as POI, or as predefined favorite.
-\n\tPressing \'Search\' in the main menu opens the search activities. For all hits a context menu offers 2 options: \'Set as destination\' or \'Show on map\'.</string>
+\n\tPressing \'Navigation\' in the main menu opens the search activities. For all hits a context menu offers 2 options: \'Set as destination\' or \'Show on map\'.</string>
 
 	<string name="tip_map_context_menu">Map Context Menu</string>
 	<string name="tip_map_context_menu_t">\tThe map context menu is available by pressing and holding on the map or by pressing the trackball button.
@@ -1358,6 +1358,7 @@ Have fun with our apps, maps and tracks for your next adventures !
     <string name="nogago_register_desc">Sign up with nogago.com to download maps to your phone.</string>
     <string name="wrong_credential">Credentials error</string>
   <string name="tip_imprint">Copyright (C) 2012 nogago GmbH</string>
+  <string name="not_available_on_BB">This function is not yet available on BlackBerry-Devices</string>
 	<string name="tip_imprint_t">
 \nA video tour for the major features of this app can be watched at blog.nogago.com.
 \n
@@ -1383,5 +1384,15 @@ Have fun with our apps, maps and tracks for your next adventures !
 \n\t Contact us at support@nogago.com
 \n\t
 \n\t nogago Maps is Open Source and available under the GNU GPL v3. See http://www.gnu.org/copyleft/gpl.html. nogago Maps is forked from OSMAND.
+\n
+\nDie unter der ODBL-Lizenz stehenden Kartendaten sind aus dem Openstreetmap-Projekt abgeleitet.
+\n
+\nThe contour-lines are from NASA "2000 Shuttle Radar Topography Mission" and manually revised by http://www.viewfinderpanoramas.org:
+\nJonathan de Ferranti BA
+\nLochmill Farm
+\nNewburgh
+\nFife
+\nKY14 6EX
+\nUnited Kingdom
 	</string>
 </resources>

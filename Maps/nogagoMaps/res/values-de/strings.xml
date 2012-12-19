@@ -216,7 +216,7 @@
 	<!-- <string name="show_zoom_level_descr">Immer Zoom-Level statt Maßstab anzeigen.</string> -->
 	<!-- <string name="show_zoom_level">Zoom-Level zeigen</string> -->
 	<string name="tip_select_destination_point">Ziel wählen</string>
-	<string name="tip_select_destination_point_t">\tEin Ziel kann direkt in der Karte gewählt werden (via Kontextmenü, \'Als Ziel wählen\'), in allen Such-Funktionen, oder in der Favoritenliste via langes Drücken. 
+	<string name="tip_select_destination_point_t">\tEin Ziel kann direkt in der Karte gewählt werden (via Kontextmenü, \'Als Ziel wählen\'), in allen Navigations-Funktionen, oder in der Favoritenliste via langes Drücken. 
 \n\tDer Zielpunkt wird als orangefarbener Punkt auf der Karte markiert. Zu einem gewählten Ziel zeigt nogago Maps in der Karte die Entfernung und die Richtung (oranges Dreieck).</string>
 
 	<string name="tip_recent_changes_0_6_9_t">Änderungen in 0.6.9 :
@@ -257,7 +257,7 @@
 	<string name="animate_route">Animation an</string>
 	
 	<string name="tip_recent_changes_0_6_8_t">Änderungen in v0.6.8:
-\n\t- Völlig neu entwickelte Suche (POI, Addressen)! Adress-Suche wesentlich beschleunigt. Einheitliche Suche mit vielen Optionen.
+\n\t- Völlig neu entwickelte Navigation (POI, Addressen)! Adress-Suche wesentlich beschleunigt. Einheitliche Navigation mit vielen Optionen.
 \n\t- POI namentliche Suche in großen Regionen / Ländern  
 \n\t- Flackernde Kartenanzeige für Tablets behoben (Issue 641)
 \n\t- Auto-center Option (Issue 356)
@@ -463,7 +463,7 @@
 
 	<string name="tip_search">Suchen</string>
 	<string name="tip_search_t">\tMan kann Orte direkt in der Karte suchen, oder über Adresse, Koordinaten, als POI, oder als abgespeicherter Favorit.
-\n\t\'Suche\' im Hauptmenü öffnet die Suchaktivitäten. Ein Kontextmenü für einen Treffer bietet 2 Optionen: \'Als Ziel wählen\' oder \'Zeige auf der Karte\'.</string>
+\n\t\'Navigation\' im Hauptmenü öffnet die Suchaktivitäten. Ein Kontextmenü für einen Treffer bietet 2 Optionen: \'Als Ziel wählen\' oder \'Zeige auf der Karte\'.</string>
 
 	<string name="tip_map_context_menu">Kontextmenü in der Karte</string>
 	<string name="tip_map_context_menu_t">\tDas Karten-Kontextmenü wird über ein langes Drücken auf einen Punkt in der Karte oder das Drücken des Trackball-Knopfes in der Kartenansicht aufgerufen.
@@ -1365,6 +1365,7 @@ Viel Spass bei Ihrem nächsten Abenteuer !
     <string name="nogago_register_desc">Registrieren Sie ihr nogago.com Konto, um Karten herunterzuladen.</string>
     <string name="wrong_credential">Bitte prüfen Sie Ihre nogago Kontodaten.</string>
 	<string name="tip_imprint">Hilfe zu nogago Maps</string>
+	<string name="not_available_on_BB">Diese Funktion steht für BlackBerry-Geräte leider noch nicht zur Verfügung</string>
 	<string name="tip_imprint_t">
 \nEine Video-Anleitung der wichtigsten Funktionen finden sie online auf blog.nogago.com. 
 \n
@@ -1379,5 +1380,15 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 \nDie nogago GmbH ist gemeldet am Amtsgericht Mannheim unter Firmennummer HRB 712259 mit Firmensitz in Loffenau im Schwarzwald, Deutschland. Die Geschäfte werden geführt von Dr. Raphael Volz und Mehrwertsteuern unter der EU Steuernummer DE268271181 abgeführt. nogago ist eine Tochterfirma der Volz Innovation GmbH.
 \n
 \nnogago Maps ist Open Source und unterliegt der GNU GPL v3 Lizenz, siehe http://www.gnu.org/copyleft/gpl.html. nogago Maps basiert auf OSMAND.
+\n
+\nDie unter der ODBL-Lizenz stehenden Kartendaten sind aus dem Openstreetmap-Projekt abgeleitet.
+\n
+\nDie Höhenlinien stammen aus der "2000 Shuttle Radar Topography Mission" der Nasa und wurden von http://www.viewfinderpanoramas.org manuell überarbeitet:
+\nJonathan de Ferranti BA
+\nLochmill Farm
+\nNewburgh
+\nFife
+\nKY14 6EX
+\nUnited Kingdom
 	</string>
 </resources>
