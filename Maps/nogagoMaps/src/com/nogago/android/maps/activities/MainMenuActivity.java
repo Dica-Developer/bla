@@ -14,6 +14,7 @@ import com.nogago.android.maps.Constants;
 import com.nogago.android.maps.R;
 import com.nogago.android.maps.Version;
 import com.nogago.android.maps.activities.search.SearchActivity;
+import com.nogago.android.maps.activities.search.SearchAddressActivity;
 import com.nogago.android.maps.plus.OsmandApplication;
 import com.nogago.android.maps.plus.OsmandSettings;
 import com.nogago.android.maps.plus.ResourceManager;
@@ -47,6 +48,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainMenuActivity extends Activity {
 
@@ -252,29 +254,43 @@ public class MainMenuActivity extends Activity {
 		toTracksButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				 // Alert if nogago Maps is installed
-			    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-			    builder.setMessage(R.string.wanna_start_tracks).setCancelable(false)
-			        .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
-			          public void onClick(DialogInterface dialog, int id) {
-			            try {
-				            String nogagoPackage = "com.nogago.android.tracks";
-				            String TracksActivity = ".MainMenuActivity";
-				            final Intent toTracks = new Intent();
-							toTracks.setComponent(new ComponentName(nogagoPackage, nogagoPackage + TracksActivity));
-							toTracks.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-							activity.startActivity(toTracks);
-			            } catch (ActivityNotFoundException e) {
-			              alertnotInstalled.show();
-			            }
-			          }
-			        }).setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
-			          public void onClick(DialogInterface dialog, int id) {
-			            dialog.cancel();
-			          }
-			        });
-			    AlertDialog alert = builder.create();
-				alert.show();
+				if (Build.BRAND.equals("BlackBerry")) {
+					notavailableToast();
+				} else {
+					// Alert if nogago Maps is installed
+					AlertDialog.Builder builder = new AlertDialog.Builder(
+							activity);
+					builder.setMessage(R.string.wanna_start_tracks)
+							.setCancelable(false)
+							.setPositiveButton(R.string.button_yes,
+									new DialogInterface.OnClickListener() {
+										public void onClick(
+												DialogInterface dialog, int id) {
+											try {
+												String nogagoPackage = "com.nogago.android.tracks";
+												String TracksActivity = ".MainMenuActivity";
+												final Intent toTracks = new Intent();
+												toTracks.setComponent(new ComponentName(
+														nogagoPackage,
+														nogagoPackage
+																+ TracksActivity));
+												toTracks.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+												activity.startActivity(toTracks);
+											} catch (ActivityNotFoundException e) {
+												alertnotInstalled.show();
+											}
+										}
+									})
+							.setNegativeButton(R.string.button_no,
+									new DialogInterface.OnClickListener() {
+										public void onClick(
+												DialogInterface dialog, int id) {
+											dialog.cancel();
+										}
+									});
+					AlertDialog alert = builder.create();
+					alert.show();
+				} 
 			}
 		});
 		
@@ -370,6 +386,10 @@ public class MainMenuActivity extends Activity {
 			*/
 		}
 		checkPreviousRunsForExceptions(firstTime);
+	}
+
+	protected void notavailableToast() {
+		Toast.makeText(this, getString(R.string.not_available_on_BB), Toast.LENGTH_LONG).show();
 	}
 
 	private void applicationInstalledFirstTime() {

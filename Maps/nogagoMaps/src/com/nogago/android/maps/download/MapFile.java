@@ -22,6 +22,7 @@ public class MapFile {
 	String fullName;
 	String name;
 	String part;
+	String part2;
 	int mapId;
 	
 	
@@ -33,6 +34,7 @@ public class MapFile {
 		String parts[] = fullName.split("[;\\.]");
 		name = parts[0].replace('_', ' ');
 		part = parts[1];
+		part2 = parts[3]; // poly, wenn contour
 		mapId = new Integer(parts[2]).intValue();
 		poiPath = OsmandApplication.getSettings().extendOsmandPath(Constants.POI_PATH).toString()
 					+ fullName.substring(0, fullName.lastIndexOf(".")) + Constants.POI_FILE_EXTENSION;
@@ -52,7 +54,7 @@ public class MapFile {
 	}
 	
 	public String toString() {
-		String title = getName() + " (" + part +")";
+		String title = getName() + " (" + part +")" + " (" + part2 +")";
 		return title;
 	}
 	

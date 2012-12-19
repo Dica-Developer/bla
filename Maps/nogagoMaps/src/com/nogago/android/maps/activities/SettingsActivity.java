@@ -247,7 +247,9 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 		registerListPreference(osmandSettings.METRIC_SYSTEM, screen, entries, MetricsConstants.values());
 		
 		//getResources().getAssets().getLocales();
-		entrieValues = new String[] { "", "en", "cs", "de", "es", "fr", "hu", "it", "jp", "nl", "pl", "pt", "ru", "sk", "vi" };
+//		entrieValues = new String[] { "", "en", "cs", "de", "es", "fr", "hu", "it", "jp", "nl", "pl", "pt", "ru", "sk", "vi" };
+//		for nogago:
+		entrieValues = new String[] { "", "en", "de", "nl"};
 		entries = new String[entrieValues.length];
 		entries[0] = getString(R.string.system_locale);
 		for (int i = 1; i < entries.length; i++) {

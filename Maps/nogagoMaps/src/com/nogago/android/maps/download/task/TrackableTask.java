@@ -39,6 +39,7 @@ public abstract class TrackableTask extends AsyncTask<Object, Integer, Object> {
 		// And send it to progress tracker
 		if (mProgressTracker != null) {
 			mProgressTracker.onProgress(value.intValue());
+			
 		}
 	}
 

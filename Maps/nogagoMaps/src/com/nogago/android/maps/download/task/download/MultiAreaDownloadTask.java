@@ -48,8 +48,10 @@ public class MultiAreaDownloadTask extends TrackableTask {
 	String user;
 	String passwd;
 	String name;
+	boolean loadContours;
 	List<File> maps = new ArrayList<File>();
 	List<File> pois = new ArrayList<File>();
+	List<File> contours = new ArrayList<File>();
 
 	/**
 	 * Constructs a new download task with given parameters
@@ -64,13 +66,14 @@ public class MultiAreaDownloadTask extends TrackableTask {
 	 *            name for the file
 	 */
 	public MultiAreaDownloadTask(String progressMessage, String user,
-			String passwd, String name, Area[] areas, Area baseArea) {
+			String passwd, String name, Area[] areas, Area baseArea, boolean loadContours) {
 		super(progressMessage);
 		this.user = user;
 		this.passwd = passwd;
 		this.areas = areas;
 		this.name = name;
 		this.baseArea = (baseArea==null?areas[0]:baseArea);
+		this.loadContours = loadContours;
 	}
 
 	/* Separate Thread */
@@ -95,9 +98,11 @@ public class MultiAreaDownloadTask extends TrackableTask {
 				
 				if (!response.getStatusLine().toString().contains(Constants.HTTP_CODE_401+"")){
 					File mapFile = new File((String) areas[a].getMapFilePath(name, baseArea));
-//					File poiFile = new File((String) areas[a].getPoiFilePath(name, baseArea));
+					File contourFile = new File((String) areas[a].getContourFilePath(name, baseArea));
 					maps.add(mapFile);
+					contours.add(contourFile);
 //					pois.add(poiFile);
+					
 					try {
 						//Download map
 						downloadResouce(response.getEntity(), mapFile, a*2);
@@ -107,6 +112,14 @@ public class MultiAreaDownloadTask extends TrackableTask {
 						response = client.execute(get);
 						downloadResouce(response.getEntity(), poiFile, a*2+1);
 */
+						
+						//Download poly if required
+						if (loadContours == true) {
+							get = new HttpGet(areas[a].getContourUrl());
+							response = client.execute(get);
+							downloadResouce(response.getEntity(), contourFile, a*2);
+						}
+						
 					} catch (DownloadTaskException e) {
 						return e;
 					} 

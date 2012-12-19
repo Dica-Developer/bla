@@ -177,6 +177,9 @@ public class Area {
 	public String getPoiUrl() {
 		return UrlUtils.getPoiUrl(mapId);
 	}
+	public String getContourUrl() {
+		return UrlUtils.getCountourUrl(mapId);
+	}
 	/*
 	public String getMapFilePath(String name, Area ref) {
 		return Environment.getExternalStorageDirectory().toString()
@@ -185,6 +188,9 @@ public class Area {
 	*/
 	public String getMapFilePath(String name, Area ref) {
 		return OsmandApplication.getSettings().extendOsmandPath(Constants.STORAGE_PATH).toString() + "///" + getResourceName(name, ref) + Constants.MAP_FILE_EXTENSION;
+	}
+	public String getContourFilePath(String name, Area ref) {
+		return OsmandApplication.getSettings().extendOsmandPath(Constants.STORAGE_PATH).toString() + "///" + getResourceName(name, ref) + Constants.POLY_FILE_EXTENSION + Constants.MAP_FILE_EXTENSION;
 	}
 	/*
 	public String getPoiFilePath(String name, Area ref) {

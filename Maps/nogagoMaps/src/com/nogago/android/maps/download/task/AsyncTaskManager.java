@@ -23,6 +23,7 @@ public final class AsyncTaskManager implements IProgressTracker,
 	private final ProgressDialog mProgressDialog;
 	private TrackableTask mAsyncTask;
 	private String message;
+	private boolean loadContours;
 
 	/**
 	 * Constructor requires context of calling Activity for UI work and provides
@@ -31,14 +32,18 @@ public final class AsyncTaskManager implements IProgressTracker,
 	 */
 	public AsyncTaskManager(Context context,
 			OnTaskCompleteListener taskCompleteListener, String msg,
-			boolean countable) {
+			boolean countable, boolean loadContours) {
 		this.message = msg;
+		this.loadContours = loadContours;
 		// Save reference to complete listener (activity)
 		mTaskCompleteListener = taskCompleteListener;
 		// Setup progress dialog
 		mProgressDialog = new ProgressDialog(context);
-		if (message != null)
+		if (message != null && loadContours == false)
 			mProgressDialog.setMessage(message);
+		if(message != null && loadContours == true) {
+			mProgressDialog.setMessage("Lade Höhenlinien");
+		}
 		if (countable)
 			mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 		else

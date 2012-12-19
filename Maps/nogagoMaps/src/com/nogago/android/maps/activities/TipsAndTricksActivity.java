@@ -21,7 +21,7 @@ public class TipsAndTricksActivity {
 			{R.string.tip_navigation,R.string.tip_navigation_t},
 			{R.string.tip_map_context_menu,R.string.tip_map_context_menu_t},
 			{R.string.tip_day_night_mode,R.string.tip_day_night_mode_t},
-			{R.string.tip_app_mode,R.string.tip_app_mode_t},
+//			{R.string.tip_app_mode,R.string.tip_app_mode_t},
 			{R.string.tip_favorites,R.string.tip_favorites_t},
 			{R.string.tip_rotation_switching,R.string.tip_rotation_switching_t},
 			//{R.string.tip_update_index,R.string.tip_update_index_t},

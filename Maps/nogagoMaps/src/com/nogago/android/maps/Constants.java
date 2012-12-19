@@ -36,9 +36,11 @@ public class Constants {
 	public final static String TEMP_PATH = STORAGE_PATH + "temp/";
 	public final static String POI_PATH = STORAGE_PATH + "POI/";
 	public final static String NOGAGO_STORAGE_URL = "https://download.nogago.com/latest/";
+	public final static String NOGAGO_CONTOURS_STORAGE_URL = "https://download.nogago.com/contours/";
 	public final static String NOGAGO_MAP_URL = NOGAGO_STORAGE_URL + "maps/";
 	public final static String NOGAGO_POI_URL = NOGAGO_STORAGE_URL + "pois/";
 	public final static String MAP_FILE_EXTENSION = ".obf";
+	public final static String POLY_FILE_EXTENSION = ".poly";
 	public final static String POI_FILE_EXTENSION = ".poi.odb";
 	public final static String STRING_LONGITUDE_POSTFIX = "longitude";
 	public final static String STRING_LATITUDE_POSTFIX = "latitude";

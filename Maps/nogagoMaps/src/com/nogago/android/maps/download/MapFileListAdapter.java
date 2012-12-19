@@ -106,6 +106,8 @@ public class MapFileListAdapter extends BaseAdapter implements ListAdapter{
 		if(item.part.compareTo("n")==0) title += " (" + context.getString(R.string.n) + ")";
 		if(item.part.compareTo("w")==0) title += " (" + context.getString(R.string.w) + ")";
 		if(item.part.compareTo("e")==0) title += " (" + context.getString(R.string.e) + ")";
+		if(item.part2.compareTo("poly")==0) title += " (" + context.getString(R.string.contour) + ")";
+//		if(item.part2.contains("c")) title += " (" + context.getString(R.string.contour) + ")";
 		
 		return title;
 	}

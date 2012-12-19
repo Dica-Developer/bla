@@ -14,6 +14,7 @@ import com.nogago.android.maps.GPXUtilities.WptPt;
 import com.nogago.android.maps.access.AccessibleToast;
 import com.nogago.android.maps.access.NavigationInfo;
 import com.nogago.android.maps.activities.search.SearchActivity;
+import com.nogago.android.maps.activities.search.SearchAddressActivity;
 import com.nogago.android.maps.plus.BusyIndicator;
 import com.nogago.android.maps.plus.FavouritesDbHelper;
 import com.nogago.android.maps.plus.OsmandApplication;
@@ -532,7 +533,10 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 		toTracksButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				 // Alert if nogago Maps is installed
+				if (Build.BRAND.equals("BlackBerry")) {
+					notavailableToast();
+				} else {
+				 // Alert if nogago Tracks is installed
 			    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 			    builder.setMessage(R.string.wanna_start_tracks).setCancelable(false)
 			        .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
@@ -555,6 +559,7 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 			        });
 			    AlertDialog alert = builder.create();
 				alert.show();
+			}
 			}
 		});
 
@@ -606,7 +611,9 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 		// newIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		// startActivity(newIntent);
 	}
- 
+	protected void notavailableToast() {
+		Toast.makeText(this, getString(R.string.not_available_on_BB), Toast.LENGTH_LONG).show();
+	}
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {

@@ -124,7 +124,7 @@ public class MapManagerActivity extends ListActivity implements
 		this.preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
 		// Create manager and set this activity as context and listener
-		mAsyncTaskManager = new AsyncTaskManager(this, this, getResources().getString(R.string.task_download, "Test"), true);
+		mAsyncTaskManager = new AsyncTaskManager(this, this, getResources().getString(R.string.task_download, "Test"), true, false);
 		mAsyncTaskManager.handleRetainedTask(getLastNonConfigurationInstance());
 
 		// Setup UI and bind variables
@@ -377,94 +377,202 @@ public class MapManagerActivity extends ListActivity implements
 		 * .widget .AdapterView, android.view.View, int, long)
 		 */
 		public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-			if(cityPickerDialog.isShowing()) cityPickerDialog.dismiss();
+			if(cityPickerDialog.isShowing()) {
+				cityPickerDialog.dismiss();
+			}
 			// hide the keyboard
 			MapManagerActivity.this.hideKeyBoard();
+			final CityCoordinate poiSearchItem = (CityCoordinate) adapterView.getItemAtPosition(position);
+			// neuer AlertDialog: Höhenlinien auch laden? Wenn nein, weiter wie gehabt, wenn ja, auch die zugehörige Höhenlinien-Datei laden
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(MapManagerActivity.this);
+		    builder.setMessage(R.string.load_contours_also_title);
+		    builder.setCancelable(false);
+		    builder.setIcon(android.R.drawable.ic_dialog_info);
+			builder.setPositiveButton(R.string.button_yes,
+				new DialogInterface.OnClickListener(){
+					public void onClick(DialogInterface dialog, int which){
+						
+						//beide Dateien laden
+						boolean loadCountours = true;
+						String progMess = getString(R.string.task_download_contour);
 
-			CityCoordinate poiSearchItem = (CityCoordinate) adapterView.getItemAtPosition(position);
+						double minLat = poiSearchItem.getLat()
+								- ReadAreasTask.getMinLatDelta();
+						double minLon = poiSearchItem.getLon()
+								- ReadAreasTask.getMinLonDelta();
+						double maxLat = poiSearchItem.getLat()
+								+ ReadAreasTask.getMinLatDelta();
+						double maxLon = poiSearchItem.getLon()
+								+ ReadAreasTask.getMinLonDelta();
 
-			double minLat = poiSearchItem.getLat()
-					- ReadAreasTask.getMinLatDelta();
-			double minLon = poiSearchItem.getLon()
-					- ReadAreasTask.getMinLonDelta();
-			double maxLat = poiSearchItem.getLat()
-					+ ReadAreasTask.getMinLatDelta();
-			double maxLon = poiSearchItem.getLon()
-					+ ReadAreasTask.getMinLonDelta();
+						List<Area> allareas;
+						HashSet<Area> result = new HashSet<Area>();
+						try {
+							allareas = ReadAreasTask.getAreas();
+							// First pass (minLat,minLon)
+							for (Area area : allareas) {
+								if (area.contains(minLat, minLon)) {
+									result.add(area);
+									break;
+								}
+							}
+							// (minLat,maxLon)
+							for (Area area : allareas) {
+								if (area.contains(minLat, maxLon)) {
+									result.add(area);
+									break;
+								}
+							}
+							// (maxLat,minLon)
+							for (Area area : allareas) {
+								if (area.contains(maxLat, minLon)) {
+									result.add(area);
+									break;
+								}
+							}
+							// (maxLat,maxLon)
+							for (Area area : allareas) {
+								if (area.contains(maxLat, maxLon)) {
+									result.add(area);
+									break;
+								}
+							}
+							// DEBUG
+							System.out.println("Areas: " + result.size());
+						} catch (ReadAreasTaskException e) {
+							// Not properly initialized
+							result = null;
+						}
+						//android.util.Log.d(TAG, name + " " + message); 
+						if (result == null || result.size() == 0) {
+							Toast.makeText(ctx,
+									"Did not find an area for Lat: "
+											+ poiSearchItem.getLat() + " Lon: "
+											+ poiSearchItem.getLon(), Toast.LENGTH_SHORT).show();
+						} else {
+							List<Area> existingAreas = new ArrayList<Area>();
+							List<MapFile> exisitingMapFiles = new ArrayList<MapFile>();
+							for(Area area: result){
+								for(MapFile mapFile: mapFileListAdapter.getMapFiles()){
+									if(area.getMapId() == mapFile.getMapId()){
+										existingAreas.add(area);
+										exisitingMapFiles.add(mapFile);
+										break;
+									}
+								}
+							}
+							result.removeAll(existingAreas);
+							Area[] areas = result.toArray(new Area[result.size()]);
+							
+							if(areas.length == 0){
+								UIUtils.showAlertDialog(MapManagerActivity.this, getString(R.string.task_title_download_map_exists_area), getString(R.string.task_message_download_map_exists_area, getMapsDisplayName(exisitingMapFiles)), null);
+							}else {
+								if(existingAreas.size()>0){
+									Toast.makeText(MapManagerActivity.this, getString(R.string.task_message_download_parts_exist_area, getMapsDisplayName(exisitingMapFiles)), Toast.LENGTH_LONG).show();
+								}
+								saveCityCoordinateForMap(areas, poiSearchItem);
+								Area baseArea = mapFileListAdapter.getCityCenterArea(Area.formatMapFileName(poiSearchItem.name));
+								MultiAreaDownloadTask task = new MultiAreaDownloadTask(getString(R.string.task_download_contour, poiSearchItem.name),
+										getUsername(), getPassword(), poiSearchItem.name, areas, baseArea, loadCountours);
+								mAsyncTaskManager.setupTask(task);
+							}
+						}
+						if (cityPickerDialog != null) cityPickerDialog.hide();
+					}
+				}
+			); 
+			builder.setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+		            	//nur city laden
+					boolean loadCountours = false;
+					String progMess = getString(R.string.task_download);
 
-			List<Area> allareas;
-			HashSet<Area> result = new HashSet<Area>();
-			try {
-				allareas = ReadAreasTask.getAreas();
-				// First pass (minLat,minLon)
-				for (Area area : allareas) {
-					if (area.contains(minLat, minLon)) {
-						result.add(area);
-						break;
+					double minLat = poiSearchItem.getLat()
+							- ReadAreasTask.getMinLatDelta();
+					double minLon = poiSearchItem.getLon()
+							- ReadAreasTask.getMinLonDelta();
+					double maxLat = poiSearchItem.getLat()
+							+ ReadAreasTask.getMinLatDelta();
+					double maxLon = poiSearchItem.getLon()
+							+ ReadAreasTask.getMinLonDelta();
+
+					List<Area> allareas;
+					HashSet<Area> result = new HashSet<Area>();
+					try {
+						allareas = ReadAreasTask.getAreas();
+						// First pass (minLat,minLon)
+						for (Area area : allareas) {
+							if (area.contains(minLat, minLon)) {
+								result.add(area);
+								break;
+							}
+						}
+						// (minLat,maxLon)
+						for (Area area : allareas) {
+							if (area.contains(minLat, maxLon)) {
+								result.add(area);
+								break;
+							}
+						}
+						// (maxLat,minLon)
+						for (Area area : allareas) {
+							if (area.contains(maxLat, minLon)) {
+								result.add(area);
+								break;
+							}
+						}
+						// (maxLat,maxLon)
+						for (Area area : allareas) {
+							if (area.contains(maxLat, maxLon)) {
+								result.add(area);
+								break;
+							}
+						}
+						// DEBUG
+						System.out.println("Areas: " + result.size());
+					} catch (ReadAreasTaskException e) {
+						// Not properly initialized
+						result = null;
 					}
-				}
-				// (minLat,maxLon)
-				for (Area area : allareas) {
-					if (area.contains(minLat, maxLon)) {
-						result.add(area);
-						break;
-					}
-				}
-				// (maxLat,minLon)
-				for (Area area : allareas) {
-					if (area.contains(maxLat, minLon)) {
-						result.add(area);
-						break;
-					}
-				}
-				// (maxLat,maxLon)
-				for (Area area : allareas) {
-					if (area.contains(maxLat, maxLon)) {
-						result.add(area);
-						break;
-					}
-				}
-				// DEBUG
-				System.out.println("Areas: " + result.size());
-			} catch (ReadAreasTaskException e) {
-				// Not properly initialized
-				result = null;
-			}
-			//android.util.Log.d(TAG, name + " " + message); 
-			if (result == null || result.size() == 0) {
-				Toast.makeText(ctx,
-						"Did not find an area for Lat: "
-								+ poiSearchItem.getLat() + " Lon: "
-								+ poiSearchItem.getLon(), Toast.LENGTH_SHORT).show();
-			} else {
-				List<Area> existingAreas = new ArrayList<Area>();
-				List<MapFile> exisitingMapFiles = new ArrayList<MapFile>();
-				for(Area area: result){
-					for(MapFile mapFile: mapFileListAdapter.getMapFiles()){
-						if(area.getMapId() == mapFile.getMapId()){
-							existingAreas.add(area);
-							exisitingMapFiles.add(mapFile);
-							break;
+					//android.util.Log.d(TAG, name + " " + message); 
+					if (result == null || result.size() == 0) {
+						Toast.makeText(ctx,
+								"Did not find an area for Lat: "
+										+ poiSearchItem.getLat() + " Lon: "
+										+ poiSearchItem.getLon(), Toast.LENGTH_SHORT).show();
+					} else {
+						List<Area> existingAreas = new ArrayList<Area>();
+						List<MapFile> exisitingMapFiles = new ArrayList<MapFile>();
+						for(Area area: result){
+							for(MapFile mapFile: mapFileListAdapter.getMapFiles()){
+								if(area.getMapId() == mapFile.getMapId()){
+									existingAreas.add(area);
+									exisitingMapFiles.add(mapFile);
+									break;
+								}
+							}
+						}
+						result.removeAll(existingAreas);
+						Area[] areas = result.toArray(new Area[result.size()]);
+						
+						if(areas.length == 0){
+							UIUtils.showAlertDialog(MapManagerActivity.this, getString(R.string.task_title_download_map_exists_area), getString(R.string.task_message_download_map_exists_area, getMapsDisplayName(exisitingMapFiles)), null);
+						}else {
+							if(existingAreas.size()>0){
+								Toast.makeText(MapManagerActivity.this, getString(R.string.task_message_download_parts_exist_area, getMapsDisplayName(exisitingMapFiles)), Toast.LENGTH_LONG).show();
+							}
+							saveCityCoordinateForMap(areas, poiSearchItem);
+							Area baseArea = mapFileListAdapter.getCityCenterArea(Area.formatMapFileName(poiSearchItem.name));
+							MultiAreaDownloadTask task = new MultiAreaDownloadTask(getString(R.string.task_download, poiSearchItem.name),
+									getUsername(), getPassword(), poiSearchItem.name, areas, baseArea, loadCountours);
+							mAsyncTaskManager.setupTask(task);
 						}
 					}
-				}
-				result.removeAll(existingAreas);
-				Area[] areas = result.toArray(new Area[result.size()]);
-				
-				if(areas.length == 0){
-					UIUtils.showAlertDialog(MapManagerActivity.this, getString(R.string.task_title_download_map_exists_area), getString(R.string.task_message_download_map_exists_area, getMapsDisplayName(exisitingMapFiles)), null);
-				}else {
-					if(existingAreas.size()>0){
-						Toast.makeText(MapManagerActivity.this, getString(R.string.task_message_download_parts_exist_area, getMapsDisplayName(exisitingMapFiles)), Toast.LENGTH_LONG).show();
-					}
-					saveCityCoordinateForMap(areas, poiSearchItem);
-					Area baseArea = mapFileListAdapter.getCityCenterArea(Area.formatMapFileName(poiSearchItem.name));
-					MultiAreaDownloadTask task = new MultiAreaDownloadTask(getString(R.string.task_download, poiSearchItem.name),
-							getUsername(), getPassword(), poiSearchItem.name, areas, baseArea);
-					mAsyncTaskManager.setupTask(task);
-				}
-			}
-			if (cityPickerDialog != null) cityPickerDialog.hide();
+					if (cityPickerDialog != null) cityPickerDialog.hide();
+		          }
+			}); 
+			builder.show();
 		}
 	}
 	
