@@ -24,7 +24,7 @@
 			<filter tag="contour_ext" value="elevation_minor" maxzoom="20" color="#676459"/>
 			<groupFilter cap="ROUND">
 				<filter minzoom="15" maxzoom="15" strokeWidth="1"/>
-				<filter minzoom="16" maxzoom="16" strokeWidth="1"/>
+				<filter minzoom="16" maxzoom="16" strokeWidth="2"/>
 				<filter minzoom="17" maxzoom="17" strokeWidth="2"/>
 				<filter minzoom="18" maxzoom="18" strokeWidth="2"/>
 				<filter minzoom="19" maxzoom="19" strokeWidth="2"/>
@@ -40,7 +40,7 @@
 				<filter minzoom="13" maxzoom="13" strokeWidth="2"/>
 				<filter minzoom="14" maxzoom="14" strokeWidth="2"/>
 				<filter minzoom="15" maxzoom="15" strokeWidth="2"/>
-				<filter minzoom="16" maxzoom="16" strokeWidth="2"/>
+				<filter minzoom="16" maxzoom="16" strokeWidth="3"/>
 				<filter minzoom="17" maxzoom="17" strokeWidth="3"/>
 				<filter minzoom="18" maxzoom="18" strokeWidth="4"/>
 				<filter minzoom="19" maxzoom="19" strokeWidth="4"/>
