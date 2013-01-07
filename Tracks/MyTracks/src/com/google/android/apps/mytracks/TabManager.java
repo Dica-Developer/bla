@@ -198,7 +198,27 @@ public class TabManager implements TabHost.OnTabChangeListener {
         tabId = StatsFragment.STATS_FRAGMENT_TAG;
         // nogagoMaps aufrufen
         this.tabHost.setCurrentTab(1);
-        alert.show();
+        try {
+          if (isRecording()) {
+          String nogagoPackage = "com.nogago.android.maps";
+          String mapActivity = ".activities.MapActivity";
+          Intent intent = new Intent();
+          intent.setComponent(new ComponentName(nogagoPackage, nogagoPackage + mapActivity));
+          fragmentActivity.startActivity(intent);
+          }
+          else {
+          String trackPackage ="com.nogago.android.tracks";
+          String trackDetailActivity = ".TrackDetailActivity";
+          Intent tda = new Intent();
+          tda.setComponent(new ComponentName(trackPackage, trackPackage+trackDetailActivity));
+          tda.putExtra("clicked", true);
+          
+          fragmentActivity.startActivity(tda);
+          }
+        } catch (NullPointerException e) {
+          alertnotInstalled.show();
+        }
+//        alert.show();
         // falls nicht installiert, fragen, ob installiert werden soll
       } catch (NullPointerException e) {
 
