@@ -257,6 +257,21 @@ public class MainMenuActivity extends Activity {
 				if (Build.BRAND.equals("BlackBerry")) {
 					notavailableToast();
 				} else {
+					try {
+						String nogagoPackage = "com.nogago.android.tracks";
+						String TracksActivity = ".MainMenuActivity";
+						final Intent toTracks = new Intent();
+						toTracks.setComponent(new ComponentName(
+								nogagoPackage,
+								nogagoPackage
+										+ TracksActivity));
+						toTracks.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+						activity.startActivity(toTracks);
+					} catch (ActivityNotFoundException e) {
+						alertnotInstalled.show();
+					}
+				}
+					/*
 					// Alert if nogago Maps is installed
 					AlertDialog.Builder builder = new AlertDialog.Builder(
 							activity);
@@ -291,6 +306,7 @@ public class MainMenuActivity extends Activity {
 					AlertDialog alert = builder.create();
 					alert.show();
 				} 
+				*/
 			}
 		});
 		
