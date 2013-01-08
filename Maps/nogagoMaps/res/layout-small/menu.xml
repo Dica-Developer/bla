@@ -26,7 +26,7 @@
                 <ImageView
                     android:id="@+id/HelpButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="52dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="0dp"
                     android:layout_weight="0.03"
@@ -44,12 +44,12 @@
                     android:layout_marginTop="3dp"
                     android:text="@string/app_name"
                     android:textColor="#FFFFFF"
-                    android:textSize="32sp" />
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/CloseButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="52dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center|center_vertical"
                     android:layout_marginLeft="0dp"
                     android:layout_marginRight="2dp"
@@ -101,7 +101,7 @@
                             android:layout_gravity="center_horizontal|top"
                             android:text="@string/map_Button"
                             android:textColor="#000000"
-                            android:textSize="18sp" />
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -134,7 +134,7 @@
                             android:layout_gravity="center_horizontal|top"
                             android:text="@string/navigation_Button"
                             android:textColor="#000000"
-                            android:textSize="18sp" />
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -174,7 +174,7 @@
                             android:layout_gravity="center_horizontal"
                             android:text="@string/favorites_Button"
                             android:textColor="#000000"
-                            android:textSize="18sp" />
+                            android:textSize="10sp" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -210,7 +210,7 @@
                             android:layout_gravity="center_horizontal"
                             android:text="@string/settings_Button"
                             android:textColor="#000000"
-                            android:textSize="18sp" />
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -250,7 +250,7 @@
                             android:layout_gravity="center_horizontal|top"
                             android:text="@string/mapManager_Button"
                             android:textColor="#000000"
-                            android:textSize="16sp" />
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -283,7 +283,7 @@
                             android:layout_gravity="center_horizontal|top"
                             android:text="@string/toTracks_Button"
                             android:textColor="#000000"
-                            android:textSize="16sp" />
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </LinearLayout>
             </TableRow>

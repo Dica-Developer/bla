@@ -44,7 +44,7 @@
                     android:layout_marginTop="3dp"
                     android:text="@string/app_name"
                     android:textColor="#FFFFFF"
-                    android:textSize="32sp" />
+                    android:textSize="30sp" />
 
                 <ImageView
                     android:id="@+id/CloseButton"
@@ -101,7 +101,7 @@
                             android:layout_gravity="center_horizontal|top"
                             android:text="@string/map_Button"
                             android:textColor="#000000"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -134,7 +134,7 @@
                             android:layout_gravity="center_horizontal|top"
                             android:text="@string/navigation_Button"
                             android:textColor="#000000"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -167,7 +167,7 @@
                             android:layout_gravity="center_horizontal"
                             android:text="@string/favorites_Button"
                             android:textColor="#000000"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
             </TableRow>
@@ -207,7 +207,7 @@
                             android:layout_gravity="center_horizontal"
                             android:text="@string/settings_Button"
                             android:textColor="#000000"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -240,7 +240,7 @@
                             android:layout_gravity="center_horizontal|top"
                             android:text="@string/mapManager_Button"
                             android:textColor="#000000"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -273,7 +273,7 @@
                             android:layout_gravity="center_horizontal|top"
                             android:text="@string/toTracks_Button"
                             android:textColor="#000000"
-                            android:textSize="16sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
             </TableRow>
