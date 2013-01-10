@@ -588,6 +588,12 @@ Have fun with our apps, maps and tracks for your next adventures !
 	<string name="renderer_load_exception">Exception occured: style was not loaded</string>
 	<string name="renderers">Map style</string>
 	<string name="renderers_descr">Choose rendering appearance</string>
+	<string name="default_renderer">Standard-Map</string>
+	<string name="winter_ski_renderer">Winter- and Ski-Map</string>
+	<string name="high_contrast_roads_renderer">Traffic-Map</string>
+	<string name="hiking_renderer">Hiking-Map</string>
+	<string name="bicycle_renderer">Bicycle-Map</string>
+	<string name="mtb_renderer">Mountainbike-Map</string>
 
 	<string name="poi_context_menu_website">Show website</string>
 	<string name="poi_context_menu_call">Call this place</string>
@@ -1373,7 +1379,7 @@ Have fun with our apps, maps and tracks for your next adventures !
 \n\t nogago is a Volz Innovation company.
 \n\t
 \n\t Managing Director: 
-\n\t Dr. Raphael Volz
+\n\t Dr. Saartje Brockmans
 \n\t EU Tax ID: 
 \n\t DE268271181
 \n\t Registered at Amtsgericht Mannheim

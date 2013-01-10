@@ -590,6 +590,12 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 	<string name="renderer_load_exception">Fehler aufgetreten: Kartenstil wurde nicht geladen</string>
 	<string name="renderers">Kartenstil</string>
 	<string name="renderers_descr">Wähle Anzeigemodus für Offline-Vektor-Karten</string>
+	<string name="default_renderer">Standard-Karte</string>
+	<string name="winter_ski_renderer">Winter- und Ski-Karte</string>
+	<string name="high_contrast_roads_renderer">Verkehrskarte</string>
+	<string name="hiking_renderer">Wanderkarte</string>
+	<string name="bicycle_renderer">Fahrrad-Karte</string>
+	<string name="mtb_renderer">Mountainbike-Karte</string>
 
 	<string name="poi_context_menu_website">Webseite öffnen</string>
 	<string name="poi_context_menu_call">Hier anrufen</string>
@@ -1377,7 +1383,7 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 \n\t DE-76597 Loffenau
 \n
 \n
-\nDie nogago GmbH ist gemeldet am Amtsgericht Mannheim unter Firmennummer HRB 712259 mit Firmensitz in Loffenau im Schwarzwald, Deutschland. Die Geschäfte werden geführt von Dr. Raphael Volz und Mehrwertsteuern unter der EU Steuernummer DE268271181 abgeführt. nogago ist eine Tochterfirma der Volz Innovation GmbH.
+\nDie nogago GmbH ist gemeldet am Amtsgericht Mannheim unter Firmennummer HRB 712259 mit Firmensitz in Loffenau im Schwarzwald, Deutschland. Die Geschäfte werden geführt von Dr. Saartje Brockmans und Mehrwertsteuern unter der EU Steuernummer DE268271181 abgeführt. nogago ist eine Tochterfirma der Volz Innovation GmbH.
 \n
 \nnogago Maps ist Open Source und unterliegt der GNU GPL v3 Lizenz, siehe http://www.gnu.org/copyleft/gpl.html. nogago Maps basiert auf OSMAND.
 \n

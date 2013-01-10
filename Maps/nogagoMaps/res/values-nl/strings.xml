@@ -572,6 +572,12 @@ Veel plezier tijdens je volgende avonturen met onze apps, kaarten en tracks!
 	<string name="renderer_load_exception">Fout opgetreden: kaartgenerator niet geladen</string>
 	<string name="renderers">Vector kaartgenerator</string>
 	<string name="renderers_descr">Selecteer (offline) vectorkaartweergave</string>
+	<string name="default_renderer">Standaardkaart</string>
+	<string name="winter_ski_renderer">Winter- en skikaart</string>
+	<string name="high_contrast_roads_renderer">Verkeerskaart</string>
+	<string name="hiking_renderer">Wandelkaart</string>
+	<string name="bicycle_renderer">Fietskaart</string>
+	<string name="mtb_renderer">Mountainbikekaart</string>
 	
 	<string name="use_fluorescent_overlays">Fluorescente overlays</string>
 	<string name="use_fluorescent_overlays_descr">Gebruik fluorescente kleuren om tracks en routes te tonen</string>
@@ -1355,7 +1361,7 @@ Veel plezier tijdens je volgende avonturen met onze apps, kaarten en tracks!
 \n\t DE-76597 Loffenau
 \n
 \n
-\nDe firma nogago GmbH is opgegeven bij het kantongerecht Mannheim onder de firmanummer HRB 712259 met bedrijfszetel in Loffenau in het Zwarte Woud, Duitsland. De leiding over de zaak heeft Dr. Raphael Volz, en de belastingen op de toegevoegde waarde lopen onder de EU belastingsnummer DE268271181. nogago is een dochterfirma van Volz Innovation GmbH.
+\nDe firma nogago GmbH is opgegeven bij het kantongerecht Mannheim onder de firmanummer HRB 712259 met bedrijfszetel in Loffenau in het Zwarte Woud, Duitsland. De leiding over de zaak heeft Dr. Saartje Brockmans, en de belastingen op de toegevoegde waarde lopen onder de EU belastingsnummer DE268271181. nogago is een dochterfirma van Volz Innovation GmbH.
 \n
 \nnogago Maps is Open Source en is onderhevig aan de GNU GPL v3 Licentie, zie http://www.gnu.org/copyleft/gpl.html. nogago Maps baseert op OSMAND.
 \n
