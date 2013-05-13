@@ -30,7 +30,6 @@ import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment.DeleteOneTrackCaller;
 import com.google.android.apps.mytracks.fragments.FrequencyDialogFragment;
 import com.google.android.apps.mytracks.fragments.InstallEarthDialogFragment;
-import com.google.android.apps.mytracks.fragments.MapFragment;
 import com.google.android.apps.mytracks.fragments.StatsFragment;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
@@ -60,11 +59,9 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.Toast;
@@ -105,7 +102,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   private MenuItem sendGoogleMenuItem;
   private MenuItem saveMenuItem;
 
-  private View mapViewContainer;
+ //private View mapViewContainer;
 
   /*
    * Note that sharedPreferenceChangeListener cannot be an anonymous inner
@@ -126,20 +123,22 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
    * We are not displaying driving directions. Just an arbitrary track that is
    * not associated to any licensed mapping data. Therefore it should be okay to
    * return false here and still comply with the terms of service.
-   */
+  
   @Override
   protected boolean isRouteDisplayed() {
     return false;
   }
+   */
 
   /**
    * We are displaying a location. This needs to return true in order to comply
    * with the terms of service.
-   */
+   
   @Override
   protected boolean isLocationDisplayed() {
     return true;
   }
+  */
   public long returnTrackId() {
     if (trackId > 0) {
       TRACK_ID = trackId;
@@ -166,8 +165,8 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     trackDataHub = ((MyTracksApplication) getApplication()).getTrackDataHub();
     trackDataHub.loadTrack(trackId);
 
-    mapViewContainer = getLayoutInflater().inflate(R.layout.map, null);
-    ApiAdapterFactory.getApiAdapter().disableHardwareAccelerated(mapViewContainer);
+   // mapViewContainer = getLayoutInflater().inflate(R.layout.map, null);
+   // ApiAdapterFactory.getApiAdapter().disableHardwareAccelerated(mapViewContainer);
 
     tabHost = (TabHost) findViewById(android.R.id.tabhost);
     tabHost.setup();
@@ -181,14 +180,11 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         getString(R.string.track_detail_stats_tab),
         getResources().getDrawable(R.drawable.tab_stats));
     tabManager.addTab(statsTabSpec, StatsFragment.class, null);
-    TabSpec mapTabSpec = tabHost.newTabSpec(MapFragment.MAP_FRAGMENT_TAG).setIndicator(
+    TabSpec mapTabSpec = tabHost.newTabSpec("mapFragment").setIndicator(
         getString(R.string.track_detail_map_tab), getResources().getDrawable(R.drawable.tab_map));
-    tabManager.addTab(mapTabSpec, MapFragment.class, null);
+    tabManager.addTab(mapTabSpec, StatsFragment.class, null);
 
-    if (savedInstanceState != null) {
-      tabHost.setCurrentTabByTag(savedInstanceState.getString(CURRENT_TAG_KEY));
-    }
-    showMarker();
+    tabHost.setCurrentTabByTag(StatsFragment.STATS_FRAGMENT_TAG);    showMarker();
     if(clicked == true) {
       AnalyticsUtils.sendPageViews(this, "/action/play");
       intent = IntentUtils.newIntent(this, SaveActivity.class)
@@ -248,6 +244,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     trackRecordingServiceConnection.unbind();
   }
 
+  /*
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.track_detail, menu);
@@ -273,6 +270,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     updateMenu();
     return true;
   }
+  */
 
   @Override
   protected void onHomeSelected() {
@@ -281,6 +279,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     finish();
   }
 
+  
   @Override
   public boolean onPrepareOptionsMenu(Menu menu) {
     String sensorTypeValueNone = getString(R.string.sensor_type_value_none);
@@ -453,10 +452,11 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
 
   /**
    * @return the mapViewContainer
-   */
+ 
   public View getMapViewContainer() {
     return mapViewContainer;
   }
+    */
 
   /**
    * Handles the data in the intent.
@@ -491,6 +491,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
    * Shows marker.
    */
   private void showMarker() {
+    /*
     if (markerId != -1L) {
       MapFragment mapFragmet = (MapFragment) getSupportFragmentManager().findFragmentByTag(
           MapFragment.MAP_FRAGMENT_TAG);
@@ -501,6 +502,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         Log.e(TAG, "MapFragment is null");
       }
     }
+      */
   }
 
   /**

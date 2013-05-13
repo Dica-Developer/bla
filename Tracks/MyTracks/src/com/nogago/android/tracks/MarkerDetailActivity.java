@@ -19,15 +19,12 @@ package com.nogago.android.tracks;
 import com.google.android.apps.mytracks.AbstractMyTracksActivity;
 import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
 import com.google.android.apps.mytracks.content.Waypoint;
-import com.google.android.apps.mytracks.fragments.DeleteOneMarkerDialogFragment;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.StatsUtils;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -91,12 +88,13 @@ public class MarkerDetailActivity extends AbstractMyTracksActivity {
     }
   }
   
+  /**
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.marker_detail, menu);
     return true;
   }
-
+*/
   @Override
   protected void onHomeSelected() {
     Intent intent = IntentUtils.newIntent(this, MarkerListActivity.class)
@@ -105,6 +103,7 @@ public class MarkerDetailActivity extends AbstractMyTracksActivity {
     finish();
   }
   
+  /*
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     Intent intent;
@@ -114,7 +113,7 @@ public class MarkerDetailActivity extends AbstractMyTracksActivity {
             .putExtra(TrackDetailActivity.EXTRA_MARKER_ID, markerId);
         startActivity(intent);
         return true;
-        */
+        *//*
       case R.id.marker_detail_edit:
         intent = IntentUtils.newIntent(this, MarkerEditActivity.class)
             .putExtra(MarkerEditActivity.EXTRA_MARKER_ID, markerId);
@@ -129,4 +128,5 @@ public class MarkerDetailActivity extends AbstractMyTracksActivity {
         return super.onOptionsItemSelected(item);
     }
   }
+  */
 }

@@ -25,7 +25,6 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
-import android.view.MenuItem;
 
 /**
  * An abstract activity for all the settings activities.
@@ -54,14 +53,6 @@ public class AbstractSettingsActivity extends PreferenceActivity {
         .registerOnSharedPreferenceChangeListener(backupPreferencesListener);
   }
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    if (item.getItemId() != android.R.id.home) {
-      return super.onOptionsItemSelected(item);
-    }
-    finish();
-    return true;
-  }
 
   @SuppressWarnings("deprecation")
   @Override

@@ -20,13 +20,13 @@ limitations under the License.
     <item name="android:paddingLeft">48dp</item>
   </style>
   <!-- The style for the bottom button -->
-  <style name="BottomButton" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
+  <style name="BottomButton"> <!--  parent="@android:style/Widget.DeviceDefault.Button.Borderless">  -->
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_weight">1</item>
     <item name="android:layout_width">0dp</item>
   </style>
   <!-- The style for the bottom button bar -->
-  <style name="BottomButtonBar" parent="@android:style/DeviceDefault.ButtonBar">
+  <style name="BottomButtonBar"> <!-- parent="@android:style/DeviceDefault.ButtonBar"> -->
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_width">fill_parent</item>
     <item name="android:orientation">horizontal</item>

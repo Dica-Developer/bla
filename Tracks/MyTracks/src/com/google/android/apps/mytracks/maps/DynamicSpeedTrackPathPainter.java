@@ -17,8 +17,6 @@ package com.google.android.apps.mytracks.maps;
 
 import com.google.android.apps.mytracks.ColoredPath;
 import com.google.android.apps.mytracks.MapOverlay.CachedLocation;
-import com.google.android.maps.GeoPoint;
-import com.google.android.maps.Projection;
 import com.google.common.annotations.VisibleForTesting;
 import com.nogago.android.tracks.R;
 
@@ -31,6 +29,9 @@ import android.graphics.Rect;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView.Projection;
 
 /**
  * A path painter that varies the path colors based on fixed speeds or average speed margin

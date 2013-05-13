@@ -17,7 +17,7 @@ limitations under the License.
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   android:installLocation="auto"
   android:versionCode="51"
-  android:versionName="2.0.1"
+  android:versionName="3.0"
   package="com.nogago.android.tracks" >
   <supports-screens android:normalScreens="true"
       android:smallScreens="true"/>
@@ -33,7 +33,7 @@ limitations under the License.
   <uses-permission android:name="com.dsi.ant.permission.ANT" />
   <uses-permission android:name="com.dsi.ant.permission.ANT_ADMIN" />
   <uses-permission android:name="android.permission.BLUETOOTH" />
-  <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+<!--   <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />  -->
   <!-- Permissions to upload tracks -->
   <uses-permission android:name="android.permission.GET_ACCOUNTS" />
   <uses-permission android:name="android.permission.INTERNET" />
@@ -83,8 +83,8 @@ limitations under the License.
     android:protectionLevel="dangerous" />
 
   <uses-sdk
-    android:minSdkVersion="7"
-    android:targetSdkVersion="16" />
+    android:minSdkVersion="10"
+    android:targetSdkVersion="10" />
   <!-- Required features -->
   <uses-feature
     android:name="android.hardware.location"
@@ -128,7 +128,6 @@ limitations under the License.
   <application
     android:backupAgent="com.nogago.android.tracks.TracksBackupAgent"
     android:icon="@drawable/my_tracks_icon"
-    android:hardwareAccelerated="true"
     android:label="nogago Tracks"
     android:name="com.nogago.android.tracks.TracksApplication"
     android:theme="@style/ThemeSelector" >
@@ -188,22 +187,20 @@ limitations under the License.
     <activity
       android:name=".TrackEditActivity" />
     
-    <activity android:name=".TrackListActivity" />
-    <!-- 
+    <activity android:name=".TrackListActivity" >
+<!--      
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
-
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
-
+ -->
       <meta-data
         android:name="android.app.default_searchable"
         android:value="com.nogago.android.tracks.SearchListActivity" />
     </activity>   
-    -->
     
-    <activity android:name=".MainMenuActivity"
-        android:screenOrientation="portrait">
+    
+    <activity android:name=".MainMenuActivity">
     	<intent-filter>
     	    <action android:name="android.intent.action.MAIN" />
     	    <category android:name="android.intent.category.LAUNCHER" />
@@ -227,7 +224,6 @@ limitations under the License.
     <activity android:name=".SendMapsActivity" />
     <activity android:name=".AccountChooserActivity" />
     <activity android:name=".ConfirmSharingActivity" />
-    <activity android:name=".UploadResultActivity" />
     <activity android:name=".BackupSettingsActivity" />
     <activity android:name=".ChartSettingsActivity" />
     <activity android:name=".MapSettingsActivity" />
@@ -236,7 +232,7 @@ limitations under the License.
     <activity android:name=".SensorSettingsActivity" />
     <activity android:name=".StatsSettingsActivity" />
     <activity android:name=".SharingSettingsActivity" />
-    <activity android:name=".MapManagerActivity" />
+    
     <!-- Services -->
     <service
       android:exported="false"
@@ -279,7 +275,7 @@ limitations under the License.
       android:exported="false"
       android:name="com.nogago.android.tracks.content.SearchEngineProvider" />
 
-    <uses-library android:name="com.google.android.maps" />
+   <!--  <uses-library android:name="com.google.android.maps" />  -->
   </application>
 
 </manifest>

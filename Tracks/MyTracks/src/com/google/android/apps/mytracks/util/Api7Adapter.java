@@ -41,6 +41,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+//import android.app.Activity;
 
 /**
  * API level 7 specific implementation of the {@link ApiAdapter}.
@@ -118,6 +119,7 @@ public class Api7Adapter implements ApiAdapter {
     activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
   }
 
+
   @Override
   public void configureActionBarHomeAsUp(Activity activity) {
     // Do nothing
@@ -128,6 +130,7 @@ public class Api7Adapter implements ApiAdapter {
       ContextualActionModeCallback contextualActionModeCallback) {
     activity.registerForContextMenu(listView);
   }
+
 
   @Override
   public void configureSearchWidget(Activity activity, MenuItem menuItem) {
@@ -162,4 +165,5 @@ public class Api7Adapter implements ApiAdapter {
     // Return false and allow the framework to handle the search key.
     return false;
   }
+
 }

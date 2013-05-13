@@ -327,6 +327,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     trackRecordingServiceConnection.unbind();
   }
 
+  
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.track_list, menu);
@@ -351,6 +352,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     updateMenu();
     return true;
   }
+  
 
   /**
    * Updates the menu based on whether My Tracks is recording or not.
@@ -383,6 +385,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     }
   }
 
+  
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     Intent intent;

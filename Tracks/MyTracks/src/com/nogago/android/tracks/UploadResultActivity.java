@@ -23,7 +23,6 @@ import com.google.android.apps.mytracks.io.maps.SendMapsUtils;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.common.annotations.VisibleForTesting;
-import com.nogago.android.tracks.R;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

@@ -1,7 +1,6 @@
 package com.nogago.android.tracks;
 
 import com.google.android.apps.mytracks.fragments.CheckUnitsDialogFragment;
-import com.google.android.apps.mytracks.fragments.WelcomeDialogFragment;
 import com.google.android.apps.mytracks.services.ITrackRecordingService;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
 import com.google.android.apps.mytracks.util.EulaUtils;
@@ -247,15 +246,7 @@ public class MainMenuActivity extends FragmentActivity {
   
     public void showStartupDialogs() {
 
-      if (EulaUtils.getShowWelcome(this)) {
-        Fragment fragment = getSupportFragmentManager()
-            .findFragmentByTag(WelcomeDialogFragment.WELCOME_DIALOG_TAG);
-        
-        if (fragment == null) {
-          new WelcomeDialogFragment().show(
-              getSupportFragmentManager(), WelcomeDialogFragment.WELCOME_DIALOG_TAG);
-        }
-      } else if (EulaUtils.getShowCheckUnits(this)) {
+       if (EulaUtils.getShowCheckUnits(this)) {
         Fragment fragment = getSupportFragmentManager()
             .findFragmentByTag(CheckUnitsDialogFragment.CHECK_UNITS_DIALOG_TAG);
         if (fragment == null) {

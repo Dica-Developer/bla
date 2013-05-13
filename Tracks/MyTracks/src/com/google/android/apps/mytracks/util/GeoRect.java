@@ -15,7 +15,7 @@
  */
 package com.google.android.apps.mytracks.util;
 
-import com.google.android.maps.GeoPoint;
+import org.osmdroid.util.GeoPoint;
 
 /**
  * A rectangle in geographical space.

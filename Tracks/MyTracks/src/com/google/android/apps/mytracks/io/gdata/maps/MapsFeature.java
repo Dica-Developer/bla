@@ -1,10 +1,10 @@
 // Copyright 2009 Google Inc. All Rights Reserved.
 package com.google.android.apps.mytracks.io.gdata.maps;
 
-import com.google.android.maps.GeoPoint;
-
 import java.util.Random;
 import java.util.Vector;
+
+import org.osmdroid.util.GeoPoint;
 
 /**
  * MapsFeature contains all of the data associated with a feature in Google

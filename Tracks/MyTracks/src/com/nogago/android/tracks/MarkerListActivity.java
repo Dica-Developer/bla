@@ -41,7 +41,6 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -176,6 +175,7 @@ public class MarkerListActivity extends AbstractMyTracksActivity {
     });
   }
 
+  /*
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.marker_list, menu);
@@ -185,7 +185,7 @@ public class MarkerListActivity extends AbstractMyTracksActivity {
     updateMenu();
     return true;
   }
-
+*/
   private void updateMenu() {
     if (insertMarkerMenuItem != null) {
       insertMarkerMenuItem.setVisible(
@@ -193,6 +193,7 @@ public class MarkerListActivity extends AbstractMyTracksActivity {
     }
   }
 
+  /*
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
@@ -207,6 +208,7 @@ public class MarkerListActivity extends AbstractMyTracksActivity {
         return super.onOptionsItemSelected(item);
     }
   }
+  */
 
   @Override
   public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {

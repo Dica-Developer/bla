@@ -21,7 +21,6 @@ import com.google.android.apps.mytracks.util.ApiAdapterFactory;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.FragmentActivity;
-import android.view.MenuItem;
 
 /**
  * An abstract class for all My Tracks activities.
@@ -37,14 +36,7 @@ public class AbstractMyTracksActivity extends FragmentActivity {
     ApiAdapterFactory.getApiAdapter().configureActionBarHomeAsUp(this);
   }
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    if (item.getItemId() != android.R.id.home) {
-      return super.onOptionsItemSelected(item);
-    }
-    onHomeSelected();
-    return true;
-  }
+
 
   /**
    * Callback when the home menu item is selected.

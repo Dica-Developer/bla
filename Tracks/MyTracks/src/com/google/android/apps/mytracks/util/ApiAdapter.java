@@ -124,7 +124,6 @@ public interface ApiAdapter {
    * @param activity the activity
    */
   public void hideTitle(Activity activity);
-
   /**
    * Configures the action bar with the Home button as an Up button. If the
    * platform doesn't support the action bar, do nothing.

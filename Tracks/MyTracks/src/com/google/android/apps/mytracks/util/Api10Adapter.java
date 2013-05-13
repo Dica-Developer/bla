@@ -19,6 +19,7 @@ import com.google.android.apps.mytracks.services.sensors.BluetoothConnectionMana
 import com.nogago.android.tracks.Constants;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.util.Log;
@@ -43,4 +44,16 @@ public class Api10Adapter extends Api9Adapter {
     }
     return bluetoothDevice.createRfcommSocketToServiceRecord(BluetoothConnectionManager.MY_TRACKS_UUID);
   };
+
+  @Override
+  public void hideTitle(Activity activity) {
+    // Do nothing
+  }
+
+  @Override
+  public boolean handleSearchMenuSelection(Activity activity) {
+    // Returns false to allow the platform to expand the search widget.
+    return false;
+  }
+
 }

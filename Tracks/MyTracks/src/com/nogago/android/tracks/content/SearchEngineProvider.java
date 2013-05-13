@@ -26,7 +26,7 @@ import android.provider.SearchRecentSuggestions;
  */
 public class SearchEngineProvider extends SearchRecentSuggestionsProvider {
 
-  private static final String AUTHORITY = "com.google.android.maps.mytracks.search";
+  private static final String AUTHORITY = "com.nogago.android.tracks.content";
   private static final int MODE = DATABASE_MODE_QUERIES;
 
   public SearchEngineProvider() {

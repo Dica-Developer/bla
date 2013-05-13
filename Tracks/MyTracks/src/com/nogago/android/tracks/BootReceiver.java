@@ -15,11 +15,8 @@
  */
 package com.nogago.android.tracks;
 
-import static android.content.Intent.ACTION_BOOT_COMPLETED;
-import static com.nogago.android.tracks.Constants.RESUME_TRACK_EXTRA_NAME;
 import static com.nogago.android.tracks.Constants.TAG;
 
-import com.nogago.android.tracks.services.RemoveTempFilesService;
 import com.nogago.android.tracks.services.TrackRecordingService;
 
 import android.content.BroadcastReceiver;
@@ -47,7 +44,7 @@ public class BootReceiver extends BroadcastReceiver {
   @Override
   public void onReceive(Context context, Intent intent) {
     Log.d(TAG, "BootReceiver.onReceive: " + intent.getAction());
-    if (ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
+    /* if (ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
       Intent startIntent = new Intent(context, TrackRecordingService.class)
           .putExtra(RESUME_TRACK_EXTRA_NAME, true);
       context.startService(startIntent);
@@ -56,6 +53,6 @@ public class BootReceiver extends BroadcastReceiver {
       context.startService(removeTempFilesIntent);
     } else {
       Log.w(TAG, "BootReceiver: unsupported action");
-    }
+    } */
   }
 }

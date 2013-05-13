@@ -24,11 +24,9 @@ limitations under the License.
   <item
     android:icon="@drawable/menu_edit"
     android:id="@+id/marker_detail_edit"
-    android:showAsAction="ifRoom"
     android:title="@string/menu_edit"/>
   <item
     android:icon="@drawable/menu_delete"
     android:id="@+id/marker_detail_delete"
-    android:showAsAction="ifRoom"
     android:title="@string/menu_delete"/>
 </menu>

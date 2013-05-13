@@ -47,7 +47,7 @@ public class Api11Adapter extends Api10Adapter {
   @Override
   public void hideTitle(Activity activity) {
     // Do nothing
-  }
+  } 
 
   @Override
   public void configureActionBarHomeAsUp(Activity activity) {

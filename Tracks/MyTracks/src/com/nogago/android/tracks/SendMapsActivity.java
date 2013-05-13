@@ -18,12 +18,6 @@ package com.nogago.android.tracks;
 import com.google.android.apps.mytracks.io.maps.SendMapsAsyncTask;
 import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendActivity;
 import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendAsyncTask;
-import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
-import com.google.android.apps.mytracks.util.IntentUtils;
-import com.google.common.annotations.VisibleForTesting;
-import com.nogago.android.tracks.R;
-
-import android.content.Intent;
 
 /**
  * An activity to send a track to Google Maps.
@@ -46,25 +40,14 @@ public class SendMapsActivity extends AbstractSendActivity {
   @Override
   protected void startNextActivity(boolean success, boolean isCancel) {
     sendRequest.setMapsSuccess(success);
+/*
     Class<?> next = getNextClass(sendRequest, isCancel);
     Intent intent = IntentUtils.newIntent(this, next)
         .putExtra(SendRequest.SEND_REQUEST_KEY, sendRequest);
     startActivity(intent);
+  */
     finish();
   }
   
-  @VisibleForTesting
-  Class<?> getNextClass(SendRequest request, boolean isCancel) {
-    if (isCancel) {
-      return UploadResultActivity.class;
-    } else {
-      if (request.isSendFusionTables()) {
-        return SendFusionTablesActivity.class;
-      } else if (request.isSendDocs()) {
-        return SendDocsActivity.class;
-      } else {
-        return UploadResultActivity.class;
-      }
-    }
-  }
+
 }

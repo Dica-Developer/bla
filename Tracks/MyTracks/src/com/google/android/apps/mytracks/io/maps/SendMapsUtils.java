@@ -21,7 +21,6 @@ import com.google.android.apps.mytracks.io.gdata.maps.MapsClient;
 import com.google.android.apps.mytracks.io.gdata.maps.MapsFeature;
 import com.google.android.apps.mytracks.io.gdata.maps.MapsGDataConverter;
 import com.google.android.apps.mytracks.io.gdata.maps.MapsMapMetadata;
-import com.google.android.maps.GeoPoint;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.wireless.gdata.client.HttpException;
 import com.google.wireless.gdata.data.Entry;
@@ -33,6 +32,8 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import org.osmdroid.util.GeoPoint;
 
 /**
  * Utilities for sending a track to Google Maps.
@@ -191,7 +192,7 @@ public class SendMapsUtils {
     mapsFeature.setTitle(TextUtils.isEmpty(title) ? EMPTY_TITLE : title);
     mapsFeature.setDescription(description.replaceAll("\n", "<br>"));
     mapsFeature.setIconUrl(iconUrl);
-    mapsFeature.addPoint(geoPoint);
+    // mapsFeature.addPoint(geoPoint);
     return mapsFeature;
   }
 
@@ -209,9 +210,11 @@ public class SendMapsUtils {
     // Feature must have a name (otherwise GData upload may fail)
     mapsFeature.setTitle(TextUtils.isEmpty(title) ? EMPTY_TITLE : title);
     mapsFeature.setColor(LINE_COLOR);
+  /*
     for (Location location : locations) {
       mapsFeature.addPoint(getGeoPoint(location));
     }
+    */
     return mapsFeature;
   }
 

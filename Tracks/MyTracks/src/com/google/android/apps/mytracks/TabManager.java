@@ -16,7 +16,7 @@
 
 package com.google.android.apps.mytracks;
 
-import com.google.android.apps.mytracks.fragments.MapFragment;
+// import com.google.android.apps.mytracks.fragments.MapFragment;
 import com.google.android.apps.mytracks.fragments.StatsFragment;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
 import com.nogago.android.tracks.Constants;
@@ -193,7 +193,7 @@ public class TabManager implements TabHost.OnTabChangeListener {
         });
     AlertDialog alert = builder.create();
 
-    if (MapFragment.MAP_FRAGMENT_TAG == tabId) {
+    if (tabId.compareTo("mapFragment")==0) {
       try {
         tabId = StatsFragment.STATS_FRAGMENT_TAG;
         // nogagoMaps aufrufen

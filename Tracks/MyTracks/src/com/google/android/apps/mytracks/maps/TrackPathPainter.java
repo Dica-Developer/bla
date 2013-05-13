@@ -16,13 +16,14 @@
 package com.google.android.apps.mytracks.maps;
 
 import com.google.android.apps.mytracks.MapOverlay.CachedLocation;
-import com.google.android.maps.Projection;
 
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Rect;
 
 import java.util.List;
+
+import org.osmdroid.views.MapView.Projection;
 
 /**
  * An interface for classes which paint the track path. 

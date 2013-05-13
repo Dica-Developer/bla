@@ -22,7 +22,6 @@ import com.google.android.apps.mytracks.io.gdata.maps.MapsConstants;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
-import com.nogago.android.tracks.R;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -265,7 +264,7 @@ public class AccountChooserActivity extends Activity {
    *
    */
   private void startNextActivity() {
-    Class<?> next;
+    Class<?> next =null;
     if (sendRequest.isSendMaps()) {
       next = sendRequest.isNewMap() ? SendMapsActivity.class : ChooseMapActivity.class;
     } else if (sendRequest.isSendFusionTables()) {
@@ -273,12 +272,14 @@ public class AccountChooserActivity extends Activity {
     } else if (sendRequest.isSendDocs()) {
       next = SendDocsActivity.class;
     } else {
-      next = UploadResultActivity.class;
+      // next = UploadResultActivity.class;
     }
+    if(next != null) {
     Intent intent = IntentUtils.newIntent(this, next)
         .putExtra(SendRequest.SEND_REQUEST_KEY, sendRequest);
     startActivity(intent);
     finish();
+    }
   }
   
   /**

@@ -18,12 +18,9 @@ limitations under the License.
   <item
     android:icon="@drawable/menu_insert_marker"
     android:id="@+id/marker_list_insert_marker"
-    android:showAsAction="ifRoom"
     android:title="@string/menu_insert_marker"/>
   <item
-    android:actionViewClass="android.widget.SearchView"
     android:icon="@drawable/menu_search"
     android:id="@+id/marker_list_search"
-    android:showAsAction="always|collapseActionView"
     android:title="@string/menu_search"/>
 </menu>

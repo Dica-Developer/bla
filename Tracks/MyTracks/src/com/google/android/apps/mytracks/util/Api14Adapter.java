@@ -16,11 +16,13 @@
 
 package com.google.android.apps.mytracks.util;
 
+
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.view.MenuItem;
 import android.widget.SearchView;
+//import android.app.Activity;
 
 /**
  * API level 14 specific implementation of the {@link ApiAdapter}.

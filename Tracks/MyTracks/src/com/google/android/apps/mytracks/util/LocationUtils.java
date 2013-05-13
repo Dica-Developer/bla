@@ -17,7 +17,6 @@ package com.google.android.apps.mytracks.util;
 
 import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.stats.TripStatistics;
-import com.google.android.maps.GeoPoint;
 import com.nogago.android.tracks.Constants;
 
 import android.location.Location;
@@ -26,6 +25,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+
+import org.osmdroid.util.GeoPoint;
 
 /**
  * Utility class for decimating tracks at a given level of precision.

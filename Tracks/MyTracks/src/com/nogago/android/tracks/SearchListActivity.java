@@ -51,7 +51,6 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -214,6 +213,7 @@ public class SearchListActivity extends AbstractMyTracksActivity implements Dele
     handleIntent(intent);
   }
 
+  /*
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.search_list, menu);
@@ -231,6 +231,7 @@ public class SearchListActivity extends AbstractMyTracksActivity implements Dele
         return super.onOptionsItemSelected(item);
     }
   }
+  */
 
   @Override
   public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {

@@ -18,11 +18,6 @@ package com.nogago.android.tracks;
 import com.google.android.apps.mytracks.io.docs.SendDocsAsyncTask;
 import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendActivity;
 import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendAsyncTask;
-import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
-import com.google.android.apps.mytracks.util.IntentUtils;
-import com.nogago.android.tracks.R;
-
-import android.content.Intent;
 
 /**
  * An activity to send a track to Google Docs.
@@ -44,9 +39,11 @@ public class SendDocsActivity extends AbstractSendActivity {
   @Override
   protected void startNextActivity(boolean success, boolean isCancel) {
     sendRequest.setDocsSuccess(success);
+    /*
     Intent intent = IntentUtils.newIntent(this, UploadResultActivity.class)
         .putExtra(SendRequest.SEND_REQUEST_KEY, sendRequest);
     startActivity(intent);
+    */
     finish();
   }
 }
