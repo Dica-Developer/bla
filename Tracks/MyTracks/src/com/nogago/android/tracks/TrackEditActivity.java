@@ -16,12 +16,12 @@
 
 package com.nogago.android.tracks;
 
+
 import com.google.android.apps.mytracks.AbstractMyTracksActivity;
 import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
 import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.util.TrackIconUtils;
 import com.google.android.apps.mytracks.util.TrackNameUtils;
-import com.nogago.android.tracks.R;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +32,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 /**
  * An activity that let's the user see and edit the user editable track meta
  * data such as track name, activity type, and track description.
