@@ -33,60 +33,76 @@ limitations under the License.
     style="@style/ListEmptyTextView" >
   </TextView>
 
-  <!--  Start of the actionBar -->
+   <!--  Start of the actionBar  -->
   <View
     android:background="@color/actionBarSeperator"
     android:layout_height="1dp"
     android:layout_width="fill_parent" />
-  <LinearLayout 
-      
+  <LinearLayout
    	  android:id="@+id/track_controller_container"
       android:layout_width="fill_parent"
-      android:layout_height="101px"
-      android:layout_gravity="center_horizontal"
       android:orientation="horizontal"
+      android:layout_height="101px"
       android:paddingTop="10px"
       android:paddingBottom="10px"
-      android:background="@color/actionBarBG"
-      android:weightSum="1.0" >
+      android:background="@color/actionBarBG">
 
       <ImageButton
-      android:layout_width="144px"
-      android:layout_height="81px"
           android:id="@+id/listBtnBarHelp"
-          android:scaleType="center"
-          android:background="@drawable/ic_help" />
+          android:layout_width="0dp"
+          android:layout_weight="1"
+        android:layout_height="wrap_content"
+          android:src="@drawable/ic_help"
+          android:layout_margin="0dp"
+      android:background="@color/actionBarBG"
+          android:scaleType="centerInside" />
 
       <ImageButton
-      android:layout_width="144px"
-      android:layout_height="81px"
           android:id="@+id/listBtnBarRecord"
-      android:contentDescription="@string/icon_record_track"
-          android:scaleType="center"
-          android:background="@drawable/ic_record" />
+          android:layout_width="0dp"
+          android:layout_weight="1"
+        android:layout_height="wrap_content"
+          android:layout_toRightOf="@id/listBtnBarHelp"
+          android:src="@drawable/ic_record"
+          android:contentDescription="@string/icon_record_track"
+          
+      android:background="@color/actionBarBG"
+          android:scaleType="centerInside" />
 
       <ImageButton
-      android:layout_width="144px"
-      android:layout_height="81px"
           android:id="@+id/listBtnBarStop"
-      android:contentDescription="@string/icon_stop_recording"
-          android:scaleType="center"
-          android:background="@drawable/ic_stop_0" />
-
+          android:layout_width="0dp"
+          android:layout_weight="1"
+        android:layout_height="wrap_content"
+          android:layout_toRightOf="@id/listBtnBarRecord"
+          android:src="@drawable/ic_stop_0"
+          android:contentDescription="@string/icon_stop_recording"
+          
+      android:background="@color/actionBarBG"
+          android:scaleType="centerInside"  />
       
       <ImageButton
-      android:layout_width="144px"
-      android:layout_height="81px"
           android:id="@+id/listBtnBarSearch"
-          android:scaleType="center"
-          android:background="@drawable/ic_search" />
+          android:layout_width="0dp"
+          android:layout_weight="1"
+        android:layout_height="wrap_content"
+          android:layout_toRightOf="@id/listBtnBarStop"
+          android:src="@drawable/ic_search"
+          
+      android:background="@color/actionBarBG"
+          android:scaleType="centerInside"  />
 
       <ImageButton
-      android:layout_width="144px"
-      android:layout_height="81px"
           android:id="@+id/listBtnBarMore"
-          android:scaleType="center"
-          android:background="@drawable/ic_more_new" />
-  </LinearLayout>
+          android:layout_width="0dp"
+          android:layout_weight="1"
+        android:layout_height="wrap_content"
+          android:layout_toRightOf="@id/listBtnBarSearch"
+          android:src="@drawable/ic_more_new"
+         
+      android:background="@color/actionBarBG"
+          android:scaleType="centerInside" />
+
+</LinearLayout>
 
 </LinearLayout>

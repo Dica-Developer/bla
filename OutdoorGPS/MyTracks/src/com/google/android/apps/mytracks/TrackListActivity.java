@@ -372,8 +372,6 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     moreButton.setOnClickListener(new OnClickListener() {
       @Override
     public void onClick(View v) {
-        // TODO Test
-        Toast.makeText(getApplicationContext(), "More", Toast.LENGTH_LONG).show();
         openOptionsMenu();
     }
   });
@@ -514,8 +512,8 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   public boolean onOptionsItemSelected(MenuItem item) {
     Intent intent;
     switch (item.getItemId()) {
-      case R.id.track_list_search:
-        return ApiAdapterFactory.getApiAdapter().handleSearchMenuSelection(this);
+   /*   case R.id.track_list_search:
+        return ApiAdapterFactory.getApiAdapter().handleSearchMenuSelection(this); */
       case R.id.track_list_start_gps:
         startGps = !startGps;
         handleStartGps();
@@ -551,10 +549,11 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         intent = IntentUtils.newIntent(this, SettingsActivity.class);
         startActivity(intent);
         return true;
-      case R.id.track_list_help:
+  /*    case R.id.track_list_help:
         intent = IntentUtils.newIntent(this, HelpActivity.class);
         startActivity(intent);
         return true;
+        */
       default:
         return super.onOptionsItemSelected(item);
     }

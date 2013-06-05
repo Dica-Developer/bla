@@ -26,6 +26,7 @@ limitations under the License.
       android:id="@+id/stats_total_distance_value"
       style="@style/StatsValue" />
   </TableRow>
+  
   <!-- Total time/moving time -->
   <TableRow>
     <TextView

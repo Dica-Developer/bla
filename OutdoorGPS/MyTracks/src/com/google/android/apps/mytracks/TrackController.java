@@ -89,25 +89,29 @@ public class TrackController {
       stop();
       return;
     }
-/*// TODO CHECK
+
     recordImageButton.setImageResource(isRecording && !isPaused ? R.drawable.ic_pause
         : R.drawable.ic_record);
-    LayoutParams lp = recordImageButton.getLayoutParams();
-    lp.width=144;
-    lp.height=81;
     recordImageButton.setContentDescription(activity
         .getString(isRecording && !isPaused ? R.string.icon_pause_recording
             : R.string.icon_record_track));
+    /*
+    LayoutParams lp = recordImageButton.getLayoutParams();
+    lp.width=144;
+    lp.height=81;
     recordImageButton.setLayoutParams(lp);
-
-
+    recordImageButton.setScaleType(ScaleType.CENTER);
+*/
     stopImageButton.setImageResource(isRecording ? R.drawable.ic_stop_1 : R.drawable.ic_stop_0);
     stopImageButton.setEnabled(isRecording);
+    /*
     lp = stopImageButton.getLayoutParams();
     lp.width=144;
     lp.height=81;
     stopImageButton.setLayoutParams(lp);
+    stopImageButton.setScaleType(ScaleType.CENTER);
     */
+    
 /*
     statusTextView.setVisibility(isRecording ? View.VISIBLE : View.INVISIBLE);
     if (isRecording) {

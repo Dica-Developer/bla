@@ -20,18 +20,17 @@ limitations under the License.
     <item name="android:paddingLeft">48dp</item>
   </style>
   <!-- The style for the bottom button -->
-  <style name="BottomButton" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
+  <style name="BottomButton" >
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_weight">1</item>
     <item name="android:layout_width">0dp</item>
     <item name="android:maxLines">2</item>
   </style>
   <!-- The style for the bottom button bar -->
-  <style name="BottomButtonBar" parent="@android:style/DeviceDefault.ButtonBar">
+  <style name="BottomButtonBar" >
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_width">fill_parent</item>
     <item name="android:orientation">horizontal</item>
-    <item name="android:measureWithLargestChild">true</item>
   </style>
   <!-- The style for choose upload service check box -->
   <style name="ChooseUploadServiceCheckBox" parent="@style/TextMedium">
@@ -131,23 +130,26 @@ limitations under the License.
     <item name="android:textColor">@android:color/primary_text_light</item>
   </style>
   <!-- The style for the stats label -->
-  <style name="StatsLabel" parent="@style/TextMedium">
+  <style name="StatsLabel" parent="@style/TextSmallBold">
     <item name="android:layout_weight">1</item>
     <item name="android:layout_width">0dp</item>
+    <item name="android:textColor">@color/red</item>
+    <item name="android:background">@color/white</item>
+    <item name="android:gravity">center</item>
   </style>
   <!-- The style for the stats spacer -->
   <style name="StatsSpacer">
     <item name="android:layout_height">fill_parent</item>
-    <item name="android:layout_width">8dp</item>
+    <item name="android:layout_width">1dp</item>
   </style>
   <!-- The style for the stats value -->
-  <style name="StatsValue" parent="@style/TextLarge">
-    <item name="android:background">@android:color/background_light</item>
-    <item name="android:gravity">right</item>
+  <style name="StatsValue" parent="@style/TextVeryLarge">
+    <item name="android:background">@color/white</item>
+    <item name="android:gravity">center</item>
     <item name="android:layout_weight">1</item>
     <item name="android:layout_width">0dp</item>
     <item name="android:paddingRight">8dp</item>
-    <item name="android:textColor">@android:color/primary_text_light</item>
+    <item name="android:textColor">@color/black</item>
   </style>
   <!-- The style for choose activity text -->
   <style name="TextChooseActivity">
@@ -158,6 +160,12 @@ limitations under the License.
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_width">wrap_content</item>
     <item name="android:textSize">22sp</item>
+  </style><!-- The style for very large size text -->
+  <style name="TextVeryLarge">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:textSize">36sp</item>
+    <item name="android:textStyle">bold</item>
   </style>
   <!-- The style for large size text with top margin -->
   <style name="TextLarge.WithTopMargin">
@@ -179,6 +187,13 @@ limitations under the License.
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_width">wrap_content</item>
     <item name="android:textSize">14sp</item>
+  </style> 
+   <!-- The style for small and bold text -->
+  <style name="TextSmallBold">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:textStyle">bold</item>
   </style>
   <!-- The style for tiny size text -->
   <style name="TextTiny">
@@ -187,7 +202,13 @@ limitations under the License.
     <item name="android:textSize">10sp</item>
   </style>
   <!-- Theme selector -->
-  <style name="ThemeSelector" parent="android:Theme" />
+  <style name="ThemeSelector" parent="android:Theme" >
+     <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
+    </style>
+ 
+    <style name="WindowTitleBackground">     
+        <item name="android:background">@color/black</item>
+    </style>
   <!-- The style for the track controller container -->
   <style name="TrackControllerContainer">
     <item name="android:layout_height">wrap_content</item>
