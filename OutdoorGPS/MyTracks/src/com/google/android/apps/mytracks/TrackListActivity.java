@@ -35,6 +35,7 @@ import com.google.android.apps.mytracks.settings.SettingsActivity;
 import com.google.android.apps.mytracks.util.AnalyticsUtils;
 import com.google.android.apps.mytracks.util.ApiAdapterFactory;
 import com.google.android.apps.mytracks.util.EulaUtils;
+import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.ListItemUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
@@ -73,6 +74,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.EnumSet;
 
 /**
@@ -494,10 +496,10 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         .setTitle(getString(R.string.menu_save_format, fileTypes[1]));
     menu.findItem(R.id.track_list_save_all_csv)
         .setTitle(getString(R.string.menu_save_format, fileTypes[2]));
-    menu.findItem(R.id.track_list_save_all_tcx)
-        .setTitle(getString(R.string.menu_save_format, fileTypes[3]));
+  //  menu.findItem(R.id.track_list_save_all_tcx)
+  //      .setTitle(getString(R.string.menu_save_format, fileTypes[3]));
 
-    searchMenuItem = menu.findItem(R.id.track_list_search);
+  //  searchMenuItem = menu.findItem(R.id.track_list_search);
     startGpsMenuItem = menu.findItem(R.id.track_list_start_gps);
     importMenuItem = menu.findItem(R.id.track_list_import);
     saveAllMenuItem = menu.findItem(R.id.track_list_save_all);
@@ -534,9 +536,9 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
       case R.id.track_list_save_all_csv:
         startSaveActivity(TrackFileFormat.CSV);
         return true;
-      case R.id.track_list_save_all_tcx:
-        startSaveActivity(TrackFileFormat.TCX);
-        return true;
+    //  case R.id.track_list_save_all_tcx:
+    //    startSaveActivity(TrackFileFormat.TCX);
+    //    return true;
       case R.id.track_list_delete_all:
         new DeleteAllTrackDialogFragment().show(
             getSupportFragmentManager(), DeleteAllTrackDialogFragment.DELETE_ALL_TRACK_DIALOG_TAG);
@@ -644,6 +646,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
    * Shows start up dialogs.
    */
   public void showStartupDialogs() {
+    setupDirectories();
    /* if (!EulaUtils.getAcceptEula(this)) {
       Fragment fragment = getSupportFragmentManager()
           .findFragmentByTag(EulaDialogFragment.EULA_DIALOG_TAG);
@@ -672,6 +675,21 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
        */
       findViewById(R.id.track_list_empty_view).setVisibility(View.VISIBLE);
     }
+  }
+ /**
+  * Creates the directories to exchange track files
+  */
+  private void setupDirectories() {
+    // create a File object for the parent directory
+        File directory = new File(FileUtils.buildExternalDirectoryPath("gpx"));
+        // have the object build the directory structure, if needed.
+        directory.mkdirs();
+        directory = new File(FileUtils.buildExternalDirectoryPath("kml"));
+        // have the object build the directory structure, if needed.
+        directory.mkdirs();
+        directory = new File(FileUtils.buildExternalDirectoryPath("csv"));
+        // have the object build the directory structure, if needed.
+        directory.mkdirs();
   }
 
   /**

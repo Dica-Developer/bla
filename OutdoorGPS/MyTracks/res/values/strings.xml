@@ -18,26 +18,26 @@ limitations under the License.
 
   <!-- About Page -->
   <string name="about_copyright_notice"
-    translation_description="In the 'About My Tracks' page, the copyright notice.">
-    Copyright 2009 Google Inc.
+    translation_description="In the 'About nogago Outdoor GPS' page, the copyright notice.">
+    Copyright 2009-2013 nogago GmbH 
   </string>
   <string name="about_license"
-    translation_description="In the 'About My Tracks' page, the button on the bottom to open the
+    translation_description="In the 'About nogago Outdoor GPS' page, the button on the bottom to open the
       'Terms of service' dialog.">
     License
   </string>
   <string name="about_privacy"
-    translation_description="In the 'About My Tracks' page, label for the privacy link. E.g.,
+    translation_description="In the 'About nogago Outdoor GPS' page, label for the privacy link. E.g.,
       'Privacy: m.google.com/privacy'.">
     Privacy:
   </string>
   <string name="about_support"
-    translation_description="In the 'About My Tracks' page, label for the support link. E.g.,
+    translation_description="In the 'About nogago Outdoor GPS' page, label for the support link. E.g.,
       'Support: mytracks.appspot.com'.">
     Support:
   </string>
   <string name="about_version"
-    translation_description="In the 'About My Tracks' page, label for the version number. E.g.,
+    translation_description="In the 'About nogago Outdoor GPS' page, label for the version number. E.g.,
       'Version: 1.1.11'.">
     Version:
   </string>
@@ -692,12 +692,12 @@ limitations under the License.
     No GPS is found on the device.
   </string>
   <string name="gps_wait_for_better_signal"
-    translation_description="In the main view, the message on the top indicating My Tracks is
+    translation_description="In the main view, the message on the top indicating nogago Outdoor GPS is
       waiting for a better GPS signal.">
     Waiting for a better GPS signal. Make sure the sky is visible.
   </string>
   <string name="gps_wait_for_signal"
-    translation_description="In the main view, the message on the top indicating My Tracks is
+    translation_description="In the main view, the message on the top indicating nogago Outdoor GPS is
       waiting for a better GPS signal.">
     Waiting for GPS signal. Make sure the sky is visible.
   </string>
@@ -706,7 +706,7 @@ limitations under the License.
   <string name="help_about"
     translation_description="In the 'Help' page, the button on the bottom to open the 'About My
       Tracks' dialog.">
-    About My Tracks
+    About nogago Outdoor GPS
   </string>
   <string name="help_battery_life_answer"
     translation_description="In the 'Help' page, the answer on battery life.">
@@ -729,7 +729,7 @@ limitations under the License.
   </string>
   <string name="help_data_connection_question"
     translation_description="In the 'Help' page, the question on data connection.">
-    Do I need cell signal and data connection to use My Tracks?
+    Do I need cell signal and data connection to use nogago Outdoor GPS?
   </string>
   <string name="help_delete_tracks_answer"
     translation_description="In the 'Help' page, the answer on delete tracks.">
@@ -745,7 +745,7 @@ limitations under the License.
   </string>
   <string name="help_edit_tracks_answer"
     translation_description="In the 'Help' page, the answer on edit tracks.">
-    Currently, you can\'t with My Tracks. But you can upload your tracks to Google or save them to
+    Currently, you can\'t with nogago Outdoor GPS. But you can upload your tracks to Google or save them to
     the SD card to modify them there.
   </string>
   <string name="help_edit_tracks_question"
@@ -765,7 +765,7 @@ limitations under the License.
   </string>
   <string name="help_gps_signal_answer"
     translation_description="In the 'Help' page, the answer on the GPS signal message.">
-    For My Tracks to work, your phone needs to be in line-of-sight contact with the GPS satellites.
+    For nogago Outdoor GPS to work, your phone needs to be in line-of-sight contact with the GPS satellites.
     If the line-of-sight is obstructed by trees, buildings or canyon walls, you may not get an
     accurate signal. If you see the message, wait a minute or two. If your device still does not
     find a signal, move to an area clear of obstructions and try again.
@@ -804,15 +804,15 @@ limitations under the License.
     What are markers?
   </string>
   <string name="help_my_tracks_answer"
-    translation_description="In the 'Help' page, the answer on what is My Tracks.">
-    My Tracks allows you to record GPS tracks and visualize your walking, running, biking or any
-    other activity while watching live performance statistics. My Tracks makes it easy to archive
+    translation_description="In the 'Help' page, the answer on what is nogago Outdoor GPS.">
+    nogago Outdoor GPS allows you to record GPS tracks and visualize your walking, running, biking or any
+    other activity while watching live performance statistics. nogago Outdoor GPS makes it easy to archive
     your training history with Google Maps, Google Fusion Tables, and Google Docs, and share your
     activities with friends and the world.
   </string>
   <string name="help_my_tracks_question"
-    translation_description="In the 'Help' page, the question on what is My Tracks.">
-    What is My Tracks?
+    translation_description="In the 'Help' page, the question on what is nogago Outdoor GPS.">
+    What is nogago Outdoor GPS?
   </string>
   <string name="help_saved_files_answer"
     translation_description="In the 'Help' page, the answer on saved files.">
@@ -1206,10 +1206,10 @@ limitations under the License.
     %1$s &amp; make sure the sky is visible. Try again later.
   </string>
 
-  <!-- My Tracks -->
+  <!-- nogago Outdoor GPS -->
   <string name="my_tracks_app_name"
-    translation_description="The My Tracks application name.">
-      My Tracks
+    translation_description="The nogago Outdoor GPS application name.">
+      nogago Outdoor GPS
   </string>
   <string name="my_tracks_recording_service"
     translation_description="When viewing the 'Running services' on Android, the name of the My
@@ -1221,34 +1221,34 @@ limitations under the License.
 
   <!-- Permission -->
   <string name="permission_notification_description"
-    translation_description="When installing a third-party app that wants to receive My Tracks
+    translation_description="When installing a third-party app that wants to receive nogago Outdoor GPS
       notifications, the permission description that the Android Market shows to the user.">
-    Allows the application to receive notifications when My Tracks starts or stops a recording.
+    Allows the application to receive notifications when nogago Outdoor GPS starts or stops a recording.
   </string>
   <string name="permission_notification_label"
-    translation_description="When installing a third-party app that wants to receive My Tracks
+    translation_description="When installing a third-party app that wants to receive nogago Outdoor GPS
       notifications, the permission label that the Android Market shows to the user.">
-    receive My Tracks notifications
+    receive nogago Outdoor GPS notifications
   </string>
   <string name="permission_read_description"
-    translation_description="When installing a third-party app that wants to read My Tracks data,
+    translation_description="When installing a third-party app that wants to read nogago Outdoor GPS data,
       the permission description that the Android Market shows to the user.">
-    Allows the application to read My Tracks data.
+    Allows the application to read nogago Outdoor GPS data.
   </string>
   <string name="permission_read_label"
-    translation_description="When installing a third-party app that wants to read My Tracks data,
+    translation_description="When installing a third-party app that wants to read nogago Outdoor GPS data,
       the permission label that the Android Market shows to the user.">
-    read My Tracks data
+    read nogago Outdoor GPS data
   </string>
   <string name="permission_write_description"
     translation_description="When installing a third-party app that wants to write data to My
       Tracks, the permission description that the Android Market shows to the user.">
-    Allows the application to write data to My Tracks and start/stop My Tracks recording.
+    Allows the application to write data to nogago Outdoor GPS and start/stop nogago Outdoor GPS recording.
   </string>
   <string name="permission_write_label"
     translation_description="When installing a third-party app that wants to write data to My
       Tracks, the permission label that the Android Market shows to the user.">
-    write data to My Tracks and start/stop My Tracks recording
+    write data to nogago Outdoor GPS and start/stop nogago Outdoor GPS recording
   </string>
 
   <!-- SD Card -->
@@ -1317,7 +1317,7 @@ limitations under the License.
 
   <!-- Search -->
   <string name="search_global_description"
-    translation_description="Description of what is searched in My Tracks, to be displayed in the
+    translation_description="Description of what is searched in nogago Outdoor GPS, to be displayed in the
       global system search settings.">
     Tracks and markers
   </string>
@@ -1343,9 +1343,9 @@ limitations under the License.
     translation_description="When sending a track to Google, a note indicating it is created by My
       Tracks on Android.
 
-      %1$s: the html anchor opening tag. Place this placeholder before the app name, 'My Tracks'.
-      %2$s: the html anchor closing tag. Place this placeholder after the app name, 'My Tracks'.">
-    Created by %1$sMy Tracks%2$s on Android.
+      %1$s: the html anchor opening tag. Place this placeholder before the app name, 'nogago Outdoor GPS'.
+      %2$s: the html anchor closing tag. Place this placeholder after the app name, 'nogago Outdoor GPS'.">
+    Created by %1$snogago Outdoor GPS%2$s on Android.
   </string>
   <string name="send_google_choose_account_title"
     translation_description="When sending to Google, the dialog title to choose a Google account.">
@@ -1562,7 +1562,7 @@ limitations under the License.
   </string>
   <string name="settings_backup_restore_progress_message"
     translation_description="In the 'Backup' settings, after pressing the 'Restore now' option, the
-      progress message informing that My Tracks is reading all tracks and settings from the backup
+      progress message informing that nogago Outdoor GPS is reading all tracks and settings from the backup
       on the SD card.">
     Reading all tracks and settings&#8230;
   </string>
@@ -1967,7 +1967,7 @@ limitations under the License.
   </string>
   <string name="settings_sharing_allow_access"
     translation_description="In the 'Sharing' settings, the checkbox option to allow third party
-      apps access to the My Tracks data.
+      apps access to the nogago Outdoor GPS data.
 
       Character limit: ~23 (1 line)">
     Allow access
@@ -1975,22 +1975,22 @@ limitations under the License.
   <string name="settings_sharing_allow_access_confirm_message"
     translation_description="In the 'Sharing' settings, after checking the 'Allow access' checkbox,
       the confirmation dialog message informing the user that other apps, including apps installed
-      in the future, will be able to control and access My Tracks data. In addition, no further
+      in the future, will be able to control and access nogago Outdoor GPS data. In addition, no further
       notification of third party app access will be shown.">
-    Other apps, including future apps, will be able to control and access My Tracks data. There will
+    Other apps, including future apps, will be able to control and access nogago Outdoor GPS data. There will
     be no further notification.
   </string>
   <string name="settings_sharing_allow_access_summary_off"
     translation_description="In the 'Sharing' settings, the summary for the 'Allow access' checkbox
       option when it is unchecked explaining that other apps cannot read, write, start/stop
-      recording My Tracks data.">
-    Other apps cannot read, write, start/stop recording My Tracks data.
+      recording nogago Outdoor GPS data.">
+    Other apps cannot read, write, start/stop recording nogago Outdoor GPS data.
   </string>
   <string name="settings_sharing_allow_access_summary_on"
     translation_description="In the 'Sharing' settings, the summary for the 'Allow access' checkbox
       option when it is checked explaining that other apps can read, write, start/stop recording My
       Tracks data.">
-    Other apps can read, write, start/stop recording My Tracks data.
+    Other apps can read, write, start/stop recording nogago Outdoor GPS data.
   </string>
   <string name="settings_sharing_new_map_public"
     translation_description="In the 'Sharing' settings, the checkbox option to make new maps created
@@ -2285,8 +2285,8 @@ limitations under the License.
     Track %1$d
   </string>
   <string name="track_record_notification"
-    translation_description="When recording a track, the message on the My Tracks notification
-      informing the user that My Tracks is actively recording his track.">
+    translation_description="When recording a track, the message on the nogago Outdoor GPS notification
+      informing the user that nogago Outdoor GPS is actively recording his track.">
     Recording your track&#8230;
   </string>
 
@@ -2678,7 +2678,7 @@ limitations under the License.
       %2$s: time string. E.g., '1 hour and 30 minutes' or '20 minutes 1 second'
       %3$s: speed/pace string. For speed, e.g., '2.2 miles per hour', '1 kilometer per hour'. For
       pace, e.g., '2 hours 1 minute per mile', '30 minutes 1 second per kilometer'.">
-    My Tracks %1$s in %2$s at %3$s.
+    nogago Outdoor GPS %1$s in %2$s at %3$s.
   </string>
   <string name="voice_total_distance_kilometers_few"
     translation_description="For voice announcement, to say total distance 'few' kilometers.
@@ -2746,7 +2746,7 @@ limitations under the License.
   <string name="voice_total_distance_zero"
     translation_description="For the voice announcement, the announcement when the current track's
       total distance is zero.">
-    My Tracks total distance zero.
+    nogago Outdoor GPS total distance zero.
   </string>
 
   <!-- Waypoint Type -->
@@ -3010,11 +3010,11 @@ limitations under the License.
   <string name="welcome_message"
     translation_description="The message of the welcome dialog. Note that \n is the newline
       character.">
-    Welcome to My Tracks. Use this app to record your GPS tracks, aggregate your stats over time,
-    and share your paths with friends.\n\nHappy Exploring,\nThe My Tracks Team
+    Welcome to nogago Outdoor GPS. Use this app to record your GPS tracks, aggregate your stats over time,
+    and share your paths with friends.\n\nHappy Exploring,\nYour nogago team
   </string>
   <string name="welcome_title"
     translation_description="The title of the welcome dialog.">
-    Welcome to My Tracks
+    Welcome to nogago Outdoor GPS
   </string>
 </resources>

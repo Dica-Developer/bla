@@ -15,12 +15,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-<item
+<!-- <item
     android:actionViewClass="android.widget.SearchView"
     android:icon="@drawable/menu_search"
     android:id="@+id/track_list_search"
     android:showAsAction="ifRoom|collapseActionView"
-    android:title="@string/menu_search"/> 
+    android:title="@string/menu_search"/>  -->
   <item
     android:icon="@drawable/menu_import"
     android:id="@+id/track_list_import"
@@ -33,14 +33,9 @@ limitations under the License.
       <item android:id="@+id/track_list_save_all_gpx"/>
       <item android:id="@+id/track_list_save_all_kml"/>
       <item android:id="@+id/track_list_save_all_csv"/>
-      <item android:id="@+id/track_list_save_all_tcx"/>
+    <!--   <item android:id="@+id/track_list_save_all_tcx"/>  -->
     </menu>
   </item>
-  <item
-    android:icon="@drawable/menu_start_gps"
-    android:id="@+id/track_list_start_gps"
-    android:showAsAction="ifRoom"
-    android:title="@string/menu_start_gps"/>
   <item
     android:icon="@drawable/menu_delete"
     android:id="@+id/track_list_delete_all"
@@ -49,6 +44,11 @@ limitations under the License.
     android:icon="@drawable/menu_aggregated_statistics"
     android:id="@+id/track_list_aggregated_statistics"
     android:title="@string/menu_aggregated_statistics"/>
+  <item
+    android:icon="@drawable/menu_start_gps"
+    android:id="@+id/track_list_start_gps"
+    android:showAsAction="ifRoom"
+    android:title="@string/menu_start_gps"/>
   <item
     android:icon="@drawable/menu_settings"
     android:id="@+id/track_list_settings"

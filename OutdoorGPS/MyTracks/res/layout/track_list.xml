@@ -18,6 +18,10 @@ limitations under the License.
   android:layout_height="fill_parent"
   android:layout_width="fill_parent"
   android:orientation="vertical" >
+  <View
+    android:background="@color/actionBarSeperator"
+    android:layout_height="1dp"
+    android:layout_width="fill_parent" />
   <ListView
     android:id="@+id/track_list"
     android:layout_height="0dp"
