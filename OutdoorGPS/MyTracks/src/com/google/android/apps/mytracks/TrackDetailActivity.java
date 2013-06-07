@@ -100,6 +100,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   private MenuItem voiceFrequencyMenuItem;
   private MenuItem splitFrequencyMenuItem;
   private ImageButton markerImageButton;
+  private ImageButton recordImageButton;
 
   private final Runnable bindChangedCallback = new Runnable() {
     @Override
@@ -248,7 +249,10 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       }
     });
 
-    // Buttons 2 +3 managed by Track Controller
+    // Buttons 3 managed by Track Controller
+
+    recordImageButton = (ImageButton) findViewById(R.id.listBtnBarRecord);
+    recordImageButton.setOnClickListener(recordListener);
 
     markerImageButton = (ImageButton) findViewById(R.id.listBtnBarMarker);
     markerImageButton.setOnClickListener(markerListener);
@@ -553,6 +557,11 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       markerImageButton.setContentDescription(getString(isRecording ? R.string.icon_marker
           : R.string.icon_upload));
     }
+    recordImageButton.setImageResource(isRecording && !isPaused ? R.drawable.ic_pause
+        : R.drawable.ic_record);
+    recordImageButton.setContentDescription(getString(isRecording && !isPaused ? R.string.icon_pause_recording
+            : R.string.icon_record_track));
+    
     if (saveMenuItem != null) {
       saveMenuItem.setVisible(!isRecording);
     }
