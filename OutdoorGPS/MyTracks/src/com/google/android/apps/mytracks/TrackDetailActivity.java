@@ -614,7 +614,12 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   @Override
   public boolean onKeyUp(int keyCode, KeyEvent event) {
     switch (keyCode) {
-
+      case KeyEvent.KEYCODE_M:
+      if (trackId == recordingTrackId) {
+        // Recording
+        insertMarkerAction();
+      }
+        break;
       case KeyEvent.KEYCODE_H:
         if (tabHost.getCurrentTab() == 1) {
           ChartFragment f = (ChartFragment) tabManager.getCurrentFragment();
