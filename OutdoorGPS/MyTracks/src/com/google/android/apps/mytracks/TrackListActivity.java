@@ -343,7 +343,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     sharedPreferenceChangeListener.onSharedPreferenceChanged(sharedPreferences, null);
 
     trackController = new TrackController(
-        this, trackRecordingServiceConnection, true, recordListener, stopListener);
+        this, trackRecordingServiceConnection, true, recordListener, stopListener); 
 
     // START MOD
     ImageButton helpButton = (ImageButton) findViewById(R.id.listBtnBarHelp);

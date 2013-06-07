@@ -22,12 +22,10 @@ import com.google.android.apps.mytracks.content.TrackDataHub;
 import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.content.WaypointCreationRequest;
 import com.google.android.apps.mytracks.fragments.ChartFragment;
-import com.google.android.apps.mytracks.fragments.ChooseActivityDialogFragment;
 import com.google.android.apps.mytracks.fragments.ChooseUploadServiceDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment.DeleteOneTrackCaller;
 import com.google.android.apps.mytracks.fragments.FrequencyDialogFragment;
-import com.google.android.apps.mytracks.fragments.InstallEarthDialogFragment;
 import com.google.android.apps.mytracks.fragments.MapFragment;
 import com.google.android.apps.mytracks.fragments.StatsFragment;
 import com.google.android.apps.mytracks.io.file.SaveActivity;
@@ -57,6 +55,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.Toast;
@@ -83,7 +82,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   private View mapViewContainer;
   private TabHost tabHost;
   private TabManager tabManager;
- private TrackController trackController;
+  private TrackController trackController;
 
   // From intent
   private long trackId;
@@ -93,15 +92,15 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   private long recordingTrackId;
   private boolean recordingTrackPaused;
 
-  private MenuItem insertMarkerMenuItem;
-  private MenuItem playMenuItem;
+  // private MenuItem insertMarkerMenuItem;
+  // private MenuItem playMenuItem;
   private MenuItem shareMenuItem;
   private MenuItem sendGoogleMenuItem;
   private MenuItem saveMenuItem;
   private MenuItem voiceFrequencyMenuItem;
   private MenuItem splitFrequencyMenuItem;
+  private ImageButton markerImageButton;
 
-  
   private final Runnable bindChangedCallback = new Runnable() {
     @Override
     public void run() {
@@ -110,12 +109,11 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       runOnUiThread(new Runnable() {
         @Override
         public void run() {
-         trackController.update(trackId == recordingTrackId, recordingTrackPaused);
+          trackController.update(trackId == recordingTrackId, recordingTrackPaused);
         }
       });
     }
   };
-  
 
   /*
    * Note that sharedPreferenceChangeListener cannot be an anonymous inner
@@ -174,6 +172,19 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     }
   };
 
+  private final OnClickListener markerListener = new OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+      if (trackId == recordingTrackId) {
+        // Recording
+        insertMarkerAction();
+      } else {
+        uploadTrackAction();
+      }
+    }
+  };
+
   /**
    * We are not displaying driving directions. Just an arbitrary track that is
    * not associated to any licensed mapping data. Therefore it should be okay to
@@ -226,6 +237,30 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     if (savedInstanceState != null) {
       tabHost.setCurrentTabByTag(savedInstanceState.getString(CURRENT_TAB_TAG_KEY));
     }
+
+    // Setup Action Bar
+
+    ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
+    backButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        TrackDetailActivity.this.finish();
+      }
+    });
+
+    // Buttons 2 +3 managed by Track Controller
+
+    markerImageButton = (ImageButton) findViewById(R.id.listBtnBarMarker);
+    markerImageButton.setOnClickListener(markerListener);
+
+    ImageButton moreButton = (ImageButton) findViewById(R.id.listBtnBarMore);
+    moreButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        openOptionsMenu();
+      }
+    });
+
     trackController = new TrackController(this, trackRecordingServiceConnection, false,
         recordListener, stopListener);
     showMarker();
@@ -304,13 +339,14 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         getString(R.string.menu_save_format, fileTypes[1]));
     menu.findItem(R.id.track_detail_save_csv).setTitle(
         getString(R.string.menu_save_format, fileTypes[2]));
-    menu.findItem(R.id.track_detail_save_tcx).setTitle(
-        getString(R.string.menu_save_format, fileTypes[3]));
+    // menu.findItem(R.id.track_detail_save_tcx).setTitle(getString(R.string.menu_save_format,
+    // fileTypes[3]));
 
-    insertMarkerMenuItem = menu.findItem(R.id.track_detail_insert_marker);
-    playMenuItem = menu.findItem(R.id.track_detail_play);
-    shareMenuItem = menu.findItem(R.id.track_detail_share);
-    sendGoogleMenuItem = menu.findItem(R.id.track_detail_send_google);
+    // insertMarkerMenuItem = menu.findItem(R.id.track_detail_insert_marker);
+    // playMenuItem = menu.findItem(R.id.track_detail_play); // Not Supported on
+    // BB
+    // shareMenuItem = menu.findItem(R.id.track_detail_share);
+    sendGoogleMenuItem = menu.findItem(R.id.track_detail_send_nogago);
     saveMenuItem = menu.findItem(R.id.track_detail_save);
     voiceFrequencyMenuItem = menu.findItem(R.id.track_detail_voice_frequency);
     splitFrequencyMenuItem = menu.findItem(R.id.track_detail_split_frequency);
@@ -332,30 +368,22 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   public boolean onOptionsItemSelected(MenuItem item) {
     Intent intent;
     switch (item.getItemId()) {
-      case R.id.track_detail_insert_marker:
-        AnalyticsUtils.sendPageViews(this, "/action/insert_marker");
-        intent = IntentUtils.newIntent(this, MarkerEditActivity.class).putExtra(
-            MarkerEditActivity.EXTRA_TRACK_ID, trackId);
-        startActivity(intent);
-        return true;
-      case R.id.track_detail_play:
-        if (isEarthInstalled()) {
-          AnalyticsUtils.sendPageViews(this, "/action/play");
-          intent = IntentUtils.newIntent(this, SaveActivity.class)
-              .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
-              .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.KML)
-              .putExtra(SaveActivity.EXTRA_PLAY_TRACK, true);
-          startActivity(intent);
-        } else {
-          new InstallEarthDialogFragment().show(getSupportFragmentManager(),
-              InstallEarthDialogFragment.INSTALL_EARTH_DIALOG_TAG);
-        }
-        return true;
-      case R.id.track_detail_share:
-        AnalyticsUtils.sendPageViews(this, "/action/share");
-        ChooseActivityDialogFragment.newInstance(trackId, null).show(getSupportFragmentManager(),
-            ChooseActivityDialogFragment.CHOOSE_ACTIVITY_DIALOG_TAG);
-        return true;
+    /*
+     * case R.id.track_detail_insert_marker: insertMarkerAction(); return true;
+     * case R.id.track_detail_play: if (isEarthInstalled()) {
+     * AnalyticsUtils.sendPageViews(this, "/action/play"); intent =
+     * IntentUtils.newIntent(this, SaveActivity.class)
+     * .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
+     * .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable)
+     * TrackFileFormat.KML) .putExtra(SaveActivity.EXTRA_PLAY_TRACK, true);
+     * startActivity(intent); } else { new
+     * InstallEarthDialogFragment().show(getSupportFragmentManager(),
+     * InstallEarthDialogFragment.INSTALL_EARTH_DIALOG_TAG); } return true; case
+     * R.id.track_detail_share: AnalyticsUtils.sendPageViews(this,
+     * "/action/share"); ChooseActivityDialogFragment.newInstance(trackId,
+     * null).show(getSupportFragmentManager(),
+     * ChooseActivityDialogFragment.CHOOSE_ACTIVITY_DIALOG_TAG); return true;
+     */
       case R.id.track_detail_markers:
         intent = IntentUtils.newIntent(this, MarkerListActivity.class).putExtra(
             MarkerListActivity.EXTRA_TRACK_ID, trackId);
@@ -371,11 +399,8 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
             PreferencesUtils.SPLIT_FREQUENCY_DEFAULT, R.string.settings_split_frequency_title)
             .show(getSupportFragmentManager(), FrequencyDialogFragment.FREQUENCY_DIALOG_TAG);
         return true;
-      case R.id.track_detail_send_google:
-        AnalyticsUtils.sendPageViews(this, "/action/send_google");
-        ChooseUploadServiceDialogFragment.newInstance(new SendRequest(trackId)).show(
-            getSupportFragmentManager(),
-            ChooseUploadServiceDialogFragment.CHOOSE_UPLOAD_SERVICE_DIALOG_TAG);
+      case R.id.track_detail_send_nogago:
+        uploadTrackAction();
         return true;
       case R.id.track_detail_save_gpx:
         startSaveActivity(TrackFileFormat.GPX);
@@ -386,9 +411,10 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       case R.id.track_detail_save_csv:
         startSaveActivity(TrackFileFormat.CSV);
         return true;
-      case R.id.track_detail_save_tcx:
-        startSaveActivity(TrackFileFormat.TCX);
-        return true;
+        /*
+         * case R.id.track_detail_save_tcx:
+         * startSaveActivity(TrackFileFormat.TCX); return true;
+         */
       case R.id.track_detail_edit:
         intent = IntentUtils.newIntent(this, TrackEditActivity.class).putExtra(
             TrackEditActivity.EXTRA_TRACK_ID, trackId);
@@ -413,6 +439,23 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       default:
         return super.onOptionsItemSelected(item);
     }
+  }
+
+  // TODO IMPLEMENT
+  public void uploadTrackAction() {
+    AnalyticsUtils.sendPageViews(this, "/action/send_nogago");
+    ChooseUploadServiceDialogFragment.newInstance(new SendRequest(trackId)).show(
+        getSupportFragmentManager(),
+        ChooseUploadServiceDialogFragment.CHOOSE_UPLOAD_SERVICE_DIALOG_TAG);
+  }
+
+  private void insertMarkerAction() {
+    // Recording
+    Intent intent;
+    AnalyticsUtils.sendPageViews(this, "/action/insert_marker");
+    intent = IntentUtils.newIntent(this, MarkerEditActivity.class).putExtra(
+        MarkerEditActivity.EXTRA_TRACK_ID, trackId);
+    startActivity(intent);
   }
 
   @Override
@@ -497,17 +540,18 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
    * @param isRecording true if recording
    */
   private void updateMenuItems(boolean isRecording, boolean isPaused) {
-    if (insertMarkerMenuItem != null) {
-      insertMarkerMenuItem.setVisible(isRecording && !isPaused);
-    }
-    if (playMenuItem != null) {
-      playMenuItem.setVisible(!isRecording);
-    }
-    if (shareMenuItem != null) {
-      shareMenuItem.setVisible(!isRecording);
-    }
-    if (sendGoogleMenuItem != null) {
-      sendGoogleMenuItem.setVisible(!isRecording);
+    /*
+     * if (insertMarkerMenuItem != null) {
+     * insertMarkerMenuItem.setVisible(isRecording && !isPaused); } if
+     * (playMenuItem != null) { playMenuItem.setVisible(!isRecording); } if
+     * (shareMenuItem != null) { shareMenuItem.setVisible(!isRecording); } if
+     * (sendGoogleMenuItem != null) {
+     * sendGoogleMenuItem.setVisible(!isRecording); }
+     */
+    if (markerImageButton != null) {
+      markerImageButton.setImageResource(isRecording ? R.drawable.ic_marker : R.drawable.ic_upload);
+      markerImageButton.setContentDescription(getString(isRecording ? R.string.icon_marker
+          : R.string.icon_upload));
     }
     if (saveMenuItem != null) {
       saveMenuItem.setVisible(!isRecording);
@@ -561,7 +605,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   @Override
   public boolean onKeyUp(int keyCode, KeyEvent event) {
     switch (keyCode) {
-      
+
       case KeyEvent.KEYCODE_H:
         if (tabHost.getCurrentTab() == 1) {
           ChartFragment f = (ChartFragment) tabManager.getCurrentFragment();
@@ -570,26 +614,25 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         break;
       case KeyEvent.KEYCODE_K:
         if (tabHost.getCurrentTab() == 1) {
-         ChartFragment f = (ChartFragment) tabManager.getCurrentFragment();
+          ChartFragment f = (ChartFragment) tabManager.getCurrentFragment();
           f.scrollRight();
         }
-        break;     
-        case KeyEvent.KEYCODE_0:
-          if (tabHost.getCurrentTab() == 2) {
-            MapFragment f = (MapFragment) tabManager.getCurrentFragment();
-            f.showMyLocation();
-          }
-          break;
-         
-        
+        break;
+      case KeyEvent.KEYCODE_0:
+        if (tabHost.getCurrentTab() == 2) {
+          MapFragment f = (MapFragment) tabManager.getCurrentFragment();
+          f.showMyLocation();
+        }
+        break;
+
       case KeyEvent.KEYCODE_Q:
         tabHost.setCurrentTab(0);
         break;
 
       case KeyEvent.KEYCODE_SPACE:
-          tabHost.setCurrentTab(tabHost.getCurrentTab() + 1);
-          break;
-          
+        tabHost.setCurrentTab(tabHost.getCurrentTab() + 1);
+        break;
+
       case KeyEvent.KEYCODE_I:
       case KeyEvent.KEYCODE_VOLUME_DOWN:
         if (tabHost.getCurrentTab() == 0) {
@@ -626,33 +669,34 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         break;
       case KeyEvent.KEYCODE_P:
         if (recordingTrackId != PreferencesUtils.RECORDING_TRACK_ID_DEFAULT) {
-        if (recordingTrackPaused) {
-          // Paused -> Resume
-          Toast.makeText(getApplicationContext(), "Resumed Recording", Toast.LENGTH_LONG).show();
-          AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/resume_track");
-          updateMenuItems(true, false);
-          TrackRecordingServiceConnectionUtils.resumeTrack(trackRecordingServiceConnection);
-           trackController.update(true, false);
+          if (recordingTrackPaused) {
+            // Paused -> Resume
+            Toast.makeText(getApplicationContext(), "Resumed Recording", Toast.LENGTH_LONG).show();
+            AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/resume_track");
+            updateMenuItems(true, false);
+            TrackRecordingServiceConnectionUtils.resumeTrack(trackRecordingServiceConnection);
+            trackController.update(true, false);
+          } else {
+            // Recording -> Paused
+            Toast.makeText(getApplicationContext(), "Paused Recording", Toast.LENGTH_LONG).show();
+            AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/pause_track");
+            updateMenuItems(true, true);
+            TrackRecordingServiceConnectionUtils.pauseTrack(trackRecordingServiceConnection);
+            trackController.update(true, true);
+          }
         } else {
-          // Recording -> Paused
-          Toast.makeText(getApplicationContext(), "Paused Recording", Toast.LENGTH_LONG).show();
-          AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/pause_track");
-          updateMenuItems(true, true);
-          TrackRecordingServiceConnectionUtils.pauseTrack(trackRecordingServiceConnection);
-          trackController.update(true, true);
-        }
-        } else {
-          Toast.makeText(getApplicationContext(),"Cannot pause track that is not recorded.", Toast.LENGTH_LONG).show();
+          Toast.makeText(getApplicationContext(), "Cannot pause track that is not recorded.",
+              Toast.LENGTH_LONG).show();
         }
         break;
-        
+
       case KeyEvent.KEYCODE_S:
         AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/stop_recording");
         updateMenuItems(false, true);
         TrackRecordingServiceConnectionUtils.stopRecording(TrackDetailActivity.this,
             trackRecordingServiceConnection, true);
         break;
-        
+
       case KeyEvent.KEYCODE_A:
         Intent intent = IntentUtils.newIntent(this, SettingsActivity.class);
         startActivity(intent);

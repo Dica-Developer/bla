@@ -15,13 +15,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-  <item
+ <!--  Moved to Button Bar <item
     android:icon="@drawable/menu_insert_marker"
     android:id="@+id/track_detail_insert_marker"
     android:orderInCategory="1"
     android:showAsAction="ifRoom"
     android:title="@string/menu_insert_marker"/>
-  <item
+     --> 
+ <!-- NOT SUPPORTED ON BB <item
     android:icon="@drawable/menu_play"
     android:id="@+id/track_detail_play"
     android:orderInCategory="2"
@@ -34,6 +35,7 @@ limitations under the License.
     android:showAsAction="ifRoom"
     android:title="@string/menu_share">
   </item>
+   -->
   <item
     android:icon="@drawable/menu_markers"
     android:id="@+id/track_detail_markers"
@@ -43,9 +45,9 @@ limitations under the License.
   <!-- android:orderInCategory="5" is in map.xml -->
   <item
     android:icon="@drawable/menu_send_google"
-    android:id="@+id/track_detail_send_google"
+    android:id="@+id/track_detail_send_nogago"
     android:orderInCategory="6"
-    android:title="@string/menu_send_google"/>
+    android:title="@string/menu_send_nogago"/>
   <item
     android:icon="@drawable/menu_save"
     android:id="@+id/track_detail_save"
@@ -55,7 +57,7 @@ limitations under the License.
       <item android:id="@+id/track_detail_save_gpx"/>
       <item android:id="@+id/track_detail_save_kml"/>
       <item android:id="@+id/track_detail_save_csv"/>
-      <item android:id="@+id/track_detail_save_tcx"/>
+     <!--  <item android:id="@+id/track_detail_save_tcx"/>  -->
     </menu>
   </item>
   <item

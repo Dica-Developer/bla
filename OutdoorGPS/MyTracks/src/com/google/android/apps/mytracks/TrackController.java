@@ -45,6 +45,7 @@ public class TrackController {
   // private final TextView statusTextView;
   // private final TextView totalTimeTextView;
   private final ImageButton recordImageButton;
+  //private ImageButton markerImageButton;
   private final ImageButton stopImageButton;
   private final boolean alwaysShow;
 
@@ -66,7 +67,7 @@ public class TrackController {
 
   public TrackController(Activity activity,
       TrackRecordingServiceConnection trackRecordingServiceConnection, boolean alwaysShow,
-      OnClickListener recordListener, OnClickListener stopListener) {
+      OnClickListener recordListener, OnClickListener stopListener) { // , OnClickListener markerListener) {
     this.activity = activity;
     this.trackRecordingServiceConnection = trackRecordingServiceConnection;
     this.alwaysShow = alwaysShow;
@@ -78,7 +79,15 @@ public class TrackController {
     recordImageButton.setOnClickListener(recordListener);
     stopImageButton = (ImageButton) activity.findViewById(R.id.listBtnBarStop);
     stopImageButton.setOnClickListener(stopListener);
+    /*
+    if(markerListener != null) {  
+      markerImageButton = (ImageButton) activity.findViewById(R.id.listBtnBarMarker);
+      markerImageButton.setOnClickListener(markerListener);
+  } else {
+    markerImageButton=null;
   }
+  */
+    }
 
   public void update(boolean recording, boolean paused) {
     isRecording = recording;
@@ -127,6 +136,14 @@ public class TrackController {
     if (isRecording && !isPaused) {
       totalTimeTimestamp = System.currentTimeMillis();
       handler.postDelayed(updateTotalTimeRunnable, ONE_SECOND);
+    }
+    */
+    /*
+    if(markerImageButton != null) {
+      markerImageButton.setImageResource(isRecording ? R.drawable.ic_marker : R.drawable.ic_upload);
+      markerImageButton.setContentDescription(activity
+          .getString(isRecording ? R.string.icon_marker
+              : R.string.icon_upload));
     }
     */
   }
