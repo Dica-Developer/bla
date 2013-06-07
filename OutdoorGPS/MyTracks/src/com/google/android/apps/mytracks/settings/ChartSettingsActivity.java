@@ -21,6 +21,9 @@ import com.nogago.bb10.outdoorgps.R;
 
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 
 /**
  * An activity for accessing chart settings.
@@ -33,7 +36,17 @@ public class ChartSettingsActivity extends AbstractSettingsActivity {
   @Override
   protected void onCreate(Bundle bundle) {
     super.onCreate(bundle);
+
+    setContentView(R.layout.settings);
     addPreferencesFromResource(R.xml.chart_settings);
+
+    ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
+    backButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        ChartSettingsActivity.this.finish();
+      }
+    });
   }
 
   @Override

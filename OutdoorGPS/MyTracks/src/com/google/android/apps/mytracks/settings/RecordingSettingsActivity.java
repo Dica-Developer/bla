@@ -23,6 +23,9 @@ import com.nogago.bb10.outdoorgps.R;
 
 import android.os.Bundle;
 import android.preference.ListPreference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 
 /**
  * An activity for accessing recording settings.
@@ -35,8 +38,16 @@ public class RecordingSettingsActivity extends AbstractSettingsActivity {
   @Override
   protected void onCreate(Bundle bundle) {
     super.onCreate(bundle);
+    setContentView(R.layout.settings);
     addPreferencesFromResource(R.xml.recording_settings);
 
+    ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
+    backButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        RecordingSettingsActivity.this.finish();
+      }
+    });
     boolean metricUnits = PreferencesUtils.getBoolean(
         this, R.string.metric_units_key, PreferencesUtils.METRIC_UNITS_DEFAULT);
 

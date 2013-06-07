@@ -22,8 +22,6 @@ import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.nogago.bb10.outdoorgps.R;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -32,13 +30,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * An activity for accessing settings.
@@ -58,6 +55,16 @@ public class SettingsActivity extends AbstractSettingsActivity {
   @Override
   protected void onCreate(Bundle bundle) {
     super.onCreate(bundle);
+    setContentView(R.layout.settings);
+    
+
+    ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
+    backButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        SettingsActivity.this.finish();
+      }
+    });
     addPreferencesFromResource(R.xml.settings);
 
     Preference mapPreference = findPreference(getString(R.string.settings_map_key));
@@ -101,6 +108,7 @@ public class SettingsActivity extends AbstractSettingsActivity {
       }
     });
 
+/*
     Preference sharingPreference = findPreference(getString(R.string.settings_sharing_key));
     sharingPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
         @Override
@@ -110,7 +118,6 @@ public class SettingsActivity extends AbstractSettingsActivity {
         return true;
       }
     });
-
     Preference sensorPreference = findPreference(getString(R.string.settings_sensor_key));
     sensorPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
         @Override
@@ -120,7 +127,7 @@ public class SettingsActivity extends AbstractSettingsActivity {
         return true;
       }
     });
-
+*/
     Preference backupPreference = findPreference(getString(R.string.settings_backup_key));
     backupPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
         @Override
@@ -130,7 +137,7 @@ public class SettingsActivity extends AbstractSettingsActivity {
         return true;
       }
     });
-
+/*
     googleAccountListPreference = (ListPreference) findPreference(getString(R.string.google_account_key));
     List<String> entries = new ArrayList<String>();
     Account[] accounts = AccountManager.get(this).getAccountsByType(Constants.ACCOUNT_TYPE);
@@ -153,7 +160,7 @@ public class SettingsActivity extends AbstractSettingsActivity {
         return true;
       }
     });
-
+*/
     resetPreference = findPreference(getString(R.string.settings_reset_key));
     resetPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
         @Override

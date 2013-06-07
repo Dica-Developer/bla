@@ -16,6 +16,26 @@ limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
   android:title="@string/menu_settings" >
+  <PreferenceCategory
+    	  android:title="@string/nogago_label" >
+	  <Preference
+	      android:key="@string/settings_register_key"
+	      android:title="@string/nogago_register_title" 
+	      android:summary="@string/nogago_register" 
+	      android:persistent="false"/>
+	  <EditTextPreference 
+		android:key="@string/user_name" 
+      	android:dialogTitle="@string/username_label" 
+      	android:title="@string/username_label"/>
+  	  <EditTextPreference 
+      	android:key="@string/user_password"
+      	android:dialogTitle="@string/password_label"
+      	android:password="true"
+      	android:title="@string/password_label"/>
+  </PreferenceCategory>
+  
+  <PreferenceCategory
+    	  android:title="@string/other_settings" >
   <Preference
     android:key="@string/settings_map_key"
     android:persistent="false"
@@ -32,6 +52,7 @@ limitations under the License.
     android:key="@string/settings_recording_key"
     android:persistent="false"
     android:title="@string/settings_recording" />
+  <!-- 
   <Preference
     android:key="@string/settings_sharing_key"
     android:persistent="false"
@@ -40,16 +61,20 @@ limitations under the License.
     android:key="@string/settings_sensor_key"
     android:persistent="false"
     android:title="@string/settings_sensor" />
+     -->
   <Preference
     android:key="@string/settings_backup_key"
     android:persistent="false"
     android:title="@string/settings_backup" />
+  <!--
   <ListPreference
     android:defaultValue=""
     android:key="@string/google_account_key"
     android:title="@string/settings_switch_account" />
+  -->
   <Preference
     android:key="@string/settings_reset_key"
     android:persistent="false"
     android:title="@string/settings_reset" />
+  </PreferenceCategory>
 </PreferenceScreen>

@@ -84,4 +84,9 @@ limitations under the License.
   <string name="settings_sensor_root_key">settingsSensorRoot</string>
   <string name="settings_sharing_key">settingsSharing</string>
   <string name="settings_stats_key">settingsStats</string>
+  
+  <!-- Nogago -->
+   <string name="settings_register_key">settingsRegister</string>
+  <string name="user_name" />
+  <string name="user_password" /> 
 </resources>

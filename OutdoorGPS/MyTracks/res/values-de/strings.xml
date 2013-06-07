@@ -553,4 +553,32 @@
     und teilen Sie Ihre Routen mit Freunden.\n\nViel Spaß beim Erkunden!\nIhr nogago Outdoor GPS-Team</string>
     <string name="welcome_title" translation_description="The title of the welcome dialog.">Willkommen bei nogago Outdoor GPS</string>
 
+    <!--  Additions by nogago -->
+    
+    
+    <string name="nogago_label">nogago.com Zugangsdaten</string>
+    <string name="nogago_register">Registrieren Sie sich bei nogago.com, um Tracks in der Cloud zu speichern, zu veröffentlichen, oder mit Bekannten zu teilen.</string>
+    <string name="nogago_register_title">Bei nogago.com anmelden</string>
+    <string name="username_label">Benutzername</string>
+    <string name="password_label">Password</string>
+    <string name="other_settings">App-Einstellungen</string>
+    <string name="button_yes">Ja</string>
+    <string name="button_no">Nein</string>
+    <string name="maps_not_installed">nogago Maps ist nicht installiert, möchten Sie die App instalieren, um Tracks zu folgen, Karten offline zu betrachten, zu navigieren, und viele weitere nützliche Funktionen zu erhalten ?</string>
+    <string name="wanna_start_maps">Wollen Sie nogago Maps starten?</string>
+    <string name="ok_button">OK</string>
+    <string name="wrong_credential">Zugangsdatenfehler</string>
+    <string name="error_username">Bitte prüfen Sie Ihre nogago Kontodaten.</string>
+    <string name="progressbar_title">Der Track wird gesendet...</string>
+    <string name="successfully_uploaded_track">Ihr Track wurde erfolgreich zu nogago.com hochgeladen!</string>
+    <!-- new for Menu -->
+    <string name="help">Hilfe</string>
+    <string name="close">Schließen</string>
+    <string name="rec_track_button">Track \n aufzeichnen</string>
+    <string name="show_tracklist_button">Track-Liste</string>
+    <string name="show_statistics_button">Gesamtstatistik</string>
+    <string name="show_settings_button">Einstellungen</string>
+    <string name="error_network">Leider können sie nicht auf das Internet zugreifen, dies ist für diese Funktion notwendig.</string>
+
+    
 </resources>

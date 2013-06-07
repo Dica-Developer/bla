@@ -25,6 +25,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 
 /**
  * An activity for accessing stats settings.
@@ -53,6 +56,15 @@ public class StatsSettingsActivity extends AbstractSettingsActivity {
   @Override
   protected void onCreate(Bundle bundle) {
     super.onCreate(bundle);
+
+    setContentView(R.layout.settings);
+    ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
+    backButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        StatsSettingsActivity.this.finish();
+      }
+    });
     addPreferencesFromResource(R.xml.stats_settings);
 
     getSharedPreferences(Constants.SETTINGS_NAME, Context.MODE_PRIVATE)

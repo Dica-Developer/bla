@@ -25,6 +25,9 @@ import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 
 /**
  * An activity for accessing the sharing settings.
@@ -42,8 +45,16 @@ public class SharingSettingsActivity extends AbstractSettingsActivity {
   @Override
   protected void onCreate(Bundle bundle) {
     super.onCreate(bundle);
+    setContentView(R.layout.settings);
     addPreferencesFromResource(R.xml.sharing_settings);
 
+    ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
+    backButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        SharingSettingsActivity.this.finish();
+      }
+    });
     defaultMapPublicCheckBoxPreference = (CheckBoxPreference) findPreference(
         getString(R.string.default_map_public_key));
     defaultMapPublicCheckBoxPreference.setSummaryOn(getString(

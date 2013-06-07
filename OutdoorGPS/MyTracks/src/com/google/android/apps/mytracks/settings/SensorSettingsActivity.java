@@ -31,6 +31,9 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,8 +50,16 @@ public class SensorSettingsActivity extends AbstractSettingsActivity {
   @Override
   protected void onCreate(Bundle bundle) {
     super.onCreate(bundle);
+    setContentView(R.layout.settings);
     addPreferencesFromResource(R.xml.sensor_settings);
 
+    ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
+    backButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        SensorSettingsActivity.this.finish();
+      }
+    });
     boolean hasAntSupport = AntInterface.hasAntSupport(this);
     ListPreference sensorTypeListPreference = (ListPreference) findPreference(
         getString(R.string.sensor_type_key));

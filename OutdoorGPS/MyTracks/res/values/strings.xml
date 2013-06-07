@@ -3030,4 +3030,33 @@ limitations under the License.
     translation_description="The accessibility description for the record track icon.">
     Upload track to nogago.com
   </string>
+  
+  
+  <string name="nogago_label">Your nogago.com credentials</string>
+  <string name="nogago_register">Register with nogago.com to upload and share your trakcs</string>
+  <string name="nogago_register_title">Register with nogago.com</string>
+  <string name="username_label">Username</string>
+  <string name="password_label">Password</string>
+  <string name="other_settings">App settings</string>
+  <string name="button_yes">Yes</string>
+  <string name="button_no">No</string>
+  <string name="maps_not_installed">Nogago Maps is not installed on your Phone, do your want to install it?</string>
+  <string name="wanna_start_maps">Start nogago Maps?</string>
+  <string name="ok_button">OK</string>
+  <string name="wrong_credential">Credentials error</string>
+  <string name="error_username">You need to set up your nogago.com credentials first before downloading a map.</string>
+  <string name="task_cancelled">Task cancelled on your request.</string>
+  <string name="error_track_does_not_exist">Track does not exist!</string>
+  <string name="error_operation_cancelled">Operation cancelled</string>
+  <string name="progressbar_title">Uploading Track...</string>
+  <string name="successfully_uploaded_track">Your track was successfully uploaded to nogago!</string>
+    <!-- new for Menu -->
+  <string name="help">Help</string>
+  <string name="close">Close</string>
+  <string name="rec_track_button">Record a track</string>
+  <string name="show_tracklist_button">Track list</string>
+  <string name="show_statistics_button">Aggregated statistics</string>
+  <string name="show_settings_button">Settings</string>
+  <string name="error_network">Apologies, you cannot access the Internet.</string>
+  
 </resources>

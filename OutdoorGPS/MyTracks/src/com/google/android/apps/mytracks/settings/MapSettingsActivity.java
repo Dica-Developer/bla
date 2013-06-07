@@ -29,7 +29,10 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
@@ -49,8 +52,17 @@ public class MapSettingsActivity extends AbstractSettingsActivity {
   @Override
   protected void onCreate(Bundle bundle) {
     super.onCreate(bundle);
+
+    setContentView(R.layout.settings);
     addPreferencesFromResource(R.xml.map_settings);
 
+    ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
+    backButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        MapSettingsActivity.this.finish();
+      }
+    });
     ListPreference trackColorModeListPreference = (ListPreference) findPreference(
         getString(R.string.track_color_mode_key));
     trackColorModeListPreference.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
