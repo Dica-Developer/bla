@@ -156,7 +156,7 @@ public class StringUtils {
         return context.getString(R.string.value_float_kilometer_hour, speed);
       } else {
         // convert from hours to minutes
-        double pace = speed == 0 ? 0.0 : 60.0 / speed;
+        double pace = (speed == 0.0) ? 0 : (  60.0 / speed );
         return context.getString(R.string.value_float_minute_kilometer, pace);
       }
     } else {
@@ -165,7 +165,7 @@ public class StringUtils {
         return context.getString(R.string.value_float_mile_hour, speed);
       } else {
         // convert from hours to minutes
-        double pace = speed == 0 ? 0.0 : 60.0 / speed;
+        double pace = speed == 0 ? 0 : ( 60.0 / speed );
         return context.getString(R.string.value_float_minute_mile, pace);
       }
     }

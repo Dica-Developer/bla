@@ -73,14 +73,14 @@
     <string name="activity_type_water_skiing" translation_description="When entering an &apos;Activity type&apos;, in the auto-complete text box, the       completion suggestion for water skiing.">Wasserskifahren</string>
     <string name="activity_type_wind_surfing" translation_description="When entering an &apos;Activity type&apos;, in the auto-complete text box, the       completion suggestion for wind surfing.">Windsurfen</string>
     <string name="description_activity_type" translation_description="Activity type description.        %1$s activity type. E.g., &apos;hiking&apos;">Art der Aktivität: %1$s</string>
-    <string name="description_average_moving_pace" translation_description="Average moving pace description.        %1$.2f pace in minutes per kilometer       %2$.1f pace in minutes per mile">Durchschnittliches Tempo in Bewegung: %1$.2f min/km (%2$.1f min/Meile)</string>
-    <string name="description_average_moving_speed" translation_description="Average moving speed description.        %1$.2f speed in kilometers per hour       %2$.1f speed in miles per hour">Durchschnittliche Geschwindigkeit in Bewegung: %1$.2f km/h (%2$.1f Meile/h)</string>
-    <string name="description_average_pace" translation_description="Average pace description.        %1$.2f pace in minutes per kilometer       %2$.1f pace in minutes per mile">Durchschnittliches Tempo: %1$.2f min/km (%2$.1f min/Meile)</string>
-    <string name="description_average_speed" translation_description="Average speed description.        %1$.2f speed in kilometers per hour       %2$.1f speed in miles per hour">Durchschnittliche Geschwindigkeit: %1$.2f km/h (%2$.1f Meile/h)</string>
+    <string name="description_average_moving_pace" translation_description="Average moving pace description.        %1$.0f pace in minutes per kilometer       %2$.1f pace in minutes per mile">Durchschnittliches Tempo in Bewegung: %1$.0f min/km (%2$.1f min/Meile)</string>
+    <string name="description_average_moving_speed" translation_description="Average moving speed description.        %1$.0f speed in kilometers per hour       %2$.1f speed in miles per hour">Durchschnittliche Geschwindigkeit in Bewegung: %1$.0f km/h (%2$.1f Meile/h)</string>
+    <string name="description_average_pace" translation_description="Average pace description.        %1$.0f pace in minutes per kilometer       %2$.1f pace in minutes per mile">Durchschnittliches Tempo: %1$.0f min/km (%2$.1f min/Meile)</string>
+    <string name="description_average_speed" translation_description="Average speed description.        %1$.0f speed in kilometers per hour       %2$.1f speed in miles per hour">Durchschnittliche Geschwindigkeit: %1$.0f km/h (%2$.1f Meile/h)</string>
     <string name="description_elevation_gain" translation_description="Elevation gain description.        %1$d elevation in meters       %2$d elevation in feet">Höhenunterschied: %1$d m (%2$d Fuß)</string>
     <string name="description_elevation_imperial" translation_description="Elevation in imperial units, feet.">Höhe (ft)</string>
     <string name="description_elevation_metric" translation_description="Elevation in metric units, meters.">Höhe (m)</string>
-    <string name="description_fastest_pace" translation_description="Fastest pace description.        %1$.2f pace in minutes per kilometer       %2$.1f pace in minutes per mile">Schnellstes Tempo: %1$.2f min/km (%2$.1f min/Meile)</string>
+    <string name="description_fastest_pace" translation_description="Fastest pace description.        %1$.0f pace in minutes per kilometer       %2$.1f pace in minutes per mile">Schnellstes Tempo: %1$.0f min/km (%2$.1f min/Meile)</string>
     <string name="description_location_accuracy" translation_description="Label for location accuracy in meters.">Genauigkeit (m)</string>
     <string name="description_location_altitude" translation_description="Label for location altitude in meters.">Höhe (m)</string>
     <string name="description_location_bearing" translation_description="Label for location bearing in degrees.">Peilung (°)</string>
@@ -89,7 +89,7 @@
     <string name="description_location_speed" translation_description="Label for location speed in meters per second.">Geschwindigkeit (m/s)</string>
     <string name="description_max_elevation" translation_description="Max elevation description.        %1$d elevation in meters       %2$d elevation in feet">Maximale Höhe: %1$d m (%2$d Fuß)</string>
     <string name="description_max_grade" translation_description="Max grade description. %% is the escape sequence for the percent       symbol.        %1$d grade in percentage">Maximales Gefälle: %1$d %%</string>
-    <string name="description_max_speed" translation_description="Max speed description.        %1$.2f speed in kilometers per hour       %2$.1f speed in miles per hour">Maximale Geschwindigkeit: %1$.2f km/h (%2$.1f Meile/h)</string>
+    <string name="description_max_speed" translation_description="Max speed description.        %1$.0f speed in kilometers per hour       %2$.1f speed in miles per hour">Maximale Geschwindigkeit: %1$.0f km/h (%2$.1f Meile/h)</string>
     <string name="description_min_elevation" translation_description="Min elevation description.        %1$d elevation in meters       %2$d elevation in feet">Minimale Höhe: %1$d m (%2$d Fuß)</string>
     <string name="description_min_grade" translation_description="Min grade description. %% is the escape sequence for the percent       symbol.        %1$d grade in percentage">Minimales Gefälle: %1$d %%</string>
     <string name="description_moving_time" translation_description="Moving time description.        %1$s time. E.g., &apos;1:08:59&apos;">Zeit in Bewegung: %1$s</string>
@@ -103,7 +103,7 @@
     <string name="description_speed_imperial" translation_description="Speed in imperial units, miles per hour.">Geschwindigkeit (Meile/h)</string>
     <string name="description_speed_metric" translation_description="Speed in metric units, kilometers per hour.">Geschwindigkeit (km/h)</string>
     <string name="description_time" translation_description="Label for time.">Zeit</string>
-    <string name="description_total_distance" translation_description="Total distance description.        %1$.2f distance in kilometers       %2$.1f distance in miles">Gesamtstrecke: %1$.2f km (%2$.1f Meile/n)</string>
+    <string name="description_total_distance" translation_description="Total distance description.        %1$.0f distance in kilometers       %2$.1f distance in miles">Gesamtstrecke: %1$.0f km (%2$.1f Meile/n)</string>
     <string name="description_total_time" translation_description="Total time description.        %1$s time. E.g., &apos;1:08:59&apos;">Gesamtzeit: %1$s</string>
     <string name="description_track_point" translation_description="Label for a track point">Punkt</string>
     <string name="description_track_segment" translation_description="Label for a track segment">Segment</string>
@@ -381,10 +381,11 @@
     <string name="share_track_share_url" translation_description="After sending a track to Google, the button on the result dialog to       share the uploaded track URL with friends.">Track-URL teilen</string>
     <string name="share_track_share_url_body" translation_description="When sharing a track URL with friends, the body of the message. Note       that \n is the newline character.        %1$s: url. E.g, &apos;https://maps.google.com/maps&apos;.       %2$s: track description.">Dieser Track könnte dich interessieren:\n\n%1$s\n\n%2$s</string>
     <string name="share_track_subject" translation_description="When sharing a track with friends, the subject line.">Ich möchte einen Track mit dir teilen</string>
-    <string name="stats_average_moving_pace" translation_description="In the &apos;Stats&apos; page, the average moving pace.">Durchschnittliches Bewegungstempo</string>
-    <string name="stats_average_moving_speed" translation_description="In the &apos;Stats&apos; page, the average moving speed.">Durchschnittliche Bewegungsgeschwindigkeit</string>
-    <string name="stats_average_pace" translation_description="In the &apos;Stats&apos; page, the average pace.">Durchschnittliches Tempo</string>
-    <string name="stats_average_speed" translation_description="In the &apos;Stats&apos; page, the average speed.">Durchschnittliche Geschwindigkeit</string>
+    <!--  Check here -->
+    <string name="stats_average_moving_pace" translation_description="In the &apos;Stats&apos; page, the average moving pace.">&#216; Bewegungstempo</string>
+    <string name="stats_average_moving_speed" translation_description="In the &apos;Stats&apos; page, the average moving speed.">&#216; Beweg.geschw.</string>
+    <string name="stats_average_pace" translation_description="In the &apos;Stats&apos; page, the average pace.">&#216; Tempo</string>
+    <string name="stats_average_speed" translation_description="In the &apos;Stats&apos; page, the average speed.">&#216; Geschwindigkeit</string>
     <string name="stats_elevation" translation_description="In the &apos;Stats&apos; page, the elevation.        Character limit: ~23 (1 line)">Höhe</string>
     <string name="stats_elevation_gain" translation_description="In the &apos;Stats&apos; page, the elevation gain.">Höhenunterschied</string>
     <string name="stats_fastest_pace" translation_description="In the &apos;Stats&apos; page, the fastest pace.">Schnellstes Tempo</string>
@@ -392,7 +393,7 @@
     <string name="stats_longitude" translation_description="In the &apos;Stats&apos; page, the longitude.">Längengrad</string>
     <string name="stats_max_elevation" translation_description="In the &apos;Stats&apos; page, the maximum elevation.">Maximale Höhe</string>
     <string name="stats_max_grade" translation_description="In the &apos;Stats&apos; page, the maximum grade.">Maximales Gefälle</string>
-    <string name="stats_max_speed" translation_description="In the &apos;Stats&apos; page, the maximum speed.">Höchstgeschwin-digkeit</string>
+    <string name="stats_max_speed" translation_description="In the &apos;Stats&apos; page, the maximum speed.">Höchstgeschwindigkeit</string>
     <string name="stats_min_elevation" translation_description="In the &apos;Stats&apos; page, the minimum elevation.">Minimale Höhe</string>
     <string name="stats_min_grade" translation_description="In the &apos;Stats&apos; page, the minimum grade.">Minimales Gefälle</string>
     <string name="stats_moving_time" translation_description="In the &apos;Stats&apos; page, the moving time.">Bewegungszeit</string>
@@ -425,15 +426,15 @@
     <string name="value_adapt_battery_life" translation_description="In a setting picker, the value to adapt for battery life.">An Akkulaufzeit anpassen</string>
     <string name="value_always" translation_description="In a setting picker, the value to always enable the option.">Immer</string>
     <string name="value_coordinate_degree" translation_description="To display a latitude or longitude coordinate in degree. E.g.,       2.2 \u00B0. \u00B0 is the unicode value for the degree symbol.        %1$s: a string value of the coordinate. E.g., &apos;2.2&apos;">%1$s\u00B0</string>
-    <string name="value_float_feet" translation_description="Display a float value in feet (ft).        %1$.2f: a float number. E.g., &apos;2.22&apos;">%1$.2f ft</string>
-    <string name="value_float_kilometer" translation_description="Display a float value in kilometers (km).        %1$.2f: a float number. E.g., &apos;2.22&apos;">%1$.2f km</string>
-    <string name="value_float_kilometer_hour" translation_description="Display a float value in kilometers per hour (km/h).        %1$.2f: a float number. E.g., &apos;2.22&apos;">%1$.2f km/h</string>
-    <string name="value_float_meter" translation_description="Display a float value in meters (m).        %1$.2f: a float number. E.g., &apos;2.22&apos;">%1$.2f m</string>
-    <string name="value_float_mile" translation_description="Display a float value in miles (mi).        %1$.2f: a float number. E.g., &apos;2.22&apos;">%1$.2f Meilen</string>
-    <string name="value_float_mile_hour" translation_description="Display a float value in miles per hour (mi/h).        %1$.2f: a float number. E.g., &apos;2.22&apos;">%1$.2f mi/h</string>
+    <string name="value_float_feet" translation_description="Display a float value in feet (ft).        %1$.0f: a float number. E.g., &apos;2.22&apos;">%1$.0f ft</string>
+    <string name="value_float_kilometer" translation_description="Display a float value in kilometers (km).        %1$.0f: a float number. E.g., &apos;2.22&apos;">%1$.1f km</string>
+    <string name="value_float_kilometer_hour" translation_description="Display a float value in kilometers per hour (km/h).        %1$.0f: a float number. E.g., &apos;2.22&apos;">%1$.0f km/h</string>
+    <string name="value_float_meter" translation_description="Display a float value in meters (m).        %1$.0f: a float number. E.g., &apos;2.22&apos;">%1$.0f m</string>
+    <string name="value_float_mile" translation_description="Display a float value in miles (mi).        %1$.0f: a float number. E.g., &apos;2.22&apos;">%1$.1f Meilen</string>
+    <string name="value_float_mile_hour" translation_description="Display a float value in miles per hour (mi/h).        %1$.0f: a float number. E.g., &apos;2.22&apos;">%1$.0f mi/h</string>
     <string name="value_float_mile_poor_gps" translation_description="In a setting picker, the string format to display a float value in       miles (mi), recommended when having poor GPS signal.        %1$.1f: a float number. E.g., &apos;2.2&apos;">%1$.1f Meilen (schlechtes GPS-Signal)</string>
-    <string name="value_float_minute_kilometer" translation_description="Display a float value in minutes per kilometer (min/km).        %1$.2f: a float number. E.g., &apos;2.22&apos;">%1$.2f min/km</string>
-    <string name="value_float_minute_mile" translation_description="Display a float value in minutes per mile (min/mi).        %1$.2f: a float number. E.g., &apos;2.22&apos;">%1$.2f min/mi</string>
+    <string name="value_float_minute_kilometer" translation_description="Display a float value in minutes per kilometer (min/km).        %1$.0f: a float number. E.g., &apos;2.22&apos;">%1$.1f min/km</string>
+    <string name="value_float_minute_mile" translation_description="Display a float value in minutes per mile (min/mi).        %1$.0f: a float number. E.g., &apos;2.22&apos;">%1$.1f min/mi</string>
     <string name="value_integer_feet" translation_description="In a setting picker, the string format to display an integer value in       feet (ft).        %1$d: an integer value. E.g., &apos;2&apos;">%1$d Fuß</string>
     <string name="value_integer_feet_excellent_gps" translation_description="In a setting picker, the string format to display an integer value in       feet (ft), recommended when having excellent GPS signal.        %1$d: an integer value. E.g., &apos;2&apos;">%1$d Fuß (ausgezeichnetes GPS-Signal)</string>
     <string name="value_integer_feet_recommended" translation_description="In a setting picker, the string format to display an integer value in       feet (ft) and that the value is the recommended value.        %1$d: an integer value. E.g., &apos;2&apos;">%1$d Fuß (empfohlen)</string>
@@ -483,17 +484,17 @@
     <string name="voice_speed_miles_per_hour_other" translation_description="For voice announcement, to say &apos;other&apos; miles per hour, &apos;other&apos; means       for cases that the language does not require special treatment of the given quantity.        %1$.1f a float number.">%1$.1f Meilen pro Stunde</string>
     <string name="voice_speed_miles_per_hour_two" translation_description="For voice announcement, to say 2 miles per hour.">2 Meilen pro Stunde</string>
     <string name="voice_speed_miles_per_hour_zero" translation_description="For voice announcement, to say 0 miles per hour.">0 Meilen pro Stunde</string>
-    <string name="voice_template" translation_description="For the voice announcement, the template to make an announcement.        %1$s: distance string. E.g., &apos;1 mile&apos; or &apos;1.2 miles&apos;, &apos;1 kilometer&apos;, &apos;2.2 kilometers&apos;       %2$s: time string. E.g., &apos;1 hour and 30 minutes&apos; or &apos;20 minutes 1 second&apos;       %3$s: speed/pace string. For speed, e.g., &apos;2.2 miles per hour&apos;, &apos;1 kilometer per hour&apos;. For       pace, e.g., &apos;2 hours 1 minute per mile&apos;, &apos;30 minutes 1 second per kilometer&apos;.">nogago Outdoor GPS: %1$s in %2$s bei %3$s</string>
-    <string name="voice_total_distance_kilometers_few" translation_description="For voice announcement, to say total distance &apos;few&apos; kilometers.        %1$.2f a float number. The number is a small number.">Gesamtstrecke: %1$.2f Kilometer</string>
-    <string name="voice_total_distance_kilometers_many" translation_description="For voice announcement, to say total distance &apos;many&apos; kilometers.        %1$.2f a float number. The number is a large number.">Gesamtstrecke: %1$.2f Kilometer</string>
+    <string name="voice_template">Du bist %1$s in %2$s bei %3$s</string>
+    <string name="voice_total_distance_kilometers_few" translation_description="For voice announcement, to say total distance &apos;few&apos; kilometers.        %1$.0f a float number. The number is a small number.">Gesamtstrecke: %1$.1f Kilometer</string>
+    <string name="voice_total_distance_kilometers_many" translation_description="For voice announcement, to say total distance &apos;many&apos; kilometers.        %1$.0f a float number. The number is a large number.">Gesamtstrecke: %1$.0f Kilometer</string>
     <string name="voice_total_distance_kilometers_one" translation_description="For voice announcement, to say total distance 1 kilometer.">Gesamtstrecke: 1 Kilometer</string>
-    <string name="voice_total_distance_kilometers_other" translation_description="For voice announcement, to say total distance &apos;other&apos; kilometers,       &apos;other&apos; means for cases that the language does not require special treatment of the given       quantity.        %1$.2f a float number.">Gesamtstrecke: %1$.2f Kilometer</string>
+    <string name="voice_total_distance_kilometers_other" translation_description="For voice announcement, to say total distance &apos;other&apos; kilometers,       &apos;other&apos; means for cases that the language does not require special treatment of the given       quantity.        %1$.0f a float number.">Gesamtstrecke: %1$.0f Kilometer</string>
     <string name="voice_total_distance_kilometers_two" translation_description="For voice announcement, to say total distance 2 kilometers.">Gesamtstrecke: 2 Kilometer</string>
     <string name="voice_total_distance_kilometers_zero" translation_description="For voice announcement, to say total distance 0 kilometers.">Gesamtstrecke: 0 Kilometer</string>
-    <string name="voice_total_distance_miles_few" translation_description="For voice announcement, to say total distance &apos;few&apos; miles.        %1$.2f a float number. The number is a small number.">Gesamtstrecke: %1$.2f Meilen</string>
-    <string name="voice_total_distance_miles_many" translation_description="For voice announcement, to say total distance &apos;many&apos; miles.        %1$.2f a float number. The number is a large number.">Gesamtstrecke: %1$.2f Meilen</string>
+    <string name="voice_total_distance_miles_few" translation_description="For voice announcement, to say total distance &apos;few&apos; miles.        %1$.0f a float number. The number is a small number.">Gesamtstrecke: %1$.0f Meilen</string>
+    <string name="voice_total_distance_miles_many" translation_description="For voice announcement, to say total distance &apos;many&apos; miles.        %1$.0f a float number. The number is a large number.">Gesamtstrecke: %1$.0f Meilen</string>
     <string name="voice_total_distance_miles_one" translation_description="For voice announcement, to say total distance 1 mile.">Gesamtstrecke: 1 Meile</string>
-    <string name="voice_total_distance_miles_other" translation_description="For voice announcement, to say total distance &apos;other&apos; miles, &apos;other&apos;       means for cases that the language does not require special treatment of the given quantity.        %1$.2f a float number.">Gesamtstrecke: %1$.2f Meilen</string>
+    <string name="voice_total_distance_miles_other" translation_description="For voice announcement, to say total distance &apos;other&apos; miles, &apos;other&apos;       means for cases that the language does not require special treatment of the given quantity.        %1$.0f a float number.">Gesamtstrecke: %1$.1f Meilen</string>
     <string name="voice_total_distance_miles_two" translation_description="For voice announcement, to say total distance 2 miles.">Gesamtstrecke: 2 Meilen</string>
     <string name="voice_total_distance_miles_zero" translation_description="For voice announcement, to say total distance 0 miles.">Gesamtstrecke: 0 Meilen</string>
     <string name="voice_total_distance_zero" translation_description="For the voice announcement, the announcement when the current track&apos;s       total distance is zero.">Die Gesamtstrecke in \"nogago Outdoor GPS\" ist null.</string>

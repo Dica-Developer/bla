@@ -298,10 +298,10 @@ public class StatsUtils {
       value = activity.getString(R.string.value_unknown);
     } else {
       if (metricUnits) {
-        value = activity.getString(R.string.value_float_meter, elevation);
+        value = "" + (int) elevation; //activity.getString(R.string.value_float_meter, (float) elevation);
       } else {
         elevation *= UnitConversions.M_TO_FT;
-        value = activity.getString(R.string.value_float_feet, elevation);
+        value = "" + (int) elevation; // activity.getString(R.string.value_float_feet, (float) elevation);
       }
     }
     textView.setText(value);

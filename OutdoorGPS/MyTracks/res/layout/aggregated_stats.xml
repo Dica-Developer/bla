@@ -19,7 +19,8 @@ limitations under the License.
   <TableLayout
     android:layout_height="wrap_content"
     android:layout_width="fill_parent"
-    android:padding="8dp"
+    android:background="@color/white"
+    android:padding="1dp"
     android:shrinkColumns="0,2"
     android:stretchColumns="0,2" >
     <include layout="@layout/stats_core" />

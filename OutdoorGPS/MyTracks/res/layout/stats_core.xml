@@ -50,7 +50,8 @@ limitations under the License.
       style="@style/StatsValue" />
   </TableRow>
   <!-- Average speed/average moving speed (average pace/average moving pace) -->
-  <TableRow>
+  <TableRow
+      android:background="@color/white">
     <TextView
       android:id="@+id/stats_average_speed_label"
       style="@style/StatsLabel" />

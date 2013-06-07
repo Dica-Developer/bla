@@ -141,6 +141,12 @@ limitations under the License.
   <style name="StatsSpacer">
     <item name="android:layout_height">fill_parent</item>
     <item name="android:layout_width">1dp</item>
+    <item name="android:background">@color/black</item>
+  </style>  <!-- The style for the stats spacer -->
+  <style name="StatsHorizontalSpacer">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">1dp</item>
+    <item name="android:background">@color/black</item>
   </style>
   <!-- The style for the stats value -->
   <style name="StatsValue" parent="@style/TextVeryLarge">
@@ -164,7 +170,7 @@ limitations under the License.
   <style name="TextVeryLarge">
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_width">wrap_content</item>
-    <item name="android:textSize">36sp</item>
+    <item name="android:textSize">28sp</item>
     <item name="android:textStyle">bold</item>
   </style>
   <!-- The style for large size text with top margin -->
