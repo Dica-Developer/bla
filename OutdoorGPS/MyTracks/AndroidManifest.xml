@@ -156,6 +156,22 @@ limitations under the License.
         <data android:mimeType="application/vnd.google-earth.gpx" />
         <data android:mimeType="application/vnd.google-earth.gpx+xml" />
         <data android:scheme="file" />
+        
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <action android:name="android.intent.action.ATTACH_DATA" />
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:mimeType="*/*" />
+        <data android:scheme="file" />
+        <data android:pathPattern=".*\\.gpx" />
+        <!-- see threads about this ugly workaround: http://stackoverflow.com/questions/1733195/android-intent-filter-for-a-particular-file-extension -->
+        <data android:pathPattern=".*\\..*\\.gpx" />
+        <data android:pathPattern=".*\\..*\\..*\\.gpx" />
+        <data android:pathPattern=".*\\..*\\..*\\..*\\.gpx" />
+        <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.gpx" />
+        <data android:host="*" />
       </intent-filter>
     </activity>
     <activity
