@@ -25,7 +25,7 @@ public abstract class Constants {
   /**
    * Should be used by all log statements
    */
-  public static final String TAG = "Outdoor";
+  public static final String TAG = "Tracks";
 
   /**
    * Name of the top-level directory inside the SD card where our files will
@@ -135,4 +135,26 @@ public abstract class Constants {
    * This is an abstract utility class.
    */
   protected Constants() { }
+  
+  /* NOGAGO */
+
+  /**
+   * URL to register with nogago.com
+   */
+  public final static String NOGAGO_REGISTER_URL = "https://www.nogago.com/userRegister/index";
+  
+  /**
+   * URL to upload tracks to nogago
+   */
+  public final static String TRACKS_UPLOAD_URL = "https://www.nogago.com:443/tracks/uploadTrack";
+
+  /**
+   * URL to dowload nogagoMaps from PlayStore
+   */
+  public final static String MAPS_DOWNLOAD_URL = "appworld://content/128568/"; // appworld://vendor/2395
+  
+  /**
+   * URL to download nogago Apps
+   */
+  public final static String APPWORLD_VENDOR_URL = "appworld://vendor/2395"; // appworld://vendor/2395
 }

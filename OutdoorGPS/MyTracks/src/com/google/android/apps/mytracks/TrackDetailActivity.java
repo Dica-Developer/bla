@@ -22,7 +22,6 @@ import com.google.android.apps.mytracks.content.TrackDataHub;
 import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.content.WaypointCreationRequest;
 import com.google.android.apps.mytracks.fragments.ChartFragment;
-import com.google.android.apps.mytracks.fragments.ChooseUploadServiceDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment.DeleteOneTrackCaller;
 import com.google.android.apps.mytracks.fragments.FrequencyDialogFragment;
@@ -30,7 +29,8 @@ import com.google.android.apps.mytracks.fragments.MapFragment;
 import com.google.android.apps.mytracks.fragments.StatsFragment;
 import com.google.android.apps.mytracks.io.file.SaveActivity;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
-import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
+import com.google.android.apps.mytracks.io.sendtogoogle.GPXUploadTask;
+import com.google.android.apps.mytracks.io.sendtogoogle.UploadTaskException;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
 import com.google.android.apps.mytracks.settings.SettingsActivity;
 import com.google.android.apps.mytracks.util.AnalyticsUtils;
@@ -38,14 +38,22 @@ import com.google.android.apps.mytracks.util.ApiAdapterFactory;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
+import com.nogago.android.task.AsyncTaskManager;
+import com.nogago.android.task.OnTaskCompleteListener;
 import com.nogago.bb10.tracks.R;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -68,7 +76,7 @@ import java.util.List;
  * @author Leif Hendrik Wilden
  * @author Rodrigo Damazio
  */
-public class TrackDetailActivity extends AbstractMyTracksActivity implements DeleteOneTrackCaller {
+public class TrackDetailActivity extends AbstractMyTracksActivity implements DeleteOneTrackCaller, OnTaskCompleteListener {
 
   public static final String EXTRA_TRACK_ID = "track_id";
   public static final String EXTRA_MARKER_ID = "marker_id";
@@ -181,7 +189,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         // Recording
         insertMarkerAction();
       } else {
-        uploadTrackAction();
+        sendTrackToNogago();
       }
     }
   };
@@ -404,7 +412,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
             .show(getSupportFragmentManager(), FrequencyDialogFragment.FREQUENCY_DIALOG_TAG);
         return true;
       case R.id.track_detail_send_nogago:
-        uploadTrackAction();
+        sendTrackToNogago();
         return true;
       case R.id.track_detail_save_gpx:
         startSaveActivity(TrackFileFormat.GPX);
@@ -445,13 +453,14 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     }
   }
 
-  // TODO IMPLEMENT
+  /*
   public void uploadTrackAction() {
     AnalyticsUtils.sendPageViews(this, "/action/send_nogago");
     ChooseUploadServiceDialogFragment.newInstance(new SendRequest(trackId)).show(
         getSupportFragmentManager(),
         ChooseUploadServiceDialogFragment.CHOOSE_UPLOAD_SERVICE_DIALOG_TAG);
   }
+  */
 
   private void insertMarkerAction() {
     // Recording
@@ -719,5 +728,98 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     }
 
     return super.onKeyUp(keyCode, event);
+  }
+  
+
+  // Upload to nogago
+  
+  private boolean isOnline() {
+    ConnectivityManager cm = (ConnectivityManager) getSystemService(TrackDetailActivity.this.CONNECTIVITY_SERVICE);
+    if (cm == null)
+      return false;
+    NetworkInfo ni = cm.getActiveNetworkInfo();
+    if (ni == null)
+      return false;
+    return ni.isConnectedOrConnecting();
+  }
+
+
+  private String getUserName() {
+    return PreferencesUtils.getString(TrackDetailActivity.this, R.string.user_name, "");
+  }
+
+  private String getPassword() {
+    return PreferencesUtils.getString(TrackDetailActivity.this, R.string.user_password, "");
+  }
+
+  private void sendTrackToNogago() {
+    if (isOnline()) {
+      if (getUserName() != null && (getUserName().length()>0) && getUserName().compareTo("username") != 0) {
+        // Create manager and set this activity as context and listener
+        AsyncTaskManager mAsyncTaskManager = new AsyncTaskManager(this, this, "TEST", false);
+        mAsyncTaskManager.handleRetainedTask(getLastNonConfigurationInstance());
+        GPXUploadTask task = new GPXUploadTask(this,getString(R.string.upload_progressbar_title), getUserName(), getPassword(), trackId);
+        mAsyncTaskManager.setupTask(task);
+      } else {
+        android.content.DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            Intent settings = new Intent(TrackDetailActivity.this, SettingsActivity.class);
+            startActivity(settings);
+          }
+        };
+        showAlertDialog(this, getString(R.string.wrong_credential),
+            getString(R.string.error_username), listener);
+      }
+
+    } else {
+      Toast.makeText(TrackDetailActivity.this, R.string.error_network, Toast.LENGTH_LONG).show();
+    }
+  }
+  
+
+  private void showAlertDialog(Context context, String title, String message,
+      android.content.DialogInterface.OnClickListener listener) {
+    Builder builder = new AlertDialog.Builder(context);
+    builder.setTitle(title);
+    builder.setIcon(android.R.drawable.ic_dialog_info);
+    builder.setMessage(message);
+    builder.setNeutralButton(R.string.ok_button,  listener);
+    builder.show();
+}
+
+  
+
+  @Override
+  public void onTaskComplete(AsyncTask task, Object result) {
+    Toast.makeText(this, getString(R.string.successfully_uploaded_track), Toast.LENGTH_SHORT).show();
+    
+  }
+
+  @Override
+  public void onTaskCancel(AsyncTask task) {
+    Toast.makeText(this, getString(R.string.sd_card_canceled), Toast.LENGTH_SHORT).show();
+    
+  }
+
+  @Override
+  public void onTaskError(AsyncTask task, Exception error) {
+    if(error instanceof UploadTaskException && ((UploadTaskException) error).getId()==UploadTaskException.CREDENTIALS_WRONG) {
+      android.content.DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+      @Override
+      public void onClick(DialogInterface dialog, int which) {
+        Intent settings = new Intent(TrackDetailActivity.this, SettingsActivity.class);
+        startActivity(settings);
+      }
+    };
+    showAlertDialog(this, getString(R.string.wrong_credential),
+        getString(R.string.error_username), listener);
+    } else if (error instanceof UploadTaskException && ((UploadTaskException) error).getId()==UploadTaskException.UNABLE_TO_CONNECT) {
+
+      Toast.makeText(TrackDetailActivity.this, R.string.error_network, Toast.LENGTH_LONG).show();
+      
+    } else {
+    Toast.makeText(this, getString(R.string.sd_card_canceled), Toast.LENGTH_SHORT).show();
+    }
   }
 }

@@ -26,10 +26,12 @@ limitations under the License.
 	  <EditTextPreference 
 		android:key="@string/user_name" 
       	android:dialogTitle="@string/username_label" 
+    android:persistent="true"
       	android:title="@string/username_label"/>
   	  <EditTextPreference 
       	android:key="@string/user_password"
       	android:dialogTitle="@string/password_label"
+    android:persistent="true"
       	android:password="true"
       	android:title="@string/password_label"/>
   </PreferenceCategory>

@@ -87,6 +87,6 @@ limitations under the License.
   
   <!-- Nogago -->
    <string name="settings_register_key">settingsRegister</string>
-  <string name="user_name" />
-  <string name="user_password" /> 
+  <string name="user_name">settingsUserName</string>
+  <string name="user_password">settingsUserPassword</string> 
 </resources>

@@ -33,6 +33,7 @@ import android.database.Cursor;
 import android.location.Location;
 import android.util.Log;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -374,4 +375,24 @@ class TrackWriterImpl implements TrackWriter {
       it.close();
     }
   }
+  
+
+
+public String writeTrackAsString() {
+  ByteArrayOutputStream boas = new ByteArrayOutputStream();
+  // Open the input and output
+  success = false;
+  errorMessage = R.string.error_track_does_not_exist;
+  if (track != null) {
+    writer.prepare(track, boas);
+    try {
+      writeDocument();
+    } catch (InterruptedException e) {
+      Log.i(Constants.TAG, "The track write was interrupted");
+      success = false;
+      errorMessage = R.string.error_operation_cancelled;
+    }
+  }
+  return boas.toString();
+}
 }

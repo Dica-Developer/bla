@@ -3048,7 +3048,7 @@ limitations under the License.
   <string name="task_cancelled">Task cancelled on your request.</string>
   <string name="error_track_does_not_exist">Track does not exist!</string>
   <string name="error_operation_cancelled">Operation cancelled</string>
-  <string name="progressbar_title">Uploading Track...</string>
+  <string name="upload_progressbar_title">Uploading Track...</string>
   <string name="successfully_uploaded_track">Your track was successfully uploaded to nogago!</string>
     <!-- new for Menu -->
   <string name="help">Help</string>
