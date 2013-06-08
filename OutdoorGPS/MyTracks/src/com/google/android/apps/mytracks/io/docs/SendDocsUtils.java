@@ -26,7 +26,7 @@ import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.ResourceUtils;
 import com.google.android.apps.mytracks.util.StringUtils;
 import com.google.android.apps.mytracks.util.UnitConversions;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.wireless.gdata.client.HttpException;
 import com.google.wireless.gdata.data.Entry;

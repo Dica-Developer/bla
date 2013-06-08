@@ -23,7 +23,7 @@ import com.google.android.apps.mytracks.services.sensors.SensorManager;
 import com.google.android.apps.mytracks.services.sensors.SensorManagerFactory;
 import com.google.android.apps.mytracks.services.sensors.SensorUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 import com.google.protobuf.InvalidProtocolBufferException;
 
 import android.os.Bundle;

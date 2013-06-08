@@ -18,7 +18,7 @@ package com.google.android.apps.mytracks.maps;
 import com.google.android.apps.mytracks.ColoredPath;
 import com.google.android.apps.mytracks.MapOverlay.CachedLocation;
 import com.google.common.annotations.VisibleForTesting;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -21,7 +21,7 @@ import com.google.android.apps.mytracks.stats.TripStatistics;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.StringUtils;
 import com.google.android.apps.mytracks.util.UnitConversions;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
 
 import android.content.Context;

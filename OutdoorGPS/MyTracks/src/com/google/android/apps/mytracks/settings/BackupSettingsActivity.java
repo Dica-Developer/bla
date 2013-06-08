@@ -22,7 +22,7 @@ import com.google.android.apps.mytracks.io.backup.RestoreChooserActivity;
 import com.google.android.apps.mytracks.util.DialogUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 
 import android.app.Dialog;
 import android.content.Context;

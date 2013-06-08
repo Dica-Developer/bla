@@ -21,7 +21,7 @@ import com.google.android.apps.mytracks.fragments.ChooseActivityDialogFragment;
 import com.google.android.apps.mytracks.io.fusiontables.SendFusionTablesUtils;
 import com.google.android.apps.mytracks.io.maps.SendMapsUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
 
 import android.app.AlertDialog;

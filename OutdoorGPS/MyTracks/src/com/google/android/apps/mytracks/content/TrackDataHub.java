@@ -27,7 +27,7 @@ import com.google.android.apps.mytracks.content.MyTracksProviderUtils.LocationIt
 import com.google.android.apps.mytracks.content.TrackDataListener.LocationState;
 import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
 
 import android.content.Context;

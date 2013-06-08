@@ -16,7 +16,7 @@
 
 package com.google.android.apps.mytracks.services.sensors.ant;
 
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 
 /**
  * Bike cadence sensor channel configuration.

@@ -18,7 +18,7 @@ package com.google.android.apps.mytracks;
 import com.google.android.apps.mytracks.services.RemoveTempFilesService;
 import com.google.android.apps.mytracks.util.AnalyticsUtils;
 import com.google.android.apps.mytracks.util.ApiAdapterFactory;
-import com.nogago.bb10.outdoorgps.BuildConfig;
+import com.nogago.bb10.tracks.BuildConfig;
 
 import android.app.Application;
 import android.content.Intent;

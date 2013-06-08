@@ -18,7 +18,7 @@ package com.google.android.apps.mytracks.maps;
 
 import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 
 import android.content.Context;
 import android.content.SharedPreferences;

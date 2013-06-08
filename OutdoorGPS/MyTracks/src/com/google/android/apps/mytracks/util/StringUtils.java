@@ -15,7 +15,7 @@
  */
 package com.google.android.apps.mytracks.util;
 
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 
 import android.content.Context;
 import android.text.Html;

@@ -30,7 +30,7 @@ import com.google.android.apps.mytracks.util.ApiAdapterFactory;
 import com.google.android.apps.mytracks.util.GeoRect;
 import com.google.android.apps.mytracks.util.GoogleLocationUtils;
 import com.google.android.apps.mytracks.util.LocationUtils;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 
 import android.content.Intent;
 import android.location.Location;

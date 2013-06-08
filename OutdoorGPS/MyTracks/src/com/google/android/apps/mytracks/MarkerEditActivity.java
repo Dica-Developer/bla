@@ -22,7 +22,7 @@ import com.google.android.apps.mytracks.content.WaypointCreationRequest;
 import com.google.android.apps.mytracks.content.WaypointCreationRequest.WaypointType;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 
 import android.os.Bundle;
 import android.util.Log;

@@ -17,7 +17,7 @@
 package com.google.android.apps.mytracks.util;
 
 import com.google.android.apps.mytracks.ContextualActionModeCallback;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

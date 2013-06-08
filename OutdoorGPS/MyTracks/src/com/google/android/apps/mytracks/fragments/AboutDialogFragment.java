@@ -17,7 +17,7 @@
 package com.google.android.apps.mytracks.fragments;
 
 import com.google.android.apps.mytracks.util.SystemUtils;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

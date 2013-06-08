@@ -24,7 +24,7 @@ import com.google.android.apps.mytracks.content.TrackDataType;
 import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.stats.TripStatistics;
 import com.google.android.apps.mytracks.util.StatsUtils;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 
 import android.location.Location;
 import android.os.Bundle;

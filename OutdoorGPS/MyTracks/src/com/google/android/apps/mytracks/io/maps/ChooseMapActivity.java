@@ -19,7 +19,7 @@ import com.google.android.apps.mytracks.io.gdata.maps.MapsMapMetadata;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
 import com.google.android.apps.mytracks.util.DialogUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
 
 import android.app.Activity;

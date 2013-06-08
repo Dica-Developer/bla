@@ -19,7 +19,7 @@ package com.google.android.apps.mytracks.io.backup;
 import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.StringUtils;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;

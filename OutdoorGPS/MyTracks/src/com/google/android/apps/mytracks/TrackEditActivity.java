@@ -20,7 +20,7 @@ import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
 import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.util.TrackIconUtils;
 import com.google.android.apps.mytracks.util.TrackNameUtils;
-import com.nogago.bb10.outdoorgps.R;
+import com.nogago.bb10.tracks.R;
 
 import android.os.Bundle;
 import android.util.Log;

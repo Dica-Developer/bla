@@ -18,7 +18,7 @@ limitations under the License.
   android:installLocation="auto"
   android:versionCode="56"
   android:versionName="3.0.2"
-  package="com.nogago.bb10.outdoorgps" >
+  package="com.nogago.bb10.tracks" >
 
   <!-- Permission to initialize services -->
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -125,9 +125,9 @@ limitations under the License.
 
   <application
     android:backupAgent="com.google.android.apps.mytracks.io.backup.MyTracksBackupAgent"
-    android:icon="@drawable/my_tracks_icon"
+    android:icon="@drawable/appicon"
     android:hardwareAccelerated="true"
-    android:label="@string/my_tracks_app_name"
+    android:label="@string/tracks_app_name"
     android:name="com.google.android.apps.mytracks.MyTracksApplication"
     android:theme="@style/ThemeSelector" >
 
