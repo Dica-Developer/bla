@@ -2264,10 +2264,10 @@ limitations under the License.
       the user that all tracks and markers will be permanently deleted from the phone.">
     All tracks and markers will be permanently deleted from the phone.
   </string>
-  <string name="track_list_empty_message"
+  <string name="nogago_list_empty_message"
     translation_description="When the track list is empty, the message informing the user to click
       on the record button to start a new recording">
-    Click on the record button to start recording your next adventure.
+    Click on the red record button to start recording your next adventure. Or enter \"N\" for recording a new track, \"P\" for pausing the recording, \"S\" to stop recording.
   </string>
   <string name="track_list_record_error"
     translation_description="When starting a new track recording, the error message informing the

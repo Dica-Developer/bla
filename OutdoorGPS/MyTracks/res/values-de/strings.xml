@@ -411,7 +411,8 @@
     <string name="track_edit_activity_type_hint" translation_description="In the page to edit a track, the hint in the &apos;Activity type&apos; text field       when it is empty.">Art der Aktivität</string>
     <string name="track_edit_new_track_title" translation_description="The title of the track edit page when saving a new track.">Neuer Track</string>
     <string name="track_list_delete_all_confirm_message" translation_description="When deleting all the tracks, the confirmation dialog message informing       the user that all tracks and markers will be permanently deleted from the phone.">Alle Tracks und Markierungen werden endgültig vom Telefon gelöscht.</string>
-    <string name="track_list_empty_message" translation_description="When the track list is empty, the message informing the user to click       on the record button to start a new recording">Klicken Sie auf die Schaltfläche \"Aufzeichnen\", um Ihr nächstes Abenteuer aufzuzeichnen.</string>
+    <string name="track_list_empty_message" 
+        translation_description="When the track list is empty, the message informing the user to click       on the record button to start a new recording">Klicken Sie auf die Schaltfläche \"Aufzeichnen\", um Ihr nächstes Abenteuer aufzuzeichnen.</string>
     <string name="track_list_record_error" translation_description="When starting a new track recording, the error message informing the       user not able to record and asking the user to try again.">Die Aufzeichnung kann nicht gestartet werden, da kein GPS-Signal verfügbar ist. Bitte versuchen Sie es erneut.</string>
     <string name="track_list_record_success" translation_description="When starting a new track recording, a status message indicating       success.">Es wird gerade ein neuer Track aufgezeichnet.</string>
     <string name="track_name_format" translation_description="When creating a new track, the string format to name the track.        %1$d: track number. E.g., &apos;1&apos;.">Track %1$d</string>
@@ -580,5 +581,10 @@
     <string name="show_settings_button">Einstellungen</string>
     <string name="error_network">Leider können sie nicht auf das Internet zugreifen, dies ist für diese Funktion notwendig.</string>
 
+    <string name="nogago_list_empty_message"
+    translation_description="When the track list is empty, the message informing the user to click
+      on the record button to start a new recording">
+      Klicken Sie auf die rote \"Aufnahme\" Taste, um Ihr nächstes Abenteuer aufzuzeichnen. \n Sie können auch die Tasten \"N\" zur Aufnahme, \"P\" zum Pausieren und \"S\" zum Beenden der Aufnahme nutzen. \n Hilfe durch \"H\" lesen, mit \"A\" Einstellungen anpassen. 
+    </string>
     
 </resources>

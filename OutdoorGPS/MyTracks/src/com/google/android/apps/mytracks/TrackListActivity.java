@@ -576,15 +576,19 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   @Override
   public boolean onKeyUp(int keyCode, KeyEvent event) {
     // T,B, Space are already mapped by BB on Q10!
-    if (keyCode == KeyEvent.KEYCODE_SEARCH) {
-      if (ApiAdapterFactory.getApiAdapter().handleSearchKey(searchMenuItem)) {
-        return true;
-      }
-    }
-
+    Intent intent ;
     boolean isRecording = recordingTrackId != PreferencesUtils.RECORDING_TRACK_ID_DEFAULT;
     switch (keyCode) {
-
+      case KeyEvent.KEYCODE_SEARCH:
+        if (ApiAdapterFactory.getApiAdapter().handleSearchKey(searchMenuItem)) {
+          return true;
+        }
+        break;
+      case KeyEvent.KEYCODE_H:
+        // Help
+        intent = IntentUtils.newIntent(TrackListActivity.this, HelpActivity.class);
+        startActivity(intent);
+        break;
       case KeyEvent.KEYCODE_N:
         if (!isRecording) {
           // Not recording -> Recording
@@ -629,7 +633,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         }
         break;
       case KeyEvent.KEYCODE_A:
-        Intent intent = IntentUtils.newIntent(this, SettingsActivity.class);
+        intent = IntentUtils.newIntent(this, SettingsActivity.class);
         startActivity(intent);
         break;
 
