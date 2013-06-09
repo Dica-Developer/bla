@@ -164,7 +164,7 @@ public class SaveActivity extends Activity {
     this.savedPath = aSavedPath;
     this.mailTrack = launchMail;
     removeDialog(DIALOG_PROGRESS_ID);
-    if (launchMail) {
+    if (launchMail && isSuccess) {
       // Immediately mail file
       Intent intent = IntentUtils.newShareFileIntent(SaveActivity.this, trackId, savedPath,
           trackFileFormat);

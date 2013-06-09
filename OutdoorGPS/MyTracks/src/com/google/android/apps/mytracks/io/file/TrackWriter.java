@@ -16,6 +16,7 @@
 package com.google.android.apps.mytracks.io.file;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 /**
  * Implementations of this class export tracks to the SD card. This class is
@@ -53,7 +54,7 @@ public interface TrackWriter {
   /**
    * Returns the absolute path to the file which was created.
    */
-  String getAbsolutePath();
+  String getAbsolutePath() throws FileNotFoundException;
 
   /**
    * Writes the given track id to the SD card. This is blocking.

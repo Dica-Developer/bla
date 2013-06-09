@@ -79,7 +79,8 @@ class TrackWriterImpl implements TrackWriter {
   }
 
   @Override
-  public String getAbsolutePath() {
+  public String getAbsolutePath() throws FileNotFoundException {
+    if(file==null) throw new FileNotFoundException();
     return file.getAbsolutePath();
   }
 
@@ -225,6 +226,7 @@ class TrackWriterImpl implements TrackWriter {
   protected OutputStream newOutputStream(String fileName)
       throws FileNotFoundException {
     file = new File(directory, fileName);
+    if(file==null) throw new FileNotFoundException();
     return new FileOutputStream(file);
   }
 

@@ -47,7 +47,7 @@ public class WelcomeDialogFragment extends DialogFragment {
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     activity = getActivity();
     return new AlertDialog.Builder(activity)
-        .setPositiveButton(R.string.generic_ok, new DialogInterface.OnClickListener() {
+        .setPositiveButton(R.string.welcome_ok, new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialog, int which) {
             onDone();

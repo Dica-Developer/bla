@@ -71,8 +71,7 @@ public class FileUtils {
   public static String buildExternalDirectoryPath(String... components) {
     StringBuilder dirNameBuilder = new StringBuilder();
     // dirNameBuilder.append(Environment.getExternalStorageDirectory());
-    dirNameBuilder.append("/sdcard2");
-    
+    dirNameBuilder.append("/sdcard2"); // BB Internal Memory: sdcard DOES NOT WORK!!! Removable SD Card: sdcard2
     dirNameBuilder.append(File.separatorChar);
     dirNameBuilder.append(Constants.SDCARD_TOP_DIR);
     dirNameBuilder.append(File.separatorChar);

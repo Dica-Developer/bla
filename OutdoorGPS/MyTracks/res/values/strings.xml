@@ -3011,12 +3011,16 @@ limitations under the License.
   <string name="welcome_message"
     translation_description="The message of the welcome dialog. Note that \n is the newline
       character.">
-    Welcome to My Tracks for BlackBerry by nogago. Use this app to record your GPS tracks, aggregate your stats over time,
+    Use this app to record your GPS tracks, aggregate your stats over time,
     and share your paths with friends.\n\nHappy Exploring,\nYour nogago team
   </string>
   <string name="welcome_title"
     translation_description="The title of the welcome dialog.">
-    Welcome to My Tracks.
+    Welcome to nogago Tracks.
+  </string>
+  <string name="welcome_ok"
+    translation_description="The title of the welcome dialog.">
+    Let\'s go!
   </string>
   
   <!-- TO DO Additions in need for translation -->

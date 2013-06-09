@@ -35,6 +35,7 @@ import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection
 import com.google.android.apps.mytracks.settings.SettingsActivity;
 import com.google.android.apps.mytracks.util.AnalyticsUtils;
 import com.google.android.apps.mytracks.util.ApiAdapterFactory;
+import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
@@ -598,11 +599,15 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
    */
   private void startSaveActivity(TrackFileFormat trackFileFormat) {
     AnalyticsUtils.sendPageViews(this, "/action/save");
+    if(FileUtils.isSdCardAvailable()) {
     Intent intent = IntentUtils.newIntent(this, SaveActivity.class)
         .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
         .putExtra(SaveActivity.EXTRA_MAIL_TRACK, true)
         .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) trackFileFormat);
     startActivity(intent);
+    } else {
+      Toast.makeText(this, getString(R.string.sd_card_error_no_storage), Toast.LENGTH_SHORT).show();
+    }
   }
 
   /**

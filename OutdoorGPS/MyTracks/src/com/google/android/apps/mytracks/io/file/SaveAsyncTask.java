@@ -31,6 +31,7 @@ import android.os.PowerManager.WakeLock;
 import android.util.Log;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 /**
  * Async Task to save tracks to the SD card.
@@ -160,7 +161,11 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
     });
     trackWriter.writeTrack();
     messageId = trackWriter.getErrorMessage();
-    savedPath = trackWriter.getAbsolutePath();
+    try {
+    savedPath = trackWriter.getAbsolutePath(); // TODO Check
+    } catch (FileNotFoundException e) {
+      return false;
+    }
     return trackWriter.wasSuccess();
   }
 
