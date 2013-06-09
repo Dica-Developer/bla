@@ -359,7 +359,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     // BB
     // shareMenuItem = menu.findItem(R.id.track_detail_share);
     sendGoogleMenuItem = menu.findItem(R.id.track_detail_send_nogago);
-    saveMenuItem = menu.findItem(R.id.track_detail_save);
+    saveMenuItem = menu.findItem(R.id.track_detail_mail);
     voiceFrequencyMenuItem = menu.findItem(R.id.track_detail_voice_frequency);
     splitFrequencyMenuItem = menu.findItem(R.id.track_detail_split_frequency);
 
@@ -600,6 +600,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     AnalyticsUtils.sendPageViews(this, "/action/save");
     Intent intent = IntentUtils.newIntent(this, SaveActivity.class)
         .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
+        .putExtra(SaveActivity.EXTRA_MAIL_TRACK, true)
         .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) trackFileFormat);
     startActivity(intent);
   }

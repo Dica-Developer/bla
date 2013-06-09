@@ -3059,4 +3059,11 @@ limitations under the License.
   <string name="show_settings_button">Settings</string>
   <string name="error_network">Apologies, you cannot access the Internet.</string>
   
+    <string name="menu_mail"
+    translation_description="In the menu, to save a track to the SD card. This menu item has a
+      submenu.
+
+      Character limit: ~20 (1 line)">
+    Email track
+  </string>
 </resources>

@@ -45,6 +45,7 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
   private final TrackFileFormat trackFileFormat;
   private final long trackId;
   private final boolean useTempDir;
+  private final boolean launchMail;
 
   private final Context context;
   private final MyTracksProviderUtils myTracksProviderUtils;
@@ -72,11 +73,12 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
    * @param useTempDir true to use the temp directory
    */
   public SaveAsyncTask(SaveActivity saveActivity, TrackFileFormat trackFileFormat, long trackId,
-      boolean useTempDir) {
+      boolean useTempDir, boolean launchMail) {
     this.saveActivity = saveActivity;
     this.trackFileFormat = trackFileFormat;
     this.trackId = trackId;
     this.useTempDir = useTempDir;
+    this.launchMail = launchMail;
     context = saveActivity.getApplicationContext();
     
     myTracksProviderUtils = MyTracksProviderUtils.Factory.get(saveActivity);
@@ -103,7 +105,7 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
   public void setActivity(SaveActivity saveActivity) {
     this.saveActivity = saveActivity;
     if (completed && saveActivity != null) {
-      saveActivity.onAsyncTaskCompleted(success, messageId, savedPath);
+      saveActivity.onAsyncTaskCompleted(success, messageId, savedPath, launchMail);
     }
   }
 
@@ -210,7 +212,7 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
     success = result;
     completed = true;
     if (saveActivity != null) {
-      saveActivity.onAsyncTaskCompleted(success, messageId, savedPath);
+      saveActivity.onAsyncTaskCompleted(success, messageId, savedPath, launchMail);
     }
   }
 

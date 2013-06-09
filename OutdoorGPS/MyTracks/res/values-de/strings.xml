@@ -91,7 +91,7 @@
     <string name="description_max_grade" translation_description="Max grade description. %% is the escape sequence for the percent       symbol.        %1$d grade in percentage">Maximales Gefälle: %1$d %%</string>
     <string name="description_max_speed" translation_description="Max speed description.        %1$.0f speed in kilometers per hour       %2$.1f speed in miles per hour">Maximale Geschwindigkeit: %1$.0f km/h (%2$.1f Meile/h)</string>
     <string name="description_min_elevation" translation_description="Min elevation description.        %1$d elevation in meters       %2$d elevation in feet">Minimale Höhe: %1$d m (%2$d Fuß)</string>
-    <string name="description_min_grade" translation_description="Min grade description. %% is the escape sequence for the percent       symbol.        %1$d grade in percentage">Minimales Gefälle: %1$d %%</string>
+    <string name="description_min_grade" translation_description="Min grade description. %% is the escape sequence for the percent       symbol.        %1$d grade in percentage">Maximale Steigung: %1$d %%</string>
     <string name="description_moving_time" translation_description="Moving time description.        %1$s time. E.g., &apos;1:08:59&apos;">Zeit in Bewegung: %1$s</string>
     <string name="description_pace_imperial" translation_description="Pace in imperial units, hours per mile.">Tempo (h/Meile)</string>
     <string name="description_pace_metric" translation_description="Pace in metric units, hours per kilometer.">Tempo (h/km)</string>
@@ -395,7 +395,7 @@
     <string name="stats_max_grade" translation_description="In the &apos;Stats&apos; page, the maximum grade.">Maximales Gefälle</string>
     <string name="stats_max_speed" translation_description="In the &apos;Stats&apos; page, the maximum speed.">Höchstgeschwindigkeit</string>
     <string name="stats_min_elevation" translation_description="In the &apos;Stats&apos; page, the minimum elevation.">Minimale Höhe</string>
-    <string name="stats_min_grade" translation_description="In the &apos;Stats&apos; page, the minimum grade.">Minimales Gefälle</string>
+    <string name="stats_min_grade" translation_description="In the &apos;Stats&apos; page, the minimum grade.">Maximale Steigung</string>
     <string name="stats_moving_time" translation_description="In the &apos;Stats&apos; page, the moving time.">Bewegungszeit</string>
     <string name="stats_pace" translation_description="In the &apos;Stats&apos; page, the pace like hours per mile.        Character limit: ~23 (1 line)">Tempo</string>
     <string name="stats_speed" translation_description="In the &apos;Stats&apos; page, the speed like miles per hour.        Character limit: ~23 (1 line)">Geschwindigkeit</string>
