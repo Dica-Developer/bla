@@ -23,6 +23,9 @@ import com.google.android.apps.mytracks.util.StatsUtils;
 import com.nogago.bb10.tracks.R;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 
 import java.util.List;
 
@@ -38,6 +41,16 @@ public class AggregatedStatsActivity extends AbstractMyTracksActivity {
     super.onCreate(savedInstanceState);
     StatsUtils.setTripStatisticsValues(this, getTripStatistics());
     StatsUtils.setLocationValues(this, null, false);
+    
+
+    ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
+    if(backButton != null)   backButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        AggregatedStatsActivity.this.finish();
+      }
+    });
+    
   }
 
   @Override

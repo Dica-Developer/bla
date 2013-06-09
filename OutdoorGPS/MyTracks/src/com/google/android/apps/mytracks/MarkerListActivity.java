@@ -44,9 +44,11 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 /**
@@ -105,6 +107,35 @@ public class MarkerListActivity extends AbstractMyTracksActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     
+    
+
+    ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
+    if(backButton != null)   backButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        MarkerListActivity.this.finish();
+      }
+    });
+    // listBtnBarSearch listBtnBarMarker
+    
+    ImageButton sButton = (ImageButton) findViewById(R.id.listBtnBarSearch);
+    if(sButton != null)   sButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        ApiAdapterFactory.getApiAdapter().handleSearchMenuSelection(MarkerListActivity.this);
+      }
+    });
+    
+    
+    ImageButton mButton = (ImageButton) findViewById(R.id.listBtnBarMarker);
+    if(mButton != null)   mButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent intent = IntentUtils.newIntent(MarkerListActivity.this, MarkerEditActivity.class)
+            .putExtra(MarkerEditActivity.EXTRA_TRACK_ID, trackId);
+        startActivity(intent);
+      }
+    });
     trackId = getIntent().getLongExtra(EXTRA_TRACK_ID, -1L);
     if (trackId == -1L) {
       Log.d(TAG, "invalid track id");

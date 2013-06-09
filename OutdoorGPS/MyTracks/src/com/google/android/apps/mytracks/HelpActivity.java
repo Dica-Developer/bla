@@ -35,6 +35,7 @@ public class HelpActivity extends AbstractMyTracksActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    // Setup Action Bar
 
     TextView mapsPublicUnlisted = (TextView) findViewById(R.id.help_maps_public_unlisted_answer);
     mapsPublicUnlisted.setText(StringUtils.getHtml(

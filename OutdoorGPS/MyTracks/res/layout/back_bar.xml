@@ -15,7 +15,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <merge xmlns:android="http://schemas.android.com/apk/res/android" >
-     <LinearLayout
+
+<View
+    android:background="@color/actionBarSeperator"
+    android:layout_height="1dp"
+    android:layout_width="fill_parent" />
+  <LinearLayout
    	  android:id="@+id/track_controller_container"
       android:layout_width="fill_parent"
       android:orientation="horizontal"
@@ -25,25 +30,15 @@ limitations under the License.
       android:background="@color/actionBarBG">
 
       <ImageButton
-          android:id="@+id/help_ok"
+          android:id="@+id/listBtnBarBack"
           android:layout_width="wrap_content"
         android:layout_height="wrap_content"
           android:src="@drawable/ic_back"
           android:layout_margin="0dp"
       android:background="@color/actionBarBG"
-          android:layout_weight="1"
-          android:scaleType="centerInside" />
-      
-      <ImageButton
-    android:id="@+id/help_about"
-          android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-          android:src="@drawable/ic_info"
-          android:layout_margin="0dp"
-      android:background="@color/actionBarBG"
-          android:layout_weight="5"
+      android:layout_gravity="left"
+      android:gravity="left"
           android:scaleType="centerInside" />
 
-  
-</LinearLayout>
+</LinearLayout> 
 </merge>

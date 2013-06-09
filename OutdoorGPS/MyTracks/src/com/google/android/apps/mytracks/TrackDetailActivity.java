@@ -263,7 +263,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     recordImageButton.setOnClickListener(recordListener);
 
     markerImageButton = (ImageButton) findViewById(R.id.listBtnBarMarker);
-    markerImageButton.setOnClickListener(markerListener);
+    if(markerImageButton !=null) markerImageButton.setOnClickListener(markerListener);
 
     ImageButton moreButton = (ImageButton) findViewById(R.id.listBtnBarMore);
     moreButton.setOnClickListener(new OnClickListener() {

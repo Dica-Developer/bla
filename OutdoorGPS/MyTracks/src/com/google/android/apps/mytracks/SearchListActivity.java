@@ -54,10 +54,12 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -137,6 +139,14 @@ public class SearchListActivity extends AbstractMyTracksActivity implements Dele
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
+
+    ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
+    if(backButton != null)   backButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        SearchListActivity.this.finish();
+      }
+    });
 
     trackRecordingServiceConnection = new TrackRecordingServiceConnection(this, null);
     myTracksProviderUtils = MyTracksProviderUtils.Factory.get(this);

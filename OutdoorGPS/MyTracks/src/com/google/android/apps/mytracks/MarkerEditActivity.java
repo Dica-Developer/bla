@@ -63,6 +63,8 @@ public class MarkerEditActivity extends AbstractMyTracksActivity {
   protected void onCreate(Bundle bundle) {
     super.onCreate(bundle);
 
+    
+    
     trackId = getIntent().getLongExtra(EXTRA_TRACK_ID, -1L);
     markerId = getIntent().getLongExtra(EXTRA_MARKER_ID, -1L);
     trackRecordingServiceConnection = new TrackRecordingServiceConnection(this, null);

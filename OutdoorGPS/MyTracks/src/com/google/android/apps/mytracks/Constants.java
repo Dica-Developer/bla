@@ -26,6 +26,7 @@ public abstract class Constants {
    * Should be used by all log statements
    */
   public static final String TAG = "Tracks";
+ 
 
   /**
    * Name of the top-level directory inside the SD card where our files will
@@ -157,4 +158,6 @@ public abstract class Constants {
    * URL to download nogago Apps
    */
   public final static String APPWORLD_VENDOR_URL = "appworld://vendor/2395"; // appworld://vendor/2395
+  
+  public final static boolean IS_BLACKBERRY = java.lang.System.getProperty("os.name").equals("qnx");
 }

@@ -128,7 +128,6 @@ limitations under the License.
         style="@style/HelpAnswer" />
     </LinearLayout>
   </ScrollView>
-  <LinearLayout style="@style/BottomButtonBar" >
+  
     <include layout="@layout/help_buttons" />
-  </LinearLayout>
 </LinearLayout>

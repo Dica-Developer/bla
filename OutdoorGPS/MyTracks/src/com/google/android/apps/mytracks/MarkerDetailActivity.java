@@ -29,6 +29,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
@@ -52,6 +54,7 @@ public class MarkerDetailActivity extends AbstractMyTracksActivity {
   protected void onCreate(Bundle bundle) {
     super.onCreate(bundle);
 
+      
     markerId = getIntent().getLongExtra(EXTRA_MARKER_ID, -1L);
     if (markerId == -1L) {
       Log.d(TAG, "invalid marker id");
@@ -61,6 +64,46 @@ public class MarkerDetailActivity extends AbstractMyTracksActivity {
     name = (TextView) findViewById(R.id.marker_detail_name);
     waypointSection = findViewById(R.id.marker_detail_waypoint_section);
     statisticsSection = findViewById(R.id.marker_detail_statistics_section);
+    
+    ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
+    if(backButton != null)   backButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        MarkerDetailActivity.this.finish();
+      }
+    });
+    
+    ImageButton editButton = (ImageButton) findViewById(R.id.listBtnBarEdit);
+    if(editButton != null)   editButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent intent = IntentUtils.newIntent(MarkerDetailActivity.this, MarkerEditActivity.class)
+            .putExtra(MarkerEditActivity.EXTRA_MARKER_ID, markerId);
+        startActivity(intent);
+      }
+    });
+    
+    ImageButton deleteButton = (ImageButton) findViewById(R.id.listBtnBarDelete);
+    if(deleteButton != null)   deleteButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        
+          DeleteOneMarkerDialogFragment.newInstance(markerId, waypoint.getTrackId()).show(
+              getSupportFragmentManager(),
+              DeleteOneMarkerDialogFragment.DELETE_ONE_MARKER_DIALOG_TAG);
+      }
+    });
+    
+    ImageButton mapButton = (ImageButton) findViewById(R.id.listBtnBarShowOnMap);
+    if(mapButton != null)   mapButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+        Intent intent = IntentUtils.newIntent(MarkerDetailActivity.this, TrackDetailActivity.class)
+            .putExtra(TrackDetailActivity.EXTRA_MARKER_ID, markerId);
+        startActivity(intent);
+      }
+    });
   }
 
   @Override

@@ -27,8 +27,8 @@ import android.content.Context;
  */
 public class AnalyticsUtils {
 
-  private static final String UA = "UA-7222692-2";
-  private static final String PRODUCT_NAME = "android-mytracks";
+  private static final String UA = "UA-41587961-1"; // Web: UA-41593619-1 App: UA-41587961-1
+  private static final String PRODUCT_NAME = "nogago Tracks";
   private static GoogleAnalyticsTracker tracker;
 
   private AnalyticsUtils() {}
@@ -40,14 +40,14 @@ public class AnalyticsUtils {
    * @param page the page
    */
   public static void sendPageViews(Context context, String page) {
-    /*
+    
     if (tracker == null) {
       tracker = GoogleAnalyticsTracker.getInstance();
       tracker.startNewSession(UA, context);
       tracker.setProductVersion(PRODUCT_NAME, SystemUtils.getMyTracksVersion(context));
     }
     tracker.trackPageView(page);
-    */
+    
   }
 
   public static void dispatch() {

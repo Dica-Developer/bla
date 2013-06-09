@@ -622,7 +622,7 @@ public class ChartView extends View {
         count++;
         String title = getContext().getString(chartValueSeries.getTitleId(metricUnits));
         Paint paint = chartValueSeries.getTitlePaint();
-        int x = leftBorder + 16*spacer; // px 36 on a 720 px display // (int) getScrollX() + (0.5 * width) ;
+        int x = leftBorder + 13*spacer; // px 36 on a 720 px display // (int) getScrollX() + (0.5 * width) ;
         int y = topBorder - spacer - (lines - count) * (lineHeight + spacer);
         canvas.drawText(title, x, y, paint);
       }

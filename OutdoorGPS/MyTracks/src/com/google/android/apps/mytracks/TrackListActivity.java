@@ -361,7 +361,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
      * stopButton.setOnClickListener(stopListener);
      */
     ImageButton searchButton = (ImageButton) findViewById(R.id.listBtnBarSearch);
-    searchButton.setOnClickListener(new OnClickListener() {
+    if(searchButton != null) searchButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         // TODO Test
@@ -369,7 +369,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
       }
     });
     ImageButton moreButton = (ImageButton) findViewById(R.id.listBtnBarMore);
-    moreButton.setOnClickListener(new OnClickListener() {
+    if(moreButton != null)moreButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         openOptionsMenu();
