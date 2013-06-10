@@ -44,12 +44,19 @@ import com.google.android.apps.mytracks.util.TrackIconUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
 import com.nogago.bb10.tracks.R;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.location.Location;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.speech.tts.TextToSpeech;
@@ -361,20 +368,22 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
      * stopButton.setOnClickListener(stopListener);
      */
     ImageButton searchButton = (ImageButton) findViewById(R.id.listBtnBarSearch);
-    if(searchButton != null) searchButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        // TODO Test
-        ApiAdapterFactory.getApiAdapter().handleSearchMenuSelection(TrackListActivity.this);
-      }
-    });
+    if (searchButton != null)
+      searchButton.setOnClickListener(new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          // TODO Test
+          ApiAdapterFactory.getApiAdapter().handleSearchMenuSelection(TrackListActivity.this);
+        }
+      });
     ImageButton moreButton = (ImageButton) findViewById(R.id.listBtnBarMore);
-    if(moreButton != null)moreButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        openOptionsMenu();
-      }
-    });
+    if (moreButton != null)
+      moreButton.setOnClickListener(new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          openOptionsMenu();
+        }
+      });
 
     // END MOD
     listView = (ListView) findViewById(R.id.track_list);
@@ -576,7 +585,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   @Override
   public boolean onKeyUp(int keyCode, KeyEvent event) {
     // T,B, Space are already mapped by BB on Q10!
-    Intent intent ;
+    Intent intent;
     boolean isRecording = recordingTrackId != PreferencesUtils.RECORDING_TRACK_ID_DEFAULT;
     switch (keyCode) {
       case KeyEvent.KEYCODE_SEARCH:
@@ -652,6 +661,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
    */
   public void showStartupDialogs() {
     setupDirectories();
+    checkPreviousRunsForExceptions(false);
     /*
      * if (!EulaUtils.getAcceptEula(this)) { Fragment fragment =
      * getSupportFragmentManager()
@@ -682,20 +692,72 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     }
   }
 
+  /*
+   * Checks whether previous runs of the app had an exception.
+   */
+  
+  private void checkPreviousRunsForExceptions(boolean firstTime) {
+     long size = getPreferences(MODE_WORLD_READABLE).getLong("EXCEPTION_FILE_SIZE", 0);
+      final File file = new File(FileUtils.buildExternalDirectoryPath("error.log"));
+      if (file != null && file.exists() && file.length() > 0) {
+        if (size != file.length() && !firstTime) {
+              String msg = getString(R.string.previous_run_crashed);
+              Builder builder = new AlertDialog.Builder(TrackListActivity.this);
+              builder.setMessage(msg).setNeutralButton(getString(R.string.donot_send_report), null);
+              builder.setPositiveButton(R.string.send_report, new DialogInterface.OnClickListener() {
+                  @Override
+                  public void onClick(DialogInterface dialog, int which) {
+                      Intent intent = new Intent(Intent.ACTION_SEND);
+                      intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "support@nogago.com" }); //$NON-NLS-1$
+                      intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+                      intent.setType("vnd.android.cursor.dir/email"); //$NON-NLS-1$
+                      intent.putExtra(Intent.EXTRA_SUBJECT, "nogago bug"); //$NON-NLS-1$
+                      StringBuilder text = new StringBuilder();
+                      text.append("\nDevice : ").append(Build.DEVICE); //$NON-NLS-1$
+                      text.append("\nBrand : ").append(Build.BRAND); //$NON-NLS-1$
+                      text.append("\nModel : ").append(Build.MODEL); //$NON-NLS-1$
+                      text.append("\nProduct : ").append("Tracks"); //$NON-NLS-1$
+                      text.append("\nBuild : ").append(Build.DISPLAY); //$NON-NLS-1$
+                      text.append("\nVersion : ").append(Build.VERSION.RELEASE); //$NON-NLS-1$
+                      try {
+                          PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
+                          if (info != null) {
+                              text.append("\nApk Version : ").append(info.versionName).append(" ").append(info.versionCode); //$NON-NLS-1$ //$NON-NLS-2$
+                          }
+                      } catch (NameNotFoundException e) {
+                      }
+                      intent.putExtra(Intent.EXTRA_TEXT, text.toString());
+                      startActivity(Intent.createChooser(intent, getString(R.string.send_report)));
+                  }
+
+              });
+              builder.show();
+
+              getPreferences(MODE_WORLD_WRITEABLE).edit().putLong("EXCEPTION_FILE_SIZE", file.length()).commit();
+          } else {
+              if (size > 0) {
+                  getPreferences(MODE_WORLD_WRITEABLE).edit().putLong("EXCEPTION_FILE_SIZE", 0).commit();
+              }
+          }
+      }
+  }
   /**
    * Creates the directories to exchange track files
    */
   private void setupDirectories() {
-    // create a File object for the parent directory
-    File directory = new File(FileUtils.buildExternalDirectoryPath("gpx"));
-    // have the object build the directory structure, if needed.
-    directory.mkdirs();
-    directory = new File(FileUtils.buildExternalDirectoryPath("kml"));
-    // have the object build the directory structure, if needed.
-    directory.mkdirs();
-    directory = new File(FileUtils.buildExternalDirectoryPath("csv"));
-    // have the object build the directory structure, if needed.
-    directory.mkdirs();
+    if (FileUtils.isSdCardAvailable()) {
+      // create a File object for the parent directory
+      File directory = new File(FileUtils.buildExternalDirectoryPath("gpx"));
+      // have the object build the directory structure, if needed.
+      directory.mkdirs();
+      directory = new File(FileUtils.buildExternalDirectoryPath("kml"));
+      // have the object build the directory structure, if needed.
+      directory.mkdirs();
+      directory = new File(FileUtils.buildExternalDirectoryPath("csv"));
+      // have the object build the directory structure, if needed.
+      directory.mkdirs();
+    }
+
   }
 
   /**

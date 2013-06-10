@@ -37,6 +37,7 @@ public class HelpActivity extends AbstractMyTracksActivity {
     super.onCreate(savedInstanceState);
     // Setup Action Bar
 
+    // TODO TEST Exception Mechanism
     TextView mapsPublicUnlisted = (TextView) findViewById(R.id.help_maps_public_unlisted_answer);
     mapsPublicUnlisted.setText(StringUtils.getHtml(
         this, R.string.help_maps_public_unlisted_answer, R.string.maps_public_unlisted_url));
@@ -57,6 +58,8 @@ public class HelpActivity extends AbstractMyTracksActivity {
             getSupportFragmentManager(), AboutDialogFragment.ABOUT_DIALOG_TAG);
       }
     });
+
+    
   }
 
   @Override

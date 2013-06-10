@@ -589,5 +589,7 @@
       on the record button to start a new recording">
       Klicken Sie auf die rote \"Aufnahme\" Taste, um Ihr nächstes Abenteuer aufzuzeichnen. \n Sie können auch die Tasten \"N\" zur Aufnahme, \"P\" zum Pausieren und \"S\" zum Beenden der Aufnahme nutzen. \n Hilfe durch \"H\" lesen, mit \"A\" Einstellungen anpassen. 
     </string>
-   
+       <string name="previous_run_crashed">Leider ist die App bei der letzten Nutzung abgestürzt. \n\n Bitte schicken Sie den Absturzbericht, damit wir diese App verbessern können.</string>
+    <string name="send_report">Senden</string> 
+    <string name="donot_send_report">Ignorieren</string>
 </resources>

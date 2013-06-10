@@ -3070,4 +3070,8 @@ limitations under the License.
       Character limit: ~20 (1 line)">
     Email track
   </string>
+  
+    <string name="previous_run_crashed">Sorry, our app crashed at last use. \n\n Please help us improve this app by sending in your report.</string>
+    <string name="send_report">Send</string> 
+    <string name="donot_send_report">Skip</string>
 </resources>
