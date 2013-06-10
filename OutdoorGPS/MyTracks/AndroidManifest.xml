@@ -137,10 +137,10 @@ limitations under the License.
       android:value="AEdPqrEAAAAIi-_QiwoRSc9_bAC9cmuNXTQyU8ajJmGtKdhskQ" />
     <!-- Activities -->
     <activity
-      android:label="@string/menu_aggregated_statistics"
+      android:label="@string/menu_aggregated_statistics" android:screenOrientation="portrait"
       android:name="com.google.android.apps.mytracks.AggregatedStatsActivity" />
     <activity
-      android:label="@string/menu_help"
+      android:label="@string/menu_help" android:screenOrientation="portrait"
       android:name="com.google.android.apps.mytracks.HelpActivity" />
     <activity
       android:name="com.google.android.apps.mytracks.ImportActivity" >
@@ -174,7 +174,7 @@ limitations under the License.
         <data android:host="*" />
       </intent-filter>
     </activity>
-    <activity
+    <activity android:screenOrientation="portrait"
       android:name="com.google.android.apps.mytracks.MarkerEditActivity" />
     <activity android:name="com.google.android.apps.mytracks.MarkerDetailActivity" />
     <activity android:name="com.google.android.apps.mytracks.MarkerListActivity" >
@@ -182,7 +182,7 @@ limitations under the License.
         android:name="android.app.default_searchable"
         android:value="com.google.android.apps.mytracks.SearchListActivity" />
     </activity>
-    <activity
+    <activity android:screenOrientation="portrait"
       android:launchMode="singleTop"
       android:name="com.google.android.apps.mytracks.SearchListActivity" >
       <intent-filter>
@@ -193,11 +193,11 @@ limitations under the License.
         android:name="android.app.searchable"
         android:resource="@xml/search" />
     </activity>
-    <activity
+    <activity android:screenOrientation="portrait"
       android:label="@string/menu_sensor_state"
       android:name="com.google.android.apps.mytracks.SensorStateActivity" />
     <activity android:name="com.google.android.apps.mytracks.TrackDetailActivity" />
-    <activity
+    <activity android:screenOrientation="portrait"
       android:name="com.google.android.apps.mytracks.TrackEditActivity" />
     <activity android:name="com.google.android.apps.mytracks.TrackListActivity" >
       <intent-filter>
@@ -210,27 +210,27 @@ limitations under the License.
         android:name="android.app.default_searchable"
         android:value="com.google.android.apps.mytracks.SearchListActivity" />
     </activity>
-    <activity android:name="com.google.android.apps.mytracks.io.backup.BackupActivity" />
-    <activity android:name="com.google.android.apps.mytracks.io.backup.RestoreActivity" />
-    <activity android:name="com.google.android.apps.mytracks.io.backup.RestoreChooserActivity" />
-    <activity android:name="com.google.android.apps.mytracks.io.docs.SendDocsActivity" />
-    <activity android:name="com.google.android.apps.mytracks.io.file.SaveActivity" />
-    <activity android:name="com.google.android.apps.mytracks.io.fusiontables.SendFusionTablesActivity" />
-    <activity
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.backup.BackupActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.backup.RestoreActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.backup.RestoreChooserActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.docs.SendDocsActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.file.SaveActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.fusiontables.SendFusionTablesActivity" />
+    <activity android:screenOrientation="portrait"
       android:label="@string/maps_list_title"
       android:name="com.google.android.apps.mytracks.io.maps.ChooseMapActivity" />
-    <activity android:name="com.google.android.apps.mytracks.io.maps.SendMapsActivity" />
-    <activity android:name="com.google.android.apps.mytracks.io.sendtogoogle.AccountChooserActivity" />
-    <activity android:name="com.google.android.apps.mytracks.io.sendtogoogle.ConfirmSharingActivity" />
-    <activity android:name="com.google.android.apps.mytracks.io.sendtogoogle.UploadResultActivity" />
-    <activity android:name="com.google.android.apps.mytracks.settings.BackupSettingsActivity" />
-    <activity android:name="com.google.android.apps.mytracks.settings.ChartSettingsActivity" />
-    <activity android:name="com.google.android.apps.mytracks.settings.MapSettingsActivity" />
-    <activity android:name="com.google.android.apps.mytracks.settings.RecordingSettingsActivity" />
-    <activity android:name="com.google.android.apps.mytracks.settings.SensorSettingsActivity" />
-    <activity android:name="com.google.android.apps.mytracks.settings.SettingsActivity" />
-    <activity android:name="com.google.android.apps.mytracks.settings.SharingSettingsActivity" />
-    <activity android:name="com.google.android.apps.mytracks.settings.StatsSettingsActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.maps.SendMapsActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.sendtogoogle.AccountChooserActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.sendtogoogle.ConfirmSharingActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.sendtogoogle.UploadResultActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.settings.BackupSettingsActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.settings.ChartSettingsActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.settings.MapSettingsActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.settings.RecordingSettingsActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.settings.SensorSettingsActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.settings.SettingsActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.settings.SharingSettingsActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.settings.StatsSettingsActivity" />
     <!-- Services -->
 
     <service

@@ -20,8 +20,8 @@ import com.google.android.apps.mytracks.stats.TripStatistics;
 import com.google.android.apps.mytracks.util.ChartURLGenerator;
 import com.google.android.apps.mytracks.util.StringUtils;
 import com.google.android.apps.mytracks.util.UnitConversions;
-import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
+import com.nogago.bb10.tracks.R;
 
 import android.content.Context;
 import android.util.Pair;
@@ -58,7 +58,7 @@ public class DescriptionGeneratorImpl implements DescriptionGenerator {
         ? "<a href='http://" + context.getString(R.string.my_tracks_web_url) + "'>"
         : "";
     String endAnchor = html ? "</a>" : "";
-    builder.append(context.getString(R.string.send_google_by_my_tracks, beginAnchor, endAnchor));
+    builder.append(context.getString(R.string.n_send_google_by_my_tracks, beginAnchor, endAnchor));
     builder.append(paragraphSeparator);
 
     writeString(track.getName(), builder, R.string.generic_name_line, lineBreak);

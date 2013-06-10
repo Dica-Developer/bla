@@ -16,7 +16,6 @@
 
 package com.google.android.apps.mytracks.fragments;
 
-import com.google.android.apps.mytracks.util.SystemUtils;
 import com.nogago.bb10.tracks.R;
 
 import android.app.AlertDialog;
@@ -26,7 +25,6 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.TextView;
 
 /**
  * A DialogFragment to show information about My Tracks.
@@ -43,8 +41,6 @@ public class AboutDialogFragment extends DialogFragment {
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     activity = getActivity();
     View view = activity.getLayoutInflater().inflate(R.layout.about, null);
-    TextView aboutVersion = (TextView) view.findViewById(R.id.about_version);
-    aboutVersion.setText(SystemUtils.getMyTracksVersion(activity));
     return new AlertDialog.Builder(activity)
         .setNegativeButton(R.string.about_license, new DialogInterface.OnClickListener() {
           @Override

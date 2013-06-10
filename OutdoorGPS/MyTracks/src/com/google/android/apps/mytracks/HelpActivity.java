@@ -17,13 +17,11 @@
 package com.google.android.apps.mytracks;
 
 import com.google.android.apps.mytracks.fragments.AboutDialogFragment;
-import com.google.android.apps.mytracks.util.StringUtils;
 import com.nogago.bb10.tracks.R;
 
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
 
 /**
  * An activity that displays the help page.
@@ -37,16 +35,7 @@ public class HelpActivity extends AbstractMyTracksActivity {
     super.onCreate(savedInstanceState);
     // Setup Action Bar
 
-    // TODO TEST Exception Mechanism
-    TextView mapsPublicUnlisted = (TextView) findViewById(R.id.help_maps_public_unlisted_answer);
-    mapsPublicUnlisted.setText(StringUtils.getHtml(
-        this, R.string.help_maps_public_unlisted_answer, R.string.maps_public_unlisted_url));
-
-    TextView sendTrack = (TextView) findViewById(R.id.help_send_track_answer);
-    sendTrack.setText(StringUtils.getHtml(
-        this, R.string.help_send_track_answer, R.string.send_google_maps_url,
-        R.string.send_google_fusion_tables_url, R.string.send_google_docs_url));
-
+  
     findViewById(R.id.help_ok).setOnClickListener(new OnClickListener() {
       public void onClick(View v) {
         finish();
