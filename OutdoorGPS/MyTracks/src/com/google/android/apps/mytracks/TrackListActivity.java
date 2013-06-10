@@ -337,7 +337,6 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setVolumeControlStream(TextToSpeech.Engine.DEFAULT_STREAM);
-    // TODO CHECK setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
     setContentView(R.layout.track_list);
 
     trackRecordingServiceConnection = new TrackRecordingServiceConnection(this, bindChangedCallback);

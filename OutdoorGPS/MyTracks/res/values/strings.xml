@@ -2264,11 +2264,6 @@ limitations under the License.
       the user that all tracks and markers will be permanently deleted from the phone.">
     All tracks and markers will be permanently deleted from the phone.
   </string>
-  <string name="nogago_list_empty_message"
-    translation_description="When the track list is empty, the message informing the user to click
-      on the record button to start a new recording">
-    Click on the red record button to start recording your next adventure. Or enter \"N\" for recording a new track, \"P\" for pausing the recording, \"S\" to stop recording.
-  </string>
   <string name="track_list_record_error"
     translation_description="When starting a new track recording, the error message informing the
       user not able to record and asking the user to try again.">
@@ -3074,4 +3069,18 @@ limitations under the License.
     <string name="previous_run_crashed">Sorry, our app crashed at last use. \n\n Please help us improve this app by sending in your report.</string>
     <string name="send_report">Send</string> 
     <string name="donot_send_report">Skip</string>
+    <string name="map_copyright">
+    © 2013 MapQuest - Map data © OpenStreetMap - Licensed under ODbL
+</string>
+
+  <string name="nogago_list_empty_message_q"
+    translation_description="When the track list is empty, the message informing the user to click
+      on the record button to start a new recording">
+    Click on the red record button to start recording your next adventure. Or enter \"N\" for recording a new track, \"P\" for pausing the recording, \"S\" to stop recording.
+  </string>
+    <string name="nogago_list_empty_message_z"
+    translation_description="When the track list is empty, the message informing the user to click
+      on the record button to start a new recording">
+    Click on the red record button to start recording your next adventure. 
+  </string>
 </resources>

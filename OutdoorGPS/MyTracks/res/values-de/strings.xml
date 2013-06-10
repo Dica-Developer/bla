@@ -584,10 +584,15 @@
     <string name="show_settings_button">Einstellungen</string>
     <string name="error_network">Leider können sie nicht auf das Internet zugreifen, dies ist für diese Funktion notwendig.</string>
 
-    <string name="nogago_list_empty_message"
+    <string name="nogago_list_empty_message_q"
     translation_description="When the track list is empty, the message informing the user to click
       on the record button to start a new recording">
       Klicken Sie auf die rote \"Aufnahme\" Taste, um Ihr nächstes Abenteuer aufzuzeichnen. \n Sie können auch die Tasten \"N\" zur Aufnahme, \"P\" zum Pausieren und \"S\" zum Beenden der Aufnahme nutzen. \n Hilfe durch \"H\" lesen, mit \"A\" Einstellungen anpassen. 
+    </string>
+        <string name="nogago_list_empty_message_z"
+    translation_description="When the track list is empty, the message informing the user to click
+      on the record button to start a new recording">
+      Klicken Sie auf die rote \"Aufnahme\" Taste, um Ihr nächstes Abenteuer aufzuzeichnen. 
     </string>
        <string name="previous_run_crashed">Leider ist die App bei der letzten Nutzung abgestürzt. \n\n Bitte schicken Sie den Absturzbericht, damit wir diese App verbessern können.</string>
     <string name="send_report">Senden</string> 

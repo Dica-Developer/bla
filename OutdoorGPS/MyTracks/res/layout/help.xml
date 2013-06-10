@@ -28,8 +28,8 @@ limitations under the License.
         android:contentDescription="@string/my_tracks_app_name"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:scaleType="fitStart"
-        android:src="@drawable/appicon" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/help_topimage" />
       <TextView
         android:text="@string/help_my_tracks_question"
         style="@style/HelpQuestion" />
