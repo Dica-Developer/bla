@@ -36,8 +36,7 @@ public class EulaDialogFragment extends DialogFragment {
 
   public static final String EULA_DIALOG_TAG = "eulaDialog";
   private static final String KEY_HAS_ACCEPTED = "hasAccepted";
-  private static final String GOOGLE_URL = "m.google.com";
-  private static final String KOREAN = "ko";
+  private static final String GOOGLE_URL = "http://blog.nogago.com/contact/";
 
   /**
    * Creates a new instance of {@link EulaDialogFragment}.
@@ -69,7 +68,7 @@ public class EulaDialogFragment extends DialogFragment {
     boolean hasAccepted = getArguments().getBoolean(KEY_HAS_ACCEPTED);
     AlertDialog.Builder builder = new AlertDialog.Builder(activity)
         .setMessage(getEulaText())
-        .setTitle(R.string.eula_title);
+        .setTitle(R.string.n_eula_title);
 
     if (hasAccepted) {
       builder.setPositiveButton(R.string.generic_ok, null);
@@ -104,17 +103,14 @@ public class EulaDialogFragment extends DialogFragment {
    * 
    */
   private String getEulaText() {
-    String tos = getString(R.string.eula_date) 
+    String tos = getString(R.string.n_eula_date) 
         + "\n\n"
-        + getString(R.string.eula_body, GOOGLE_URL) 
+        + getString(R.string.n_eula_body, GOOGLE_URL) 
         + "\n\n" 
-        + getString(R.string.eula_footer, GOOGLE_URL) 
+        + getString(R.string.n_eula_footer, GOOGLE_URL) 
         + "\n\n" 
-        + getString(R.string.eula_copyright_year);
-    boolean isKorean = getResources().getConfiguration().locale.getLanguage().equals(KOREAN);
-    if (isKorean) {
-      tos += "\n\n" + getString(R.string.eula_korean);
-    }
+        + getString(R.string.n_eula_copyright_year);
+  
     return tos;
   }
 }

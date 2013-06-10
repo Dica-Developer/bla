@@ -550,8 +550,8 @@
     <string name="waypoint_type_waterfall" translation_description="When entering a &apos;Marker type&apos;, in the auto-complete text box, the       completion suggestion for a waterfall.">Wasserfall</string>
     <string name="waypoint_type_water_fountain" translation_description="When entering a &apos;Marker type&apos;, in the auto-complete text box, the       completion suggestion for a water fountain.">Brunnen</string>
     <string name="waypoint_type_waypoint" translation_description="When entering a &apos;Marker type&apos;, in the auto-complete text box, the       completion suggestion for a waypoint.">Wegpunkt</string>
-    <string name="welcome_message" translation_description="The message of the welcome dialog. Note that \n is the newline       character.">Zeichnen Sie mit dieser App Ihre GPS-Tracks auf, fassen Sie Statistiken zusammen,
-    und teilen Sie Ihre Routen mit Freunden.\n\nViel Spaß beim Erkunden!\nIhr nogago Team</string>
+    <string name="welcome_message" translation_description="The message of the welcome dialog. Note that \n is the newline       character.">Zeichnen Sie mit dieser App Ihre Aktivitäten im Freien auf, fassen Sie Statistiken zusammen,
+    und teilen Sie Ihre Routen mit Freunden.\n\nViel Spaß bei Ihren Abenteuern !\nIhr nogago Team</string>
     <string name="welcome_title" translation_description="The title of the welcome dialog.">Willkommen bei nogago Tracks</string>
   <string name="welcome_ok"
     translation_description="The title of the welcome dialog.">
