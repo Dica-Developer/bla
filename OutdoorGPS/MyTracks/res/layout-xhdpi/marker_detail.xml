@@ -71,12 +71,10 @@ limitations under the License.
     android:layout_height="1dp"
     android:layout_width="fill_parent" />
   <LinearLayout
-   	  android:id="@+id/track_controller_container"
       android:layout_width="fill_parent"
       android:orientation="horizontal"
       android:layout_height="140px"
-      android:paddingTop="29px"
-      android:paddingBottom="30px"
+          android:layout_weight="1"
       android:background="@color/actionBarBG">
 
       <ImageButton
@@ -89,6 +87,15 @@ limitations under the License.
       android:background="@color/actionBarBG"
           android:scaleType="centerInside" />
 
+  <LinearLayout
+   	  android:id="@+id/track_controller_container"
+      android:layout_width="fill_parent"
+      android:orientation="horizontal"
+      android:layout_height="140px"
+      android:paddingTop="29px"
+      android:paddingBottom="30px"
+          android:layout_weight="4"
+      android:background="@color/actionBarBG">
       <ImageButton
           android:id="@+id/listBtnBarShowOnMap"
           android:layout_width="0dp"
@@ -120,5 +127,6 @@ limitations under the License.
           android:scaleType="centerInside"  />
 
 
+</LinearLayout>
 </LinearLayout>
 </LinearLayout>
