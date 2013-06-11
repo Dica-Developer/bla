@@ -127,7 +127,7 @@ limitations under the License.
     android:backupAgent="com.google.android.apps.mytracks.io.backup.MyTracksBackupAgent"
     android:icon="@drawable/appicon"
     android:hardwareAccelerated="true"
-    android:label="@string/tracks_app_name"
+    android:label="@string/my_tracks_app_name"
     android:name="com.google.android.apps.mytracks.MyTracksApplication"
     android:theme="@style/ThemeSelector" >
 

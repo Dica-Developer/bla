@@ -47,8 +47,8 @@ limitations under the License.
       android:layout_width="fill_parent"
       android:orientation="horizontal"
       android:layout_height="140px"
-      android:paddingTop="10px"
-      android:paddingBottom="10px"
+      android:paddingTop="29px"
+      android:paddingBottom="30px"
       android:background="@color/actionBarBG">
 
       <ImageButton

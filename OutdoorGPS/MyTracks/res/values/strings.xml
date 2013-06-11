@@ -330,11 +330,8 @@ limitations under the License.
     <string name="help_my_tracks_question" translation_description="In the &apos;Help&apos; page, the question on what is nogago® Tracks.">    What is nogago® Tracks?</string>
     <string name="help_saved_files_answer" translation_description="In the &apos;Help&apos; page, the answer on saved files.">    You can use Google Earth or similar applications to visualize and edit GPS tracks.</string>
     <string name="help_saved_files_question" translation_description="In the &apos;Help&apos; page, the question on saved files.">    What can I do with tracks after saving them to the SD card or sharing such files with friends?</string>
-    <string name="help_send_track_answer" translation_description="In the &apos;Help&apos; page, the answer on sending a track.
-
-      %1$s url. E.g., &apos;maps.google.com&apos;.
-      %2$s url. E.g., &apos;google.com/fusiontables&apos;.
-      %3$s url. E.g., &apos;docs.google.com&apos;.">    You can send a track to Google Maps, Google Fusion Tables, and Google Docs. Tracks sent to
+    <string name="help_send_track_answer">    
+        You can send a track to Google Maps, Google Fusion Tables, and Google Docs. Tracks sent to
     Google Maps are at %1$s, &#8220;My Places&#8221;. Tracks sent to Google Fusion Tables are at
     %2$s. Tracks sent to Google Docs are at %3$s.</string>
     <string name="help_send_track_question" translation_description="In the &apos;Help&apos; page, the question on sending a track.">    Where can I send a track?</string>
@@ -489,7 +486,7 @@ limitations under the License.
       Character limit: ~20 (1 line)">    Share</string>
     <string name="menu_show_on_map" translation_description="In the menu, to show a track or a marker on the map.
 
-      Character limit: ~20 (1 line)">    Show on map</string>
+      Character limit: ~20 (1 line)">    View ...</string>
     <string name="menu_split_frequency" translation_description="In the menu, to configure the split frequency, how frequent to insert a
       split marker.
 
@@ -515,7 +512,7 @@ limitations under the License.
     %1$s &amp; make sure the sky is visible. Try again later.</string>
 
     <!-- nogago® Tracks -->
-    <string name="tracks_app_name" translation_description="The nogago® Tracks application name.">      Tracks</string>
+    <string name="my_tracks_app_name" translation_description="The nogago® Tracks application name.">      Tracks</string>
     <string name="my_tracks_recording_service" translation_description="When viewing the &apos;Running services&apos; on Android, the name of the My
       Tracks service that is recording a track in the background.
 
@@ -1414,7 +1411,8 @@ limitations under the License.
     <string name="donot_send_report">Skip</string>
     <string name="map_copyright">    © 2013 MapQuest - Map data © OpenStreetMap - Licensed under ODbL</string>
     <string name="nogago_list_empty_message_q" translation_description="When the track list is empty, the message informing the user to click
-      on the record button to start a new recording">    Click on the red record button to start recording your next adventure. Or enter \"N\" for recording a new track, \"P\" for pausing the recording, \"S\" to stop recording.</string>
+      on the record button to start a new recording">    Click on the red record button to start recording your next
+       adventure. \n\n Or press \"N\" for recording a new track, \"P\" for pausing the recording, \"S\" to stop recording, \"A\" for settings, \"H\" for help.</string>
     <string name="nogago_list_empty_message_z" translation_description="When the track list is empty, the message informing the user to click
       on the record button to start a new recording">    Click on the red record button to start recording your next adventure. </string>
     
@@ -1435,13 +1433,9 @@ limitations under the License.
     other outdoor activity while watching live performance statistics. nogago® Tracks makes it easy to archive
     your training history with nogago.com, and share your
     activities with friends and the world.</string>
-   <string name="n_help_send_track_answer" translation_description="In the &apos;Help&apos; page, the answer on sending a track.
-
-      %1$s url. E.g., &apos;maps.google.com&apos;.
-      %2$s url. E.g., &apos;google.com/fusiontables&apos;.
-      %3$s url. E.g., &apos;docs.google.com&apos;.">    
-      You can send a track to your friends via email or archive your activity by uploading them to nogago.com.
-      </string>
+   <string name="n_help_send_track_answer">    
+      You can send a track to your friends via email or archive your adventure by uploading them to nogago.com.
+   </string>
     <string name="n_help_my_tracks_question" translation_description="In the &apos;Help&apos; page, the question on what is nogago® Tracks.">    What is nogago® Tracks?</string>
     
          
@@ -1455,11 +1449,11 @@ limitations under the License.
             You can import tracks in the format GPX. Place the tracks into the folder documents / Tracks / gpx on your memory card. 
             Navigate to the track list. Press the button with three dots. Choose \"Import from SD card\". 
             When the operation is finished you will find the tracks in the track list. Android users can directly import GPX tracks by clicking on GPX files in the file browser. Opening GPX files from email attachments is also supported on Android.
-            Please contact BlackBerry and ask support this feature, too !
+            Please contact BlackBerry and request this feature in the Android Runtime to experience this convenience on BlackBerry10 as well !
             </string>
             
     <string name="help_import_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
-        How can I open GPX tracks that I have downloaded from nogago.com, received from your friends, or downloaded on the Web ?</string>
+        How can I open GPX tracks that I have downloaded from nogago.com, received from friends, or downloaded on the Web ?</string>
          
            <string name="help_export_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
             Navigate to the track list. Press the button with three dots. Choose \"Export to SD card\". You can choose the common formats
@@ -1481,7 +1475,7 @@ limitations under the License.
            <string name="help_restore_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
             Use the Restore functionality available from the settings. You can choose to restore a specific backup, if you have several backups. To restore
             your backup from another phone simply place the ZIP file into the documents/Tracks/restore folder on your memory card. Backup and restore from Android and BlackBerry10 phones are compatible.
-            Use the import function to restore your GPX tracks from nogago® Outdoor GPS app for BlackBerry OS 4.5-7.1 </string>
+            Use the import function to restore your GPX tracks recorded with nogago® Outdoor GPS for BlackBerry OS 4.5-7.1 </string>
             
     <string name="help_restore_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
          How do I restore my settings and all recorded tracks?</string>
@@ -1548,11 +1542,42 @@ limitations under the License.
     <string name="n_eula_title" translation_description="The title for the &apos;Terms of Service&apos; dialog.">    
         Software License</string>
     
-<string name="n_eula_copyright_year" translation_description="The copyright year in the &apos;Terms of Service&apos;. See
+	<string name="n_eula_copyright_year" translation_description="The copyright year in the &apos;Terms of Service&apos;. See
       http://m.google.com/toscountry. \u00A9 is the unicode value for the copyright symbol.">    \u00A9 2009-2013</string>
     
     <string name="n_eula_date" translation_description="The date in the &apos;Terms of Service&apos;. See
       http://m.google.com/toscountry.">    June 1, 2013</string>
     
+    <!-- 
+    
+     -->
       
+    <string name="n_help_keyboard_answer">
+    Yes. The following keyboard assignments have been made and ensure compatibility with BlackBerry standards as well
+    as nogago Outdoor GPS for older BlackBerry operating systems:\n\n
+    
+Through the app:\n
+A\t	Open Settings\n
+B\t	Bottom of List\n
+H\t	Help\n
+N\t	Record a new track\n
+P\t	Pause Recording (when recording a track)\n
+S\t	Stop Recording (when recording a track)\n
+S\t	Search (when not recording)\n
+T\t	Top of List\n\n
+	
+Track Detail View:\n	
+0\t	Center on my location (only Map)\n
+SPACE\t	View chart / View Map\n
+I\t	Zoom In (only Chart and Map)\n
+H\t	Scroll Left (only Chart)\n
+K\t	Scroll Right (only Chart)\n
+M\t	Insert Marker\n
+O\t	Zoom Out (only Chart and Map)\n
+Q\t	View statistics
+    </string>
+            
+    <string name="n_help_keyboard_question">
+         Can I control the app with the keyboard ?
+    </string>
 </resources>

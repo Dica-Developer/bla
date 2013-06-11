@@ -27,10 +27,7 @@
    	  android:id="@+id/track_controller_container"
       android:layout_width="fill_parent"
       android:orientation="horizontal"
-      android:layout_height="140px"
-      
-      android:paddingTop="29px"
-      android:paddingBottom="30px"
+      android:layout_height="101px"
       android:layout_gravity="left"
       android:gravity="left"
       android:background="@color/actionBarBG">

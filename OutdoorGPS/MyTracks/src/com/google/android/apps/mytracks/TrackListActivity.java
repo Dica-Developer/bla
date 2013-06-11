@@ -55,7 +55,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -81,7 +80,10 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.EnumSet;
 
 /**
@@ -660,7 +662,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
    */
   public void showStartupDialogs() {
     setupDirectories();
-    checkPreviousRunsForExceptions(false);
+    checkPriorExceptions(false);
     /*
      * if (!EulaUtils.getAcceptEula(this)) { Fragment fragment =
      * getSupportFragmentManager()
@@ -694,52 +696,56 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   /*
    * Checks whether previous runs of the app had an exception.
    */
-  
-  private void checkPreviousRunsForExceptions(boolean firstTime) {
-     long size = getPreferences(MODE_WORLD_READABLE).getLong("EXCEPTION_FILE_SIZE", 0);
-      final File file = new File(FileUtils.buildExternalDirectoryPath("error.log"));
-      if (file != null && file.exists() && file.length() > 0) {
-        if (size != file.length() && !firstTime) {
-              String msg = getString(R.string.previous_run_crashed);
-              Builder builder = new AlertDialog.Builder(TrackListActivity.this);
-              builder.setMessage(msg).setNeutralButton(getString(R.string.donot_send_report), null);
-              builder.setPositiveButton(R.string.send_report, new DialogInterface.OnClickListener() {
-                  @Override
-                  public void onClick(DialogInterface dialog, int which) {
-                      Intent intent = new Intent(Intent.ACTION_SEND);
-                      intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "support@nogago.com" }); //$NON-NLS-1$
-                      intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
-                      intent.setType("vnd.android.cursor.dir/email"); //$NON-NLS-1$
-                      intent.putExtra(Intent.EXTRA_SUBJECT, "nogago bug"); //$NON-NLS-1$
-                      StringBuilder text = new StringBuilder();
-                      text.append("\nDevice : ").append(Build.DEVICE); //$NON-NLS-1$
-                      text.append("\nBrand : ").append(Build.BRAND); //$NON-NLS-1$
-                      text.append("\nModel : ").append(Build.MODEL); //$NON-NLS-1$
-                      text.append("\nProduct : ").append("Tracks"); //$NON-NLS-1$
-                      text.append("\nBuild : ").append(Build.DISPLAY); //$NON-NLS-1$
-                      text.append("\nVersion : ").append(Build.VERSION.RELEASE); //$NON-NLS-1$
-                      try {
-                          PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
-                          if (info != null) {
-                              text.append("\nApk Version : ").append(info.versionName).append(" ").append(info.versionCode); //$NON-NLS-1$ //$NON-NLS-2$
-                          }
-                      } catch (NameNotFoundException e) {
-                      }
-                      intent.putExtra(Intent.EXTRA_TEXT, text.toString());
-                      startActivity(Intent.createChooser(intent, getString(R.string.send_report)));
-                  }
 
-              });
-              builder.show();
+  private void checkPriorExceptions(boolean firstTime) {
+    final File file = new File(FileUtils.buildExternalDirectoryPath("error.log"));
+    if (file != null && file.exists() && file.length() > 0) {
+      String msg = getString(R.string.previous_run_crashed);
+      Builder builder = new AlertDialog.Builder(TrackListActivity.this);
+      builder.setMessage(msg).setNeutralButton(getString(R.string.donot_send_report), null);
+      builder.setPositiveButton(R.string.send_report, new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+          Intent intent = new Intent(Intent.ACTION_SEND);
+          intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "support@nogago.com" }); //$NON-NLS-1$
+          intent.setType("vnd.android.cursor.dir/email"); //$NON-NLS-1$
+          intent.putExtra(Intent.EXTRA_SUBJECT, "nogago bug"); //$NON-NLS-1$
+          StringBuilder text = new StringBuilder();
+          text.append("\nDevice : ").append(Build.DEVICE); //$NON-NLS-1$
+          text.append("\nBrand : ").append(Build.BRAND); //$NON-NLS-1$
+          text.append("\nModel : ").append(Build.MODEL); //$NON-NLS-1$
+          text.append("\nProduct : ").append("Tracks"); //$NON-NLS-1$
+          text.append("\nBuild : ").append(Build.DISPLAY); //$NON-NLS-1$
+          text.append("\nVersion : ").append(Build.VERSION.RELEASE); //$NON-NLS-1$
 
-              getPreferences(MODE_WORLD_WRITEABLE).edit().putLong("EXCEPTION_FILE_SIZE", file.length()).commit();
-          } else {
-              if (size > 0) {
-                  getPreferences(MODE_WORLD_WRITEABLE).edit().putLong("EXCEPTION_FILE_SIZE", 0).commit();
-              }
+          try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
+            if (info != null) {
+              text.append("\nApk Version : ").append(info.versionName).append(" ").append(info.versionCode); //$NON-NLS-1$ //$NON-NLS-2$
+            }
+          } catch (NameNotFoundException e) {}
+
+          try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            if ((line = br.readLine()) != null) {
+              text.append(line);
+            }
+            br.close();
+          } catch (IOException e) {
+            Toast.makeText(getApplicationContext(), "Error reading exceptions file!",
+                Toast.LENGTH_LONG).show();
           }
-      }
+          intent.putExtra(Intent.EXTRA_TEXT, text.toString());
+          startActivity(Intent.createChooser(intent, getString(R.string.send_report)));
+          file.delete();
+        }
+
+      });
+      builder.show();
+    }
   }
+
   /**
    * Creates the directories to exchange track files
    */

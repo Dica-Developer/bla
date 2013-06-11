@@ -228,7 +228,7 @@
     <string name="menu_sensor_state" translation_description="In the menu, to go to the sensor state page.        Character limit: ~20 (1 line)">Sensorstatus</string>
     <string name="menu_settings" translation_description="In the menu, to go to the settings page.        Character limit: ~20 (1 line)">Einstellungen</string>
     <string name="menu_share" translation_description="In the menu, to share a track.        Character limit: ~20 (1 line)">Teilen</string>
-    <string name="menu_show_on_map" translation_description="In the menu, to show a track or a marker on the map.        Character limit: ~20 (1 line)">Auf Karte anzeigen</string>
+    <string name="menu_show_on_map" translation_description="In the menu, to show a track or a marker on the map.        Character limit: ~20 (1 line)">Anzeigen...</string>
     <string name="menu_split_frequency" translation_description="In the menu, to configure the split frequency, how frequent to insert a       split marker.        Character limit: ~20 (1 line)">Wegpunkthäufigkeit</string>
     <string name="menu_start_gps" translation_description="In the menu, to start the GPS receiver on the phone.        Character limit: ~20 (1 line)">GPS aktivieren</string>
     <string name="menu_stop_gps" translation_description="In the menu, to stop the GPS receiver on the phone.        Character limit: ~20 (1 line)">GPS deaktivieren</string>
@@ -628,11 +628,7 @@ Was macht nogago® Tracks?
     Visualisieren Sie Ihre Wanderungen, Laufstrecken oder Fahrradtouren und betrachten Sie Statistiken live während der Aufzeichnung.
     Sie können die Strecken auf nogago.com archivieren, mit Freunden teilen und mit Google Earth nachfliegen.
     </string>
-   <string name="n_help_send_track_answer" translation_description="In the &apos;Help&apos; page, the answer on sending a track.
-
-      %1$s url. E.g., &apos;maps.google.com&apos;.
-      %2$s url. E.g., &apos;google.com/fusiontables&apos;.
-      %3$s url. E.g., &apos;docs.google.com&apos;.">    
+   <string name="n_help_send_track_answer" > 
       Senden Sie Ihren Track an Freunde über E-Mail oder archivieren Sie Ihre Aktivität auf nogago.com. Durch andere Portale wie GPSies.com oder Google Maps
       kann die ganze Welt an Ihren Abenteuern teilhaben.
       </string>
@@ -657,7 +653,7 @@ Was macht nogago® Tracks?
          
            <string name="help_export_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
           Navigieren Sie zur Track Liste. Rufen Sie die Aktion \"Exportieren\" (unter ...) auf. Sie können zwischen GPX, KML (für Google Maps und Earth)
-               und CSV als Datenformat wählen. Sie finden die exportieren Tracks dann auf der Speicherkarte unter documents\Tracks\ im jeweiligen
+               und CSV als Datenformat wählen. Sie finden die exportierten Tracks dann auf der Speicherkarte unter documents\Tracks\ im jeweiligen
                Unterordner je nach gewähltem Format. Alternativ können Sie eine einzelne GPX-Datei per E-Mail versenden oder den Track auf
                nogago.com hochladen, und Ihn dann im Browser betrachten.
             
@@ -668,7 +664,7 @@ Was macht nogago® Tracks?
         </string>
          
            <string name="help_backup_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
-          Nutezn Sie die Sicherungsfunktion unter Einstellungen / Sicherung.  
+          Nutzen Sie die Sicherungsfunktion unter Einstellungen / Sicherung.  
           Ihre Backups finden sich unter dem Ordner documents/backup auf der Speicherkarte und
           ist Kompatibel mit der Android Version dieser App. </string>
             
@@ -717,4 +713,32 @@ Was macht nogago® Tracks?
         aus. nogago Maps erlaubt weiter die Suche und Navigation ohne Netzverbindung.
     </string>
     
+        <string name="n_help_keyboard_answer">
+    Natürlich. Die folgenden ShortCuts beschleunigen die Nutzung und sind kompatibel mit BlackBerry Standards sowie
+    nogago Outdoor GPS (unser Vorläufer für ältere BlackBerry Betriebssysteme):\n\n
+   
+Ganze App\n
+A\t	Öffnet die Einstellungen \n
+B\t	Ende der Liste\n
+H\t	Öffnet die Hilfe\n
+N\t	Neuen Track aufzeichnen\n
+P\t	Aufzeichnung pausieren\n
+S\t	Aufzeichnung stoppen\n
+S\t	Suche (wenn keine Aufzeichnung läuft)\n
+T\t	Anfang der Liste \n\n
+	
+Track Detailansicht\n
+0\t	Meine aktuelle Position (nur Karte)\n
+SPACE\t	Wechsel von Statistik auf Diagramm auf Karten
+I\t	Zoom In (nur Diagramm und Karte)\n
+H\t	Scrolle Links (nur Diagramm)\n
+K\t	Scrolle Rechts (nur Diagramm)\n
+M\t	Markierung einfügen\n
+O\t	Zoom Out (nur Diagramm und Karte)\n
+Q\t	Statistik betrachten
+    </string>
+            
+    <string name="n_help_keyboard_question">
+         Can I control the app with the keyboard ?
+    </string>
 </resources>
