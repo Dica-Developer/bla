@@ -138,7 +138,9 @@
     <string name="help_about" translation_description="In the &apos;Help&apos; page, the button on the bottom to open the &apos;About My       Tracks&apos; dialog.">Über nogago Tracks</string>
     <string name="help_battery_life_answer" translation_description="In the &apos;Help&apos; page, the answer on battery life.">Der GPS-Empfänger verbraucht viel Strom, sodass die Laufzeit für einen voll aufgeladenen Akku in der Regel weniger als 5 Stunden beträgt. Sie hängt von vielen Faktoren ab, einschließlich der Signalstärke, des Akkuladezustands und parallel ausgeführter Aufgaben. Deaktivieren Sie einige oder alle Schnittstellen des Telefons, um die Akkulaufzeit zu verlängern. Der Flugmodus erzielt die besten Ergebnisse.</string>
     <string name="help_battery_life_question" translation_description="In the &apos;Help&apos; page, the question on battery life.">Wie lange hält der Akku bei der Aufzeichnung von Tracks?</string>
-    <string name="help_data_connection_answer" translation_description="In the &apos;Help&apos; page, the answer on data connection.">Es ist weder eine Mobilfunk- noch eine Datenverbindung erforderlich, um GPS-Tracks aufzuzeichnen. Ohne Datenverbindung können Sie allerdings keine Karte abrufen. Stattdessen wird ein grauer Bildschirm oder nur ein Teil der Karte angezeigt. Tracks werden als einfache Linien dargestellt und können auch ohne Datenverbindung aufgezeichnet werden.</string>
+    <string name="help_data_connection_answer" 
+        translation_description="In the &apos;Help&apos; page, the answer on data connection.">
+        Es ist weder eine Mobilfunk- noch eine Datenverbindung erforderlich, um GPS-Tracks aufzuzeichnen. Ohne Datenverbindung können Sie allerdings keine Karte abrufen. Stattdessen wird ein grauer Bildschirm oder nur ein Teil der Karte angezeigt. Tracks werden als einfache Linien dargestellt und können auch ohne Datenverbindung aufgezeichnet werden.</string>
     <string name="help_data_connection_question" translation_description="In the &apos;Help&apos; page, the question on data connection.">Brauche ich eine Mobilfunk- oder Datenverbindung, um nogago Tracks nutzen zu können?</string>
     <string name="help_delete_tracks_answer" translation_description="In the &apos;Help&apos; page, the answer on delete tracks.">Wählen Sie in der Trackliste \"Alle löschen\" aus, wenn Sie keine Daten aufzeichnen. Damit löschen Sie die aufgezeichneten Tracks endgültig aus dem Speicher. Wenn Sie Tracks oder Sicherungsdateien auf der SD-Karte gespeichert haben, müssen diese separat gelöscht werden. Sie können über eine beliebige Dateimanager-App aus dem Play Store auf die SD-Karte zugreifen oder indem Sie Ihr Telefon über ein USB-Kabel mit Ihrem Computer verbinden. Tracks, die Sie auf Google Maps, Google Fusion Tables und Google Docs hochgeladen haben, müssen ebenfalls separat gelöscht werden.</string>
     <string name="help_delete_tracks_question" translation_description="In the &apos;Help&apos; page, the question on delete tracks.">Wie lösche ich alle Tracks von meinem Telefon?</string>
@@ -597,4 +599,122 @@
        <string name="previous_run_crashed">Leider ist die App bei der letzten Nutzung abgestürzt. \n\n Bitte schicken Sie den Absturzbericht, damit wir diese App verbessern können.</string>
     <string name="send_report">Senden</string> 
     <string name="donot_send_report">Ignorieren</string>
+    
+     <string name="map_copyright">© 2013 MapQuest - Map data © OpenStreetMap - Unter ODbL Lizenz</string>
+    
+    <!-- Help page -->
+    <string name="n_help_my_tracks_question" translation_description="">
+Was macht nogago® Tracks?
+</string>
+    <string name="n_help_data_connection_answer" translation_description="In the &apos;Help&apos; page, the answer on data connection.">    
+        Es ist weder eine Mobilfunk- noch eine Datenverbindung erforderlich, um GPS-Tracks aufzuzeichnen. 
+        
+        Ohne Datenverbindung können Sie allerdings nur über die nogago® Maps App eine Karte abrufen.
+        In dieser App wird stattdessen wird ein grauer Bildschirm 
+        oder nur ein Teil der Karte angezeigt. 
+        Tracks werden als einfache Linien dargestellt 
+        und können auch ohne Datenverbindung aufgezeichnet werden.</string>
+     
+    <string name="n_help_delete_tracks_answer" translation_description="In the &apos;Help&apos; page, the answer on delete tracks.">    
+   Beenden Sie die Aufzeichnung. Wählen Sie dann in der Trackliste die alle \"Alle löschen\" Aktion aus (unter ...)
+    Damit löschen Sie die aufgezeichneten Tracks endgültig aus dem Speicher. 
+    Wenn Sie Tracks oder Sicherungsdateien auf der SD-Karte gespeichert haben, 
+    müssen diese separat gelöscht werden, dort zu finden unter dem Ordner documents/Tracks. Sie können über eine beliebige 
+    Dateimanager-App auf die SD-Karte zugreifen oder indem Sie Ihr Telefon über ein
+     USB-Kabel mit Ihrem Computer verbinden. Ihre Uploads zu nogago.com müssen Sie separat löschen.
+    </string>
+    <string name="n_help_my_tracks_answer" translation_description="In the &apos;Help&apos; page, the answer on what is nogago® Tracks.">   
+    nogago® Tracks ermöglicht die Aufzeichnung von Wegstrecken mit Hilfe von GPS-Signalen.
+    Visualisieren Sie Ihre Wanderungen, Laufstrecken oder Fahrradtouren und betrachten Sie Statistiken live während der Aufzeichnung.
+    Sie können die Strecken auf nogago.com archivieren, mit Freunden teilen und mit Google Earth nachfliegen.
+    </string>
+   <string name="n_help_send_track_answer" translation_description="In the &apos;Help&apos; page, the answer on sending a track.
+
+      %1$s url. E.g., &apos;maps.google.com&apos;.
+      %2$s url. E.g., &apos;google.com/fusiontables&apos;.
+      %3$s url. E.g., &apos;docs.google.com&apos;.">    
+      Senden Sie Ihren Track an Freunde über E-Mail oder archivieren Sie Ihre Aktivität auf nogago.com. Durch andere Portale wie GPSies.com oder Google Maps
+      kann die ganze Welt an Ihren Abenteuern teilhaben.
+      </string>
+   
+         
+       <string name="n_help_split_track_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
+            Tracks mit mehreren Segmenten wurden beim Import geteilt. Jedes Segment wird dadurch einzeln in der Track Liste zugänglich. </string>
+            
+    <string name="n_help_split_track_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
+         Warum werden Tracks beim Import manchmal geteilt?</string>
+             
+       <string name="help_import_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
+           Sie können Tracks im Format GPX importieren. Plazieren Sie dazu die Tracks im Ordner documents/Tracks/gpx 
+           auf Ihrer externen Speicherkarte. Wählen Sie dann \"Importieren\" als Aktion in der Track-Liste (unter ...).
+            Nach dem Import werden die Tracks in der Track-Liste angezeigt. Unter Android können Sie GPX Dateien auch direkt öffnen 
+            und GPX Dateien aus Dateianhängen in der E-Mail öffnen. BlackBerry unterstützt das leider nicht, kontaktieren Sie 
+            BlackBerry, um Ihren Wunsch nach einer solchen Funktion zu äußern !
+            </string>
+            
+    <string name="help_import_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
+      Wie kann ich GPX tracks anzeigen, die ich von nogago.com heruntergeladen habe, von Freunden erhalten habe, oder im Web gefunden habe ?</string>
+         
+           <string name="help_export_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
+          Navigieren Sie zur Track Liste. Rufen Sie die Aktion \"Exportieren\" (unter ...) auf. Sie können zwischen GPX, KML (für Google Maps und Earth)
+               und CSV als Datenformat wählen. Sie finden die exportieren Tracks dann auf der Speicherkarte unter documents\Tracks\ im jeweiligen
+               Unterordner je nach gewähltem Format. Alternativ können Sie eine einzelne GPX-Datei per E-Mail versenden oder den Track auf
+               nogago.com hochladen, und Ihn dann im Browser betrachten.
+            
+            </string>
+            
+    <string name="help_export_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
+        Kann ich Aufzeichnungen exportieren und auf dem PC betrachten?
+        </string>
+         
+           <string name="help_backup_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
+          Nutezn Sie die Sicherungsfunktion unter Einstellungen / Sicherung.  
+          Ihre Backups finden sich unter dem Ordner documents/backup auf der Speicherkarte und
+          ist Kompatibel mit der Android Version dieser App. </string>
+            
+    <string name="help_backup_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
+         Kann ich meine Tracks und Einstellungen sichern?</string>
+         
+         
+           <string name="help_restore_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
+            Nutzen Sie die Wiederherstellen Funktion, die über Einstellungen / Sicherung aufgerufen werden kann.
+            Sie können die Backup-Datei von anderen Telefonen übertragen (Kompatibel zwischen Blackberry und Android). Für
+            den Import von Aufzeichnungen aus nogago Outdoor GPS (BlackBerry OS 4.5-7.1) nutzen Sie bitte die Import Funktion.</string>
+            
+    <string name="help_restore_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
+         Wie stelle ich meine Einstellungen und aufgezeichneten Tracks wieder her?</string>
+        
+     <string name="n_about_copyright_notice" translation_description="In the &apos;About nogago® Tracks&apos; page, the copyright notice.">    
+        © 2009-2013 nogago® auf Basis von Arbeiten der Google Inc. und der My Tracks Community.</string>
+      
+           <string name="help_open_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
+          Diese App ist Open Source und wird unter Apache Lizenz Version 2.0 veröffentlicht. Dies erlaubt Dritten 
+          unsere App zu erweitern, dies schliesst eine kommerzielle Nutzung nicht aus (kontaktieren Sie sales@nogago.com, wenn Sie
+          eine angepasste Version entwickeln wollen), und erlaubt unseren verehrten Nutzen herauszufinden, was eigentlich mit Ihren Daten passiert, was Ihre Privatsphäre schützt.
+          \n\n Weiter konnten wir die App nur bauen, weil die My Tracks Community Ihren Quellcode veröffentlicht hat.
+          Wir freuen uns über weitere Beiträge von anderen Entwicklern, aber auch Übersetzung in weitere Sprachen. Der Source Code findet
+          sich unter opensource.nogago.com.
+           </string>
+            
+    <string name="help_open_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
+         Warum ist diese App open source ?</string>
+         
+    <string name="settings_map_choice_label">
+        Kartenanbieter
+    </string>
+    
+    <string name="settings_map_choice_online">
+        Interne Online-Karte
+    </string>
+    
+    
+    <string name="settings_map_choice_online">
+        Externe topographische Offline-Karte
+    </string>
+      
+    <string name="settings_map_choice_description">
+        Wählen Sie den Kartenanbieter zwischen interner online Karte (MapQuest) und externer topographischer Offline-Karte (nogago Maps)
+        aus. nogago Maps erlaubt weiter die Suche und Navigation ohne Netzverbindung.
+    </string>
+    
 </resources>
