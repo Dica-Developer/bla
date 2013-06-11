@@ -18,46 +18,24 @@ limitations under the License.
   android:layout_height="fill_parent"
   android:layout_width="fill_parent"
   android:orientation="vertical" >
-  <TabHost
-    android:id="@android:id/tabhost"
+  <View
+    android:background="@color/actionBarSeperator"
+    android:layout_height="1dp"
+    android:layout_width="fill_parent" />
+  <ListView
+    android:id="@+id/track_list"
     android:layout_height="0dp"
-    android:layout_weight="1"
-    android:background="@color/black"
-    android:layout_width="fill_parent" >
-    <LinearLayout
-      android:layout_height="fill_parent"
-      android:layout_width="fill_parent"
-      android:background="@color/white"
-      android:orientation="vertical" >
-      <TabWidget
-        android:id="@android:id/tabs"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:layout_width="fill_parent"
-    android:background="@color/black"
-        android:orientation="horizontal" />
-      <FrameLayout
-        android:id="@android:id/tabcontent"
-        android:layout_height="0dp"
-        android:layout_weight="0"
-      android:background="@color/white"
-        android:layout_width="0dp" />
-      <FrameLayout
-        android:id="@+id/realtabcontent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-      android:background="@color/white"
-        android:layout_width="fill_parent" />
-    </LinearLayout>
-  </TabHost>
-  <!-- 
-  <LinearLayout
-    android:id="@+id/track_controler_container"
-    style="@style/TrackControllerContainer" >
-    <include layout="@layout/track_controller" />
-  </LinearLayout>
-      -->
-  
+    android:layout_weight="1.0"
+    android:layout_width="fill_parent" />
+  <TextView
+    android:id="@+id/track_list_empty_view"
+    android:layout_height="0dp"
+    android:layout_weight="1.0"
+    android:layout_width="fill_parent"
+    android:text="@string/nogago_list_empty_message_q"
+    android:visibility="gone"
+    style="@style/ListEmptyTextView" >
+  </TextView>
 
    <!--  Start of the actionBar  -->
   <View
@@ -68,17 +46,17 @@ limitations under the License.
    	  android:id="@+id/track_controller_container"
       android:layout_width="fill_parent"
       android:orientation="horizontal"
-      android:layout_height="140px"
-      android:paddingTop="29px"
-      android:paddingBottom="30px"
+      android:layout_height="101px"
+      android:paddingTop="10px"
+      android:paddingBottom="10px"
       android:background="@color/actionBarBG">
 
       <ImageButton
-          android:id="@+id/listBtnBarBack"
+          android:id="@+id/listBtnBarHelp"
           android:layout_width="0dp"
           android:layout_weight="1"
         android:layout_height="wrap_content"
-          android:src="@drawable/ic_back"
+          android:src="@drawable/ic_help"
           android:layout_margin="0dp"
       android:background="@color/actionBarBG"
           android:scaleType="centerInside" />
@@ -88,6 +66,7 @@ limitations under the License.
           android:layout_width="0dp"
           android:layout_weight="1"
         android:layout_height="wrap_content"
+          android:layout_toRightOf="@id/listBtnBarHelp"
           android:src="@drawable/ic_record"
           android:contentDescription="@string/icon_record_track"
           
@@ -99,6 +78,7 @@ limitations under the License.
           android:layout_width="0dp"
           android:layout_weight="1"
         android:layout_height="wrap_content"
+          android:layout_toRightOf="@id/listBtnBarRecord"
           android:src="@drawable/ic_stop_0"
           android:contentDescription="@string/icon_stop_recording"
           
@@ -106,11 +86,12 @@ limitations under the License.
           android:scaleType="centerInside"  />
       
       <ImageButton
-          android:id="@+id/listBtnBarMarker"
+          android:id="@+id/listBtnBarSearch"
           android:layout_width="0dp"
           android:layout_weight="1"
         android:layout_height="wrap_content"
-          android:src="@drawable/ic_marker"
+          android:layout_toRightOf="@id/listBtnBarStop"
+          android:src="@drawable/ic_search"
           
       android:background="@color/actionBarBG"
           android:scaleType="centerInside"  />
@@ -120,6 +101,7 @@ limitations under the License.
           android:layout_width="0dp"
           android:layout_weight="1"
         android:layout_height="wrap_content"
+          android:layout_toRightOf="@id/listBtnBarSearch"
           android:src="@drawable/ic_more_new"
          
       android:background="@color/actionBarBG"

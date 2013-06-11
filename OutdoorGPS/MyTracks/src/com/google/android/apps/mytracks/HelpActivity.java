@@ -20,6 +20,7 @@ import com.google.android.apps.mytracks.fragments.AboutDialogFragment;
 import com.nogago.bb10.tracks.R;
 
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -34,7 +35,14 @@ public class HelpActivity extends AbstractMyTracksActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     // Setup Action Bar
-
+   
+    Display display = getWindowManager().getDefaultDisplay();
+    boolean devicesZ =display.getWidth() > 720 || display.getHeight() > 720;
+    if(devicesZ) {
+      // Disable the Keyboard help link
+      findViewById(R.id.help_keyboard_q).setVisibility(View.GONE);
+      findViewById(R.id.help_keyboard_a).setVisibility(View.GONE);
+    }
   
     findViewById(R.id.help_ok).setOnClickListener(new OnClickListener() {
       public void onClick(View v) {

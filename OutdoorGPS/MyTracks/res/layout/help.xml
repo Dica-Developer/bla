@@ -43,6 +43,15 @@ limitations under the License.
         android:text="@string/n_help_my_tracks_answer"
         style="@style/HelpAnswer" />
       
+      <TextView
+          android:id="@+id/help_keyboard_q"
+        android:text="@string/n_help_keyboard_question"
+        style="@style/HelpQuestion" />
+      <TextView
+          android:id="@+id/help_keyboard_a"
+        android:text="@string/n_help_keyboard_answer"
+        style="@style/HelpAnswer" />
+      
           <TextView
         android:text="@string/help_import_question"
         style="@style/HelpQuestion" />
@@ -104,10 +113,9 @@ limitations under the License.
         style="@style/HelpQuestion" />
       
       <TextView
-        android:id="@+id/n_help_send_track_answer"
+        android:text="@string/n_help_send_track_answer"
         style="@style/HelpAnswer" />
-  
-   
+
       <TextView
         android:text="@string/n_help_split_track_question"
         style="@style/HelpQuestion" />
