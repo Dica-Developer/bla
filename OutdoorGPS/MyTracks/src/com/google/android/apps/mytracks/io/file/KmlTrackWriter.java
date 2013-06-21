@@ -25,8 +25,8 @@ import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
 import com.google.android.apps.mytracks.util.StringUtils;
-import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
+import com.nogago.bb10.tracks.R;
 
 import android.content.Context;
 import android.location.Location;
@@ -125,7 +125,7 @@ public class KmlTrackWriter implements TrackFormatWriter {
           "<description>" + StringUtils.formatCData(track.getDescription()) + "</description>");
       printWriter.println("<name>" + StringUtils.formatCData(track.getName()) + "</name>");
       printWriter.println("<atom:author><atom:name>" + StringUtils.formatCData(
-          context.getString(R.string.send_google_by_my_tracks, "", ""))
+          context.getString(R.string.n_send_google_by_my_tracks, "", ""))
           + "</atom:name></atom:author>");
       writeTrackStyle();
       writePlacemarkerStyle(START_STYLE, START_ICON, 32, 1);
