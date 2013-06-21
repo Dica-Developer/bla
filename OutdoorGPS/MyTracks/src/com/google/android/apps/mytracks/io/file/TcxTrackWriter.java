@@ -131,7 +131,7 @@ public class TcxTrackWriter implements TrackFormatWriter {
     if (printWriter != null) {
       printWriter.println("<Author xsi:type=\"Application_t\">");
       printWriter.println("<Name>" 
-          + StringUtils.formatCData(context.getString(R.string.send_google_by_my_tracks, "", "")) 
+          + StringUtils.formatCData(context.getString(R.string.n_send_google_by_my_tracks, "", "")) 
           + "</Name>");
       // <Build>, <LangID>, and <PartNumber> are required by type=Application_t.
       printWriter.println("<Build>");

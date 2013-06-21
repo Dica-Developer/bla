@@ -729,7 +729,7 @@ T\t	Anfang der Liste \n\n
 	
 Track Detailansicht\n
 0\t	Meine aktuelle Position (nur Karte)\n
-SPACE\t	Wechsel von Statistik auf Diagramm auf Karten
+SPACE\t	Wechsel von Statistik auf Diagramm auf Karten \n
 I\t	Zoom In (nur Diagramm und Karte)\n
 H\t	Scrolle Links (nur Diagramm)\n
 K\t	Scrolle Rechts (nur Diagramm)\n

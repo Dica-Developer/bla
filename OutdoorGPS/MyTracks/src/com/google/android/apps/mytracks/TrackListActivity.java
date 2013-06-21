@@ -728,8 +728,10 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
           try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
-            if ((line = br.readLine()) != null) {
-              text.append(line);
+            while (br.read() != -1) {
+              if ((line = br.readLine()) != null) {
+                text.append(line);
+              }
             }
             br.close();
           } catch (IOException e) {

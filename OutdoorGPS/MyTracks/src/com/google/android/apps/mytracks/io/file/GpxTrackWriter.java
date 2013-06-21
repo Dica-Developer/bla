@@ -83,7 +83,7 @@ public class GpxTrackWriter implements TrackFormatWriter {
       printWriter.println("<gpx");
       printWriter.println("version=\"1.1\"");
       printWriter.println(
-          "creator=\"" + context.getString(R.string.send_google_by_my_tracks, "", "") + "\"");
+          "creator=\"" + context.getString(R.string.n_send_google_by_my_tracks, "", "") + "\"");
       printWriter.println("xmlns=\"http://www.topografix.com/GPX/1/1\"");
       printWriter.println(
           "xmlns:topografix=\"http://www.topografix.com/GPX/Private/TopoGrafix/0/1\"");
