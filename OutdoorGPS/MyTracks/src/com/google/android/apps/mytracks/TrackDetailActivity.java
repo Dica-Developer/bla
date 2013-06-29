@@ -218,7 +218,6 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     handleIntent(getIntent());
-
     SharedPreferences sharedPreferences = getSharedPreferences(Constants.SETTINGS_NAME,
         Context.MODE_PRIVATE);
     sharedPreferences.registerOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
@@ -277,6 +276,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     trackController = new TrackController(this, trackRecordingServiceConnection, false,
         recordListener, stopListener);
     showMarker();
+    
   }
 
   @Override

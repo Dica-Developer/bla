@@ -619,7 +619,7 @@ Was macht nogago® Tracks?
    Beenden Sie die Aufzeichnung. Wählen Sie dann in der Trackliste die alle \"Alle löschen\" Aktion aus (unter ...)
     Damit löschen Sie die aufgezeichneten Tracks endgültig aus dem Speicher. 
     Wenn Sie Tracks oder Sicherungsdateien auf der SD-Karte gespeichert haben, 
-    müssen diese separat gelöscht werden, dort zu finden unter dem Ordner documents/Tracks. Sie können über eine beliebige 
+    müssen diese separat gelöscht werden, dort zu finden unter dem Ordner documents/Tracks (Z10) bzw. misc/android/documents/Tracks (Q10). Sie können über eine beliebige 
     Dateimanager-App auf die SD-Karte zugreifen oder indem Sie Ihr Telefon über ein
      USB-Kabel mit Ihrem Computer verbinden. Ihre Uploads zu nogago.com müssen Sie separat löschen.
     </string>
@@ -641,7 +641,7 @@ Was macht nogago® Tracks?
          Warum werden Tracks beim Import manchmal geteilt?</string>
              
        <string name="help_import_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
-           Sie können Tracks im Format GPX importieren. Plazieren Sie dazu die Tracks im Ordner documents/Tracks/gpx 
+           Sie können Tracks im Format GPX importieren. Plazieren Sie dazu die Tracks im Ordner documents/ Tracks/ gpx (Z10) bzw. misc/android/ documents/ Tracks/ gpx (Q10))
            auf Ihrer externen Speicherkarte. Wählen Sie dann \"Importieren\" als Aktion in der Track-Liste (unter ...).
             Nach dem Import werden die Tracks in der Track-Liste angezeigt. Unter Android können Sie GPX Dateien auch direkt öffnen 
             und GPX Dateien aus Dateianhängen in der E-Mail öffnen. BlackBerry unterstützt das leider nicht, kontaktieren Sie 
@@ -653,7 +653,7 @@ Was macht nogago® Tracks?
          
            <string name="help_export_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
           Navigieren Sie zur Track Liste. Rufen Sie die Aktion \"Exportieren\" (unter ...) auf. Sie können zwischen GPX, KML (für Google Maps und Earth)
-               und CSV als Datenformat wählen. Sie finden die exportierten Tracks dann auf der Speicherkarte unter documents\Tracks\ im jeweiligen
+               und CSV als Datenformat wählen. Sie finden die exportierten Tracks dann auf der Speicherkarte unter documents/Tracks/ (Z10) bzw. bzw. misc/android/ documents/ Tracks (Q10) im jeweiligen
                Unterordner je nach gewähltem Format. Alternativ können Sie eine einzelne GPX-Datei per E-Mail versenden oder den Track auf
                nogago.com hochladen, und Ihn dann im Browser betrachten.
             
@@ -665,7 +665,7 @@ Was macht nogago® Tracks?
          
            <string name="help_backup_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
           Nutzen Sie die Sicherungsfunktion unter Einstellungen / Sicherung.  
-          Ihre Backups finden sich unter dem Ordner documents/backup auf der Speicherkarte und
+          Ihre Backups finden sich unter dem Ordner documents/Tracks/ backups (Z10)  bzw. misc/android/ documents/ Tracks/ backups (Q10) auf der Speicherkarte und
           ist Kompatibel mit der Android Version dieser App. </string>
             
     <string name="help_backup_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
@@ -674,14 +674,15 @@ Was macht nogago® Tracks?
          
            <string name="help_restore_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
             Nutzen Sie die Wiederherstellen Funktion, die über Einstellungen / Sicherung aufgerufen werden kann.
-            Sie können die Backup-Datei von anderen Telefonen übertragen (Kompatibel zwischen Blackberry und Android). Für
+            Sie können die Backup-Datei von anderen Telefonen übertragen (Kompatibel zwischen Blackberry und Android). 
+            Platzieren Sie dazu Ihre Backup ZIP-Dateien im Ordner documents/Tracks/ backups (Z10)  bzw. misc/android/ documents/ Tracks/ backups (Q10) auf der Speicherkarte. Für
             den Import von Aufzeichnungen aus nogago Outdoor GPS (BlackBerry OS 4.5-7.1) nutzen Sie bitte die Import Funktion.</string>
             
     <string name="help_restore_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
          Wie stelle ich meine Einstellungen und aufgezeichneten Tracks wieder her?</string>
         
      <string name="n_about_copyright_notice" translation_description="In the &apos;About nogago® Tracks&apos; page, the copyright notice.">    
-        © 2009-2013 nogago® auf Basis von Arbeiten der Google Inc. und der My Tracks Community.</string>
+        © 2009-2013 nogago® auf Basis von Arbeiten der My Tracks Community und Google Inc.</string>
       
            <string name="help_open_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
           Diese App ist Open Source und wird unter Apache Lizenz Version 2.0 veröffentlicht. Dies erlaubt Dritten 

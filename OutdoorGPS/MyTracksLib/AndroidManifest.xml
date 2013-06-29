@@ -26,7 +26,7 @@ limitations under the License.
   -->
   <uses-sdk
     android:minSdkVersion="7"
-    android:targetSdkVersion="16" />
+    android:targetSdkVersion="10" />
 
   <application
     android:icon="@drawable/appicon"
