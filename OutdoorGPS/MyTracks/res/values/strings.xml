@@ -1427,7 +1427,7 @@ limitations under the License.
     From the track list, select &#8220;Delete all&#8221; when not recording. This permanently
     deletes the recorded tracks from memory. If you have saved tracks or backups on the SD card, you
     must delete them separately. You can access the SD card using the built in file manager app. All tracks are stored on the memory card
-    below the folder documents / Tracks and can be accessed via your PC.</string>
+    below the folder documents / Tracks (Z10) or misc/ android/ documents/ Tracks/ (Q10) and can be accessed via your PC.</string>
     <string name="n_help_my_tracks_answer" translation_description="In the &apos;Help&apos; page, the answer on what is nogago® Tracks.">   
     nogago® Tracks allows you to record outdoor activities using GPS signals. You can visualize your walking, running, biking or any
     other outdoor activity while watching live performance statistics. nogago® Tracks makes it easy to archive
@@ -1446,7 +1446,9 @@ limitations under the License.
          Why are tracks split into multiple segments at import?</string>
              
        <string name="help_import_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
-            You can import tracks in the format GPX. Place the tracks into the folder documents / Tracks / gpx on your memory card. 
+            You can import tracks in the format GPX. Place the tracks into the folder
+            documents/ Tracks/ gpx folder on your media card (Z10) or 
+            misc/ android/ documents/ Tracks/ gpx folder on your memory card (Q10). 
             Navigate to the track list. Press the button with three dots. Choose \"Import from SD card\". 
             When the operation is finished you will find the tracks in the track list. Android users can directly import GPX tracks by clicking on GPX files in the file browser. Opening GPX files from email attachments is also supported on Android.
             Please contact BlackBerry and request this feature in the Android Runtime to experience this convenience on BlackBerry10 as well !
@@ -1457,7 +1459,9 @@ limitations under the License.
          
            <string name="help_export_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
             Navigate to the track list. Press the button with three dots. Choose \"Export to SD card\". You can choose the common formats
-            GPX, KML (for viewing on Google Maps and Google Earth), and CSV. Alternatively you can mail a single track in those formats
+            GPX, KML (for viewing on Google Maps and Google Earth), and CSV. The exported track will be available below documents/Tracks/ folder on your media card (Z10) or 
+            misc/android/documents/Tracks/ folder on your memory card (Q10).
+             Alternatively you can mail a single track in those formats
             to a friend or upload the track for viewing online at nogago.com.
             
             </string>
@@ -1466,7 +1470,10 @@ limitations under the License.
          Can I export my tracks and copy them on my PC or move them to my other phone?</string>
          
            <string name="help_backup_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
-            Use the Backup functionality available from the settings. Your backup is compatible between Android and BlackBerry versions of this app.</string>
+            Use the Backup functionality available from the settings. 
+            Your backup is compatible between Android and BlackBerry versions of this app. All Backups will be placed in 
+            documents/Tracks/backups folder on your media card (Z10) or 
+            misc/android/documents/Tracks/backups folder on your memory card (Q10). </string>
             
     <string name="help_backup_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
          How do I backup my settings and all recorded tracks?</string>
@@ -1474,7 +1481,10 @@ limitations under the License.
          
            <string name="help_restore_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
             Use the Restore functionality available from the settings. You can choose to restore a specific backup, if you have several backups. To restore
-            your backup from another phone simply place the ZIP file into the documents/Tracks/restore folder on your memory card. Backup and restore from Android and BlackBerry10 phones are compatible.
+            your backup from another phone simply place the ZIP file into the documents/Tracks/backups folder on your media card (Z10) or 
+            misc/android/documents/Tracks/backups folder on your memory card (Q10). 
+            Backup and restore from Android and BlackBerry10 phones are compatible.
+            
             Use the import function to restore your GPX tracks recorded with nogago® Outdoor GPS for BlackBerry OS 4.5-7.1 </string>
             
     <string name="help_restore_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   

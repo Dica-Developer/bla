@@ -642,7 +642,9 @@ Waarom worden routes soms opgesplitst bij het importeren?</string>
              
        <string name="help_import_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
            
-Je kan routes in GPX formaat importeren. Om dit te doen, zet je je routes in de map documents/Tracks/gpx op je externe geheugenkaart. Kies dan \"Importeren\" als actie in de route-lijst (onder ...).
+Je kan routes in GPX formaat importeren. Om dit te doen, zet je je routes in de map documents/Tracks/ gpx (Z10)  
+of misc/android/ documents/ Tracks/ backups (Q10) op je externe geheugenkaart. 
+Kies dan \"Importeren\" als actie in de route-lijst (onder ...).
 Na het importeren vind je de routes in de route-lijst. Bij Android kan je de GPX bestanden ook onmiddellijk openen vanuit bijlages in de e-mail. BlackBerry ondersteunt dit spijtig genoeg niet. Indien je deze functie graag zou willen, kan je BlackBerry contacteren om hen op de hoogte te brengen hiervan.
             </string>
             
@@ -653,7 +655,12 @@ Hoe kan ik GPX routes aangeven die ik van nogago.com afgehaald heb, van vrienden
          
            <string name="help_export_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
 
-Ga naar de route-lijst en kies daar de actie \"Exporteren\" (onder ...). Daar kan je GPX, KML (voor Google Maps en Earth) en CSV als bestandsformaat kiezen. Je vindt de tracks dan op je geheugenkaart onder documents\Tracks\ in de desbetreffende submap, afhankelijk van het gekozen formaat. Alternatief kan je een GPX-bestand ook per e-mail versturen of de route op nogago.com uploaden, en ze dan in je browser bekijken.
+Ga naar de route-lijst en kies daar de actie \"Exporteren\" (onder ...). 
+Daar kan je GPX, KML (voor Google Maps en Earth) en CSV als bestandsformaat kiezen. 
+Je vindt de tracks dan op je geheugenkaart onder documents/Tracks/  (Z10) of misc/android/ documents/ Tracks/ (Q10) 
+in de desbetreffende submap, afhankelijk van het gekozen formaat. 
+Alternatief kan je een GPX-bestand ook per e-mail versturen of de 
+route op nogago.com uploaden, en ze dan in je browser bekijken.
            
             </string>
             
