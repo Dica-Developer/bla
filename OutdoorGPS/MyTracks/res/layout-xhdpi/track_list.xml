@@ -18,26 +18,7 @@ limitations under the License.
   android:layout_height="fill_parent"
   android:layout_width="fill_parent"
   android:orientation="vertical" >
-  <View
-    android:background="@color/actionBarSeperator"
-    android:layout_height="1dp"
-    android:layout_width="fill_parent" />
-  <ListView
-    android:id="@+id/track_list"
-    android:layout_height="0dp"
-    android:layout_weight="1.0"
-    android:layout_width="fill_parent" />
-  <TextView
-    android:id="@+id/track_list_empty_view"
-    android:layout_height="0dp"
-    android:layout_weight="1.0"
-    android:layout_width="fill_parent"
-    android:text="@string/nogago_list_empty_message_z"
-    android:visibility="gone"
-    style="@style/ListEmptyTextView" >
-  </TextView>
-
-   <!--  Start of the actionBar  -->
+  
   <View
     android:background="@color/actionBarSeperator"
     android:layout_height="1dp"
@@ -109,4 +90,24 @@ limitations under the License.
 
 </LinearLayout>
 
+  <View
+    android:background="@color/actionBarSeperator"
+    android:layout_height="1dp"
+    android:layout_width="fill_parent" />
+  <ListView
+    android:id="@+id/track_list"
+    android:layout_height="0dp"
+    android:layout_weight="1.0"
+    android:layout_width="fill_parent" />
+  <TextView
+    android:id="@+id/track_list_empty_view"
+    android:layout_height="0dp"
+    android:layout_weight="1.0"
+    android:layout_width="fill_parent"
+    android:text="@string/nogago_list_empty_message_z"
+    android:visibility="gone"
+    style="@style/ListEmptyTextView" >
+  </TextView>
+
+ 
 </LinearLayout>
