@@ -77,7 +77,8 @@ import java.util.List;
  * @author Leif Hendrik Wilden
  * @author Rodrigo Damazio
  */
-public class TrackDetailActivity extends AbstractMyTracksActivity implements DeleteOneTrackCaller, OnTaskCompleteListener {
+public class TrackDetailActivity extends AbstractMyTracksActivity implements DeleteOneTrackCaller,
+    OnTaskCompleteListener {
 
   public static final String EXTRA_TRACK_ID = "track_id";
   public static final String EXTRA_MARKER_ID = "marker_id";
@@ -101,8 +102,8 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   private long recordingTrackId;
   private boolean recordingTrackPaused;
 
-  // private MenuItem insertMarkerMenuItem;
-  // private MenuItem playMenuItem;
+  private MenuItem insertMarkerMenuItem;
+  private MenuItem playMenuItem;
   private MenuItem shareMenuItem;
   private MenuItem sendGoogleMenuItem;
   private MenuItem saveMenuItem;
@@ -250,23 +251,26 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     // Setup Action Bar
 
     ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
-    backButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        TrackDetailActivity.this.finish();
-      }
-    });
+    if (backButton != null)
+      backButton.setOnClickListener(new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          TrackDetailActivity.this.finish();
+        }
+      });
 
     // Buttons 3 managed by Track Controller
 
     recordImageButton = (ImageButton) findViewById(R.id.listBtnBarRecord);
-    recordImageButton.setOnClickListener(recordListener);
+    if (recordImageButton != null)
+      recordImageButton.setOnClickListener(recordListener);
 
     markerImageButton = (ImageButton) findViewById(R.id.listBtnBarMarker);
-    if(markerImageButton !=null) markerImageButton.setOnClickListener(markerListener);
+    if (markerImageButton != null)
+      markerImageButton.setOnClickListener(markerListener);
 
     ImageButton moreButton = (ImageButton) findViewById(R.id.listBtnBarMore);
-    moreButton.setOnClickListener(new OnClickListener() {
+    if(moreButton != null) moreButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         openOptionsMenu();
@@ -276,7 +280,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     trackController = new TrackController(this, trackRecordingServiceConnection, false,
         recordListener, stopListener);
     showMarker();
-    
+
   }
 
   @Override
@@ -286,7 +290,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
 
   @Override
   protected boolean hideTitle() {
-    return true;
+    return false;
   }
 
   @Override
@@ -355,8 +359,8 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     // menu.findItem(R.id.track_detail_save_tcx).setTitle(getString(R.string.menu_save_format,
     // fileTypes[3]));
 
-    // insertMarkerMenuItem = menu.findItem(R.id.track_detail_insert_marker);
-    // playMenuItem = menu.findItem(R.id.track_detail_play); // Not Supported on
+    insertMarkerMenuItem = menu.findItem(R.id.track_detail_insert_marker);
+    playMenuItem = menu.findItem(R.id.track_detail_play); // Not Supported on
     // BB
     // shareMenuItem = menu.findItem(R.id.track_detail_share);
     sendGoogleMenuItem = menu.findItem(R.id.track_detail_send_nogago);
@@ -381,22 +385,22 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   public boolean onOptionsItemSelected(MenuItem item) {
     Intent intent;
     switch (item.getItemId()) {
-    /*
-     * case R.id.track_detail_insert_marker: insertMarkerAction(); return true;
-     * case R.id.track_detail_play: if (isEarthInstalled()) {
-     * AnalyticsUtils.sendPageViews(this, "/action/play"); intent =
-     * IntentUtils.newIntent(this, SaveActivity.class)
-     * .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
-     * .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable)
-     * TrackFileFormat.KML) .putExtra(SaveActivity.EXTRA_PLAY_TRACK, true);
-     * startActivity(intent); } else { new
-     * InstallEarthDialogFragment().show(getSupportFragmentManager(),
-     * InstallEarthDialogFragment.INSTALL_EARTH_DIALOG_TAG); } return true; case
-     * R.id.track_detail_share: AnalyticsUtils.sendPageViews(this,
-     * "/action/share"); ChooseActivityDialogFragment.newInstance(trackId,
-     * null).show(getSupportFragmentManager(),
-     * ChooseActivityDialogFragment.CHOOSE_ACTIVITY_DIALOG_TAG); return true;
-     */
+
+      case R.id.track_detail_insert_marker:
+        insertMarkerAction();
+        return true;
+      case R.id.track_detail_play:
+        if (isEarthInstalled()) {
+          AnalyticsUtils.sendPageViews(this, "/action/play");
+          intent = IntentUtils.newIntent(this, SaveActivity.class)
+              .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
+              .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.KML)
+              .putExtra(SaveActivity.EXTRA_PLAY_TRACK, true);
+          startActivity(intent);
+        }
+        ;
+        return true;
+
       case R.id.track_detail_markers:
         intent = IntentUtils.newIntent(this, MarkerListActivity.class).putExtra(
             MarkerListActivity.EXTRA_TRACK_ID, trackId);
@@ -455,13 +459,11 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   }
 
   /*
-  public void uploadTrackAction() {
-    AnalyticsUtils.sendPageViews(this, "/action/send_nogago");
-    ChooseUploadServiceDialogFragment.newInstance(new SendRequest(trackId)).show(
-        getSupportFragmentManager(),
-        ChooseUploadServiceDialogFragment.CHOOSE_UPLOAD_SERVICE_DIALOG_TAG);
-  }
-  */
+   * public void uploadTrackAction() { AnalyticsUtils.sendPageViews(this,
+   * "/action/send_nogago"); ChooseUploadServiceDialogFragment.newInstance(new
+   * SendRequest(trackId)).show( getSupportFragmentManager(),
+   * ChooseUploadServiceDialogFragment.CHOOSE_UPLOAD_SERVICE_DIALOG_TAG); }
+   */
 
   private void insertMarkerAction() {
     // Recording
@@ -554,24 +556,32 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
    * @param isRecording true if recording
    */
   private void updateMenuItems(boolean isRecording, boolean isPaused) {
-    /*
-     * if (insertMarkerMenuItem != null) {
-     * insertMarkerMenuItem.setVisible(isRecording && !isPaused); } if
-     * (playMenuItem != null) { playMenuItem.setVisible(!isRecording); } if
-     * (shareMenuItem != null) { shareMenuItem.setVisible(!isRecording); } if
-     * (sendGoogleMenuItem != null) {
-     * sendGoogleMenuItem.setVisible(!isRecording); }
-     */
+
+    if (insertMarkerMenuItem != null) {
+      insertMarkerMenuItem.setVisible(isRecording && !isPaused);
+    }
+    if (playMenuItem != null) {
+      playMenuItem.setVisible(!isRecording);
+    }
+    if (shareMenuItem != null) {
+      shareMenuItem.setVisible(!isRecording);
+    }
+    if (sendGoogleMenuItem != null) {
+      sendGoogleMenuItem.setVisible(!isRecording);
+    }
+
     if (markerImageButton != null) {
       markerImageButton.setImageResource(isRecording ? R.drawable.ic_marker : R.drawable.ic_upload);
       markerImageButton.setContentDescription(getString(isRecording ? R.string.icon_marker
           : R.string.icon_upload));
     }
+    if (recordImageButton != null) {
     recordImageButton.setImageResource(isRecording && !isPaused ? R.drawable.ic_pause
         : R.drawable.ic_record);
-    recordImageButton.setContentDescription(getString(isRecording && !isPaused ? R.string.icon_pause_recording
+    recordImageButton
+        .setContentDescription(getString(isRecording && !isPaused ? R.string.icon_pause_recording
             : R.string.icon_record_track));
-    
+    }
     if (saveMenuItem != null) {
       saveMenuItem.setVisible(!isRecording);
     }
@@ -599,12 +609,12 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
    */
   private void startSaveActivity(TrackFileFormat trackFileFormat) {
     AnalyticsUtils.sendPageViews(this, "/action/save");
-    if(FileUtils.isSdCardAvailable()) {
-    Intent intent = IntentUtils.newIntent(this, SaveActivity.class)
-        .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
-        .putExtra(SaveActivity.EXTRA_MAIL_TRACK, true)
-        .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) trackFileFormat);
-    startActivity(intent);
+    if (FileUtils.isSdCardAvailable()) {
+      Intent intent = IntentUtils.newIntent(this, SaveActivity.class)
+          .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
+          .putExtra(SaveActivity.EXTRA_MAIL_TRACK, true)
+          .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) trackFileFormat);
+      startActivity(intent);
     } else {
       Toast.makeText(this, getString(R.string.sd_card_error_no_storage), Toast.LENGTH_SHORT).show();
     }
@@ -630,10 +640,10 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   public boolean onKeyUp(int keyCode, KeyEvent event) {
     switch (keyCode) {
       case KeyEvent.KEYCODE_M:
-      if (trackId == recordingTrackId) {
-        // Recording
-        insertMarkerAction();
-      }
+        if (trackId == recordingTrackId) {
+          // Recording
+          insertMarkerAction();
+        }
         break;
       case KeyEvent.KEYCODE_H:
         if (tabHost.getCurrentTab() == 1) {
@@ -735,10 +745,9 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
 
     return super.onKeyUp(keyCode, event);
   }
-  
 
   // Upload to nogago
-  
+
   private boolean isOnline() {
     ConnectivityManager cm = (ConnectivityManager) getSystemService(TrackDetailActivity.this.CONNECTIVITY_SERVICE);
     if (cm == null)
@@ -748,7 +757,6 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       return false;
     return ni.isConnectedOrConnecting();
   }
-
 
   private String getUserName() {
     return PreferencesUtils.getString(TrackDetailActivity.this, R.string.user_name, "");
@@ -760,11 +768,13 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
 
   private void sendTrackToNogago() {
     if (isOnline()) {
-      if (getUserName() != null && (getUserName().length()>0) && getUserName().compareTo("username") != 0) {
+      if (getUserName() != null && (getUserName().length() > 0)
+          && getUserName().compareTo("username") != 0) {
         // Create manager and set this activity as context and listener
         AsyncTaskManager mAsyncTaskManager = new AsyncTaskManager(this, this, "TEST", false);
         mAsyncTaskManager.handleRetainedTask(getLastNonConfigurationInstance());
-        GPXUploadTask task = new GPXUploadTask(this,getString(R.string.upload_progressbar_title), getUserName(), getPassword(), trackId);
+        GPXUploadTask task = new GPXUploadTask(this, getString(R.string.upload_progressbar_title),
+            getUserName(), getPassword(), trackId);
         mAsyncTaskManager.setupTask(task);
       } else {
         android.content.DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
@@ -782,7 +792,6 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       Toast.makeText(TrackDetailActivity.this, R.string.error_network, Toast.LENGTH_LONG).show();
     }
   }
-  
 
   private void showAlertDialog(Context context, String title, String message,
       android.content.DialogInterface.OnClickListener listener) {
@@ -790,42 +799,43 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     builder.setTitle(title);
     builder.setIcon(android.R.drawable.ic_dialog_info);
     builder.setMessage(message);
-    builder.setNeutralButton(R.string.ok_button,  listener);
+    builder.setNeutralButton(R.string.ok_button, listener);
     builder.show();
-}
-
-  
+  }
 
   @Override
   public void onTaskComplete(AsyncTask task, Object result) {
-    Toast.makeText(this, getString(R.string.successfully_uploaded_track), Toast.LENGTH_SHORT).show();
-    
+    Toast.makeText(this, getString(R.string.successfully_uploaded_track), Toast.LENGTH_SHORT)
+        .show();
+
   }
 
   @Override
   public void onTaskCancel(AsyncTask task) {
     Toast.makeText(this, getString(R.string.sd_card_canceled), Toast.LENGTH_SHORT).show();
-    
+
   }
 
   @Override
   public void onTaskError(AsyncTask task, Exception error) {
-    if(error instanceof UploadTaskException && ((UploadTaskException) error).getId()==UploadTaskException.CREDENTIALS_WRONG) {
+    if (error instanceof UploadTaskException
+        && ((UploadTaskException) error).getId() == UploadTaskException.CREDENTIALS_WRONG) {
       android.content.DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-      @Override
-      public void onClick(DialogInterface dialog, int which) {
-        Intent settings = new Intent(TrackDetailActivity.this, SettingsActivity.class);
-        startActivity(settings);
-      }
-    };
-    showAlertDialog(this, getString(R.string.wrong_credential),
-        getString(R.string.error_username), listener);
-    } else if (error instanceof UploadTaskException && ((UploadTaskException) error).getId()==UploadTaskException.UNABLE_TO_CONNECT) {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+          Intent settings = new Intent(TrackDetailActivity.this, SettingsActivity.class);
+          startActivity(settings);
+        }
+      };
+      showAlertDialog(this, getString(R.string.wrong_credential),
+          getString(R.string.error_username), listener);
+    } else if (error instanceof UploadTaskException
+        && ((UploadTaskException) error).getId() == UploadTaskException.UNABLE_TO_CONNECT) {
 
       Toast.makeText(TrackDetailActivity.this, R.string.error_network, Toast.LENGTH_LONG).show();
-      
+
     } else {
-    Toast.makeText(this, getString(R.string.sd_card_canceled), Toast.LENGTH_SHORT).show();
+      Toast.makeText(this, getString(R.string.sd_card_canceled), Toast.LENGTH_SHORT).show();
     }
   }
 }

@@ -59,9 +59,10 @@ public class Api11Adapter extends Api10Adapter {
       final ContextualActionModeCallback contextualActionModeCallback) {
     listView.setOnItemLongClickListener(new OnItemLongClickListener() {
       ActionMode actionMode;
+
       @Override
-      public boolean onItemLongClick(
-          AdapterView<?> parent, View view, final int position, final long id) {
+      public boolean onItemLongClick(AdapterView<?> parent, View view, final int position,
+          final long id) {
         if (actionMode != null) {
           return false;
         }
@@ -71,15 +72,18 @@ public class Api11Adapter extends Api10Adapter {
             mode.getMenuInflater().inflate(R.menu.list_context_menu, menu);
             return true;
           }
+
           @Override
           public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
             // Return false to indicate no change.
             return false;
           }
+
           @Override
           public void onDestroyActionMode(ActionMode mode) {
             actionMode = null;
           }
+
           @Override
           public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             mode.finish();
@@ -98,10 +102,13 @@ public class Api11Adapter extends Api10Adapter {
 
   @Override
   public void configureSearchWidget(Activity activity, final MenuItem menuItem) {
-    SearchManager searchManager = (SearchManager) activity.getSystemService(Context.SEARCH_SERVICE);
-    SearchView searchView = (SearchView) menuItem.getActionView();
-    searchView.setSearchableInfo(searchManager.getSearchableInfo(activity.getComponentName()));
-    searchView.setQueryRefinementEnabled(true);
+    if (menuItem != null) {
+      SearchManager searchManager = (SearchManager) activity
+          .getSystemService(Context.SEARCH_SERVICE);
+      SearchView searchView = (SearchView) menuItem.getActionView();
+      searchView.setSearchableInfo(searchManager.getSearchableInfo(activity.getComponentName()));
+      searchView.setQueryRefinementEnabled(true);
+    }
   }
 
   @Override
@@ -119,7 +126,7 @@ public class Api11Adapter extends Api10Adapter {
   public void invalidMenu(Activity activity) {
     activity.invalidateOptionsMenu();
   }
-  
+
   @Override
   public void disableHardwareAccelerated(View view) {
     view.setLayerType(View.LAYER_TYPE_SOFTWARE, null);

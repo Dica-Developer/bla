@@ -33,9 +33,10 @@ public class MyTracksLocation extends Location {
    */
   private int id = -1;
 
-  public MyTracksLocation(Location location, Sensor.SensorDataSet sd) {
+  public MyTracksLocation(Location location, Sensor.SensorDataSet sd, int gsmSignal) {
     super(location);
     this.sensorDataSet = sd;
+    this.gsmSignalStrength = gsmSignal;
   }
 
   public MyTracksLocation(String provider) {
@@ -62,5 +63,16 @@ public class MyTracksLocation extends Location {
     super.reset();
     sensorDataSet = null;
     id = -1;
+    gsmSignalStrength = -114; // UNKNOWN_SIGNAL
+  }
+  
+  public int gsmSignalStrength; // in dbM
+
+  public int getGsmSignalStrength() {
+    return gsmSignalStrength;
+  }
+
+  public void setGsmSignalStrength(int gsmSignalStrength) {
+    this.gsmSignalStrength = gsmSignalStrength;
   }
 }

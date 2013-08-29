@@ -162,4 +162,10 @@ public class Api7Adapter implements ApiAdapter {
     // Return false and allow the framework to handle the search key.
     return false;
   }
+
+  @Override
+  public void hideActionBar(Activity activity) {
+    // TODO Use Android Support Library hiding
+    
+  }
 }

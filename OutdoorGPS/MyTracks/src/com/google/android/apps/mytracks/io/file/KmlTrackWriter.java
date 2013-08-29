@@ -240,6 +240,7 @@ public class KmlTrackWriter implements TrackFormatWriter {
     }
   }
 
+  // TODO Also export gsm strength
   @Override
   public void writeLocation(Location location) {
     if (printWriter != null) {

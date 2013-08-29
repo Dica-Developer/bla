@@ -679,13 +679,13 @@ public class MyTracksProviderUtilsImpl implements MyTracksProviderUtils {
   }
 
   @Override
-  public int bulkInsertTrackPoint(Location[] locations, int length, long trackId) {
+  public int bulkInsertTrackPoint(Location[] locations, int[] gsmStrength, int length, long trackId) {
     if (length == -1) {
       length = locations.length;
     }
     ContentValues[] values = new ContentValues[length];
     for (int i = 0; i < length; i++) {
-      values[i] = createContentValues(locations[i], trackId);
+      values[i] = createContentValues(locations[i], gsmStrength[i], trackId);
     }
     return contentResolver.bulkInsert(TrackPointsColumns.CONTENT_URI, values);
   }
@@ -874,9 +874,9 @@ public class MyTracksProviderUtilsImpl implements MyTracksProviderUtils {
   }
 
   @Override
-  public Uri insertTrackPoint(Location location, long trackId) {
+  public Uri insertTrackPoint(Location location, int gsmStrength, long trackId) {
     return contentResolver.insert(
-        TrackPointsColumns.CONTENT_URI, createContentValues(location, trackId));
+        TrackPointsColumns.CONTENT_URI, createContentValues(location, gsmStrength, trackId));
   }
 
   /**
@@ -885,7 +885,7 @@ public class MyTracksProviderUtilsImpl implements MyTracksProviderUtils {
    * @param location the location
    * @param trackId the track id
    */
-  private ContentValues createContentValues(Location location, long trackId) {
+  private ContentValues createContentValues(Location location, int gsmStrength, long trackId) {
     ContentValues values = new ContentValues();
     values.put(TrackPointsColumns.TRACKID, trackId);
     values.put(TrackPointsColumns.LONGITUDE, (int) (location.getLongitude() * 1E6));
@@ -916,6 +916,8 @@ public class MyTracksProviderUtilsImpl implements MyTracksProviderUtils {
         values.put(TrackPointsColumns.SENSOR, myTracksLocation.getSensorDataSet().toByteArray());
       }
     }
+
+    values.put(TrackPointsColumns.GSMSTRENGTH, gsmStrength);
     return values;
   }
 
@@ -949,6 +951,10 @@ public class MyTracksProviderUtilsImpl implements MyTracksProviderUtils {
     }
     if (!cursor.isNull(indexes.bearingIndex)) {
       location.setBearing(cursor.getFloat(indexes.bearingIndex));
+    }
+    if (location instanceof MyTracksLocation && !cursor.isNull(indexes.gsmSignalIndex)) {
+      MyTracksLocation myTracksLocation = (MyTracksLocation) location;
+      myTracksLocation.setGsmSignalStrength(cursor.getInt(indexes.gsmSignalIndex));
     }
     if (location instanceof MyTracksLocation && !cursor.isNull(indexes.sensorIndex)) {
       MyTracksLocation myTracksLocation = (MyTracksLocation) location;
@@ -1003,6 +1009,7 @@ public class MyTracksProviderUtilsImpl implements MyTracksProviderUtils {
     public final int speedIndex;
     public final int bearingIndex;
     public final int sensorIndex;
+    public final int gsmSignalIndex;
 
     public CachedTrackPointsIndexes(Cursor cursor) {
       idIndex = cursor.getColumnIndex(TrackPointsColumns._ID);
@@ -1014,6 +1021,7 @@ public class MyTracksProviderUtilsImpl implements MyTracksProviderUtils {
       speedIndex = cursor.getColumnIndexOrThrow(TrackPointsColumns.SPEED);
       bearingIndex = cursor.getColumnIndexOrThrow(TrackPointsColumns.BEARING);
       sensorIndex = cursor.getColumnIndexOrThrow(TrackPointsColumns.SENSOR);
+      gsmSignalIndex = cursor.getColumnIndexOrThrow(TrackPointsColumns.GSMSTRENGTH);
     }
   }
 

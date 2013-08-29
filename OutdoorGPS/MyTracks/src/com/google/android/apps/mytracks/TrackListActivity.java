@@ -68,6 +68,7 @@ import android.support.v4.widget.ResourceCursorAdapter;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -341,6 +342,15 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     setVolumeControlStream(TextToSpeech.Engine.DEFAULT_STREAM);
     setContentView(R.layout.track_list);
 
+    ApiAdapterFactory.getApiAdapter().hideActionBar(this);
+    
+    Display display = getWindowManager().getDefaultDisplay();
+    boolean devicesZ =display.getWidth() > 720 || display.getHeight() > 720;
+    if(devicesZ) {
+      // Disable the Keyboard help link
+      findViewById(R.id.help_keyboard_q).setVisibility(View.GONE);
+      findViewById(R.id.help_keyboard_a).setVisibility(View.GONE);
+    } 
     trackRecordingServiceConnection = new TrackRecordingServiceConnection(this, bindChangedCallback);
 
     SharedPreferences sharedPreferences = getSharedPreferences(Constants.SETTINGS_NAME,
@@ -353,7 +363,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
 
     // START MOD
     ImageButton helpButton = (ImageButton) findViewById(R.id.listBtnBarHelp);
-    helpButton.setOnClickListener(new OnClickListener() {
+    if(helpButton != null) helpButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         // TODO Test
@@ -755,6 +765,9 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     if (FileUtils.isSdCardAvailable()) {
       // create a File object for the parent directory
       File directory = new File(FileUtils.buildExternalDirectoryPath("gpx"));
+      // have the object build the directory structure, if needed.
+      directory.mkdirs();
+      directory = new File(FileUtils.buildExternalDirectoryPath("backups"));
       // have the object build the directory structure, if needed.
       directory.mkdirs();
       directory = new File(FileUtils.buildExternalDirectoryPath("kml"));

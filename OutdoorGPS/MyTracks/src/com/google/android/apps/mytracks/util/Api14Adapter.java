@@ -40,6 +40,8 @@ public class Api14Adapter extends Api11Adapter {
   @Override
   public void configureSearchWidget(Activity activity, final MenuItem menuItem) {
     super.configureSearchWidget(activity, menuItem);
+
+    if(menuItem != null) {
     SearchView searchView = (SearchView) menuItem.getActionView();
     searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
       @Override
@@ -62,7 +64,7 @@ public class Api14Adapter extends Api11Adapter {
         menuItem.collapseActionView();
         return false;
       }
-    });
+    });}
   }
 
   @Override

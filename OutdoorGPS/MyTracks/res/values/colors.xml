@@ -56,6 +56,10 @@ limitations under the License.
   <color name="power_border">#FF401465</color>
   <color name="power_fill">#40401465</color>
 
+  <!-- signal chart colors, purple and transparent purple -->
+  <color name="signal_border">#FF401465</color>
+  <color name="signal_fill">#40401465</color>
+  
   <!-- track widget line -->
   <color name="track_widget_line">#99999999</color>
 

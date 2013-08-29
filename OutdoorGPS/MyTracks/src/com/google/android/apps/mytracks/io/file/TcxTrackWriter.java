@@ -198,6 +198,7 @@ public class TcxTrackWriter implements TrackFormatWriter {
     }
   }
 
+  // TODO Also export gsmStrength
   @Override
   public void writeLocation(Location location) {
     if (printWriter != null) {

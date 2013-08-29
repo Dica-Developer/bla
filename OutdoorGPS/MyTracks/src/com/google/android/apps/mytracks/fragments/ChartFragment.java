@@ -71,7 +71,7 @@ public class ChartFragment extends Fragment implements TrackDataListener {
 
   // Modes of operation
   private boolean chartByDistance = true;
-  private boolean[] chartShow = new boolean[] { true, true, true, true, true, true };
+  private boolean[] chartShow = new boolean[] { true, true, true, true, true, true, true };
 
   // UI elements
   private ChartView chartView;
@@ -341,6 +341,8 @@ public class ChartFragment extends Fragment implements TrackDataListener {
       reloadTrackDataHub();
       needUpdate = true;
     }
+    // TODO Make Signal Setting available in Preferences
+    setSeriesEnabled(ChartView.SIGNAL_SERIES, true);
     if (setSeriesEnabled(ChartView.ELEVATION_SERIES, PreferencesUtils.getBoolean(getActivity(),
         R.string.chart_show_elevation_key, PreferencesUtils.CHART_SHOW_ELEVATION_DEFAULT))) {
       needUpdate = true;
@@ -454,6 +456,7 @@ public class ChartFragment extends Fragment implements TrackDataListener {
    * data[4] = heart rate <br>
    * data[5] = cadence <br>
    * data[6] = power <br>
+   * data[7] = signal <br>
    * 
    * @param location the location
    * @param data the data point to fill in, can be null
@@ -467,6 +470,7 @@ public class ChartFragment extends Fragment implements TrackDataListener {
     double heartRate = Double.NaN;
     double cadence = Double.NaN;
     double power = Double.NaN;
+    double  signal = Double.NaN;
 
     if (tripStatisticsUpdater != null) {
       tripStatisticsUpdater.addLocation(location, minRecordingDistance);
@@ -510,6 +514,9 @@ public class ChartFragment extends Fragment implements TrackDataListener {
           && sensorDataSet.getPower().hasValue()) {
         power = sensorDataSet.getPower().getValue();
       }
+      if (location instanceof MyTracksLocation) {
+        signal = ((MyTracksLocation) location).getGsmSignalStrength();
+      }
     }
 
     if (data != null) {
@@ -520,6 +527,7 @@ public class ChartFragment extends Fragment implements TrackDataListener {
       data[4] = heartRate;
       data[5] = cadence;
       data[6] = power;
+      data[7] = signal;
     }
   }
 

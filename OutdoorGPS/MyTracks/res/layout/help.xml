@@ -159,8 +159,10 @@ limitations under the License.
       <TextView
         android:text="@string/help_open_answer"
         style="@style/HelpAnswer" />
-    </LinearLayout>
+     </LinearLayout> 
   </ScrollView>
   
+  <LinearLayout style="@style/BottomButtonBar" >
     <include layout="@layout/help_buttons" />
+  </LinearLayout>
 </LinearLayout>

@@ -27,8 +27,8 @@ import com.google.android.apps.mytracks.content.MyTracksProviderUtils.LocationIt
 import com.google.android.apps.mytracks.content.TrackDataListener.LocationState;
 import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
-import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
+import com.nogago.bb10.tracks.R;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -77,6 +77,8 @@ public class TrackDataHub implements DataSourceListener {
   private int minRequiredAccuracy;
   private int minRecordingDistance;
 
+  
+  
   // Heading values
   private float lastHeading = 0;
   private float lastDeclination = 0;

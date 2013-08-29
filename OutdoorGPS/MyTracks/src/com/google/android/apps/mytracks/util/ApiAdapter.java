@@ -201,4 +201,9 @@ public interface ApiAdapter {
    * @param menu the search menu
    */
   public boolean handleSearchKey(MenuItem menu);  
+  
+  /**
+   * Hides the action bar (on newer SDK
+   */
+  public void hideActionBar(Activity activity);
 }

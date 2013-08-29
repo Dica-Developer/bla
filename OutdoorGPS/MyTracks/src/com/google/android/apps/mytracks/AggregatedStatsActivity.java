@@ -40,7 +40,7 @@ public class AggregatedStatsActivity extends AbstractMyTracksActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     StatsUtils.setTripStatisticsValues(this, getTripStatistics());
-    StatsUtils.setLocationValues(this, null, false);
+    StatsUtils.setLocationValues(this, null, -1, false);
     
 
     ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
