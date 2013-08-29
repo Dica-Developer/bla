@@ -202,7 +202,7 @@ public interface MyTracksProviderUtils {
    * @param trackId the track id
    * @return the number of points inserted
    */
-  public int bulkInsertTrackPoint(Location[] locations, int length, long trackId);
+  public int bulkInsertTrackPoint(Location[] locations, int[] gsmStrength, int length, long trackId);
 
   /**
    * Creates a location object from a cursor.
@@ -273,7 +273,7 @@ public interface MyTracksProviderUtils {
    * @param trackId the track id
    * @return the content provider URI of the inserted track point
    */
-  public Uri insertTrackPoint(Location location, long trackId);
+  public Uri insertTrackPoint(Location location, int gsmstrength, long trackId);
 
   /**
    * A lightweight wrapper around the original {@link Cursor} with a method to

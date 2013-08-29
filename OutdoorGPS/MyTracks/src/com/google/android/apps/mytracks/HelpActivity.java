@@ -42,21 +42,30 @@ public class HelpActivity extends AbstractMyTracksActivity {
       // Disable the Keyboard help link
       findViewById(R.id.help_keyboard_q).setVisibility(View.GONE);
       findViewById(R.id.help_keyboard_a).setVisibility(View.GONE);
-    }
-  
-    findViewById(R.id.help_ok).setOnClickListener(new OnClickListener() {
-      public void onClick(View v) {
-        finish();
-      }
-    });
+    } 
+    try {
     findViewById(R.id.help_about).setOnClickListener(new OnClickListener() {
       public void onClick(View v) {
         new AboutDialogFragment().show(
             getSupportFragmentManager(), AboutDialogFragment.ABOUT_DIALOG_TAG);
       }
     });
-
+    findViewById(R.id.help_ok).setOnClickListener(new OnClickListener() {
+      public void onClick(View v) {
+        finish();
+      }
+    });
+    } catch (NullPointerException ne) {
+      // Layout does not have buttons
+    }
     
+  }
+  
+  /**
+   * Returns true to hide the title. Be default, do not hide the title.
+   */
+  protected boolean hideTitle() {
+    return true;
   }
 
   @Override

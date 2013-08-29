@@ -57,13 +57,14 @@ public class ChartView extends View {
 
   public static final int Y_AXIS_INTERVALS = 5;
 
-  public static final int NUM_SERIES = 6;
+  public static final int NUM_SERIES = 7;
   public static final int ELEVATION_SERIES = 0;
   public static final int SPEED_SERIES = 1;
   public static final int PACE_SERIES = 2;
   public static final int HEART_RATE_SERIES = 3;
   public static final int CADENCE_SERIES = 4;
   public static final int POWER_SERIES = 5;
+  public static final int SIGNAL_SERIES = 6;
 
   private static final int TARGET_X_AXIS_INTERVALS = 4;
 
@@ -127,7 +128,14 @@ public class ChartView extends View {
    */
   public ChartView(Context context) {
     super(context);
-
+    series[SIGNAL_SERIES] = new ChartValueSeries(context,
+        -1,
+        Integer.MAX_VALUE,
+        new int[] {1, 5, 10, 20, 50, 100 },
+        R.string.description_signal_strength,
+        R.string.description_signal_strength,
+        R.color.signal_fill,
+        R.color.signal_border);
     series[ELEVATION_SERIES] = new ChartValueSeries(context,
         Integer.MIN_VALUE,
         Integer.MAX_VALUE,

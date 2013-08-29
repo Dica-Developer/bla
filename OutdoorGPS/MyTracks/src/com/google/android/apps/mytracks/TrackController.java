@@ -41,13 +41,13 @@ public class TrackController {
   private final Activity activity;
   private final TrackRecordingServiceConnection trackRecordingServiceConnection;
   private final Handler handler;
-  private final View containerView;
+  private View containerView;
   // private final TextView statusTextView;
   // private final TextView totalTimeTextView;
-  private final ImageButton recordImageButton;
-  //private ImageButton markerImageButton;
-  private final ImageButton stopImageButton;
-  private final boolean alwaysShow;
+  private ImageButton recordImageButton;
+  // private ImageButton markerImageButton;
+  private ImageButton stopImageButton;
+  private boolean alwaysShow;
 
   private boolean isRecording;
   private boolean isPaused;
@@ -59,7 +59,8 @@ public class TrackController {
   private final Runnable updateTotalTimeRunnable = new Runnable() {
     public void run() {
       if (isRecording && !isPaused) {
-        // totalTimeTextView.setText(StringUtils.formatElapsedTimeWithHour(System.currentTimeMillis()  - totalTimeTimestamp + totalTime));
+        // totalTimeTextView.setText(StringUtils.formatElapsedTimeWithHour(System.currentTimeMillis()
+        // - totalTimeTimestamp + totalTime));
         handler.postDelayed(this, ONE_SECOND);
       }
     }
@@ -67,85 +68,110 @@ public class TrackController {
 
   public TrackController(Activity activity,
       TrackRecordingServiceConnection trackRecordingServiceConnection, boolean alwaysShow,
-      OnClickListener recordListener, OnClickListener stopListener) { // , OnClickListener markerListener) {
+      OnClickListener recordListener, OnClickListener stopListener) { // ,
+                                                                      // OnClickListener
+                                                                      // markerListener)
+                                                                      // {
     this.activity = activity;
     this.trackRecordingServiceConnection = trackRecordingServiceConnection;
     this.alwaysShow = alwaysShow;
     handler = new Handler();
-    containerView = (View) activity.findViewById(R.id.track_controller_container);
-    // statusTextView = (TextView) activity.findViewById(R.id.track_controller_status);
-    // totalTimeTextView = (TextView) activity.findViewById(R.id.track_controller_total_time);
-    recordImageButton = (ImageButton) activity.findViewById(R.id.listBtnBarRecord);
-    recordImageButton.setOnClickListener(recordListener);
-    stopImageButton = (ImageButton) activity.findViewById(R.id.listBtnBarStop);
-    stopImageButton.setOnClickListener(stopListener);
-    /*
-    if(markerListener != null) {  
-      markerImageButton = (ImageButton) activity.findViewById(R.id.listBtnBarMarker);
-      markerImageButton.setOnClickListener(markerListener);
-  } else {
-    markerImageButton=null;
-  }
-  */
+    // statusTextView = (TextView)
+    // activity.findViewById(R.id.track_controller_status);
+    // totalTimeTextView = (TextView)
+    // activity.findViewById(R.id.track_controller_total_time);
+    View view = null;
+    try {
+      view = (View) activity.findViewById(R.id.track_controller_container);
+    } catch (NullPointerException ne1) {
+      view = null;
     }
+    if (view != null)
+      containerView = view;
+
+    try {
+      view = (View) activity.findViewById(R.id.listBtnBarRecord);
+    } catch (NullPointerException ne1) {
+      view = null;
+    }
+    if (view != null) {
+      recordImageButton = (ImageButton) view;
+      recordImageButton.setOnClickListener(recordListener);
+    } else
+      recordImageButton = null;
+    try {
+      view = (View) activity.findViewById(R.id.listBtnBarStop);
+    } catch (NullPointerException ne1) {
+      view = null;
+    }
+    if (view != null) {
+      stopImageButton = (ImageButton) view;
+      stopImageButton.setOnClickListener(stopListener);
+    } else
+      stopImageButton = null;
+    // Buttons not visible
+
+    /*
+     * if(markerListener != null) { markerImageButton = (ImageButton)
+     * activity.findViewById(R.id.listBtnBarMarker);
+     * markerImageButton.setOnClickListener(markerListener); } else {
+     * markerImageButton=null; }
+     */
+  }
 
   public void update(boolean recording, boolean paused) {
     isRecording = recording;
     isPaused = paused;
-   // containerView.setVisibility(alwaysShow || isRecording ? View.VISIBLE : View.GONE);
+    // containerView.setVisibility(alwaysShow || isRecording ? View.VISIBLE :
+    // View.GONE);
 
     if (!alwaysShow && !isRecording) {
       stop();
       return;
     }
-
+    if(recordImageButton != null) {
     recordImageButton.setImageResource(isRecording && !isPaused ? R.drawable.ic_pause
         : R.drawable.ic_record);
     recordImageButton.setContentDescription(activity
         .getString(isRecording && !isPaused ? R.string.icon_pause_recording
             : R.string.icon_record_track));
+    }
     /*
-    LayoutParams lp = recordImageButton.getLayoutParams();
-    lp.width=144;
-    lp.height=81;
-    recordImageButton.setLayoutParams(lp);
-    recordImageButton.setScaleType(ScaleType.CENTER);
-*/
+     * LayoutParams lp = recordImageButton.getLayoutParams(); lp.width=144;
+     * lp.height=81; recordImageButton.setLayoutParams(lp);
+     * recordImageButton.setScaleType(ScaleType.CENTER);
+     */
+    if(stopImageButton != null) {
     stopImageButton.setImageResource(isRecording ? R.drawable.ic_stop_1 : R.drawable.ic_stop_0);
     stopImageButton.setEnabled(isRecording);
-    /*
-    lp = stopImageButton.getLayoutParams();
-    lp.width=144;
-    lp.height=81;
-    stopImageButton.setLayoutParams(lp);
-    stopImageButton.setScaleType(ScaleType.CENTER);
-    */
-    
-/*
-    statusTextView.setVisibility(isRecording ? View.VISIBLE : View.INVISIBLE);
-    if (isRecording) {
-      statusTextView.setTextColor(activity.getResources().getColor(
-          isPaused ? android.R.color.white : R.color.red));
-      statusTextView.setText(isPaused ? R.string.generic_paused : R.string.generic_recording);
     }
-*/
+    /*
+     * lp = stopImageButton.getLayoutParams(); lp.width=144; lp.height=81;
+     * stopImageButton.setLayoutParams(lp);
+     * stopImageButton.setScaleType(ScaleType.CENTER);
+     */
+
+    /*
+     * statusTextView.setVisibility(isRecording ? View.VISIBLE :
+     * View.INVISIBLE); if (isRecording) {
+     * statusTextView.setTextColor(activity.getResources().getColor( isPaused ?
+     * android.R.color.white : R.color.red)); statusTextView.setText(isPaused ?
+     * R.string.generic_paused : R.string.generic_recording); }
+     */
     stop();
     /*
-    totalTime = isRecording ? getTotalTime() : 0L;
-    totalTimeTextView.setText(StringUtils.formatElapsedTimeWithHour(totalTime));
-    if (isRecording && !isPaused) {
-      totalTimeTimestamp = System.currentTimeMillis();
-      handler.postDelayed(updateTotalTimeRunnable, ONE_SECOND);
-    }
-    */
+     * totalTime = isRecording ? getTotalTime() : 0L;
+     * totalTimeTextView.setText(StringUtils
+     * .formatElapsedTimeWithHour(totalTime)); if (isRecording && !isPaused) {
+     * totalTimeTimestamp = System.currentTimeMillis();
+     * handler.postDelayed(updateTotalTimeRunnable, ONE_SECOND); }
+     */
     /*
-    if(markerImageButton != null) {
-      markerImageButton.setImageResource(isRecording ? R.drawable.ic_marker : R.drawable.ic_upload);
-      markerImageButton.setContentDescription(activity
-          .getString(isRecording ? R.string.icon_marker
-              : R.string.icon_upload));
-    }
-    */
+     * if(markerImageButton != null) {
+     * markerImageButton.setImageResource(isRecording ? R.drawable.ic_marker :
+     * R.drawable.ic_upload); markerImageButton.setContentDescription(activity
+     * .getString(isRecording ? R.string.icon_marker : R.string.icon_upload)); }
+     */
   }
 
   /**

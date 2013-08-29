@@ -166,6 +166,7 @@ public class CsvTrackWriter implements TrackFormatWriter {
     // Do nothing
   }
 
+  // TODO also export gsmStrength
   @Override
   public void writeLocation(Location location) {
     String power = null;

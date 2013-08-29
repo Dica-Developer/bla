@@ -41,7 +41,7 @@ public class StatsUtils {
    * @param showAll true to show all the fields, false to show only the
    *          elevation field
    */
-  public static void setLocationValues(Activity activity, Location location, boolean showAll) {
+  public static void setLocationValues(Activity activity, Location location, int gsmSignal, boolean showAll) {
     boolean metricUnits = PreferencesUtils.getBoolean(
         activity, R.string.metric_units_key, PreferencesUtils.METRIC_UNITS_DEFAULT);
     boolean reportSpeed = PreferencesUtils.getBoolean(
@@ -81,6 +81,13 @@ public class StatsUtils {
       setCoordinateValue(activity, R.id.stats_latitude_value, latitude);
       setCoordinateValue(activity, R.id.stats_longitude_value, longitude);
     }
+    
+    /* Set SignalStrengt
+    TextView signalView = (TextView) activity.findViewById(R.id.stats_signal_value);
+    if (signalView != null) {
+        signalView.setText(gsmSignal<0 ? "None." : ((int) (gsmSignal/62)) + " %");
+    }
+    */
   }
 
   /**

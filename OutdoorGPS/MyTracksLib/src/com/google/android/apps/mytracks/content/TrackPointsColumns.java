@@ -46,6 +46,7 @@ public interface TrackPointsColumns extends BaseColumns {
   public static final String ALTITUDE = "elevation"; // altitude
   public static final String ACCURACY = "accuracy"; // accuracy
   public static final String SPEED = "speed"; // speed
+  public static final String GSMSTRENGTH = "gsmstrength"; // speed
   public static final String BEARING = "bearing"; // bearing
   public static final String SENSOR = "sensor"; // sensor
 
@@ -53,13 +54,14 @@ public interface TrackPointsColumns extends BaseColumns {
       + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
       + TRACKID + " INTEGER, "
       + LONGITUDE + " INTEGER, "
-      + LATITUDE + " INTEGER, "
+          + LATITUDE + " INTEGER, "
       + TIME + " INTEGER, "
       + ALTITUDE + " FLOAT, "
       + ACCURACY + " FLOAT, "
       + SPEED + " FLOAT, "
       + BEARING + " FLOAT, "
-      + SENSOR + " BLOB" 
+      + SENSOR + " BLOB, " 
+      + GSMSTRENGTH + " INTEGER "
       + ");";
 
   public static final String[] COLUMNS = {
@@ -72,7 +74,8 @@ public interface TrackPointsColumns extends BaseColumns {
       ACCURACY,
       SPEED,
       BEARING,
-      SENSOR
+      SENSOR,
+      GSMSTRENGTH
    };
 
    public static final byte[] COLUMN_TYPES = {
@@ -85,6 +88,7 @@ public interface TrackPointsColumns extends BaseColumns {
        FLOAT_TYPE_ID, // accuracy
        FLOAT_TYPE_ID, // speed
        FLOAT_TYPE_ID, // bearing
-       BLOB_TYPE_ID // sensor
+       BLOB_TYPE_ID, // sensor
+       INT_TYPE_ID // gsmstrength
    };
 }

@@ -15,6 +15,7 @@
  */
 package com.google.android.apps.mytracks.io.file;
 
+import com.google.android.apps.mytracks.content.MyTracksLocation;
 import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
@@ -87,6 +88,8 @@ public class GpxTrackWriter implements TrackFormatWriter {
       printWriter.println("xmlns=\"http://www.topografix.com/GPX/1/1\"");
       printWriter.println(
           "xmlns:topografix=\"http://www.topografix.com/GPX/Private/TopoGrafix/0/1\"");
+      printWriter.println(
+          "xmlns:nogago=\"http://www.nogago.com/\"");
       printWriter.println("xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
       printWriter.println("xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1"
           + " http://www.topografix.com/GPX/1/1/gpx.xsd"
@@ -139,7 +142,10 @@ public class GpxTrackWriter implements TrackFormatWriter {
       printWriter.println("<trkpt " + formatLocation(location) + ">");
       printWriter.println("<ele>" + ELEVATION_FORMAT.format(location.getAltitude()) + "</ele>");
       printWriter.println("<time>" + StringUtils.formatDateTimeIso8601(location.getTime()) + "</time>");
-      printWriter.println("</trkpt>");
+
+      if (location instanceof MyTracksLocation) {
+      printWriter.println("<extensions><nogago:gsmStrength>"+ ((MyTracksLocation) location).getGsmSignalStrength() +"</nogago:gsmStrength></extensions>");
+      }  printWriter.println("</trkpt>");
     }
   }
 

@@ -15,12 +15,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-<!-- <item
+ <item
     android:actionViewClass="android.widget.SearchView"
     android:icon="@drawable/menu_search"
     android:id="@+id/track_list_search"
     android:showAsAction="ifRoom|collapseActionView"
-    android:title="@string/menu_search"/>  -->
+    android:title="@string/menu_search"/>  
   <item
     android:icon="@drawable/menu_import"
     android:id="@+id/track_list_import"
@@ -53,8 +53,9 @@ limitations under the License.
     android:icon="@drawable/menu_settings"
     android:id="@+id/track_list_settings"
     android:title="@string/menu_settings"/>
- <!--  <item
+   <item
     android:icon="@drawable/menu_help"
     android:id="@+id/track_list_help"
-    android:title="@string/menu_help"/>  -->
+    android:showAsAction="ifRoom"
+    android:title="@string/menu_help"/> 
 </menu>

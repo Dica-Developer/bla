@@ -15,20 +15,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
- <!--  Moved to Button Bar <item
+ <item
     android:icon="@drawable/menu_insert_marker"
     android:id="@+id/track_detail_insert_marker"
     android:orderInCategory="1"
     android:showAsAction="ifRoom"
     android:title="@string/menu_insert_marker"/>
-     --> 
- <!-- NOT SUPPORTED ON BB <item
+<item
     android:icon="@drawable/menu_play"
     android:id="@+id/track_detail_play"
     android:orderInCategory="2"
     android:showAsAction="ifRoom"
     android:title="@string/menu_play"/>
-  <item
+ <!-- NOT SUPPORTED ON BB   <item
     android:icon="@drawable/menu_share"
     android:id="@+id/track_detail_share"
     android:orderInCategory="3"

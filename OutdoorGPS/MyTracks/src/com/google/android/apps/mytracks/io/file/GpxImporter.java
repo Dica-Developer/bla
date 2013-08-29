@@ -480,8 +480,9 @@ public class GpxImporter extends DefaultHandler {
     if (numBufferedLocations <= 0) {
       return;
     }
+    int[] zeros = new int[numBufferedLocations];
     myTracksProviderUtils.bulkInsertTrackPoint(
-        bufferedLocations, numBufferedLocations, track.getId());
+        bufferedLocations, zeros, numBufferedLocations, track.getId());
     numBufferedLocations = 0;
   }
 

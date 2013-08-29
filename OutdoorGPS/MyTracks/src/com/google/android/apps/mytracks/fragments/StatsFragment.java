@@ -22,6 +22,9 @@ import com.google.android.apps.mytracks.content.TrackDataHub;
 import com.google.android.apps.mytracks.content.TrackDataListener;
 import com.google.android.apps.mytracks.content.TrackDataType;
 import com.google.android.apps.mytracks.content.Waypoint;
+import com.google.android.apps.mytracks.signalstrength.SignalStrengthListener;
+import com.google.android.apps.mytracks.signalstrength.SignalStrengthListener.SignalStrengthCallback;
+import com.google.android.apps.mytracks.signalstrength.SignalStrengthListenerFactory;
 import com.google.android.apps.mytracks.stats.TripStatistics;
 import com.google.android.apps.mytracks.util.StatsUtils;
 import com.nogago.bb10.tracks.R;
@@ -31,6 +34,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.telephony.SignalStrength;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,12 +47,14 @@ import java.util.EnumSet;
  * @author Sandor Dornbush
  * @author Rodrigo Damazio
  */
-public class StatsFragment extends Fragment implements TrackDataListener {
+public class StatsFragment extends Fragment implements TrackDataListener, SignalStrengthCallback  {
 
   public static final String STATS_FRAGMENT_TAG = "statsFragment";
 
   private static final int ONE_SECOND = 1000;
-  
+
+  private SignalStrengthListenerFactory signalListenerFactory;
+  private SignalStrengthListener signalListener;
   private TrackDataHub trackDataHub;
   private Handler handler;
 
@@ -71,6 +77,9 @@ public class StatsFragment extends Fragment implements TrackDataListener {
   @Override
   public View onCreateView(
       LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    signalListenerFactory = new SignalStrengthListenerFactory();
+    signalListener = signalListenerFactory.create(getActivity(), this);
+    signalListener.register();
     return inflater.inflate(R.layout.stats, container, false);
   }
 
@@ -84,12 +93,19 @@ public class StatsFragment extends Fragment implements TrackDataListener {
   @Override
   public void onResume() {
     super.onResume();
+    if (signalListenerFactory == null)
+      signalListenerFactory = new SignalStrengthListenerFactory();
+    if (signalListener == null)
+      signalListener = signalListenerFactory.create(getActivity(), this);
+    signalListener.register();
     resumeTrackDataHub();
   }
 
   @Override
   public void onPause() {
     super.onPause();
+    if (signalListenerFactory != null && signalListener != null)
+      signalListener.unregister();
     pauseTrackDataHub();
     handler.removeCallbacks(updateTotalTime);
   }
@@ -102,7 +118,7 @@ public class StatsFragment extends Fragment implements TrackDataListener {
         public void run() {
           if (isResumed()) {
             lastLocation = null;
-            StatsUtils.setLocationValues(getActivity(), lastLocation, true);
+            StatsUtils.setLocationValues(getActivity(), lastLocation, gsmSignal, true);
           }
         }
       });
@@ -118,11 +134,11 @@ public class StatsFragment extends Fragment implements TrackDataListener {
           if (isResumed()) {
             if (isSelectedTrackRecording() && !isSelectedTrackPaused()) {
               lastLocation = location;
-              StatsUtils.setLocationValues(getActivity(), location, true);
+              StatsUtils.setLocationValues(getActivity(), location, gsmSignal, true);
             } else {
               if (lastLocation != null) {
                 lastLocation = null;
-                StatsUtils.setLocationValues(getActivity(), lastLocation, true);
+                StatsUtils.setLocationValues(getActivity(), lastLocation, gsmSignal, true);
               }
             }
           }
@@ -277,6 +293,59 @@ public class StatsFragment extends Fragment implements TrackDataListener {
    */
   private void updateUi(FragmentActivity activity) {
     StatsUtils.setTripStatisticsValues(activity, lastTripStatistics);
-    StatsUtils.setLocationValues(activity, lastLocation, true);
+    StatsUtils.setLocationValues(activity, lastLocation, gsmSignal, true);
+  }
+
+  final static int UNKNOWN_SIGNAL = -114;
+  SignalStrength signalStrength = null;
+  int gsmBitErrorRate = -1;
+  int gsmSignal = UNKNOWN_SIGNAL; // in dBM
+  
+  @Override
+  public void onSignalStrengthSampled(SignalStrength signal) {
+    if(signal.isGsm()) {
+      signalStrength = signal;  
+      gsmBitErrorRate = signal.getGsmBitErrorRate();
+      if(signal.getGsmSignalStrength()<2 || signal.getGsmSignalStrength()>30) {
+      switch(signal.getGsmSignalStrength()) {
+        case 0: 
+          gsmSignal = -113;
+        case 1:
+          gsmSignal = -111;
+        case 31:
+          gsmSignal = -51; // or better
+        case 99:
+          gsmSignal = UNKNOWN_SIGNAL;
+      }
+      } else {
+        gsmSignal = -109 + (signal.getGsmSignalStrength()-2) * 2;
+      }
+      gsmSignal += 113;
+    }
+  }
+
+  @Override
+  public void onDestroy() {
+    // TODO Auto-generated method stub
+    super.onDestroy();
+    if (signalListenerFactory != null && signalListener != null)
+      signalListener.unregister();
+    
+  }
+
+  @Override
+  public void onDetach() {
+    // TODO Auto-generated method stub
+    super.onDetach();
+    if (signalListenerFactory != null && signalListener != null)
+      signalListener.unregister();
+  }
+
+  @Override
+  public void onStop() {
+    // TODO Auto-generated method stub
+    super.onStop();
+    if (signalListenerFactory != null && signalListener != null)
+      signalListener.unregister();
   }
 }

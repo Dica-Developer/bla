@@ -35,14 +35,18 @@ import com.google.android.apps.mytracks.services.sensors.SensorManagerFactory;
 import com.google.android.apps.mytracks.services.tasks.AnnouncementPeriodicTaskFactory;
 import com.google.android.apps.mytracks.services.tasks.PeriodicTaskExecutor;
 import com.google.android.apps.mytracks.services.tasks.SplitPeriodicTaskFactory;
+import com.google.android.apps.mytracks.signalstrength.SignalStrengthListener;
+import com.google.android.apps.mytracks.signalstrength.SignalStrengthListener.SignalStrengthCallback;
+import com.google.android.apps.mytracks.signalstrength.SignalStrengthListenerFactory;
+import com.google.android.apps.mytracks.signalstrength.SignalStrengthService;
 import com.google.android.apps.mytracks.stats.TripStatistics;
 import com.google.android.apps.mytracks.stats.TripStatisticsUpdater;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.TrackNameUtils;
-import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
+import com.nogago.bb10.tracks.R;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -66,6 +70,7 @@ import android.os.PowerManager.WakeLock;
 import android.os.Process;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.telephony.SignalStrength;
 import android.util.Log;
 
 import java.util.Timer;
@@ -79,7 +84,7 @@ import java.util.concurrent.Executors;
  * 
  * @author Leif Hendrik Wilden
  */
-public class TrackRecordingService extends Service {
+public class TrackRecordingService extends Service implements SignalStrengthCallback {
 
   private static final String TAG = TrackRecordingService.class.getSimpleName();
   public static final double PAUSE_LATITUDE = 100.0;
@@ -258,6 +263,8 @@ public class TrackRecordingService extends Service {
       }
     }
   };
+  private SignalStrengthListenerFactory signalListenerFactory;
+  private SignalStrengthListener signalListener;
 
   /*
    * Note that this service, through the AndroidManifest.xml, is configured to
@@ -269,6 +276,10 @@ public class TrackRecordingService extends Service {
   @Override
   public void onCreate() {
     super.onCreate();
+    
+    //Signal Strength START 
+    signalListenerFactory = new SignalStrengthListenerFactory();
+    // Signal Strength END
     context = this;
     myTracksProviderUtils = MyTracksProviderUtils.Factory.get(this);
     myTracksLocationManager = new MyTracksLocationManager(this);
@@ -555,6 +566,12 @@ public class TrackRecordingService extends Service {
       return -1L;
     }
     long now = System.currentTimeMillis();
+
+    // SignalStrength register for signal sampling
+    signalListener = signalListenerFactory.create(this, this);
+    signalListener.register();
+    // SignalStrength Stop
+    
     trackTripStatisticsUpdater = new TripStatisticsUpdater(now);
     markerTripStatisticsUpdater = new TripStatisticsUpdater(now);
 
@@ -690,6 +707,9 @@ public class TrackRecordingService extends Service {
       return;
     }
 
+
+    SignalStrengthService.stopService(this);
+    
     // Need to remember the recordingTrackId before setting it to -1L
     long trackId = recordingTrackId;
     boolean paused = recordingTrackPaused;
@@ -759,7 +779,14 @@ public class TrackRecordingService extends Service {
     // Shutdown periodic tasks
     voiceExecutor.shutdown();
     splitExecutor.shutdown();
-
+    
+ // Signal Strength: Unregister from receiving signal updates
+    if (signalListener != null) {
+      signalListener.unregister();
+      signalListener = null;
+    }
+    //END Signal Strength
+    
     // Update instance variables
     if (sensorManager != null) {
       SensorManagerFactory.releaseSystemSensorManager();
@@ -829,7 +856,7 @@ public class TrackRecordingService extends Service {
 
       SensorDataSet sensorDataSet = getSensorDataSet();
       if (sensorDataSet != null) {
-        location = new MyTracksLocation(location, sensorDataSet);
+        location = new MyTracksLocation(location, sensorDataSet, gsmSignal);
       }
 
       // Always insert the first segment location
@@ -899,7 +926,7 @@ public class TrackRecordingService extends Service {
     }
 
     try {
-      Uri uri = myTracksProviderUtils.insertTrackPoint(location, track.getId());
+      Uri uri = myTracksProviderUtils.insertTrackPoint(location, gsmSignal, track.getId());
       long trackPointId = Long.parseLong(uri.getLastPathSegment());
       trackTripStatisticsUpdater.addLocation(location, minRecordingDistance);
       markerTripStatisticsUpdater.addLocation(location, minRecordingDistance);
@@ -1235,4 +1262,33 @@ public class TrackRecordingService extends Service {
       }
     }
   }
+
+  final static int UNKNOWN_SIGNAL = -114;
+  SignalStrength signalStrength = null;
+  int gsmBitErrorRate = -1;
+  int gsmSignal = UNKNOWN_SIGNAL; // in dBM
+  @Override
+  public void onSignalStrengthSampled(SignalStrength signal) {
+    if(signal.isGsm()) {
+      signalStrength = signal;  
+      gsmBitErrorRate = signal.getGsmBitErrorRate();
+      if(signal.getGsmSignalStrength()<2 || signal.getGsmSignalStrength()>30) {
+      switch(signal.getGsmSignalStrength()) {
+        case 0: 
+          gsmSignal = -113;
+        case 1:
+          gsmSignal = -111;
+        case 31:
+          gsmSignal = -51; // or better
+        case 99:
+          gsmSignal = UNKNOWN_SIGNAL;
+      }
+      } else {
+        gsmSignal = -109 + (signal.getGsmSignalStrength()-2) * 2;
+      }
+      gsmSignal += 113;
+    }
+  }
+
+
 }
