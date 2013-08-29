@@ -383,8 +383,8 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
       searchButton.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View v) {
-          // TODO Test
-          ApiAdapterFactory.getApiAdapter().handleSearchMenuSelection(TrackListActivity.this);
+
+          onSearchRequested();
         }
       });
     ImageButton moreButton = (ImageButton) findViewById(R.id.listBtnBarMore);
