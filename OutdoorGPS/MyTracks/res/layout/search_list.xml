@@ -36,6 +36,5 @@ limitations under the License.
         android:text="@string/search_list_empty_message" >
     </TextView>
 
-    <include layout="@layout/back_bar" />
 
 </LinearLayout>
