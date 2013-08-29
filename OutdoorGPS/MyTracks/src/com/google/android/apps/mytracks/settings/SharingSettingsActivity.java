@@ -49,7 +49,7 @@ public class SharingSettingsActivity extends AbstractSettingsActivity {
     addPreferencesFromResource(R.xml.sharing_settings);
 
     ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
-    backButton.setOnClickListener(new OnClickListener() {
+    if(backButton != null) backButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         SharingSettingsActivity.this.finish();

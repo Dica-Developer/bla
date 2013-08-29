@@ -54,6 +54,7 @@ public class SensorSettingsActivity extends AbstractSettingsActivity {
     addPreferencesFromResource(R.xml.sensor_settings);
 
     ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
+    if(backButton != null)
     backButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {

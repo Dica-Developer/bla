@@ -59,7 +59,7 @@ public class StatsSettingsActivity extends AbstractSettingsActivity {
 
     setContentView(R.layout.settings);
     ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
-    backButton.setOnClickListener(new OnClickListener() {
+    if(backButton != null) backButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         StatsSettingsActivity.this.finish();
