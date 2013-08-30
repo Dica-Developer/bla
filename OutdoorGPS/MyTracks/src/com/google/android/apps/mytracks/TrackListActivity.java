@@ -745,7 +745,8 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
           } catch (NameNotFoundException e) {}
 
           try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
             String line;
             while (br.read() != -1) {
               if ((line = br.readLine()) != null) {
@@ -753,13 +754,15 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
               }
             }
             br.close();
+            fr.close();
           } catch (IOException e) {
             Toast.makeText(getApplicationContext(), "Error reading exceptions file!",
                 Toast.LENGTH_LONG).show();
           }
           intent.putExtra(Intent.EXTRA_TEXT, text.toString());
           startActivity(Intent.createChooser(intent, getString(R.string.send_report)));
-          file.delete();
+
+          if(!file.delete()) Toast.makeText(getApplicationContext(), "Exceptions file not deleted",Toast.LENGTH_LONG).show();
         }
 
       });
