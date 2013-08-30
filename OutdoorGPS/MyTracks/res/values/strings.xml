@@ -1630,7 +1630,20 @@ Q\t	View statistics
   <string name="dlg_market_btn_no" translation_description="The title for cancel button the &apos;Review&apos; dialog.">No, thanks.</string>
   
   <string name="gpsies_todo" translation_description="The title for button to trigger gpsies search.">Upcoming feature: Search and download tracks from GPSies.com (and other track sharing portals).</string>
+
+  <string name="settings_mapsprovider_online" translation_description="The settings for mapprovider summary online.">Built-in online street map.</string>
+  <string name="settings_mapsprovider_offline" translation_description="The settings for mapprovider summary offline.">External offline (topographic) map.</string>
+  <string name="settings_mapsprovider_title" translation_description="The settings for mapprovider summary offline.">Preferred map provider.</string>
   
+   <string name="track_detail_install_maps_message" translation_description="When playing a track, the message informing the user that he needs
+      nogago Maps to play the track and asking him if he wants to install nogago Maps from the
+      Play Store.">    You need nogago Maps to view offline maps as well as navigate along the track. Do you want to install nogago Maps from the app store?</string>
+    <string name="track_detail_install_maps_error" translation_description="Message informing the user not able to install nogago Maps from the
+      Play Store.">    Unalbe to install nogago Maps from the app store.</string>
+    <string name="track_detail_install_maps_online" 
+        translation_description="Notify user of being able to configure online map">You can configure to use a simple internal online map in the settings for the map to view maps within the app.</string>
+   
+    
   <!-- Signal Strength -->
    <string name="stats_signal_label" >GSM Strength</string>
   <string name="error_rate"> Error Rate: %1$d</string>

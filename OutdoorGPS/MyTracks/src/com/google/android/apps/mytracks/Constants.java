@@ -15,6 +15,8 @@
  */
 package com.google.android.apps.mytracks;
 
+import android.content.ComponentName;
+
 /**
  * Constants used by the MyTracks application.
  *
@@ -183,4 +185,11 @@ public final static String PLAY_TRACKS_DOWNLOAD_URL = "market://details?id=pname
   public final static String SUPPORT_MAIL = "support@nogago.com";
   
   public final static boolean IS_BLACKBERRY = java.lang.System.getProperty("os.name").equals("qnx");
+
+  public final static ComponentName MAPS_COMPONENT = new ComponentName("com.nogago.android.maps",
+      "com.nogago.android.maps.activities.MapActivity");
+  
+  public final static String MAPS_PACKAGE = "com.nogago.android.maps"; 
+  
+  public final static String MAPS_ACTIVITY = ".activities.MapActivity";
 }

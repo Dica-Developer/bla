@@ -16,7 +16,15 @@
 
 package com.google.android.apps.mytracks;
 
+import com.google.android.apps.mytracks.fragments.InstallMapsDialogFragment;
+import com.google.android.apps.mytracks.fragments.MapFragment;
+import com.google.android.apps.mytracks.util.PreferencesUtils;
+import com.nogago.bb10.tracks.R;
+
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -39,7 +47,7 @@ import java.util.HashMap;
  * a separate content area whenever the selected tab changes.
  * <p>
  * Copied from the Fragment Tabs example in the API 4+ Support Demos.
- *
+ * 
  * @author Jimmy Shih
  */
 public class TabManager implements TabHost.OnTabChangeListener {
@@ -52,7 +60,7 @@ public class TabManager implements TabHost.OnTabChangeListener {
 
   /**
    * An object to hold a tab's info.
-   *
+   * 
    * @author Jimmy Shih
    */
   private static final class TabInfo {
@@ -72,7 +80,7 @@ public class TabManager implements TabHost.OnTabChangeListener {
   /**
    * A dummy {@link TabContentFactory} that creates an empty view to satisfy the
    * {@link TabHost} API.
-   *
+   * 
    * @author Jimmy Shih
    */
   private static class DummyTabContentFactory implements TabContentFactory {
@@ -121,33 +129,109 @@ public class TabManager implements TabHost.OnTabChangeListener {
     tabHost.addTab(tabSpec);
   }
 
-  @Override
-  public void onTabChanged(String tabId) {
-    TabInfo newTabInfo = tabs.get(tabId);
-    if (lastTabInfo != newTabInfo) {
-      FragmentTransaction fragmentTransaction = fragmentActivity.getSupportFragmentManager()
-          .beginTransaction();
-      if (lastTabInfo != null) {
-        if (lastTabInfo.fragment != null) {
-          fragmentTransaction.detach(lastTabInfo.fragment);
-        }
-      }
-      if (newTabInfo != null) {
-        if (newTabInfo.fragment == null) {
-          newTabInfo.fragment = Fragment.instantiate(
-              fragmentActivity, newTabInfo.clss.getName(), newTabInfo.bundle);
-          fragmentTransaction.add(containerId, newTabInfo.fragment, newTabInfo.tag);
-        } else {
-          fragmentTransaction.attach(newTabInfo.fragment);
-        }
-      }
-
-      lastTabInfo = newTabInfo;
-      fragmentTransaction.commitAllowingStateLoss();
-      fragmentActivity.getSupportFragmentManager().executePendingTransactions();
+  /**
+   * Returns true if Google Earth app is installed.
+   */
+  private boolean isMapsInstalled() {
+    try {
+      fragmentActivity.getPackageManager().getActivityInfo(Constants.MAPS_COMPONENT,
+          PackageManager.GET_META_DATA);
+      return true;
+    } catch (NameNotFoundException nnfe) {
+      return false;
     }
   }
-  
+
+  @Override
+  public void onTabChanged(String tabId) {
+
+    /*
+     * // Alert if nogago Maps isnt installed AlertDialog.Builder notInstalled =
+     * new AlertDialog.Builder(fragmentActivity);
+     * notInstalled.setMessage(R.string.maps_not_installed).setCancelable(false)
+     * .setPositiveButton(R.string.button_yes, new
+     * DialogInterface.OnClickListener() { public void onClick(DialogInterface
+     * dialog, int id) { Uri uri = Uri.parse(Constants.MAPS_DOWNLOAD_URL);
+     * Intent showUri = new Intent(Intent.ACTION_VIEW, uri);
+     * fragmentActivity.startActivity(showUri); }
+     * }).setNegativeButton(R.string.button_no, new
+     * DialogInterface.OnClickListener() { public void onClick(DialogInterface
+     * dialog, int id) { dialog.cancel(); } }); final AlertDialog
+     * alertnotInstalled = notInstalled.create(); // Alert if nogago Maps is
+     * installed AlertDialog.Builder builder = new
+     * AlertDialog.Builder(fragmentActivity);
+     * builder.setMessage(R.string.wanna_start_maps).setCancelable(false)
+     * .setPositiveButton(R.string.button_yes, new
+     * DialogInterface.OnClickListener() { public void onClick(DialogInterface
+     * dialog, int id) { try { if (isRecording()) { String nogagoPackage =
+     * "com.nogago.android.maps"; String mapActivity =
+     * ".activities.MapActivity"; Intent intent = new Intent();
+     * intent.setComponent(new ComponentName(nogagoPackage, nogagoPackage +
+     * mapActivity)); fragmentActivity.startActivity(intent); } else { String
+     * trackPackage ="com.nogago.android.tracks"; String trackDetailActivity =
+     * ".TrackDetailActivity"; Intent tda = new Intent(); tda.setComponent(new
+     * ComponentName(trackPackage, trackPackage+trackDetailActivity));
+     * tda.putExtra("clicked", true); fragmentActivity.startActivity(tda); } }
+     * catch (NullPointerException e) { alertnotInstalled.show(); } }
+     * }).setNegativeButton(R.string.button_no, new
+     * DialogInterface.OnClickListener() { public void onClick(DialogInterface
+     * dialog, int id) { dialog.cancel(); } }); AlertDialog alert =
+     * builder.create(); if (tabId.compareTo("mapFragment")==0) { try { tabId =
+     * StatsFragment.STATS_FRAGMENT_TAG; // nogagoMaps aufrufen
+     * this.tabHost.setCurrentTab(1); try { if (isRecording()) { String
+     * nogagoPackage = "com.nogago.android.maps"; String mapActivity =
+     * ".activities.MapActivity"; Intent intent = new Intent();
+     * intent.setComponent(new ComponentName(nogagoPackage, nogagoPackage +
+     * mapActivity)); fragmentActivity.startActivity(intent); } else { String
+     * trackPackage ="com.nogago.android.tracks"; String trackDetailActivity =
+     * ".TrackDetailActivity"; Intent tda = new Intent(); tda.setComponent(new
+     * ComponentName(trackPackage, trackPackage+trackDetailActivity));
+     * tda.putExtra("clicked", true); fragmentActivity.startActivity(tda); } }
+     * catch (NullPointerException e) { alertnotInstalled.show(); } //
+     * alert.show(); // falls nicht installiert, fragen, ob installiert werden
+     * soll } catch (NullPointerException e) { alertnotInstalled.show(); } }
+     */
+    TabInfo newTabInfo = tabs.get(tabId);
+    if (PreferencesUtils.getBoolean(fragmentActivity, R.string.settings_mapsprovider, true)
+        && (tabId.compareTo(MapFragment.MAP_FRAGMENT_TAG) == 0)) {
+      if(!isMapsInstalled()) {
+        Fragment fragment =fragmentActivity.getSupportFragmentManager().findFragmentByTag(InstallMapsDialogFragment.INSTALL_MAPS_DIALOG_TAG);
+        if (fragment == null) {
+          InstallMapsDialogFragment.newInstance()
+             .show(fragmentActivity.getSupportFragmentManager(), InstallMapsDialogFragment.INSTALL_MAPS_DIALOG_TAG); 
+          }    
+      } else {
+        // Open Maps
+        Intent intent = new Intent();
+        intent.setComponent(Constants.MAPS_COMPONENT); 
+        fragmentActivity.startActivity(intent);
+      }
+     } else {
+      if (lastTabInfo != newTabInfo) {
+        FragmentTransaction fragmentTransaction = fragmentActivity.getSupportFragmentManager()
+            .beginTransaction();
+        if (lastTabInfo != null) {
+          if (lastTabInfo.fragment != null) {
+            fragmentTransaction.detach(lastTabInfo.fragment);
+          }
+        }
+        if (newTabInfo != null) {
+          if (newTabInfo.fragment == null) {
+            newTabInfo.fragment = Fragment.instantiate(fragmentActivity, newTabInfo.clss.getName(),
+                newTabInfo.bundle);
+            fragmentTransaction.add(containerId, newTabInfo.fragment, newTabInfo.tag);
+          } else {
+            fragmentTransaction.attach(newTabInfo.fragment);
+          }
+        }
+
+        lastTabInfo = newTabInfo;
+        fragmentTransaction.commitAllowingStateLoss();
+        fragmentActivity.getSupportFragmentManager().executePendingTransactions();
+      }
+    }
+  }
+
   public Fragment getCurrentFragment() {
     return lastTabInfo.fragment;
   }

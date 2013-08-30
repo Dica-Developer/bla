@@ -766,4 +766,13 @@ Q\t	Statistik betrachten
   <string name="dlg_market_btn_yes" translation_description="The title for review button in the &apos;Review&apos; dialog.">Ja, gerne.</string>
   <string name="dlg_market_btn_no" translation_description="The title for cancel button the &apos;Review&apos; dialog.">Nein, danke.</string>
   
+  <string name="settings_mapsprovider_online" translation_description="The settings for mapprovider summary online.">Eingebaute online Strassenkarte.</string>
+  <string name="settings_mapsprovider_offline" translation_description="The settings for mapprovider summary offline.">Externe (topographische) Offline-Karte.</string>
+  <string name="settings_mapsprovider_title" translation_description="The settings for mapprovider summary offline.">Bevorzugte Karte</string>
+  
+       <string name="track_detail_install_maps_message" translation_description="When playing a track, the message informing the user that he needs       Google Earth to play the track and asking him if he wants to install Google Earth from the       Play Store.">Zur Anzeige von Offline-Karten und Track-Navigation benötigen Sie nogago Maps. Möchten Sie die App vom App Store herunterladen?</string>
+      <string name="track_detail_install_maps_online" translation_description="When playing a track, the message informing the user that he needs       Google Earth to play the track and asking him if he wants to install Google Earth from the       Play Store.">Sie können in den Einstellungen eine eingebaute Online-Karte zur Kartendarstellung konfigurieren. Track-Navigation funktioniert aber nur in Verbindung mit nogago Maps.</string>
+    <string name="track_detail_install_maps_error" translation_description="Message informing the user not able to install Google Earth from the       Play Store.">Fehler beim Installieren von nogago Maps aus dem App Store</string>
+   
+   
 </resources>

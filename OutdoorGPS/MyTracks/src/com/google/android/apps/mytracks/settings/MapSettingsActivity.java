@@ -22,6 +22,7 @@ import com.nogago.bb10.tracks.R;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -47,6 +48,7 @@ public class MapSettingsActivity extends AbstractSettingsActivity {
   private EditTextPreference slowEditTextPreference;
   private EditTextPreference mediumEditTextPreference;
   private EditTextPreference percentageEditTextPreference;
+  private CheckBoxPreference mapProviderPreference;
 
   @SuppressWarnings("deprecation")
   @Override
@@ -64,6 +66,7 @@ public class MapSettingsActivity extends AbstractSettingsActivity {
         MapSettingsActivity.this.finish();
       }
     });
+    
     ListPreference trackColorModeListPreference = (ListPreference) findPreference(
         getString(R.string.track_color_mode_key));
     trackColorModeListPreference.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
@@ -74,6 +77,18 @@ public class MapSettingsActivity extends AbstractSettingsActivity {
       }
     });
 
+
+    mapProviderPreference = (CheckBoxPreference) findPreference(
+        getString(R.string.settings_mapsprovider));
+    mapProviderPreference.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+          @Override
+          public boolean onPreferenceChange(Preference preference, Object newValue) {
+            // check whether nogago maps is installed
+            // update ui
+            return true;
+          }
+        });
+    
     slowEditTextPreference = (EditTextPreference) findPreference(
         getString(R.string.settings_map_slow_display_key));
     configureSpeedEditTextPreference(R.string.track_color_mode_slow_key);
@@ -283,4 +298,6 @@ public class MapSettingsActivity extends AbstractSettingsActivity {
     percentageEditTextPreference.setSummary(getString(R.string.settings_map_percentage_summary) + "\n"
         + getString(R.string.value_integer_percent, value));
   }
+  
+
 }
