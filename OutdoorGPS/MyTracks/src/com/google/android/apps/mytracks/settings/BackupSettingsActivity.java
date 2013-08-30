@@ -118,7 +118,7 @@ public class BackupSettingsActivity extends AbstractSettingsActivity {
                 .buildExternalDirectoryPath("backups").toString());
             Builder builder = new AlertDialog.Builder(BackupSettingsActivity.this);
             builder.setMessage(msg).setNeutralButton(getString(android.R.string.cancel), null);
-            builder.setPositiveButton(android.R.string.OK, new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
               @Override
               public void onClick(DialogInterface dialog, int which) {
                 Intent intent = IntentUtils.newIntent(BackupSettingsActivity.this,
