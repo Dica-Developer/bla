@@ -757,4 +757,13 @@ Q\t	Statistik betrachten
       Wir werden Sie beim nächsten App Start daher nochmals fragen. Falls Sie nicht weiter gefragt werden wollen, dann senden Sie die Bewertung oder den Feature-Wunsch einfach nicht ab.</string>
   <string name="dlg_review_btn_feature_msg" translation_description="The email text template for the user when 0the &apos;Review&apos; dialog is answered with Request.">Hi, I would like to see the following features in your app: \n </string>
   
+  <!--  Marketing dialog -->
+    <!--  Marketing Dialog -->
+  <string name="dlg_market_title" translation_description="The title for the &apos;Market&apos; dialog.">    
+        Apps by nogago </string>
+  <string name="dlg_market_body" translation_description="The title for the &apos;Market&apos; dialog.">    
+        Wir hoffen, dass Ihnen nogago Tracks gefällt. Lust auf mehr? Probieren Sie doch einmal unsere anderen Apps und Spiele aus, meist ganz umsonst und mit besten Bewertungen !</string>      
+  <string name="dlg_market_btn_yes" translation_description="The title for review button in the &apos;Review&apos; dialog.">Ja, gerne.</string>
+  <string name="dlg_market_btn_no" translation_description="The title for cancel button the &apos;Review&apos; dialog.">Nein, danke.</string>
+  
 </resources>

@@ -26,6 +26,7 @@ import com.google.android.apps.mytracks.fragments.CheckUnitsDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteAllTrackDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment.DeleteOneTrackCaller;
+import com.google.android.apps.mytracks.fragments.MarketDialogFragment;
 import com.google.android.apps.mytracks.fragments.ReviewDialogFragment;
 import com.google.android.apps.mytracks.fragments.WelcomeDialogFragment;
 import com.google.android.apps.mytracks.io.file.SaveActivity;
@@ -703,6 +704,11 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
       Fragment fragment =getSupportFragmentManager().findFragmentByTag(ReviewDialogFragment.REVIEW_DIALOG_TAG); if (fragment == null) {
         ReviewDialogFragment.newInstance(false)
            .show(getSupportFragmentManager(), ReviewDialogFragment.REVIEW_DIALOG_TAG); }    
+    } else if((EulaUtils.getAppStart(this) % 10) == 2 ) {
+      // Ask For Review
+      Fragment fragment = getSupportFragmentManager().findFragmentByTag(MarketDialogFragment.MARKET_DIALOG_TAG); if (fragment == null) {
+        MarketDialogFragment.newInstance(false)
+           .show(getSupportFragmentManager(), MarketDialogFragment.MARKET_DIALOG_TAG); }    
     } else {
       /*
        * Before the welcome sequence, the empty view is not visible so that it
