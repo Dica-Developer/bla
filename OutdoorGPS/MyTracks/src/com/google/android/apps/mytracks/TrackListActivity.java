@@ -26,6 +26,7 @@ import com.google.android.apps.mytracks.fragments.CheckUnitsDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteAllTrackDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment.DeleteOneTrackCaller;
+import com.google.android.apps.mytracks.fragments.ReviewDialogFragment;
 import com.google.android.apps.mytracks.fragments.WelcomeDialogFragment;
 import com.google.android.apps.mytracks.io.file.SaveActivity;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
@@ -681,14 +682,8 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
    */
   public void showStartupDialogs() {
     setupDirectories();
-    checkPriorExceptions(false);
     /*
-     * if (!EulaUtils.getAcceptEula(this)) { Fragment fragment =
-     * getSupportFragmentManager()
-     * .findFragmentByTag(EulaDialogFragment.EULA_DIALOG_TAG); if (fragment ==
-     * null) { EulaDialogFragment.newInstance(false)
-     * .show(getSupportFragmentManager(), EulaDialogFragment.EULA_DIALOG_TAG); }
-     * } else
+     * if (!EulaUtils.getAcceptEula(this)) { } else
      */if (EulaUtils.getShowWelcome(this)) {
       Fragment fragment = getSupportFragmentManager().findFragmentByTag(
           WelcomeDialogFragment.WELCOME_DIALOG_TAG);
@@ -703,6 +698,11 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         new CheckUnitsDialogFragment().show(getSupportFragmentManager(),
             CheckUnitsDialogFragment.CHECK_UNITS_DIALOG_TAG);
       }
+    } else if(EulaUtils.getShowReview(this) && EulaUtils.getAppStart(this) > 3) {
+      // Ask For Review
+      Fragment fragment =getSupportFragmentManager().findFragmentByTag(ReviewDialogFragment.REVIEW_DIALOG_TAG); if (fragment == null) {
+        ReviewDialogFragment.newInstance(false)
+           .show(getSupportFragmentManager(), ReviewDialogFragment.REVIEW_DIALOG_TAG); }    
     } else {
       /*
        * Before the welcome sequence, the empty view is not visible so that it
@@ -710,6 +710,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
        */
       findViewById(R.id.track_list_empty_view).setVisibility(View.VISIBLE);
     }
+     checkPriorExceptions(false);
   }
 
   /*
@@ -726,7 +727,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         @Override
         public void onClick(DialogInterface dialog, int which) {
           Intent intent = new Intent(Intent.ACTION_SEND);
-          intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "support@nogago.com" }); //$NON-NLS-1$
+          intent.putExtra(Intent.EXTRA_EMAIL, new String[] { Constants.SUPPORT_MAIL }); //$NON-NLS-1$
           intent.setType("vnd.android.cursor.dir/email"); //$NON-NLS-1$
           intent.putExtra(Intent.EXTRA_SUBJECT, "nogago bug"); //$NON-NLS-1$
           StringBuilder text = new StringBuilder();

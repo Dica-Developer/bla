@@ -45,8 +45,8 @@ public class AboutDialogFragment extends DialogFragment {
         .setNegativeButton(R.string.about_license, new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialog, int which) {
-            EulaDialogFragment.newInstance(true).show(
-                activity.getSupportFragmentManager(), EulaDialogFragment.EULA_DIALOG_TAG);
+            ReviewDialogFragment.newInstance(true).show(
+                activity.getSupportFragmentManager(), ReviewDialogFragment.REVIEW_DIALOG_TAG);
           }
         })
         .setPositiveButton(R.string.generic_ok, null)

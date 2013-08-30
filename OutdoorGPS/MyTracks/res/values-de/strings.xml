@@ -744,4 +744,17 @@ Q\t	Statistik betrachten
     <string name="dlg_import">Bitte legen Sie Ihre GPX tracks zum Import im Verzeichnis %1$s ab \n(bei BlackBerry ist /mnt/sdcard ein Ordner /misc/android im Gerätespeicher )</string>
   <string name="dlg_restore">Bitte legen Sie Ihr backup.ZIP im Verzeichnis %1$s ab \n(bei BlackBerry ist /mnt/sdcard ein Ordner /misc/android im Gerätespeicher )</string>
     
+  <string name="dlg_review_title" translation_description="The title for the &apos;Review&apos; dialog.">    
+        App bewerten</string>
+  <string name="dlg_review_body" translation_description="The title for the &apos;Review&apos; dialog.">    
+      Bitte belohnen Sie unsere Anstrengungen für diese kostenfreie Open Source App durch eine Bewertung im App Store. Gerne nehmen wir auch Ihre Wünsche für zusätzliche Features in neuen Versionen auf.
+  </string>
+  <string name="dlg_review_btn_review" translation_description="The title for review button in the &apos;Review&apos; dialog.">Bewerten</string>
+  <string name="dlg_review_btn_feature" translation_description="The title for feature request button the &apos;Review&apos; dialog.">Wünschen</string>
+  <string name="dlg_review_btn_no" translation_description="The title for cancel button the &apos;Review&apos; dialog.">Später</string>
+  <string name="dlg_review_btn_no_msg" translation_description="The msg presented to the user when 0the &apos;Review&apos; dialog is answered with no.">
+      Bitte belohnen Sie unsere Anstrengungen durch eine Bewertung oder Feedback. 
+      Wir werden Sie beim nächsten App Start daher nochmals fragen. Falls Sie nicht weiter gefragt werden wollen, dann senden Sie die Bewertung oder den Feature-Wunsch einfach nicht ab.</string>
+  <string name="dlg_review_btn_feature_msg" translation_description="The email text template for the user when 0the &apos;Review&apos; dialog is answered with Request.">Hi, I would like to see the following features in your app: \n </string>
+  
 </resources>

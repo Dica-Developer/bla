@@ -20,6 +20,7 @@ import static com.google.android.apps.mytracks.Constants.TAG;
 import com.google.android.apps.mytracks.services.RemoveTempFilesService;
 import com.google.android.apps.mytracks.util.AnalyticsUtils;
 import com.google.android.apps.mytracks.util.ApiAdapterFactory;
+import com.google.android.apps.mytracks.util.EulaUtils;
 import com.google.android.apps.mytracks.util.FileUtils;
 import com.nogago.bb10.tracks.BuildConfig;
 
@@ -45,6 +46,7 @@ public class MyTracksApplication extends Application {
   @Override
   public void onCreate() {
     super.onCreate();
+    EulaUtils.increaseAppStart(this);
     Thread.setDefaultUncaughtExceptionHandler(new DefaultExceptionHandler());
     if (BuildConfig.DEBUG) {
       ApiAdapterFactory.getApiAdapter().enableStrictMode();

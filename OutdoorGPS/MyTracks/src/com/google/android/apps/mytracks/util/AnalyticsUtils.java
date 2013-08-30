@@ -27,7 +27,7 @@ import android.content.Context;
  */
 public class AnalyticsUtils {
 
-  private static final String UA = "UA-41587961-1"; // Web: UA-41593619-1 App: UA-41587961-1
+  private static final String UA = "UA-43663510-1"; 
   private static final String PRODUCT_NAME = "nogago Tracks";
   private static GoogleAnalyticsTracker tracker;
 
