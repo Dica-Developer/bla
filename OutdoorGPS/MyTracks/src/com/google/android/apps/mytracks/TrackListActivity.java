@@ -542,9 +542,18 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         return true;
       case R.id.track_list_import:
         AnalyticsUtils.sendPageViews(this, "/action/import");
-        intent = IntentUtils.newIntent(this, ImportActivity.class).putExtra(
-            ImportActivity.EXTRA_IMPORT_ALL, true);
-        startActivity(intent);
+        String msg = String.format(getResources().getString(R.string.dlg_import), FileUtils.buildExternalDirectoryPath("gpx").toString());
+        Builder builder =          
+            new AlertDialog.Builder(TrackListActivity.this);
+        builder.setMessage(msg).setNeutralButton(getString(android.R.string.cancel), null);
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            Intent myintent = IntentUtils.newIntent(TrackListActivity.this, ImportActivity.class).putExtra(
+                ImportActivity.EXTRA_IMPORT_ALL, true);
+            startActivity(myintent);
+          }});
+        builder.show();
         return true;
       case R.id.track_list_save_all_gpx:
         startSaveActivity(TrackFileFormat.GPX);

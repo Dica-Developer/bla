@@ -20,10 +20,13 @@ import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.io.backup.BackupActivity;
 import com.google.android.apps.mytracks.io.backup.RestoreChooserActivity;
 import com.google.android.apps.mytracks.util.DialogUtils;
+import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.nogago.bb10.tracks.R;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -53,17 +56,16 @@ public class BackupSettingsActivity extends AbstractSettingsActivity {
    * Note that sharedPreferenceChangeListenr cannot be an anonymous inner class.
    * Anonymous inner class will get garbage collected.
    */
-  private final OnSharedPreferenceChangeListener
-      sharedPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
-        @Override
-        public void onSharedPreferenceChanged(SharedPreferences preferences, String key) {
-          // Note that key can be null
-          if (PreferencesUtils.getKey(BackupSettingsActivity.this, R.string.recording_track_id_key)
-              .equals(key)) {
-            updateUi();
-          }
-        }
-      };
+  private final OnSharedPreferenceChangeListener sharedPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences preferences, String key) {
+      // Note that key can be null
+      if (PreferencesUtils.getKey(BackupSettingsActivity.this, R.string.recording_track_id_key)
+          .equals(key)) {
+        updateUi();
+      }
+    }
+  };
 
   @SuppressWarnings("deprecation")
   @Override
@@ -73,20 +75,20 @@ public class BackupSettingsActivity extends AbstractSettingsActivity {
     setContentView(R.layout.settings);
 
     ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
-    if(backButton != null)
-    backButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        BackupSettingsActivity.this.finish();
-      }
-    });
+    if (backButton != null)
+      backButton.setOnClickListener(new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          BackupSettingsActivity.this.finish();
+        }
+      });
     getSharedPreferences(Constants.SETTINGS_NAME, Context.MODE_PRIVATE)
         .registerOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
 
     addPreferencesFromResource(R.xml.backup_settings);
     backupPreference = findPreference(getString(R.string.settings_backup_now_key));
     backupPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-        @Override
+      @Override
       public boolean onPreferenceClick(Preference preference) {
         Intent intent = IntentUtils.newIntent(BackupSettingsActivity.this, BackupActivity.class);
         startActivity(intent);
@@ -95,7 +97,7 @@ public class BackupSettingsActivity extends AbstractSettingsActivity {
     });
     restorePreference = findPreference(getString(R.string.settings_backup_restore_key));
     restorePreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-        @Override
+      @Override
       public boolean onPreferenceClick(Preference preference) {
         showDialog(DIALOG_CONFIRM_RESTORE_ID);
         return true;
@@ -112,11 +114,23 @@ public class BackupSettingsActivity extends AbstractSettingsActivity {
         R.string.settings_backup_restore_confirm_message, new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialog, int which) {
-            Intent intent = IntentUtils.newIntent(
-                BackupSettingsActivity.this, RestoreChooserActivity.class);
-            startActivity(intent);
+            String msg = String.format(getResources().getString(R.string.dlg_restore), FileUtils
+                .buildExternalDirectoryPath("backups").toString());
+            Builder builder = new AlertDialog.Builder(BackupSettingsActivity.this);
+            builder.setMessage(msg).setNeutralButton(getString(android.R.string.cancel), null);
+            builder.setPositiveButton(android.R.string.OK, new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                Intent intent = IntentUtils.newIntent(BackupSettingsActivity.this,
+                    RestoreChooserActivity.class);
+                startActivity(intent);
+              }
+            });
+            builder.show();
+
           }
         });
+
   }
 
   @Override
@@ -129,8 +143,7 @@ public class BackupSettingsActivity extends AbstractSettingsActivity {
    * Updates the UI based on the recording state.
    */
   private void updateUi() {
-    boolean isRecording = PreferencesUtils.getLong(this, R.string.recording_track_id_key)
-        != PreferencesUtils.RECORDING_TRACK_ID_DEFAULT;
+    boolean isRecording = PreferencesUtils.getLong(this, R.string.recording_track_id_key) != PreferencesUtils.RECORDING_TRACK_ID_DEFAULT;
     backupPreference.setEnabled(!isRecording);
     restorePreference.setEnabled(!isRecording);
     backupPreference.setSummary(isRecording ? R.string.settings_not_while_recording

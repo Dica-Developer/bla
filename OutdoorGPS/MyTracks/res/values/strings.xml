@@ -439,7 +439,7 @@ limitations under the License.
       Character limit: ~20 (1 line)">    Help</string>
     <string name="menu_import" translation_description="In the menu, to import tracks from the SD card.
 
-      Character limit: ~20 (1 line)">    Import from SD card</string>
+      Character limit: ~20 (1 line)">    Import tracks</string>
     <string name="menu_insert_marker" translation_description="In the menu, to insert a marker.
 
       Character limit: ~20 (1 line)">    Insert marker</string>
@@ -538,13 +538,13 @@ limitations under the License.
     <string name="sd_card_error_no_storage" translation_description="When importing/saving to the SD card, the error message indicating that
       no SD card is found.">    No SD card is found.</string>
     <string name="sd_card_import_error" translation_description="When importing from the SD card, the error message indicating not able
-      to import.">    Unable to import from SD card.</string>
+      to import.">    Unable to import from SD card or device memory.</string>
     <string name="sd_card_import_error_no_file" translation_description="When importing from the SD card, the error message indicating that no
       file is found on a SD card directory.
 
       %1$s: the SD card directory. E.g., &apos;/mnt/sdcard/MyTracks/gpx/&apos;.">    No file found in %1$s.</string>
-    <string name="sd_card_import_progress_message" translation_description="When importing from the SD card, the progress message.">    Importing from SD card&#8230;</string>
-    <string name="sd_card_import_success" translation_description="When importing from the SD card, the success message.">    Finished importing from SD card.</string>
+    <string name="sd_card_import_progress_message" translation_description="When importing from the SD card, the progress message.">    Importing tracks&#8230;</string>
+    <string name="sd_card_import_success" translation_description="When importing from the SD card, the success message.">    Finished importing tracks.</string>
     <string name="sd_card_import_success_count" translation_description="When importing from the SD card, the success message with a count of
       the imported files.
 
@@ -552,7 +552,7 @@ limitations under the License.
       %2$s the number of files in the SD card. E.g., &apos;1 GPX file&apos; or &apos;2 GPX files&apos;.
       %3$s the SD card directory. E.g., &apos;/mnt/sdcard/MyTracks/gpx/&apos;.">    Imported %1$d of %2$s from %3$s.</string>
     <string name="sd_card_save_error" translation_description="When saving to the SD card, the error message indicating not able to
-      save.">    Unable to save to SD card.</string>
+      save.">    Unable to save track to SD card or memory.</string>
     <string name="sd_card_save_error_create_dir" translation_description="When saving to the SD card, the error message indicating not able to
       create a directory on the SD card.">    Unable to create a directory on SD card.</string>
     <string name="sd_card_save_error_no_track" translation_description="When saving to the SD card, the error message indicating that no track
@@ -1446,10 +1446,8 @@ limitations under the License.
          Why are tracks split into multiple segments at import?</string>
              
        <string name="help_import_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
-            You can import tracks in the format GPX. Place the tracks into the folder
-            documents/ Tracks/ gpx folder on your media card (Z10) or 
-            misc/ android/ documents/ Tracks/ gpx folder on your memory card (Q10). 
-            Navigate to the track list. Press the button with three dots. Choose \"Import from SD card\". 
+            You can import tracks in the format GPX.
+            Navigate to the track list. Press the button with three dots. Choose \"Import track\".  Place the tracks into the folder displayed in the alert dialog prior to pressing OK.
             When the operation is finished you will find the tracks in the track list. Android users can directly import GPX tracks by clicking on GPX files in the file browser. Opening GPX files from email attachments is also supported on Android.
             Please contact BlackBerry and request this feature in the Android Runtime to experience this convenience on BlackBerry10 as well !
             </string>
@@ -1458,9 +1456,8 @@ limitations under the License.
         How can I open GPX tracks that I have downloaded from nogago.com, received from friends, or downloaded on the Web ?</string>
          
            <string name="help_export_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
-            Navigate to the track list. Press the button with three dots. Choose \"Export to SD card\". You can choose the common formats
-            GPX, KML (for viewing on Google Maps and Google Earth), and CSV. The exported track will be available below documents/Tracks/ folder on your media card (Z10) or 
-            misc/android/documents/Tracks/ folder on your memory card (Q10).
+            Navigate to the track list. Press the button with three dots. Choose \"Export track\". You can choose the common formats
+            GPX, KML (for viewing on Google Maps and Google Earth), and CSV. The exported track will be available in the folder that reported after the operation finishes.
              Alternatively you can mail a single track in those formats
             to a friend or upload the track for viewing online at nogago.com.
             
@@ -1471,9 +1468,8 @@ limitations under the License.
          
            <string name="help_backup_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
             Use the Backup functionality available from the settings. 
-            Your backup is compatible between Android and BlackBerry versions of this app. All Backups will be placed in 
-            documents/Tracks/backups folder on your media card (Z10) or 
-            misc/android/documents/Tracks/backups folder on your memory card (Q10). </string>
+            Your backup is compatible between Android and BlackBerry versions of this app. The application reports where the backup is stored at
+            the end of the operation. </string>
             
     <string name="help_backup_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
          How do I backup my settings and all recorded tracks?</string>
@@ -1481,8 +1477,7 @@ limitations under the License.
          
            <string name="help_restore_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
             Use the Restore functionality available from the settings. You can choose to restore a specific backup, if you have several backups. To restore
-            your backup from another phone simply place the ZIP file into the documents/Tracks/backups folder on your media card (Z10) or 
-            misc/android/documents/Tracks/backups folder on your memory card (Q10). 
+            your backup from another phone simply place the ZIP file into the folder named in the alert dialog prior to pressing OK. 
             Backup and restore from Android and BlackBerry10 phones are compatible.
             
             Use the import function to restore your GPX tracks recorded with nogago® Outdoor GPS for BlackBerry OS 4.5-7.1 </string>
@@ -1612,6 +1607,8 @@ Q\t	View statistics
   <string name="started_sampling">Started sampling cell signal strength.</string>
   <string name="stopped_sampling">Stopped sampling cell signal strength.</string>
   <string name="unknown">-</string>
+  <string name="dlg_import">Please place your GPX tracks in directory %1$s \n(on BlackBerry /mnt/sdcard maps to device memory folder /misc/android )</string>
+  <string name="dlg_restore">Please place your backup.ZIP in directory %1$s \n(on BlackBerry /mnt/sdcard maps to device memory folder /misc/android )</string>
 
   <!-- Signal Strength -->
    <string name="stats_signal_label" >GSM Strength</string>
