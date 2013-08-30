@@ -214,7 +214,7 @@
     <string name="menu_delete_all" translation_description="In the menu, to delete all the tracks.        Character limit: ~20 (1 line)">Alle löschen</string>
     <string name="menu_edit" translation_description="In the menu, to edit a track or a marker.        Character limit: ~20 (1 line)">Bearbeiten</string>
     <string name="menu_help" translation_description="In the menu, to go to the help page.        Character limit: ~20 (1 line)">Hilfe</string>
-    <string name="menu_import" translation_description="In the menu, to import tracks from the SD card.        Character limit: ~20 (1 line)">Von SD-Karte import.</string>
+    <string name="menu_import" translation_description="In the menu, to import tracks from the SD card.        Character limit: ~20 (1 line)">Tracks importieren</string>
     <string name="menu_insert_marker" translation_description="In the menu, to insert a marker.        Character limit: ~20 (1 line)">Markierung einfügen</string>
     <string name="menu_map_mode" translation_description="In the menu, to switch the display to the map mode.        Character limit: ~20 (1 line)">Kartenmodus</string>
     <string name="menu_markers" translation_description="In the menu, to show a list of markers for the current track.        Character limit: ~20 (1 line)">Markierungen</string>
@@ -245,7 +245,7 @@
     <string name="permission_write_label" translation_description="When installing a third-party app that wants to write data to My       Tracks, the permission label that the Android Market shows to the user.">Daten in \"nogago Tracks\" schreiben und \"nogago Tracks\"-Aufzeichnung starten/beenden</string>
     <string name="sd_card_canceled" translation_description="When importing/saving to the SD card, the message indicating that the       operation was canceled.">Vorgang wurde abgebrochen.</string>
     <string name="sd_card_error_no_storage" translation_description="When importing/saving to the SD card, the error message indicating that       no SD card is found.">Keine SD-Karte gefunden</string>
-    <string name="sd_card_import_error" translation_description="When importing from the SD card, the error message indicating not able       to import.">Kein Import von SD-Karte möglich.</string>
+    <string name="sd_card_import_error" translation_description="When importing from the SD card, the error message indicating not able       to import.">Kein Import von SD-Karte oder Gerätespeicher möglich.</string>
     <string name="sd_card_import_error_no_file" translation_description="When importing from the SD card, the error message indicating that no       file is found on a SD card directory.        %1$s: the SD card directory. E.g., &apos;/mnt/sdcard/MyTracks/gpx/&apos;.">Keine Datei unter %1$s gefunden</string>
     <string name="sd_card_import_progress_message" translation_description="When importing from the SD card, the progress message.">Import von SD-Karte...</string>
     <string name="sd_card_import_success" translation_description="When importing from the SD card, the success message.">Importieren von SD-Karte abgeschlossen</string>
@@ -641,8 +641,7 @@ Was macht nogago® Tracks?
          Warum werden Tracks beim Import manchmal geteilt?</string>
              
        <string name="help_import_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
-           Sie können Tracks im Format GPX importieren. Plazieren Sie dazu die Tracks im Ordner documents/ Tracks/ gpx (Z10) bzw. misc/android/ documents/ Tracks/ gpx (Q10))
-           auf Ihrer externen Speicherkarte. Wählen Sie dann \"Importieren\" als Aktion in der Track-Liste (unter ...).
+           Sie können Tracks im Format GPX importieren.  Wählen Sie dann \"Importieren\" als Aktion in der Track-Liste (unter ...). 
             Nach dem Import werden die Tracks in der Track-Liste angezeigt. Unter Android können Sie GPX Dateien auch direkt öffnen 
             und GPX Dateien aus Dateianhängen in der E-Mail öffnen. BlackBerry unterstützt das leider nicht, kontaktieren Sie 
             BlackBerry, um Ihren Wunsch nach einer solchen Funktion zu äußern !
@@ -653,8 +652,7 @@ Was macht nogago® Tracks?
          
            <string name="help_export_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
           Navigieren Sie zur Track Liste. Rufen Sie die Aktion \"Exportieren\" (unter ...) auf. Sie können zwischen GPX, KML (für Google Maps und Earth)
-               und CSV als Datenformat wählen. Sie finden die exportierten Tracks dann auf der Speicherkarte unter documents/Tracks/ (Z10) bzw. bzw. misc/android/ documents/ Tracks (Q10) im jeweiligen
-               Unterordner je nach gewähltem Format. Alternativ können Sie eine einzelne GPX-Datei per E-Mail versenden oder den Track auf
+               und CSV als Datenformat wählen. Sie finden die exportierten Tracks dann mit einer File Manager app unter /misc/android/documents/Tracks/ Unterordnern je nach gewähltem Format. Alternativ können Sie eine einzelne GPX-Datei per E-Mail versenden oder den Track auf
                nogago.com hochladen, und Ihn dann im Browser betrachten.
             
             </string>
@@ -665,7 +663,7 @@ Was macht nogago® Tracks?
          
            <string name="help_backup_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
           Nutzen Sie die Sicherungsfunktion unter Einstellungen / Sicherung.  
-          Ihre Backups finden sich unter dem Ordner documents/Tracks/ backups (Z10)  bzw. misc/android/ documents/ Tracks/ backups (Q10) auf der Speicherkarte und
+          Ihre Backups finden sich unter dem Ordner den der Dialog anzeigt und
           ist Kompatibel mit der Android Version dieser App. </string>
             
     <string name="help_backup_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
@@ -675,7 +673,7 @@ Was macht nogago® Tracks?
            <string name="help_restore_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
             Nutzen Sie die Wiederherstellen Funktion, die über Einstellungen / Sicherung aufgerufen werden kann.
             Sie können die Backup-Datei von anderen Telefonen übertragen (Kompatibel zwischen Blackberry und Android). 
-            Platzieren Sie dazu Ihre Backup ZIP-Dateien im Ordner documents/Tracks/ backups (Z10)  bzw. misc/android/ documents/ Tracks/ backups (Q10) auf der Speicherkarte. Für
+            Platzieren Sie dazu Ihre Backup ZIP-Dateien im Ordner den der Dialog anzeigt. Für
             den Import von Aufzeichnungen aus nogago Outdoor GPS (BlackBerry OS 4.5-7.1) nutzen Sie bitte die Import Funktion.</string>
             
     <string name="help_restore_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
@@ -687,7 +685,7 @@ Was macht nogago® Tracks?
            <string name="help_open_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
           Diese App ist Open Source und wird unter Apache Lizenz Version 2.0 veröffentlicht. Dies erlaubt Dritten 
           unsere App zu erweitern, dies schliesst eine kommerzielle Nutzung nicht aus (kontaktieren Sie sales@nogago.com, wenn Sie
-          eine angepasste Version entwickeln wollen), und erlaubt unseren verehrten Nutzen herauszufinden, was eigentlich mit Ihren Daten passiert, was Ihre Privatsphäre schützt.
+          eine angepasste Version entwickeln wollen), und erlaubt unseren verehrten Nutzen herauszufinden, was eigentlich mit Ihren Daten passiert.
           \n\n Weiter konnten wir die App nur bauen, weil die My Tracks Community Ihren Quellcode veröffentlicht hat.
           Wir freuen uns über weitere Beiträge von anderen Entwicklern, aber auch Übersetzung in weitere Sprachen. Der Source Code findet
           sich unter opensource.nogago.com.
@@ -740,6 +738,10 @@ Q\t	Statistik betrachten
     </string>
             
     <string name="n_help_keyboard_question">
-         Can I control the app with the keyboard ?
+        Kann ich die App über Tasten steuern ?
     </string>
+    
+    <string name="dlg_import">Bitte legen Sie Ihre GPX tracks zum Import im Verzeichnis %1$s ab \n(bei BlackBerry ist /mnt/sdcard ein Ordner /misc/android im Gerätespeicher )</string>
+  <string name="dlg_restore">Bitte legen Sie Ihr backup.ZIP im Verzeichnis %1$s ab \n(bei BlackBerry ist /mnt/sdcard ein Ordner /misc/android im Gerätespeicher )</string>
+    
 </resources>
