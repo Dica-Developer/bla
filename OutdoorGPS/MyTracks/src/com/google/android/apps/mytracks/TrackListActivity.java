@@ -389,12 +389,12 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
           onSearchRequested();
         }
       });
-    ImageButton moreButton = (ImageButton) findViewById(R.id.listBtnBarMore);
-    if (moreButton != null)
-      moreButton.setOnClickListener(new OnClickListener() {
+    ImageButton gpsiesButton = (ImageButton) findViewById(R.id.listBtnBarGpsies);
+    if (gpsiesButton != null)
+      gpsiesButton.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View v) {
-          openOptionsMenu();
+          Toast.makeText(TrackListActivity.this, R.string.gpsies_todo, Toast.LENGTH_LONG).show();
         }
       });
 
