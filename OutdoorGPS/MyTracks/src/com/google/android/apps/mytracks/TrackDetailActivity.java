@@ -51,6 +51,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -635,6 +636,31 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     }
     return false;
   }
+  
+  /**
+   * Returns true if Google Earth app is installed.
+   */
+  private boolean isMapsInstalled() {
+    try {
+    getPackageManager().getActivityInfo(Constants.MAPS_COMPONENT, PackageManager.GET_META_DATA);
+    return true;
+    } catch (NameNotFoundException nnfe) {
+      return false;
+    }
+/* Google Earth Way of doing This
+    List<ResolveInfo> infos = getPackageManager().queryIntentActivities(
+        new Intent().setType(SaveActivity.GOOGLE_EARTH_KML_MIME_TYPE),
+        PackageManager.MATCH_DEFAULT_ONLY);
+    for (ResolveInfo info : infos) {
+      if (info.activityInfo != null && info.activityInfo.packageName != null
+          && info.activityInfo.packageName.equals(SaveActivity.GOOGLE_EARTH_PACKAGE)) {
+        return true;
+      }
+    }
+    return false;
+    */
+  }
+  
 
   @Override
   public boolean onKeyUp(int keyCode, KeyEvent event) {
@@ -669,7 +695,11 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         break;
 
       case KeyEvent.KEYCODE_SPACE:
-        tabHost.setCurrentTab(tabHost.getCurrentTab() + 1);
+        if((tabHost.getCurrentTab() == 1) && PreferencesUtils.getBoolean(this, R.string.settings_mapsprovider, true)) {
+          // Use nogago Maps
+        } else {
+           tabHost.setCurrentTab(tabHost.getCurrentTab() + 1);
+        } 
         break;
 
       case KeyEvent.KEYCODE_I:
