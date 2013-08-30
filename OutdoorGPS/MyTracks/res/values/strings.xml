@@ -1610,6 +1610,17 @@ Q\t	View statistics
   <string name="dlg_import">Please place your GPX tracks in directory %1$s \n(on BlackBerry /mnt/sdcard maps to device memory folder /misc/android )</string>
   <string name="dlg_restore">Please place your backup.ZIP in directory %1$s \n(on BlackBerry /mnt/sdcard maps to device memory folder /misc/android )</string>
 
+  <string name="dlg_review_title" translation_description="The title for the &apos;Review&apos; dialog.">    
+        Review this app </string>
+  <string name="dlg_review_body" translation_description="The title for the &apos;Review&apos; dialog.">    
+        Please support our efforts on this free and open source app by providing a short review in the app store. 
+        We are happy to consider your feature requests for future versions via email.
+  </string>
+  <string name="dlg_review_btn_review" translation_description="The title for review button in the &apos;Review&apos; dialog.">Review</string>
+  <string name="dlg_review_btn_feature" translation_description="The title for feature request button the &apos;Review&apos; dialog.">Request</string>
+  <string name="dlg_review_btn_no" translation_description="The title for cancel button the &apos;Review&apos; dialog.">No, thanks.</string>
+  <string name="dlg_review_btn_no_msg" translation_description="The msg presented to the user when 0the &apos;Review&apos; dialog is answered with no.">Please help us to succeed with this free app with either a review or request email. Please understand that we will bother you again next time you start this app until we either receive a review or an email with feedback from you. You can opt out by not sending off the email, we will then stop bothering you.</string>
+  <string name="dlg_review_btn_feature_msg" translation_description="The email text template for the user when 0the &apos;Review&apos; dialog is answered with Request.">Hi, I would like to see the following features in your app: \n </string>
   <!-- Signal Strength -->
    <string name="stats_signal_label" >GSM Strength</string>
   <string name="error_rate"> Error Rate: %1$d</string>

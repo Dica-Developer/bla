@@ -20,7 +20,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 /**
- * Utilities for EULA.
+ * Utilities for EULA and app start counting
  * 
  * @author Jimmy Shih
  */
@@ -32,9 +32,35 @@ public class EulaUtils {
   private static final String ACCEPT_EULA_PREFERENCE_KEY = "eula.google_mobile_tos_accepted";
   private static final String SHOW_WELCOME_PREFERENCE_KEY = "showWelcome";
   private static final String SHOW_CHECK_UNITS_PREFERENCE_KEY = "showCheckUnits";
+  private static final String APP_STARTS_PREFERENCE_KEY = "appStarts";
+  private static final String SHOW_REVIEW_PREFERENCE_KEY = "showReview";
+  private static final String SHOW_APPS_PREFERENCE_KEY = "showApps";
   
   private EulaUtils() {}
 
+  public static void increaseAppStart(Context context) {
+    setValue(context, APP_STARTS_PREFERENCE_KEY, getAppStart(context)+1);
+  }
+  public static int getAppStart(Context context) {
+    return getValue(context, APP_STARTS_PREFERENCE_KEY, 0);
+  }
+  
+  public static boolean getShowApps(Context context) {
+    return getValue(context, SHOW_APPS_PREFERENCE_KEY, true);
+  }
+
+  public static void setShowApps(Context context) {
+    setValue(context, SHOW_APPS_PREFERENCE_KEY, false);
+  }
+  
+  public static boolean getShowReview(Context context) {
+    return getValue(context, SHOW_REVIEW_PREFERENCE_KEY, true);
+  }
+
+  public static void setShowReview(Context context) {
+    setValue(context, SHOW_REVIEW_PREFERENCE_KEY, false);
+  }
+  
   public static boolean getAcceptEula(Context context) {
     return getValue(context, ACCEPT_EULA_PREFERENCE_KEY, false);
   }
@@ -70,6 +96,20 @@ public class EulaUtils {
         EULA_PREFERENCE_FILE, Context.MODE_PRIVATE);
     Editor editor = sharedPreferences.edit();
     editor.putBoolean(key, value);
+    ApiAdapterFactory.getApiAdapter().applyPreferenceChanges(editor);
+  }
+  
+  private static int getValue(Context context, String key, int defaultValue) {
+    SharedPreferences sharedPreferences = context.getSharedPreferences(
+        EULA_PREFERENCE_FILE, Context.MODE_PRIVATE);
+    return sharedPreferences.getInt(key, defaultValue);
+  }
+
+  private static void setValue(Context context, String key, int value) {
+    SharedPreferences sharedPreferences = context.getSharedPreferences(
+        EULA_PREFERENCE_FILE, Context.MODE_PRIVATE);
+    Editor editor = sharedPreferences.edit();
+    editor.putInt(key, value);
     ApiAdapterFactory.getApiAdapter().applyPreferenceChanges(editor);
   }
 }

@@ -150,14 +150,37 @@ public abstract class Constants {
   public final static String TRACKS_UPLOAD_URL = "https://www.nogago.com:443/tracks/uploadTrack";
 
   /**
-   * URL to dowload nogagoMaps from PlayStore
+   * URL to dowload nogagoMaps from AppWorld
    */
-  public final static String MAPS_DOWNLOAD_URL = "appworld://content/128568/"; // appworld://vendor/2395
-  
+  public final static String BB_MAPS_DOWNLOAD_URL = "appworld://content/128568/"; // appworld://vendor/2395
   /**
-   * URL to download nogago Apps
+  * URL to dowload nogagoMaps from PlayStore
+  */
+ public final static String PLAY_MAPS_DOWNLOAD_URL = "market://details?id=pname:com.nogago.android.maps";
+  
+ /**
+  * URL to dowload and review nogago Tracks from AppWorld
+  */
+ public final static String BB_TRACKS_DOWNLOAD_URL = "appworld://content/28277456/"; // appworld://vendor/2395
+ /**
+ * URL to dowload and review nogago Tracks from PlayStore
+ */
+public final static String PLAY_TRACKS_DOWNLOAD_URL = "market://details?id=pname:com.nogago.android.tracks";
+ 
+ /**
+   * URL to download nogago Apps in BB
    */
-  public final static String APPWORLD_VENDOR_URL = "appworld://vendor/2395"; // appworld://vendor/2395
+  public final static String BB_VENDOR_URL = "appworld://vendor/2395"; 
+  /**
+   * URL to download nogago Apps in Play
+   */
+  public final static String PLAY_VENDOR_URL = "market://search?q=pub:nogago+GmbH"; 
+  /**
+   * URL to download nogago Apps in Web
+   */
+  public final static String WWW_VENDOR_URL = "http://www.nogago.com/";
+
+  public final static String SUPPORT_MAIL = "support@nogago.com";
   
   public final static boolean IS_BLACKBERRY = java.lang.System.getProperty("os.name").equals("qnx");
 }
