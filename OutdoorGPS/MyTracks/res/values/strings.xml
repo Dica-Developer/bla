@@ -1629,6 +1629,7 @@ Q\t	View statistics
   <string name="dlg_market_btn_yes" translation_description="The title for review button in the &apos;Review&apos; dialog.">Show me your apps.</string>
   <string name="dlg_market_btn_no" translation_description="The title for cancel button the &apos;Review&apos; dialog.">No, thanks.</string>
   
+  <string name="gpsies_todo" translation_description="The title for button to trigger gpsies search.">Upcoming feature: Search and download tracks from GPSies.com (and other track sharing portals).</string>
   
   <!-- Signal Strength -->
    <string name="stats_signal_label" >GSM Strength</string>
