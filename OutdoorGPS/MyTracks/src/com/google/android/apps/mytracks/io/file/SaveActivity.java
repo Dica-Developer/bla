@@ -16,10 +16,11 @@
 
 package com.google.android.apps.mytracks.io.file;
 
+import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
 import com.google.android.apps.mytracks.util.DialogUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -39,7 +40,11 @@ import java.io.File;
  * @author Rodrigo Damazio
  */
 public class SaveActivity extends Activity {
+  // Nogago
+  public static final String EXTRA_SHOW_TRACK = "show_track";
+  public static final String EXTRA_FOLLOW_TRACK = "follow_track";
 
+  // Google
   public static final String EXTRA_TRACK_FILE_FORMAT = "track_file_format";
   public static final String EXTRA_TRACK_ID = "track_id";
   public static final String EXTRA_MAIL_TRACK = "mail_track";
@@ -58,6 +63,8 @@ public class SaveActivity extends Activity {
   private TrackFileFormat trackFileFormat;
   private long trackId;
   private boolean playTrack;
+  private boolean showTrack;
+  private boolean followTrack;
 
   private SaveAsyncTask saveAsyncTask;
   private ProgressDialog progressDialog;
@@ -82,13 +89,18 @@ public class SaveActivity extends Activity {
     trackId = intent.getLongExtra(EXTRA_TRACK_ID, -1L);
     mailTrack = intent.getBooleanExtra(EXTRA_MAIL_TRACK, false);
     playTrack = intent.getBooleanExtra(EXTRA_PLAY_TRACK, false);
+    showTrack = intent.getBooleanExtra(EXTRA_SHOW_TRACK, false);
+    followTrack = intent.getBooleanExtra(EXTRA_FOLLOW_TRACK, false);
 
     Object retained = getLastNonConfigurationInstance();
     if (retained instanceof SaveAsyncTask) {
       saveAsyncTask = (SaveAsyncTask) retained;
       saveAsyncTask.setActivity(this);
     } else {
-      saveAsyncTask = new SaveAsyncTask(this, trackFileFormat, trackId, playTrack, mailTrack);
+      // useTempDir = playTrack nur da in gpx/tmp speichern
+      // launchMail nur bei mailTrack
+      // silent für playTrack, showTrack, followTrack, mailTrack ?
+      saveAsyncTask = new SaveAsyncTask(this, trackFileFormat, trackId, playTrack, mailTrack, false);
       saveAsyncTask.execute();
     }
   }
@@ -157,22 +169,16 @@ public class SaveActivity extends Activity {
    * @param aMessageId the id of the AsyncTask message
    * @param aSavedPath the path of the saved file
    */
-  public void onAsyncTaskCompleted(boolean isSuccess, int aMessageId, String aSavedPath,
-      boolean launchMail) {
+  public void onAsyncTaskCompleted(boolean isSuccess, int aMessageId, String aSavedPath, boolean silent) {
     this.success = isSuccess;
     this.messageId = aMessageId;
     this.savedPath = aSavedPath;
-    this.mailTrack = launchMail;
-    removeDialog(DIALOG_PROGRESS_ID);
-    if (launchMail && isSuccess) {
-      // Immediately mail file
-      Intent intent = IntentUtils.newShareFileIntent(SaveActivity.this, trackId, savedPath,
-          trackFileFormat);
-      startActivity(Intent.createChooser(intent, getString(R.string.share_track_picker_title)));
-      finish();
-    } else {
+    if (!silent)
+      removeDialog(DIALOG_PROGRESS_ID);
+    if (!silent && !(showTrack || followTrack || playTrack || mailTrack))
       showDialog(DIALOG_RESULT_ID);
-    }
+    else
+      onPostResultDialog();
   }
 
   /**
@@ -200,13 +206,34 @@ public class SaveActivity extends Activity {
    * To be invoked after showing the result dialog.
    */
   private void onPostResultDialog() {
-    if (success && playTrack) {
-      Intent intent = new Intent()
-          .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)
-          .putExtra(GOOGLE_EARTH_TOUR_FEATURE_ID, KmlTrackWriter.TOUR_FEATURE_ID)
-          .setClassName(GOOGLE_EARTH_PACKAGE, GOOGLE_EARTH_CLASS)
-          .setDataAndType(Uri.fromFile(new File(savedPath)), GOOGLE_EARTH_KML_MIME_TYPE);
-      startActivity(intent);
+    if (success) {
+      if (mailTrack) {
+        // Immediately mail file
+        Intent intent = IntentUtils.newShareFileIntent(SaveActivity.this, trackId, savedPath,
+            trackFileFormat);
+        startActivity(Intent.createChooser(intent, getString(R.string.share_track_picker_title)));
+      } else if (playTrack) {
+        Intent intent = new Intent()
+            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)
+            .putExtra(GOOGLE_EARTH_TOUR_FEATURE_ID, KmlTrackWriter.TOUR_FEATURE_ID)
+            .setClassName(GOOGLE_EARTH_PACKAGE, GOOGLE_EARTH_CLASS)
+            .setDataAndType(Uri.fromFile(new File(savedPath)), GOOGLE_EARTH_KML_MIME_TYPE);
+        startActivity(intent);
+      } else if (showTrack) {
+        Intent intent = new Intent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setComponent(Constants.MAPS_COMPONENT);
+        intent.putExtra("track", savedPath);
+        intent.putExtra("follow", false);
+        startActivity(intent);
+      } else if (followTrack) {
+        Intent intent = new Intent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setComponent(Constants.MAPS_COMPONENT);
+        intent.putExtra("track", savedPath);
+        intent.putExtra("follow", true);
+        startActivity(intent);
+      }
     }
     finish();
   }

@@ -71,11 +71,8 @@ public class FileUtils {
   public static String buildExternalDirectoryPath(String... components) {
     StringBuilder dirNameBuilder = new StringBuilder();
     dirNameBuilder.append(Environment.getExternalStorageDirectory());
-   // dirNameBuilder.append("/sdcard2"); // BB Internal Memory: sdcard DOES NOT WORK!!! Removable SD Card: sdcard2
     dirNameBuilder.append(File.separatorChar);
     dirNameBuilder.append(Constants.SDCARD_TOP_DIR);
-    dirNameBuilder.append(File.separatorChar);
-    dirNameBuilder.append(Constants.SDCARD_TOP2_DIR);
     for (String component : components) {
       dirNameBuilder.append(File.separatorChar);
       dirNameBuilder.append(component);
@@ -98,8 +95,8 @@ public class FileUtils {
   }
 
   /**
-   * Builds a filename with the given base and the given extension, possibly
-   * adding a suffix to ensure the file doesn't exist.
+   * Builds a filename with the given base and the given extension, without 
+   * adding a suffix overwriting the file if it exists.
    *
    * @param directory the directory the filename will be located in
    * @param base the base for the filename
@@ -118,11 +115,13 @@ public class FileUtils {
     String baseName = sanitizeFileName(base);
     baseName = truncateFileName(directory, baseName, suffixName);
     String fullName = baseName + suffixName;
-
+    return fullName;
+    /* Always overwrite 
     if (!new File(directory, fullName).exists()) {
       return fullName;
     }
     return buildUniqueFileName(directory, base, extension, suffix + 1);
+    */
   }
 
   /**

@@ -16,7 +16,7 @@
 
 package com.google.android.apps.mytracks.util;
 
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
 
 import android.content.Context;

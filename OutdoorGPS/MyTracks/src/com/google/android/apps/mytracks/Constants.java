@@ -34,7 +34,7 @@ public abstract class Constants {
    * Name of the top-level directory inside the SD card where our files will
    * be read from/written to.
    */
-  public static final String SDCARD_TOP_DIR = "documents";
+  public static final String SDCARD_TOP_DIR = "nogago";
   public static final String SDCARD_TOP2_DIR = "Tracks";
 
   /**

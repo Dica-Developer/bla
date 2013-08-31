@@ -18,21 +18,26 @@ package com.google.android.apps.mytracks;
 
 import com.google.android.apps.mytracks.fragments.InstallMapsDialogFragment;
 import com.google.android.apps.mytracks.fragments.MapFragment;
+import com.google.android.apps.mytracks.io.file.SaveActivity;
+import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
+import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.TabHost;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -52,7 +57,7 @@ import java.util.HashMap;
  */
 public class TabManager implements TabHost.OnTabChangeListener {
 
-  private final FragmentActivity fragmentActivity;
+  private final TrackDetailActivity fragmentActivity;
   private final TabHost tabHost;
   private final int containerId;
   private final HashMap<String, TabInfo> tabs = new HashMap<String, TabInfo>();
@@ -100,7 +105,7 @@ public class TabManager implements TabHost.OnTabChangeListener {
     }
   }
 
-  public TabManager(FragmentActivity fragmentActivity, TabHost tabHost, int containerId) {
+  public TabManager(TrackDetailActivity fragmentActivity, TabHost tabHost, int containerId) {
     this.fragmentActivity = fragmentActivity;
     this.tabHost = tabHost;
     this.containerId = containerId;
@@ -130,11 +135,11 @@ public class TabManager implements TabHost.OnTabChangeListener {
   }
 
   /**
-   * Returns true if Google Earth app is installed.
+   * Returns true if nogago Map app is installed.
    */
-  private boolean isMapsInstalled() {
+  public static boolean isMapsInstalled(Activity a) {
     try {
-      fragmentActivity.getPackageManager().getActivityInfo(Constants.MAPS_COMPONENT,
+      a.getPackageManager().getActivityInfo(Constants.MAPS_COMPONENT,
           PackageManager.GET_META_DATA);
       return true;
     } catch (NameNotFoundException nnfe) {
@@ -144,57 +149,10 @@ public class TabManager implements TabHost.OnTabChangeListener {
 
   @Override
   public void onTabChanged(String tabId) {
-
-    /*
-     * // Alert if nogago Maps isnt installed AlertDialog.Builder notInstalled =
-     * new AlertDialog.Builder(fragmentActivity);
-     * notInstalled.setMessage(R.string.maps_not_installed).setCancelable(false)
-     * .setPositiveButton(R.string.button_yes, new
-     * DialogInterface.OnClickListener() { public void onClick(DialogInterface
-     * dialog, int id) { Uri uri = Uri.parse(Constants.MAPS_DOWNLOAD_URL);
-     * Intent showUri = new Intent(Intent.ACTION_VIEW, uri);
-     * fragmentActivity.startActivity(showUri); }
-     * }).setNegativeButton(R.string.button_no, new
-     * DialogInterface.OnClickListener() { public void onClick(DialogInterface
-     * dialog, int id) { dialog.cancel(); } }); final AlertDialog
-     * alertnotInstalled = notInstalled.create(); // Alert if nogago Maps is
-     * installed AlertDialog.Builder builder = new
-     * AlertDialog.Builder(fragmentActivity);
-     * builder.setMessage(R.string.wanna_start_maps).setCancelable(false)
-     * .setPositiveButton(R.string.button_yes, new
-     * DialogInterface.OnClickListener() { public void onClick(DialogInterface
-     * dialog, int id) { try { if (isRecording()) { String nogagoPackage =
-     * "com.nogago.android.maps"; String mapActivity =
-     * ".activities.MapActivity"; Intent intent = new Intent();
-     * intent.setComponent(new ComponentName(nogagoPackage, nogagoPackage +
-     * mapActivity)); fragmentActivity.startActivity(intent); } else { String
-     * trackPackage ="com.nogago.android.tracks"; String trackDetailActivity =
-     * ".TrackDetailActivity"; Intent tda = new Intent(); tda.setComponent(new
-     * ComponentName(trackPackage, trackPackage+trackDetailActivity));
-     * tda.putExtra("clicked", true); fragmentActivity.startActivity(tda); } }
-     * catch (NullPointerException e) { alertnotInstalled.show(); } }
-     * }).setNegativeButton(R.string.button_no, new
-     * DialogInterface.OnClickListener() { public void onClick(DialogInterface
-     * dialog, int id) { dialog.cancel(); } }); AlertDialog alert =
-     * builder.create(); if (tabId.compareTo("mapFragment")==0) { try { tabId =
-     * StatsFragment.STATS_FRAGMENT_TAG; // nogagoMaps aufrufen
-     * this.tabHost.setCurrentTab(1); try { if (isRecording()) { String
-     * nogagoPackage = "com.nogago.android.maps"; String mapActivity =
-     * ".activities.MapActivity"; Intent intent = new Intent();
-     * intent.setComponent(new ComponentName(nogagoPackage, nogagoPackage +
-     * mapActivity)); fragmentActivity.startActivity(intent); } else { String
-     * trackPackage ="com.nogago.android.tracks"; String trackDetailActivity =
-     * ".TrackDetailActivity"; Intent tda = new Intent(); tda.setComponent(new
-     * ComponentName(trackPackage, trackPackage+trackDetailActivity));
-     * tda.putExtra("clicked", true); fragmentActivity.startActivity(tda); } }
-     * catch (NullPointerException e) { alertnotInstalled.show(); } //
-     * alert.show(); // falls nicht installiert, fragen, ob installiert werden
-     * soll } catch (NullPointerException e) { alertnotInstalled.show(); } }
-     */
     TabInfo newTabInfo = tabs.get(tabId);
     if (PreferencesUtils.getBoolean(fragmentActivity, R.string.settings_mapsprovider, true)
         && (tabId.compareTo(MapFragment.MAP_FRAGMENT_TAG) == 0)) {
-      if(!isMapsInstalled()) {
+      if(!isMapsInstalled(fragmentActivity)) {
         Fragment fragment =fragmentActivity.getSupportFragmentManager().findFragmentByTag(InstallMapsDialogFragment.INSTALL_MAPS_DIALOG_TAG);
         if (fragment == null) {
           InstallMapsDialogFragment.newInstance()
@@ -202,8 +160,15 @@ public class TabManager implements TabHost.OnTabChangeListener {
           }    
       } else {
         // Open Maps
-        Intent intent = new Intent();
-        intent.setComponent(Constants.MAPS_COMPONENT); 
+        if(Constants.IS_BLACKBERRY) {
+          Toast.makeText(fragmentActivity, R.string.track_detail_maps_blackberry_msg, Toast.LENGTH_LONG);
+        }
+        // Need to save the track first
+        Intent intent = IntentUtils.newIntent(fragmentActivity, SaveActivity.class)
+            .putExtra(SaveActivity.EXTRA_TRACK_ID, fragmentActivity.trackId)
+            .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.GPX)
+            .putExtra(SaveActivity.EXTRA_SHOW_TRACK, true);
+        // Then automatically opens nogago Maps based on the extras
         fragmentActivity.startActivity(intent);
       }
      } else {
