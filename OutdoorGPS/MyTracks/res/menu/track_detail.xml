@@ -26,7 +26,7 @@ limitations under the License.
     android:id="@+id/track_detail_play"
     android:orderInCategory="2"
     android:showAsAction="ifRoom"
-    android:title="@string/menu_play"/>
+    android:title="@string/menu_nogago_play"/>
  <!-- NOT SUPPORTED ON BB   <item
     android:icon="@drawable/menu_share"
     android:id="@+id/track_detail_share"
@@ -42,6 +42,13 @@ limitations under the License.
     android:showAsAction="ifRoom"
     android:title="@string/menu_markers"/>
   <!-- android:orderInCategory="5" is in map.xml -->
+  
+<item
+    android:icon="@drawable/menu_satellite_mode"
+    android:id="@+id/track_detail_earth_play"
+    android:orderInCategory="5"
+    android:showAsAction="ifRoom"
+    android:title="@string/menu_earth_play"/>
   <item
     android:icon="@drawable/menu_send_google"
     android:id="@+id/track_detail_send_nogago"

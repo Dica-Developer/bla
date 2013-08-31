@@ -21,7 +21,7 @@ import com.google.android.apps.mytracks.io.file.GpxImporter;
 import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.SystemUtils;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
 import android.os.AsyncTask;
 import android.os.PowerManager.WakeLock;

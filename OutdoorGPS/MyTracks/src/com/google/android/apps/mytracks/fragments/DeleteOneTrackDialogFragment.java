@@ -23,7 +23,7 @@ import com.google.android.apps.mytracks.util.DialogUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
 import android.app.Activity;
 import android.app.Dialog;

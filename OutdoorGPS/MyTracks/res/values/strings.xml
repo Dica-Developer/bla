@@ -452,6 +452,7 @@ limitations under the License.
     <string name="menu_play" translation_description="In the menu, to play a track.
 
       Character limit: ~20 (1 line)">    Play</string>
+    
     <string name="menu_satellite_mode" translation_description="In the menu, to switch the display to the satellite mode.
 
       Character limit: ~20 (1 line)">    Satellite</string>
@@ -1642,7 +1643,17 @@ Q\t	View statistics
       Play Store.">    Unalbe to install nogago Maps from the app store.</string>
     <string name="track_detail_install_maps_online" 
         translation_description="Notify user of being able to configure online map">You can configure to use a simple internal online map in the settings for the map to view maps within the app.</string>
+    <string name="track_detail_maps_blackberry_msg" >
+        Please do not forget to press the back button in nogago Maps to return to Tracks (BlackBerry !)
+        </string>
    
+    <string name="menu_nogago_play" translation_description="In the menu, to play a track.
+
+      Character limit: ~20 (1 line)">Follow track</string>
+    <string name="menu_earth_play" translation_description="In the menu, to play a track.
+
+      Character limit: ~20 (1 line)">Play in earth</string>
+    
     
   <!-- Signal Strength -->
    <string name="stats_signal_label" >GSM Strength</string>

@@ -41,7 +41,7 @@ public class SystemUtils {
   public static String getMyTracksVersion(Context context) {
     try {
       PackageInfo pi = context.getPackageManager().getPackageInfo(
-          "com.google.android.maps.mytracks",
+          "com.nogago.android.tracks",
           PackageManager.GET_META_DATA);
       return pi.versionName;
     } catch (NameNotFoundException e)  {

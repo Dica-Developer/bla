@@ -16,7 +16,7 @@
 package com.google.android.apps.mytracks.services.sensors;
 
 import com.google.android.apps.mytracks.content.Sensor;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
 import android.content.Context;
 

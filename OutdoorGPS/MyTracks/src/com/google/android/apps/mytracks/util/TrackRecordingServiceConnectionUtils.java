@@ -21,7 +21,7 @@ import com.google.android.apps.mytracks.content.WaypointCreationRequest;
 import com.google.android.apps.mytracks.services.ITrackRecordingService;
 import com.google.android.apps.mytracks.services.TrackRecordingService;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;

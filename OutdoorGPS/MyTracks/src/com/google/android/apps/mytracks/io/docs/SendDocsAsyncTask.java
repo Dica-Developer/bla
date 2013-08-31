@@ -24,7 +24,7 @@ import com.google.android.apps.mytracks.io.gdata.docs.SpreadsheetsClient;
 import com.google.android.apps.mytracks.io.gdata.docs.XmlDocsGDataParserFactory;
 import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendAsyncTask;
 import com.google.android.common.gdata.AndroidXmlParserFactory;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 import com.google.wireless.gdata.client.GDataClient;
 import com.google.wireless.gdata.client.HttpException;
 import com.google.wireless.gdata.parser.ParseException;

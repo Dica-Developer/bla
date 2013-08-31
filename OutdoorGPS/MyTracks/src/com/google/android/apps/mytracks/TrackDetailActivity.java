@@ -25,6 +25,8 @@ import com.google.android.apps.mytracks.fragments.ChartFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment.DeleteOneTrackCaller;
 import com.google.android.apps.mytracks.fragments.FrequencyDialogFragment;
+import com.google.android.apps.mytracks.fragments.InstallEarthDialogFragment;
+import com.google.android.apps.mytracks.fragments.InstallMapsDialogFragment;
 import com.google.android.apps.mytracks.fragments.MapFragment;
 import com.google.android.apps.mytracks.fragments.StatsFragment;
 import com.google.android.apps.mytracks.io.file.SaveActivity;
@@ -41,7 +43,7 @@ import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
 import com.nogago.android.task.AsyncTaskManager;
 import com.nogago.android.task.OnTaskCompleteListener;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -58,6 +60,7 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -96,7 +99,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   private TrackController trackController;
 
   // From intent
-  private long trackId;
+  public long trackId;
   private long markerId;
 
   // Preferences
@@ -104,7 +107,8 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   private boolean recordingTrackPaused;
 
   private MenuItem insertMarkerMenuItem;
-  private MenuItem playMenuItem;
+  private MenuItem playNogagoMenuItem;
+  private MenuItem playEarthMenuItem;
   private MenuItem shareMenuItem;
   private MenuItem sendGoogleMenuItem;
   private MenuItem saveMenuItem;
@@ -271,12 +275,13 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       markerImageButton.setOnClickListener(markerListener);
 
     ImageButton moreButton = (ImageButton) findViewById(R.id.listBtnBarMore);
-    if(moreButton != null) moreButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        openOptionsMenu();
-      }
-    });
+    if (moreButton != null)
+      moreButton.setOnClickListener(new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          openOptionsMenu();
+        }
+      });
 
     trackController = new TrackController(this, trackRecordingServiceConnection, false,
         recordListener, stopListener);
@@ -361,7 +366,9 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     // fileTypes[3]));
 
     insertMarkerMenuItem = menu.findItem(R.id.track_detail_insert_marker);
-    playMenuItem = menu.findItem(R.id.track_detail_play); // Not Supported on
+    playNogagoMenuItem = menu.findItem(R.id.track_detail_play);
+    playEarthMenuItem = menu.findItem(R.id.track_detail_earth_play); // Not Supported
+                                                              // on
     // BB
     // shareMenuItem = menu.findItem(R.id.track_detail_share);
     sendGoogleMenuItem = menu.findItem(R.id.track_detail_send_nogago);
@@ -390,7 +397,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       case R.id.track_detail_insert_marker:
         insertMarkerAction();
         return true;
-      case R.id.track_detail_play:
+      case R.id.track_detail_earth_play:
         if (isEarthInstalled()) {
           AnalyticsUtils.sendPageViews(this, "/action/play");
           intent = IntentUtils.newIntent(this, SaveActivity.class)
@@ -398,10 +405,37 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
               .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.KML)
               .putExtra(SaveActivity.EXTRA_PLAY_TRACK, true);
           startActivity(intent);
+        } else {
+          Fragment fragment = getSupportFragmentManager().findFragmentByTag(
+              InstallEarthDialogFragment.INSTALL_EARTH_DIALOG_TAG);
+          if (fragment == null) {
+            InstallEarthDialogFragment.newInstance().show(getSupportFragmentManager(),
+                InstallEarthDialogFragment.INSTALL_EARTH_DIALOG_TAG);
+          }
         }
-        ;
         return true;
-
+      case R.id.track_detail_play:
+        if (!TabManager.isMapsInstalled(this)) {
+          Fragment fragment = getSupportFragmentManager().findFragmentByTag(
+              InstallMapsDialogFragment.INSTALL_MAPS_DIALOG_TAG);
+          if (fragment == null) {
+            InstallMapsDialogFragment.newInstance().show(getSupportFragmentManager(),
+                InstallMapsDialogFragment.INSTALL_MAPS_DIALOG_TAG);
+          }
+        } else {
+          // Open Maps with command to navigate
+          if (Constants.IS_BLACKBERRY) {
+            Toast.makeText(this, R.string.track_detail_maps_blackberry_msg, Toast.LENGTH_LONG);
+          }
+          // TODO Need to save the track first
+          intent =  IntentUtils.newIntent(this, SaveActivity.class)
+              .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
+              .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.GPX )
+              .putExtra(SaveActivity.EXTRA_FOLLOW_TRACK, true);
+          // Then automatically opens nogago Maps based on the extras
+          startActivity(intent);
+        }
+        return true;
       case R.id.track_detail_markers:
         intent = IntentUtils.newIntent(this, MarkerListActivity.class).putExtra(
             MarkerListActivity.EXTRA_TRACK_ID, trackId);
@@ -561,8 +595,11 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     if (insertMarkerMenuItem != null) {
       insertMarkerMenuItem.setVisible(isRecording && !isPaused);
     }
-    if (playMenuItem != null) {
-      playMenuItem.setVisible(!isRecording);
+    if (playNogagoMenuItem != null) {
+      playNogagoMenuItem.setVisible(!isRecording);
+    }
+    if (playEarthMenuItem != null) {
+      playNogagoMenuItem.setVisible(!isRecording);
     }
     if (shareMenuItem != null) {
       shareMenuItem.setVisible(!isRecording);
@@ -577,11 +614,11 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
           : R.string.icon_upload));
     }
     if (recordImageButton != null) {
-    recordImageButton.setImageResource(isRecording && !isPaused ? R.drawable.ic_pause
-        : R.drawable.ic_record);
-    recordImageButton
-        .setContentDescription(getString(isRecording && !isPaused ? R.string.icon_pause_recording
-            : R.string.icon_record_track));
+      recordImageButton.setImageResource(isRecording && !isPaused ? R.drawable.ic_pause
+          : R.drawable.ic_record);
+      recordImageButton
+          .setContentDescription(getString(isRecording && !isPaused ? R.string.icon_pause_recording
+              : R.string.icon_record_track));
     }
     if (saveMenuItem != null) {
       saveMenuItem.setVisible(!isRecording);
@@ -636,31 +673,18 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     }
     return false;
   }
-  
+
   /**
    * Returns true if Google Earth app is installed.
    */
   private boolean isMapsInstalled() {
     try {
-    getPackageManager().getActivityInfo(Constants.MAPS_COMPONENT, PackageManager.GET_META_DATA);
-    return true;
+      getPackageManager().getActivityInfo(Constants.MAPS_COMPONENT, PackageManager.GET_META_DATA);
+      return true;
     } catch (NameNotFoundException nnfe) {
       return false;
     }
-/* Google Earth Way of doing This
-    List<ResolveInfo> infos = getPackageManager().queryIntentActivities(
-        new Intent().setType(SaveActivity.GOOGLE_EARTH_KML_MIME_TYPE),
-        PackageManager.MATCH_DEFAULT_ONLY);
-    for (ResolveInfo info : infos) {
-      if (info.activityInfo != null && info.activityInfo.packageName != null
-          && info.activityInfo.packageName.equals(SaveActivity.GOOGLE_EARTH_PACKAGE)) {
-        return true;
-      }
-    }
-    return false;
-    */
   }
-  
 
   @Override
   public boolean onKeyUp(int keyCode, KeyEvent event) {
@@ -695,11 +719,12 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         break;
 
       case KeyEvent.KEYCODE_SPACE:
-        if((tabHost.getCurrentTab() == 1) && PreferencesUtils.getBoolean(this, R.string.settings_mapsprovider, true)) {
+        if ((tabHost.getCurrentTab() == 1)
+            && PreferencesUtils.getBoolean(this, R.string.settings_mapsprovider, true)) {
           // Use nogago Maps
         } else {
-           tabHost.setCurrentTab(tabHost.getCurrentTab() + 1);
-        } 
+          tabHost.setCurrentTab(tabHost.getCurrentTab() + 1);
+        }
         break;
 
       case KeyEvent.KEYCODE_I:

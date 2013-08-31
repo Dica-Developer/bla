@@ -20,7 +20,7 @@ import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
 import com.google.android.apps.mytracks.util.StringUtils;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
 import android.content.Context;
 import android.location.Location;

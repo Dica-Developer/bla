@@ -20,7 +20,7 @@ import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendAsyncTask;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
 import com.google.android.apps.mytracks.io.sendtogoogle.UploadResultActivity;
 import com.google.android.apps.mytracks.util.IntentUtils;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
 import android.content.Intent;
 

@@ -19,7 +19,7 @@ package com.google.android.apps.mytracks.services.sensors;
 import com.google.android.apps.mytracks.content.Sensor.SensorDataSet;
 import com.google.android.apps.mytracks.content.Sensor.SensorState;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;

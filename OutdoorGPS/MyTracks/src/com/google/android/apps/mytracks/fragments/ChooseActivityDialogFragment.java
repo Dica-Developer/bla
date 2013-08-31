@@ -19,7 +19,7 @@ package com.google.android.apps.mytracks.fragments;
 import com.google.android.apps.mytracks.io.sendtogoogle.ConfirmSharingActivity;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
 import com.google.android.apps.mytracks.util.IntentUtils;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

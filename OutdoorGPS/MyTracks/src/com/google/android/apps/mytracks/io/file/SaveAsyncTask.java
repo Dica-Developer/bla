@@ -22,7 +22,7 @@ import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileForm
 import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.SystemUtils;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -47,6 +47,7 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
   private final long trackId;
   private final boolean useTempDir;
   private final boolean launchMail;
+  private final boolean silent;
 
   private final Context context;
   private final MyTracksProviderUtils myTracksProviderUtils;
@@ -65,6 +66,7 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
   // saved file path to return to the activity
   private String savedPath;
 
+  //   saveAsyncTask = new SaveAsyncTask(this, trackFileFormat, trackId, playTrack, onlyOne);
   /**
    * Creates an AsyncTask.
    * 
@@ -74,12 +76,13 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
    * @param useTempDir true to use the temp directory
    */
   public SaveAsyncTask(SaveActivity saveActivity, TrackFileFormat trackFileFormat, long trackId,
-      boolean useTempDir, boolean launchMail) {
+      boolean useTempDir, boolean launchMail, boolean silent) {
     this.saveActivity = saveActivity;
     this.trackFileFormat = trackFileFormat;
     this.trackId = trackId;
     this.useTempDir = useTempDir;
     this.launchMail = launchMail;
+    this.silent=silent;
     context = saveActivity.getApplicationContext();
     
     myTracksProviderUtils = MyTracksProviderUtils.Factory.get(saveActivity);
@@ -106,14 +109,14 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
   public void setActivity(SaveActivity saveActivity) {
     this.saveActivity = saveActivity;
     if (completed && saveActivity != null) {
-      saveActivity.onAsyncTaskCompleted(success, messageId, savedPath, launchMail);
+      saveActivity.onAsyncTaskCompleted(success, messageId, savedPath, silent);
     }
   }
 
   @Override
   protected void onPreExecute() {
     if (saveActivity != null) {
-      saveActivity.showProgressDialog();
+      if(!silent) saveActivity.showProgressDialog();
     }
   }
 
@@ -121,7 +124,7 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
   protected Boolean doInBackground(Void... params) {
     try {
       if (trackId != -1L) {
-        return saveOneTrack(trackId, true);
+        return saveOneTrack(trackId, !silent);
       } else {
         return saveAllTracks();
       }
@@ -150,11 +153,11 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
       String dirName = FileUtils.buildExternalDirectoryPath(trackFileFormat.getExtension(), "tmp");
       trackWriter.setDirectory(new File(dirName));
     }
-    trackWriter.setOnWriteListener(new TrackWriter.OnWriteListener() {
+    if(updateSavingProgress) trackWriter.setOnWriteListener(new TrackWriter.OnWriteListener() {
         @Override
       public void onWrite(int number, int max) {
         // Update the progress dialog once every 500 points
-        if (updateSavingProgress && number % 500 == 0) {
+        if ((number % 500 == 0)) {
           publishProgress(number, max);
         }
       }
@@ -207,7 +210,7 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
   }
   @Override
   protected void onProgressUpdate(Integer... values) {
-    if (saveActivity != null) {
+    if (saveActivity != null && !silent) {
       saveActivity.setProgressDialogValue(values[0], values[1]);
     }
   }
@@ -217,7 +220,7 @@ public class SaveAsyncTask extends AsyncTask<Void, Integer, Boolean> {
     success = result;
     completed = true;
     if (saveActivity != null) {
-      saveActivity.onAsyncTaskCompleted(success, messageId, savedPath, launchMail);
+      saveActivity.onAsyncTaskCompleted(success, messageId, savedPath, silent);
     }
   }
 

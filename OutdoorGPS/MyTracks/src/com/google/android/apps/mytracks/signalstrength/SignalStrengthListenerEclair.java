@@ -18,7 +18,7 @@ package com.google.android.apps.mytracks.signalstrength;
 
 import static com.google.android.apps.mytracks.signalstrength.SignalStrengthConstants.TAG;
 
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
 import android.content.ContentResolver;
 import android.content.Context;

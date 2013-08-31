@@ -17,7 +17,7 @@
 package com.google.android.apps.mytracks.fragments;
 
 import com.google.android.apps.mytracks.io.file.SaveActivity;
-import com.nogago.bb10.tracks.R;
+import com.nogago.android.tracks.R;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -62,4 +62,13 @@ public class InstallEarthDialogFragment extends DialogFragment {
         })
         .create();
   }
+  
+  /**
+   * Creates a new instance of {@link ReviewDialogFragment}.
+   * 
+   * @param hasAccepted true if the user has accepted the eula.
+   */
+  public static InstallEarthDialogFragment newInstance() {
+    return new InstallEarthDialogFragment();
+    }
 }

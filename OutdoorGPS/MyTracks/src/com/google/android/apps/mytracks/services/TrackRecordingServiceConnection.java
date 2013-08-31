@@ -17,7 +17,7 @@
 package com.google.android.apps.mytracks.services;
 
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
-import com.nogago.bb10.tracks.BuildConfig;
+import com.nogago.android.tracks.BuildConfig;
 
 import android.content.ComponentName;
 import android.content.Context;

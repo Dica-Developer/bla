@@ -773,6 +773,13 @@ Q\t	Statistik betrachten
        <string name="track_detail_install_maps_message" translation_description="When playing a track, the message informing the user that he needs       Google Earth to play the track and asking him if he wants to install Google Earth from the       Play Store.">Zur Anzeige von Offline-Karten und Track-Navigation benötigen Sie nogago Maps. Möchten Sie die App vom App Store herunterladen?</string>
       <string name="track_detail_install_maps_online" translation_description="When playing a track, the message informing the user that he needs       Google Earth to play the track and asking him if he wants to install Google Earth from the       Play Store.">Sie können in den Einstellungen eine eingebaute Online-Karte zur Kartendarstellung konfigurieren. Track-Navigation funktioniert aber nur in Verbindung mit nogago Maps.</string>
     <string name="track_detail_install_maps_error" translation_description="Message informing the user not able to install Google Earth from the       Play Store.">Fehler beim Installieren von nogago Maps aus dem App Store</string>
-   
+      <string name="track_detail_maps_blackberry_msg" 
+        translation_description="Notify that user needs to press back">Bitte in nogago Maps auf Zurück Pfeil (unten links) drücken, um zu dieser App zurückzukehren."</string>
+     <string name="menu_nogago_play" translation_description="In the menu, to play a track.
+
+      Character limit: ~20 (1 line)">Track nachfolgen</string>
+    <string name="menu_earth_play" translation_description="In the menu, to play a track.
+
+      Character limit: ~20 (1 line)">Auf Google Earth ansehen</string>
    
 </resources>
