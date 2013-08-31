@@ -101,8 +101,9 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 	private static final int AUTO_FOLLOW_MSG_ID = 8; 
 	private static final int LOST_LOCATION_MSG_ID = 10;
 	private static final long LOST_LOCATION_CHECK_DELAY = 20000;
-	public static boolean SHOW_TRACK_FROM_TRACKS = false;
-	static boolean FOLLOW_TRACK_FROM_TRACKS = false;
+	
+	private String displayTrackUrl = null;
+	private boolean followTrack = false;
 	
 //	private static final int LONG_KEYPRESS_MSG_ID = 28;
 //	private static final int LONG_KEYPRESS_DELAY = 500;
@@ -161,8 +162,13 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();
-		SHOW_TRACK_FROM_TRACKS = intent.getBooleanExtra("from Tracks", false);
-		FOLLOW_TRACK_FROM_TRACKS = intent.getBooleanExtra("follow", false);
+		/*
+		 * 
+        intent.putExtra("track", savedPath);
+        intent.putExtra("follow", true);
+		 */
+		displayTrackUrl = intent.getStringExtra("track");
+		followTrack = intent.getBooleanExtra("follow", false);
 			
 		settings = getMyApplication().getSettings();		
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 
@@ -223,12 +229,13 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 		mapView.setMapLocationListener(this);
 		mapLayers.createLayers(mapView);
 		
-		if (SHOW_TRACK_FROM_TRACKS == true ){
+		if (displayTrackUrl != null){
 //			mapLayers.openLayerSelectionDialog(mapView);
-			mapLayers.showGPXFileLayer(mapView);
-		}
-		if (FOLLOW_TRACK_FROM_TRACKS) {
-			mapActions.navigateUsingGPX(ApplicationMode.PEDESTRIAN);
+			File f = new File(displayTrackUrl);
+			GPXFile res = GPXUtilities.loadGPXFile(this, f, true);
+			mapLayers.displayGPXFile(((OsmandApplication) getApplication()).getSettings(), mapView, res, false);
+			if (followTrack)
+			mapActions.navigateUsingGPX(ApplicationMode.PEDESTRIAN, res);
 		}
 		
 		if(!settings.isLastKnownMapLocation()){

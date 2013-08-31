@@ -9,13 +9,15 @@ import com.nogago.android.maps.plus.ProgressDialogImplementation;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
 public class NogagoUtils {
-	
+
+	  
 	public static boolean isOnline(Context context) {
 		ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (cm == null) return false;

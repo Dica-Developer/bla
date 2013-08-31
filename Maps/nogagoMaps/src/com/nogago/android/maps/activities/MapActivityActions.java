@@ -531,7 +531,7 @@ public class MapActivityActions implements DialogProvider {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				ApplicationMode mode = getAppMode(buttons, settings);
-				navigateUsingGPX(mode);
+				navigateUsingGPX(mode,null);
 			}
 		};
     	
@@ -563,74 +563,25 @@ public class MapActivityActions implements DialogProvider {
 		return location;
 	}
     
-    public void navigateUsingGPX(final ApplicationMode appMode) {
+    public void navigateUsingGPX(final ApplicationMode appMode, GPXFile trackFileUrl) {
 		final LatLon endForRouting = mapActivity.getPointToNavigate();
 		final MapActivityLayers mapLayers = mapActivity.getMapLayers();
 		final OsmandSettings settings = OsmandApplication.getSettings();
     	final RoutingHelper routingHelper = mapActivity.getRoutingHelper();
+    	if(trackFileUrl == null) {
 		mapLayers.selectGPXFileLayer(new CallbackWithObject<GPXFile>() {
 			
 			@Override
 			public boolean processResult(final GPXFile result) {
-				Builder builder = new AlertDialog.Builder(mapActivity);
-				final boolean[] props = new boolean[]{false, false, false};
-				builder.setMultiChoiceItems(new String[] { getString(R.string.gpx_option_reverse_route),
-						getString(R.string.gpx_option_destination_point), getString(R.string.gpx_option_from_start_point) }, props,
-						new OnMultiChoiceClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-								props[which] = isChecked;
-							}
-						});
-				builder.setPositiveButton(R.string.default_buttons_apply, new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						boolean reverse = props[0];
-						boolean passWholeWay = props[2];
-						boolean useDestination = props[1];
-						GPXRouteParams gpxRoute = new GPXRouteParams(result, reverse);
-						
-						Location loc = mapActivity.getLastKnownLocation();
-						if(passWholeWay && loc != null){
-							gpxRoute.setStartPoint(loc);
-						}
-						
-						Location startForRouting = mapActivity.getLastKnownLocation();
-						if(startForRouting == null){
-							startForRouting = gpxRoute.getStartPointForRoute();
-						}
-						
-						LatLon endPoint = endForRouting;
-						if(endPoint == null || !useDestination) {
-							LatLon point = gpxRoute.getLastPoint();
-							if(point != null){
-								endPoint = point;
-							}
-							if(endPoint != null) {
-								settings.setPointToNavigate(point.getLatitude(), point.getLongitude(), null);
-								mapLayers.getNavigationLayer().setPointToNavigate(point);
-							}
-						}
-						// change global settings
-						boolean changed = settings.APPLICATION_MODE.set(appMode);
-						if (changed) {
-							mapActivity.updateApplicationModeSettings();	
-						}
-						mapActivity.getMapView().refreshMap(changed);
-						if(endPoint != null){
-							settings.FOLLOW_THE_ROUTE.set(true);
-							settings.FOLLOW_THE_GPX_ROUTE.set(result.path);
-							routingHelper.setFollowingMode(true);
-							routingHelper.setFinalAndCurrentLocation(endPoint, startForRouting, gpxRoute);
-							getMyApplication().showDialogInitializingCommandPlayer(mapActivity);
-						}
-					}
-				});
-				builder.setNegativeButton(R.string.default_buttons_cancel, null);
-				builder.show();
+				navigateGPXFile(appMode, endForRouting, mapLayers, settings,
+						routingHelper, result);
 				return true;
 			}
-		}, false, false);
+		}, false);
+    	} else {
+    		navigateGPXFile(appMode, endForRouting, mapLayers, settings,
+					routingHelper, trackFileUrl);
+    	}
 	}
     
     private ApplicationMode getAppMode(ToggleButton[] buttons, OsmandSettings settings){
@@ -752,5 +703,75 @@ public class MapActivityActions implements DialogProvider {
 			prepareAboutRouteDialog(dialog, args);
 			break;
 		}
+	}
+
+	/**
+	 * @param appMode
+	 * @param endForRouting
+	 * @param mapLayers
+	 * @param settings
+	 * @param routingHelper
+	 * @param result
+	 */
+	private void navigateGPXFile(final ApplicationMode appMode,
+			final LatLon endForRouting, final MapActivityLayers mapLayers,
+			final OsmandSettings settings, final RoutingHelper routingHelper,
+			final GPXFile result) {
+		Builder builder = new AlertDialog.Builder(mapActivity);
+		final boolean[] props = new boolean[]{false, false, false};
+		builder.setMultiChoiceItems(new String[] { getString(R.string.gpx_option_reverse_route),
+				getString(R.string.gpx_option_destination_point), getString(R.string.gpx_option_from_start_point) }, props,
+				new OnMultiChoiceClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+						props[which] = isChecked;
+					}
+				});
+		builder.setPositiveButton(R.string.default_buttons_apply, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				boolean reverse = props[0];
+				boolean passWholeWay = props[2];
+				boolean useDestination = props[1];
+				GPXRouteParams gpxRoute = new GPXRouteParams(result, reverse);
+				
+				Location loc = mapActivity.getLastKnownLocation();
+				if(passWholeWay && loc != null){
+					gpxRoute.setStartPoint(loc);
+				}
+				
+				Location startForRouting = mapActivity.getLastKnownLocation();
+				if(startForRouting == null){
+					startForRouting = gpxRoute.getStartPointForRoute();
+				}
+				
+				LatLon endPoint = endForRouting;
+				if(endPoint == null || !useDestination) {
+					LatLon point = gpxRoute.getLastPoint();
+					if(point != null){
+						endPoint = point;
+					}
+					if(endPoint != null) {
+						settings.setPointToNavigate(point.getLatitude(), point.getLongitude(), null);
+						mapLayers.getNavigationLayer().setPointToNavigate(point);
+					}
+				}
+				// change global settings
+				boolean changed = settings.APPLICATION_MODE.set(appMode);
+				if (changed) {
+					mapActivity.updateApplicationModeSettings();	
+				}
+				mapActivity.getMapView().refreshMap(changed);
+				if(endPoint != null){
+					settings.FOLLOW_THE_ROUTE.set(true);
+					settings.FOLLOW_THE_GPX_ROUTE.set(result.path);
+					routingHelper.setFollowingMode(true);
+					routingHelper.setFinalAndCurrentLocation(endPoint, startForRouting, gpxRoute);
+					getMyApplication().showDialogInitializingCommandPlayer(mapActivity);
+				}
+			}
+		});
+		builder.setNegativeButton(R.string.default_buttons_cancel, null);
+		builder.show();
 	}
 }

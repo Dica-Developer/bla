@@ -191,21 +191,6 @@ public class MainMenuActivity extends Activity {
 			}
 		}
 		final Activity activity = this;
-		// Alert if nogago Tracks isnt installed
-	    AlertDialog.Builder notInstalled = new AlertDialog.Builder(this);
-	    notInstalled.setMessage(R.string.tracks_not_installed).setCancelable(false)
-	        .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
-	          public void onClick(DialogInterface dialog, int id) {
-	            Uri uri = Uri.parse(Constants.TRACKS_DOWNLOAD_URL);
-	            Intent showUri = new Intent(Intent.ACTION_VIEW, uri);
-	            activity.startActivity(showUri);
-	          }
-	        }).setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
-	          public void onClick(DialogInterface dialog, int id) {
-	            dialog.cancel();
-	          }
-	        });
-	    final AlertDialog alertnotInstalled = notInstalled.create();
 	   
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -254,60 +239,31 @@ public class MainMenuActivity extends Activity {
 		toTracksButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (Build.BRAND.equals("BlackBerry")) {
-					notavailableToast();
-				} else {
 					try {
-						String nogagoPackage = "com.nogago.android.tracks";
-						String TracksActivity = ".MainMenuActivity";
 						final Intent toTracks = new Intent();
 						toTracks.setComponent(new ComponentName(
-								nogagoPackage,
-								nogagoPackage
-										+ TracksActivity));
+								"com.nogago.android.tracks",
+								"com.google.android.apps.mytracks.TrackListActivity"));
 						toTracks.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 						activity.startActivity(toTracks);
 					} catch (ActivityNotFoundException e) {
-						alertnotInstalled.show();
+						// Alert if nogago Tracks isnt installed
+					    AlertDialog.Builder notInstalled = new AlertDialog.Builder(MainMenuActivity.this);
+					    notInstalled.setMessage(R.string.tracks_not_installed).setCancelable(false)
+					        .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
+					          public void onClick(DialogInterface dialog, int id) {
+					            Uri uri = Uri.parse(Constants.IS_BLACKBERRY ? Constants.BB_TRACKS_DOWNLOAD_URL : Constants.TRACKS_DOWNLOAD_URL);
+					            Intent showUri = new Intent(Intent.ACTION_VIEW, uri);
+					            activity.startActivity(showUri);
+					          }
+					        }).setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
+					          public void onClick(DialogInterface dialog, int id) {
+					            dialog.cancel();
+					          }
+					        });
+					    notInstalled.create().show();
 					}
 				}
-					/*
-					// Alert if nogago Maps is installed
-					AlertDialog.Builder builder = new AlertDialog.Builder(
-							activity);
-					builder.setMessage(R.string.wanna_start_tracks)
-							.setCancelable(false)
-							.setPositiveButton(R.string.button_yes,
-									new DialogInterface.OnClickListener() {
-										public void onClick(
-												DialogInterface dialog, int id) {
-											try {
-												String nogagoPackage = "com.nogago.android.tracks";
-												String TracksActivity = ".MainMenuActivity";
-												final Intent toTracks = new Intent();
-												toTracks.setComponent(new ComponentName(
-														nogagoPackage,
-														nogagoPackage
-																+ TracksActivity));
-												toTracks.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-												activity.startActivity(toTracks);
-											} catch (ActivityNotFoundException e) {
-												alertnotInstalled.show();
-											}
-										}
-									})
-							.setNegativeButton(R.string.button_no,
-									new DialogInterface.OnClickListener() {
-										public void onClick(
-												DialogInterface dialog, int id) {
-											dialog.cancel();
-										}
-									});
-					AlertDialog alert = builder.create();
-					alert.show();
-				} 
-				*/
-			}
 		});
 		
 		View helpButton = window.findViewById(R.id.HelpButton);
