@@ -27,7 +27,7 @@ import com.google.android.apps.mytracks.signalstrength.SignalStrengthListener.Si
 import com.google.android.apps.mytracks.signalstrength.SignalStrengthListenerFactory;
 import com.google.android.apps.mytracks.stats.TripStatistics;
 import com.google.android.apps.mytracks.util.StatsUtils;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.location.Location;
 import android.os.Bundle;

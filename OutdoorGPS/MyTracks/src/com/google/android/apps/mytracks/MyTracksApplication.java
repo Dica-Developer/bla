@@ -22,7 +22,7 @@ import com.google.android.apps.mytracks.util.AnalyticsUtils;
 import com.google.android.apps.mytracks.util.ApiAdapterFactory;
 import com.google.android.apps.mytracks.util.EulaUtils;
 import com.google.android.apps.mytracks.util.FileUtils;
-import com.nogago.android.tracks.BuildConfig;
+import com.nogago.bb10.tracks.BuildConfig;
 
 import android.app.Application;
 import android.content.Intent;

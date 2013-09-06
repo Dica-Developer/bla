@@ -22,7 +22,7 @@ import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileForm
 import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.SystemUtils;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.content.Context;
 import android.database.Cursor;

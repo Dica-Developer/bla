@@ -21,7 +21,7 @@ import com.google.android.apps.mytracks.util.ChartURLGenerator;
 import com.google.android.apps.mytracks.util.StringUtils;
 import com.google.android.apps.mytracks.util.UnitConversions;
 import com.google.common.annotations.VisibleForTesting;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.content.Context;
 import android.util.Pair;

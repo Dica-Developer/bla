@@ -17,7 +17,7 @@
 package com.google.android.apps.mytracks.settings;
 
 import com.google.android.apps.mytracks.util.DialogUtils;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.app.Dialog;
 import android.content.DialogInterface;

@@ -18,7 +18,7 @@ package com.google.android.apps.mytracks.fragments;
 
 import com.google.android.apps.mytracks.TrackListActivity;
 import com.google.android.apps.mytracks.util.EulaUtils;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

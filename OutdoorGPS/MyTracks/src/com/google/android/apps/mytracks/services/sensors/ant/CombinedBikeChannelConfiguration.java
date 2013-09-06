@@ -16,7 +16,7 @@
 
 package com.google.android.apps.mytracks.services.sensors.ant;
 
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 /**
  * Combined bike sensor channel configuration.

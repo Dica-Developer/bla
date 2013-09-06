@@ -18,7 +18,7 @@ package com.google.android.apps.mytracks.settings;
 
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.UnitConversions;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.app.Dialog;
 import android.os.Bundle;

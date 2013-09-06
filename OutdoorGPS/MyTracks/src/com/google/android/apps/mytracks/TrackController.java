@@ -18,7 +18,7 @@ package com.google.android.apps.mytracks;
 
 import com.google.android.apps.mytracks.services.ITrackRecordingService;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.app.Activity;
 import android.os.Handler;
