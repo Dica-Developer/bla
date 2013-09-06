@@ -8,6 +8,8 @@ public class Constants {
 	   * URL to upload tracks to nogago
 	   */
 	  public final static String TRACKS_UPLOAD_URL = "https://www.nogago.com:443/tracks/uploadTrack";
+	  public final static String TRACKS_PACKAGE = "com.nogago.android.tracks";
+	  public final static String BB_TRACKS_PACKAGE = "com.nogago.bb10.tracks";
 
 	  /**
 	   * URL to dowload nogagoMaps from AppWorld

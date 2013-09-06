@@ -21,12 +21,12 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.TimeZone;
 
-
 import org.apache.commons.logging.Log;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlSerializer;
 
+import com.nogago.android.maps.GPXUtilities.WptPt;
 import com.nogago.android.maps.R;
 
 import android.content.Context;
@@ -36,29 +36,32 @@ import android.util.Xml;
 public class GPXUtilities {
 	public final static Log log = LogUtil.getLog(GPXUtilities.class);
 
-	private final static String GPX_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'";  //$NON-NLS-1$
-	
-	private final static NumberFormat latLonFormat = new DecimalFormat("0.00#####", new DecimalFormatSymbols(Locale.US));
-	
+	private final static String GPX_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'"; //$NON-NLS-1$
+
+	private final static NumberFormat latLonFormat = new DecimalFormat(
+			"0.00#####", new DecimalFormatSymbols(Locale.US));
+
 	public static class GPXExtensions {
 		Map<String, String> extensions = null;
 		protected boolean extensionReadMode;
-		
+
 		public Map<String, String> getExtensionsToRead() {
-			if(extensions == null){
+			if (extensions == null) {
 				return Collections.emptyMap();
 			}
 			return extensions;
 		}
-		
+
 		public Map<String, String> getExtensionsToWrite() {
-			if(extensions == null){
+			if (extensions == null) {
 				extensions = new LinkedHashMap<String, String>();
 			}
 			return extensions;
 		}
 
-		public void parse(XmlPullParser parser, Stack<GPXExtensions> parserState, SimpleDateFormat format) throws XmlPullParserException, IOException {
+		public void parse(XmlPullParser parser,
+				Stack<GPXExtensions> parserState, SimpleDateFormat format)
+				throws XmlPullParserException, IOException {
 			String tag = parser.getName();
 			if (extensionReadMode) {
 				String value = readText(parser, tag);
@@ -66,19 +69,20 @@ public class GPXUtilities {
 					getExtensionsToWrite().put(tag, value);
 				}
 			}
-			if (tag.equals("extensions" )) {
+			if (tag.equals("extensions")) {
 				extensionReadMode = true;
 			}
 		}
 
-		public final boolean parseEnd(String tag, Stack<GPXExtensions> parserState) {
+		public final boolean parseEnd(String tag,
+				Stack<GPXExtensions> parserState) {
 			if (tag.equals("extensions") && extensionReadMode) {
 				extensionReadMode = false;
 				return true;
 			} else {
 				if (isEndingTag(tag)) {
 					parserState.pop();
-					return true; 
+					return true;
 				} else {
 					return false;
 				}
@@ -88,9 +92,9 @@ public class GPXUtilities {
 		protected boolean isEndingTag(String tag) {
 			return false;
 		}
-		
+
 	}
-	
+
 	public static class WptPt extends GPXExtensions {
 		public double lat;
 		public double lon;
@@ -102,10 +106,12 @@ public class GPXUtilities {
 		public double ele = Double.NaN;
 		public double speed = 0;
 		public double hdop = Double.NaN;
-		
-		public WptPt() {};
 
-		public WptPt(double lat, double lon, long time, double ele, double speed, double hdop) {
+		public WptPt() {
+		};
+
+		public WptPt(double lat, double lon, long time, double ele,
+				double speed, double hdop) {
 			this.lat = lat;
 			this.lon = lon;
 			this.time = time;
@@ -113,9 +119,10 @@ public class GPXUtilities {
 			this.speed = speed;
 			this.hdop = hdop;
 		}
-		
+
 		@Override
-		public void parse(XmlPullParser parser, Stack<GPXExtensions> parserState, SimpleDateFormat format)
+		public void parse(XmlPullParser parser,
+				Stack<GPXExtensions> parserState, SimpleDateFormat format)
 				throws XmlPullParserException, IOException {
 			super.parse(parser, parserState, format);
 			String tag = parser.getName();
@@ -156,18 +163,20 @@ public class GPXUtilities {
 				}
 			}
 		}
-		
+
 		@Override
 		public boolean isEndingTag(String tag) {
-			return tag.equals("trkpt") || tag.equals("wpt") || tag.equals("rtept");
+			return tag.equals("trkpt") || tag.equals("wpt")
+					|| tag.equals("rtept");
 		}
 	}
-	
+
 	public static class TrkSegment extends GPXExtensions {
 		public List<WptPt> points = new ArrayList<WptPt>();
-		
+
 		@Override
-		public void parse(XmlPullParser parser, Stack<GPXExtensions> parserState, SimpleDateFormat format)
+		public void parse(XmlPullParser parser,
+				Stack<GPXExtensions> parserState, SimpleDateFormat format)
 				throws XmlPullParserException, IOException {
 			super.parse(parser, parserState, format);
 			if (parser.getName().equals("trkpt")) {
@@ -176,20 +185,21 @@ public class GPXUtilities {
 				parserState.push(wptPt);
 			}
 		}
-		
+
 		@Override
 		protected boolean isEndingTag(String tag) {
 			return tag.equals("trkseg");
 		}
 	}
-	
+
 	public static class Track extends GPXExtensions {
 		public String name = null;
 		public String desc = null;
 		public List<TrkSegment> segments = new ArrayList<TrkSegment>();
-		
+
 		@Override
-		public void parse(XmlPullParser parser, Stack<GPXExtensions> parserState, SimpleDateFormat format)
+		public void parse(XmlPullParser parser,
+				Stack<GPXExtensions> parserState, SimpleDateFormat format)
 				throws XmlPullParserException, IOException {
 			super.parse(parser, parserState, format);
 			String tag = parser.getName();
@@ -197,28 +207,28 @@ public class GPXUtilities {
 				name = readText(parser, "name");
 			} else if (tag.equals("desc")) {
 				desc = readText(parser, "desc");
-			} else 	if (tag.equals("trkseg")) {
+			} else if (tag.equals("trkseg")) {
 				TrkSegment trkSeg = new TrkSegment();
 				segments.add(trkSeg);
 				parserState.push(trkSeg);
 			}
 		}
-		
+
 		@Override
 		public boolean isEndingTag(String tag) {
 			return tag.equals("trk");
 		}
 	}
-	
+
 	public static class Route extends GPXExtensions {
 		public String name = null;
 		public String desc = null;
 		public List<WptPt> points = new ArrayList<WptPt>();
-		
+
 		@Override
-		public void parse(XmlPullParser parser, Stack<GPXExtensions> parserState, SimpleDateFormat format) 
-				throws XmlPullParserException, IOException 
-		{
+		public void parse(XmlPullParser parser,
+				Stack<GPXExtensions> parserState, SimpleDateFormat format)
+				throws XmlPullParserException, IOException {
 			super.parse(parser, parserState, format);
 			String tag = parser.getName();
 			if (tag.equals("name")) {
@@ -231,7 +241,7 @@ public class GPXUtilities {
 				parserState.push(wptPt);
 			}
 		}
-		
+
 		@Override
 		public boolean isEndingTag(String tag) {
 			return tag.equals("trk");
@@ -239,9 +249,9 @@ public class GPXUtilities {
 	}
 
 	public static class Extensions extends GPXExtensions {
-		
+
 	}
-	
+
 	public static class GPXFile extends GPXExtensions {
 		public String author;
 		public List<Track> tracks = new ArrayList<Track>();
@@ -249,29 +259,29 @@ public class GPXUtilities {
 		public List<Route> routes = new ArrayList<Route>();
 		public String warning = null;
 		public String path = "";
-		
-		public boolean isCloudmadeRouteFile(){
+
+		public boolean isCloudmadeRouteFile() {
 			return "cloudmade".equalsIgnoreCase(author);
 		}
-		
-		public WptPt findPointToShow(){
-			for(int i=tracks.size()-1;i>=0;i--){
+
+		public WptPt findPointToShow() {
+			for (int i = tracks.size() - 1; i >= 0; i--) {
 				Track t = tracks.get(i);
-				for(int j = t.segments.size()-1;j>=0;j--){
+				for (int j = t.segments.size() - 1; j >= 0; j--) {
 					TrkSegment s = t.segments.get(j);
-					if(s.points.size() > 0){
-						return s.points.get(s.points.size()-1);
+					if (s.points.size() > 0) {
+						return s.points.get(s.points.size() - 1);
 					}
 				}
 			}
-			for (int i=routes.size()-1;i>=0;i--) {
+			for (int i = routes.size() - 1; i >= 0; i--) {
 				Route s = routes.get(i);
 				if (s.points.size() > 0) {
-					return s.points.get(s.points.size()-1);
+					return s.points.get(s.points.size() - 1);
 				}
 			}
 			if (points.size() > 0) {
-				return points.get(points.size()-1);
+				return points.get(points.size() - 1);
 			}
 			return null;
 		}
@@ -279,9 +289,11 @@ public class GPXUtilities {
 		public boolean isEmpty() {
 			return tracks.isEmpty() && points.isEmpty() && routes.isEmpty();
 		}
-		
+
 		@Override
-		public void parse(XmlPullParser parser, Stack<GPXExtensions> parserState, SimpleDateFormat format) throws XmlPullParserException, IOException {
+		public void parse(XmlPullParser parser,
+				Stack<GPXExtensions> parserState, SimpleDateFormat format)
+				throws XmlPullParserException, IOException {
 			super.parse(parser, parserState, format);
 			String tag = parser.getName();
 			if (tag.equals("gpx")) {
@@ -303,14 +315,36 @@ public class GPXUtilities {
 				parserState.push(ext);
 			}
 		}
-		
+
 		@Override
 		protected boolean isEndingTag(String tag) {
 			return "gpx".equals(tag);
 		}
+
+		public WptPt findStartPoint() {
+			for (int i = 0; i <= tracks.size() - 1; i++) {
+				Track t = tracks.get(i);
+				for (int j = 0; j <= t.segments.size() - 1; j++) {
+					TrkSegment s = t.segments.get(j);
+					if (s.points.size() > 0) {
+						return s.points.get(s.points.size() - 1);
+					}
+				}
+			}
+			for (int i = 0; i <= routes.size() - 1; i++) {
+				Route s = routes.get(i);
+				if (s.points.size() > 0) {
+					return s.points.get(s.points.size() - 1);
+				}
+			}
+			if (points.size() > 0) {
+				return points.get(points.size() - 1);
+			}
+			return null;
+		}
+
 	}
-	
-	
+
 	public static String writeGpxFile(File fout, GPXFile file, Context ctx) {
 		try {
 			SimpleDateFormat format = new SimpleDateFormat(GPX_TIME_FORMAT);
@@ -318,19 +352,24 @@ public class GPXUtilities {
 			FileOutputStream output = new FileOutputStream(fout);
 			XmlSerializer serializer = Xml.newSerializer();
 			serializer.setOutput(output, "UTF-8"); //$NON-NLS-1$
-			serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true); //$NON-NLS-1$
+			serializer
+					.setFeature(
+							"http://xmlpull.org/v1/doc/features.html#indent-output", true); //$NON-NLS-1$
 			serializer.startDocument("UTF-8", true); //$NON-NLS-1$
 			serializer.startTag(null, "gpx"); //$NON-NLS-1$
 			serializer.attribute(null, "version", "1.1"); //$NON-NLS-1$ //$NON-NLS-2$
-			if(file.author == null ){
+			if (file.author == null) {
 				serializer.attribute(null, "creator", Version.getAppName(ctx)); //$NON-NLS-1$
 			} else {
 				serializer.attribute(null, "creator", file.author); //$NON-NLS-1$
 			}
-			serializer.attribute(null, "xmlns", "http://www.topografix.com/GPX/1/1"); //$NON-NLS-1$ //$NON-NLS-2$
-			serializer.attribute(null, "xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
-			serializer.attribute(null, "xsi:schemaLocation", "http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd");
-			
+			serializer.attribute(null,
+					"xmlns", "http://www.topografix.com/GPX/1/1"); //$NON-NLS-1$ //$NON-NLS-2$
+			serializer.attribute(null, "xmlns:xsi",
+					"http://www.w3.org/2001/XMLSchema-instance");
+			serializer
+					.attribute(null, "xsi:schemaLocation",
+							"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd");
 
 			for (Track track : file.tracks) {
 				serializer.startTag(null, "trk"); //$NON-NLS-1$
@@ -348,7 +387,7 @@ public class GPXUtilities {
 				writeExtensions(serializer, track);
 				serializer.endTag(null, "trk"); //$NON-NLS-1$
 			}
-			
+
 			for (Route track : file.routes) {
 				serializer.startTag(null, "rte"); //$NON-NLS-1$
 				writeNotNullText(serializer, "name", track.name);
@@ -362,7 +401,7 @@ public class GPXUtilities {
 				writeExtensions(serializer, track);
 				serializer.endTag(null, "rte"); //$NON-NLS-1$
 			}
-			
+
 			for (WptPt l : file.points) {
 				serializer.startTag(null, "wpt"); //$NON-NLS-1$
 				writeWpt(format, serializer, l);
@@ -381,61 +420,66 @@ public class GPXUtilities {
 		}
 		return null;
 	}
-	
-	private static void writeNotNullText(XmlSerializer serializer, String tag, String value) throws  IOException {
-		if(value != null){
+
+	private static void writeNotNullText(XmlSerializer serializer, String tag,
+			String value) throws IOException {
+		if (value != null) {
 			serializer.startTag(null, tag);
 			serializer.text(value);
 			serializer.endTag(null, tag);
 		}
 	}
-	
-	private static void writeExtensions(XmlSerializer serializer, GPXExtensions p) throws IOException {
+
+	private static void writeExtensions(XmlSerializer serializer,
+			GPXExtensions p) throws IOException {
 		if (!p.getExtensionsToRead().isEmpty()) {
 			serializer.startTag(null, "extensions");
-			for (Map.Entry<String, String> s : p.getExtensionsToRead().entrySet()) {
+			for (Map.Entry<String, String> s : p.getExtensionsToRead()
+					.entrySet()) {
 				writeNotNullText(serializer, s.getKey(), s.getValue());
 			}
 			serializer.endTag(null, "extensions");
 		}
 	}
 
-	private static void writeWpt(SimpleDateFormat format, XmlSerializer serializer, WptPt p) throws IOException {
+	private static void writeWpt(SimpleDateFormat format,
+			XmlSerializer serializer, WptPt p) throws IOException {
 		serializer.attribute(null, "lat", latLonFormat.format(p.lat)); //$NON-NLS-1$ //$NON-NLS-2$
 		serializer.attribute(null, "lon", latLonFormat.format(p.lon)); //$NON-NLS-1$ //$NON-NLS-2$
 
-		if(!Double.isNaN(p.ele)){
-			writeNotNullText(serializer, "ele", p.ele+"");
+		if (!Double.isNaN(p.ele)) {
+			writeNotNullText(serializer, "ele", p.ele + "");
 		}
 		writeNotNullText(serializer, "name", p.name);
 		writeNotNullText(serializer, "category", p.category);
 		writeNotNullText(serializer, "desc", p.desc);
-		if(!Double.isNaN(p.hdop)){
-			writeNotNullText(serializer, "hdop", p.hdop+"");
+		if (!Double.isNaN(p.hdop)) {
+			writeNotNullText(serializer, "hdop", p.hdop + "");
 		}
-		if(p.time != 0){
-			writeNotNullText(serializer, "time", format.format(new Date(p.time)));
+		if (p.time != 0) {
+			writeNotNullText(serializer, "time",
+					format.format(new Date(p.time)));
 		}
 		if (p.speed > 0) {
-			p.getExtensionsToWrite().put("speed", p.speed+"");
+			p.getExtensionsToWrite().put("speed", p.speed + "");
 		}
 		writeExtensions(serializer, p);
 	}
-	
-	
+
 	public static class GPXFileResult {
 		public ArrayList<List<Location>> locations = new ArrayList<List<Location>>();
 		public ArrayList<WptPt> wayPoints = new ArrayList<WptPt>();
 		// special case for cloudmate gpx : they discourage common schema
-		// by using waypoint as track points and rtept are not very close to real way
+		// by using waypoint as track points and rtept are not very close to
+		// real way
 		// such as wpt. However they provide additional information into gpx.
 		public boolean cloudMadeFile;
 		public String error;
-		
-		public Location findFistLocation(){
-			for(List<Location> l : locations){
-				for(Location ls : l){
-					if(ls != null){
+
+		public Location findFistLocation() {
+			for (List<Location> l : locations) {
+				for (Location ls : l) {
+					if (ls != null) {
 						return ls;
 					}
 				}
@@ -443,29 +487,31 @@ public class GPXUtilities {
 			return null;
 		}
 	}
-	
-	
-	private static String readText(XmlPullParser parser, String key) throws XmlPullParserException, IOException {
+
+	private static String readText(XmlPullParser parser, String key)
+			throws XmlPullParserException, IOException {
 		int tok;
 		String text = null;
 		while ((tok = parser.next()) != XmlPullParser.END_DOCUMENT) {
-			if(tok == XmlPullParser.END_TAG && parser.getName().equals(key)){
+			if (tok == XmlPullParser.END_TAG && parser.getName().equals(key)) {
 				break;
-			} else if(tok == XmlPullParser.TEXT){
-				if(text == null){
+			} else if (tok == XmlPullParser.TEXT) {
+				if (text == null) {
 					text = parser.getText();
 				} else {
 					text += parser.getText();
 				}
 			}
-			
+
 		}
 		return text;
 	}
-	
-	public static GPXFile loadGPXFile(Context ctx, File f, boolean convertCloudmadeSource) {
+
+	public static GPXFile loadGPXFile(Context ctx, File f,
+			boolean convertCloudmadeSource) {
 		try {
-			GPXFile file = loadGPXFile(ctx, new FileInputStream(f), convertCloudmadeSource);
+			GPXFile file = loadGPXFile(ctx, new FileInputStream(f),
+					convertCloudmadeSource);
 			file.path = f.getAbsolutePath();
 			return file;
 		} catch (FileNotFoundException e) {
@@ -476,8 +522,9 @@ public class GPXUtilities {
 			return res;
 		}
 	}
-	
-	public static GPXFile loadGPXFile(Context ctx, InputStream f, boolean convertCloudmadeSource) {
+
+	public static GPXFile loadGPXFile(Context ctx, InputStream f,
+			boolean convertCloudmadeSource) {
 		GPXFile res = new GPXFile();
 		SimpleDateFormat format = new SimpleDateFormat(GPX_TIME_FORMAT);
 		format.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -490,25 +537,26 @@ public class GPXUtilities {
 			while ((tok = parser.next()) != XmlPullParser.END_DOCUMENT) {
 				if (tok == XmlPullParser.START_TAG) {
 					GPXExtensions element = parserState.peek();
-					element.parse(parser, parserState,format);
+					element.parse(parser, parserState, format);
 				} else if (tok == XmlPullParser.END_TAG) {
 					GPXExtensions parse = parserState.peek();
 					String tag = parser.getName();
-					if (!parse.parseEnd(tag,parserState)) {
-						log.error("Bad ending tag: " + tag + " for element " + parse.getClass());
+					if (!parse.parseEnd(tag, parserState)) {
+						log.error("Bad ending tag: " + tag + " for element "
+								+ parse.getClass());
 					}
 				}
 			}
-			if(convertCloudmadeSource && res.isCloudmadeRouteFile()){
+			if (convertCloudmadeSource && res.isCloudmadeRouteFile()) {
 				Track tk = new Track();
 				res.tracks.add(tk);
 				TrkSegment segment = new TrkSegment();
 				tk.segments.add(segment);
-				
-				for(WptPt wp : res.points){
+
+				for (WptPt wp : res.points) {
 					segment.points.add(wp);
 				}
-			    res.points.clear();
+				res.points.clear();
 			}
 		} catch (XmlPullParserException e) {
 			log.error("Error reading gpx", e); //$NON-NLS-1$
@@ -520,7 +568,6 @@ public class GPXUtilities {
 
 		return res;
 	}
-	
 
 	private static WptPt parseWptAttributes(XmlPullParser parser) {
 		WptPt wpt = new WptPt();
@@ -531,6 +578,5 @@ public class GPXUtilities {
 		}
 		return wpt;
 	}
-
 
 }
