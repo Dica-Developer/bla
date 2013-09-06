@@ -44,7 +44,7 @@ import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.StringUtils;
 import com.google.android.apps.mytracks.util.TrackIconUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -350,8 +350,10 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     boolean devicesZ =display.getWidth() > 720 || display.getHeight() > 720;
     if(devicesZ) {
       // Disable the Keyboard help link
-      findViewById(R.id.help_keyboard_q).setVisibility(View.GONE);
-      findViewById(R.id.help_keyboard_a).setVisibility(View.GONE);
+      View v = findViewById(R.id.help_keyboard_q);
+      if (v!= null) v.setVisibility(View.GONE);
+      v = findViewById(R.id.help_keyboard_a);
+      if (v!= null) v.setVisibility(View.GONE);
     } 
     trackRecordingServiceConnection = new TrackRecordingServiceConnection(this, bindChangedCallback);
 
@@ -704,7 +706,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
       Fragment fragment =getSupportFragmentManager().findFragmentByTag(ReviewDialogFragment.REVIEW_DIALOG_TAG); if (fragment == null) {
         ReviewDialogFragment.newInstance(false)
            .show(getSupportFragmentManager(), ReviewDialogFragment.REVIEW_DIALOG_TAG); }    
-    } else if((EulaUtils.getAppStart(this) % 10) == 2 ) {
+    } else if((EulaUtils.getAppStart(this) % 10) == 5 ) {
       // Ask For Review
       Fragment fragment = getSupportFragmentManager().findFragmentByTag(MarketDialogFragment.MARKET_DIALOG_TAG); if (fragment == null) {
         MarketDialogFragment.newInstance(false)
@@ -743,6 +745,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
           text.append("\nProduct : ").append("Tracks"); //$NON-NLS-1$
           text.append("\nBuild : ").append(Build.DISPLAY); //$NON-NLS-1$
           text.append("\nVersion : ").append(Build.VERSION.RELEASE); //$NON-NLS-1$
+          text.append("\nApp Starts : ").append(EulaUtils.getAppStart(TrackListActivity.this)); //$NON-NLS-1$
 
           try {
             PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);

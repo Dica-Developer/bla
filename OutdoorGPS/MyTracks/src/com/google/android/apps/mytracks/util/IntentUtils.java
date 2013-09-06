@@ -20,7 +20,7 @@ import com.google.android.apps.mytracks.content.DescriptionGeneratorImpl;
 import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
 import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.content.ComponentName;
 import android.content.Context;

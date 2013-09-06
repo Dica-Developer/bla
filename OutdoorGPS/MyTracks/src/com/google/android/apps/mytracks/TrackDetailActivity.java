@@ -43,7 +43,7 @@ import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
 import com.nogago.android.task.AsyncTaskManager;
 import com.nogago.android.task.OnTaskCompleteListener;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;

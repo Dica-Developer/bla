@@ -17,7 +17,7 @@
 package com.google.android.apps.mytracks.io.backup;
 
 import com.google.android.apps.mytracks.util.FileUtils;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.os.AsyncTask;
 import android.util.Log;

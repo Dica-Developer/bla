@@ -19,7 +19,7 @@ package com.google.android.apps.mytracks.services;
 import static com.google.android.apps.mytracks.Constants.TAG;
 
 import com.google.android.apps.mytracks.widgets.TrackWidgetProvider;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
 
 import android.app.IntentService;

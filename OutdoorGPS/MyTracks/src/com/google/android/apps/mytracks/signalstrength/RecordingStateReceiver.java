@@ -15,7 +15,7 @@
  */
 package com.google.android.apps.mytracks.signalstrength;
 
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

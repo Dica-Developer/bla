@@ -27,7 +27,7 @@ import com.google.android.apps.mytracks.content.Sensor.SensorDataSet;
 import com.google.android.apps.mytracks.content.Sensor.SensorState;
 import com.google.android.apps.mytracks.services.sensors.SensorManager;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

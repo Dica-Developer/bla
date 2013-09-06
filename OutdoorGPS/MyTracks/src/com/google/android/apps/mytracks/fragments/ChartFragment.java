@@ -32,7 +32,7 @@ import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.UnitConversions;
 import com.google.common.annotations.VisibleForTesting;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.location.Location;
 import android.os.Bundle;

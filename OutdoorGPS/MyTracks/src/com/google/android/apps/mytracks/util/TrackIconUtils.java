@@ -16,7 +16,7 @@
 
 package com.google.android.apps.mytracks.util;
 
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.content.Context;
 

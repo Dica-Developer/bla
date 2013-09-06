@@ -25,7 +25,7 @@ import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.LocationUtils;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.app.Activity;
 import android.content.Context;

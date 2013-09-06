@@ -17,7 +17,7 @@ package com.google.android.apps.mytracks.io.backup;
 
 import com.google.android.apps.mytracks.content.ContentTypeIds;
 import com.google.android.apps.mytracks.util.ApiAdapterFactory;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.content.Context;
 import android.content.SharedPreferences;

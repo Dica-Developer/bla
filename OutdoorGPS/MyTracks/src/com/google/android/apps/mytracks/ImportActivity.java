@@ -20,7 +20,7 @@ import com.google.android.apps.mytracks.util.DialogUtils;
 import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.UriUtils;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;

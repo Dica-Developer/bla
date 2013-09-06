@@ -21,7 +21,7 @@ import static com.google.android.apps.mytracks.signalstrength.SignalStrengthCons
 
 import com.google.android.apps.mytracks.services.ITrackRecordingService;
 import com.google.android.apps.mytracks.signalstrength.SignalStrengthListener.SignalStrengthCallback;
-import com.nogago.android.tracks.R;
+import com.nogago.bb10.tracks.R;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
