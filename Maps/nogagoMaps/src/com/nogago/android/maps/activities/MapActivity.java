@@ -233,9 +233,19 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 //			mapLayers.openLayerSelectionDialog(mapView);
 			File f = new File(displayTrackUrl);
 			GPXFile res = GPXUtilities.loadGPXFile(this, f, true);
+			WptPt pt = res.findStartPoint();
+			// Delete prior GPX display
+			mapLayers.getGpxLayer().clearCurrentGPX();
+			// Show new GPX file
 			mapLayers.displayGPXFile(((OsmandApplication) getApplication()).getSettings(), mapView, res, false);
-			if (followTrack)
-			mapActions.navigateUsingGPX(ApplicationMode.PEDESTRIAN, res);
+			if(pt != null) pointToNavigate = new LatLon(pt.lat, pt.lon);
+			if (followTrack) {
+				// Delete prior goal
+				settings.clearPointToNavigate();
+				mapLayers.getNavigationLayer().setPointToNavigate(null);
+				// Setup new routing
+				mapActions.navigateUsingGPX(ApplicationMode.PEDESTRIAN, res);
+			}
 		}
 		
 		if(!settings.isLastKnownMapLocation()){
@@ -255,7 +265,10 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 				}
 			}
 			if(location != null){
-				mapView.setLatLon(location.getLatitude(), location.getLongitude());
+				if (displayTrackUrl != null) 
+					mapView.setLatLon(pointToNavigate.getLatitude(), pointToNavigate.getLongitude());
+				else 
+					mapView.setLatLon(location.getLatitude(), location.getLongitude());
 				mapView.setZoom(14);
 			}
 		}
@@ -268,6 +281,11 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 	@Override
 	protected void onResume() {
 		super.onResume();
+
+		Intent intent = getIntent();
+		displayTrackUrl = intent.getStringExtra("track");
+		followTrack = intent.getBooleanExtra("follow", false);
+		
 		cancelNotification();
 		if (settings.MAP_SCREEN_ORIENTATION.get() != getRequestedOrientation()) {
 			setRequestedOrientation(settings.MAP_SCREEN_ORIENTATION.get());
@@ -344,6 +362,27 @@ public class MapActivity extends Activity implements IMapLocationListener, Senso
 		}
 
 		getMyApplication().getDaynightHelper().onMapResume();
+		
+
+		if (displayTrackUrl != null){
+//			mapLayers.openLayerSelectionDialog(mapView);
+			File f = new File(displayTrackUrl);
+			GPXFile res = GPXUtilities.loadGPXFile(this, f, true);
+			WptPt pt = res.findStartPoint();
+			// Delete prior GPX display
+			mapLayers.getGpxLayer().clearCurrentGPX();
+			// Show new GPX file
+			mapLayers.displayGPXFile(((OsmandApplication) getApplication()).getSettings(), mapView, res, false);
+			if(pt != null) 
+				mapView.setLatLon(pt.lat, pt.lon);
+			if (followTrack) {
+				// Delete prior goal
+				settings.clearPointToNavigate();
+				mapLayers.getNavigationLayer().setPointToNavigate(null);
+				// Setup new routing
+				mapActions.navigateUsingGPX(ApplicationMode.PEDESTRIAN, res);
+			}
+		}
 		mapView.refreshMap(true);
 	}
 

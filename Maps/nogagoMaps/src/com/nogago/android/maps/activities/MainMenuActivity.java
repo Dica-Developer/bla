@@ -242,7 +242,7 @@ public class MainMenuActivity extends Activity {
 					try {
 						final Intent toTracks = new Intent();
 						toTracks.setComponent(new ComponentName(
-								"com.nogago.android.tracks",
+								Constants.IS_BLACKBERRY ? Constants.BB_TRACKS_PACKAGE : Constants.TRACKS_PACKAGE,
 								"com.google.android.apps.mytracks.TrackListActivity"));
 						toTracks.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 						activity.startActivity(toTracks);
