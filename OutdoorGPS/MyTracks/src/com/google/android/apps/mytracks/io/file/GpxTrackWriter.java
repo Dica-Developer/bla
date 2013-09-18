@@ -15,6 +15,7 @@
  */
 package com.google.android.apps.mytracks.io.file;
 
+import com.google.android.apps.mytracks.content.DescriptionGeneratorImpl;
 import com.google.android.apps.mytracks.content.MyTracksLocation;
 import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.content.Waypoint;
@@ -81,23 +82,27 @@ public class GpxTrackWriter implements TrackFormatWriter {
   public void writeHeader() {
     if (printWriter != null) {
       printWriter.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-      printWriter.println("<gpx");
-      printWriter.println("version=\"1.1\"");
+      printWriter.println("<gpx version=\"1.1\"");
       printWriter.println(
           "creator=\"" + context.getString(R.string.n_send_google_by_my_tracks, "", "") + "\"");
       printWriter.println("xmlns=\"http://www.topografix.com/GPX/1/1\"");
       printWriter.println(
           "xmlns:topografix=\"http://www.topografix.com/GPX/Private/TopoGrafix/0/1\"");
       printWriter.println(
-          "xmlns:nogago=\"http://www.nogago.com/\"");
+          "xmlns:n=\"http://www.nogago.com/tracks\"");
       printWriter.println("xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
       printWriter.println("xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1"
           + " http://www.topografix.com/GPX/1/1/gpx.xsd"
           + " http://www.topografix.com/GPX/Private/TopoGrafix/0/1"
           + " http://www.topografix.com/GPX/Private/TopoGrafix/0/1/topografix.xsd\">");
+          
       printWriter.println("<metadata>");
       printWriter.println("<name>" + StringUtils.formatCData(track.getName()) + "</name>");
       printWriter.println("<desc>" + StringUtils.formatCData(track.getDescription()) + "</desc>");
+      printWriter.println("<extensions>");
+      // Extensions go here
+      printWriter.println(new DescriptionGeneratorImpl(context).generateXMLTripStatisticsDescription(track.getTripStatistics()));
+      printWriter.println("</extensions>");
       printWriter.println("</metadata>");
     }
   }
@@ -144,7 +149,7 @@ public class GpxTrackWriter implements TrackFormatWriter {
       printWriter.println("<time>" + StringUtils.formatDateTimeIso8601(location.getTime()) + "</time>");
 
       if (location instanceof MyTracksLocation) {
-      printWriter.println("<extensions><nogago:gsmStrength>"+ ((MyTracksLocation) location).getGsmSignalStrength() +"</nogago:gsmStrength></extensions>");
+      printWriter.println("<extensions><n:gs>"+ ((MyTracksLocation) location).getGsmSignalStrength() +"</n:gs></extensions>");
       }  printWriter.println("</trkpt>");
     }
   }

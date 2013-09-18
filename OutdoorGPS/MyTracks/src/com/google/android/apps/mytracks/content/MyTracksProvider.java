@@ -17,8 +17,8 @@
 package com.google.android.apps.mytracks.content;
 
 import com.google.android.apps.mytracks.util.PreferencesUtils;
-import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
+import com.nogago.bb10.tracks.R;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -48,7 +48,7 @@ public class MyTracksProvider extends ContentProvider {
   private static final String TAG = MyTracksProvider.class.getSimpleName();
   @VisibleForTesting
   static final String DATABASE_NAME = "mytracks.db";
-  private static final int DATABASE_VERSION = 20;
+  private static final int DATABASE_VERSION = 21;
 
   /**
    * Database helper for creating and upgrading the database.
@@ -101,6 +101,16 @@ public class MyTracksProvider extends ContentProvider {
           Log.w(TAG, "Upgrade DB: Adding icon column.");
           db.execSQL(
               "ALTER TABLE " + TracksColumns.TABLE_NAME + " ADD " + TracksColumns.ICON + " STRING");
+        }        
+        // Add GSMSTRENGTH column
+        if (oldVersion <= 20) {
+          Log.w(TAG, "Upgrade DB: Adding GSMSTRENGH column.");
+          try {
+          db.execSQL(
+              "ALTER TABLE " + TrackPointsColumns.TABLE_NAME + " ADD " + TrackPointsColumns.GSMSTRENGTH + " INTEGER");
+          } catch (android.database.sqlite.SQLiteException e) {
+            Log.w(TAG, "Upgrade DB: Adding GSMSTRENGTH column not necessary, already exists");
+          }
         }
       }
     }
@@ -419,7 +429,16 @@ public class MyTracksProvider extends ContentProvider {
     if (!hasLatitude || !hasLongitude || !hasTime) {
       throw new IllegalArgumentException("Latitude, longitude, and time values are required.");
     }
-    long rowId = db.insert(TrackPointsColumns.TABLE_NAME, TrackPointsColumns._ID, values);
+    long rowId = -1;
+    try {
+      rowId = db.insert(TrackPointsColumns.TABLE_NAME, TrackPointsColumns._ID, values);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    if (rowId == -1) {
+      values.remove(TrackPointsColumns.GSMSTRENGTH);
+      rowId = db.insert(TrackPointsColumns.TABLE_NAME, TrackPointsColumns._ID, values);
+    }
     if (rowId >= 0) {
       Uri uri = ContentUris.appendId(TrackPointsColumns.CONTENT_URI.buildUpon(), rowId).build();
       getContext().getContentResolver().notifyChange(url, null, true);
@@ -440,7 +459,11 @@ public class MyTracksProvider extends ContentProvider {
     if (!hasStartTime || !hasStartId) {
       throw new IllegalArgumentException("Both start time and start id values are required.");
     }
-    long rowId = db.insert(TracksColumns.TABLE_NAME, TracksColumns._ID, contentValues);
+    long rowId = -1 ;
+    try {
+      rowId = db.insert(TracksColumns.TABLE_NAME, TracksColumns._ID, contentValues);
+    } catch (SQLException e) {     
+    }
     if (rowId >= 0) {
       Uri uri = ContentUris.appendId(TracksColumns.CONTENT_URI.buildUpon(), rowId).build();
       getContext().getContentResolver().notifyChange(url, null, true);

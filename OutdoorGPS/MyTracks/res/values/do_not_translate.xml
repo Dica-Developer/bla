@@ -15,8 +15,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <resources>
-  <!-- DO NOT TRANSLATE ANY STRINGS IN THIS FILE. -->
-  <string name="eula_korean">위치정보서비스 및 위치기반서비스 이용약관\n
+
+    <!-- DO NOT TRANSLATE ANY STRINGS IN THIS FILE. -->
+    <string name="eula_korean">위치정보서비스 및 위치기반서비스 이용약관\n
 \n
 다음은 구글코리아 유한회사(이하 “Google”)가 Google의 제품에 대하여 제공하고 있는 위치기반서비스에 적용되는 이용조건입니다. 아래 이용조건은 이동통신사업자의 가입신청서에 포함된 위치정보 수집동의 및 모바일 단말기 이용조건과 함께 적용됩니다.\n
 \n
@@ -69,33 +70,98 @@ Google은 이용자에 대한 위치정보의 이용∙제공사실을 위치정
 구글코리아 유한회사\n
 대표자: 염동훈\n
 주소 : 서울 강남구 역삼동 737 강남파이낸스센터 22층\n
-전화번호 : (02) 531-9000\n
-  </string>
-  <string name="maps_public_unlisted_url">support.google.com/maps/bin/answer.py?answer=144365</string>
-  <string name="marker_statistics_icon_url">http://maps.google.com/mapfiles/ms/micons/ylw-pushpin.png</string>
-  <string name="marker_waypoint_icon_url">http://maps.google.com/mapfiles/ms/micons/blue-pushpin.png</string>
-  <string name="my_tracks_privacy_url">blog.nogago.com/en/privacy/</string>
-  <string name="my_tracks_recording_service_name">My Tracks Recording Service</string>
-  <string name="my_tracks_support_url">support@nogago.com</string>
-  <string name="my_tracks_web_url">www.nogago.com</string>
-  <string name="permission_notification_value">com.google.android.apps.mytracks.MYTRACKS_NOTIFICATIONS</string>
-  <string name="send_google_docs_url">docs.google.com</string>
-  <string name="send_google_fusion_tables_url">google.com/fusiontables</string>
-  <string name="send_google_maps_url">maps.google.com</string>
-  <string name="sensor_type_value_ant">ANT</string>
-  <string name="sensor_type_value_none">NONE</string>
-  <string name="sensor_type_value_polar">POLAR</string>
-  <string name="sensor_type_value_zephyr">ZEPHYR</string>
-  <string name="settings_map_track_color_mode_dynamic_value">DYNAMIC</string>
-  <string name="settings_map_track_color_mode_fixed_value">FIXED</string>
-  <string name="settings_map_track_color_mode_single_value">SINGLE</string>
-  <string name="settings_recording_track_name_date_iso_8601_value">DATE_ISO_8601</string>
-  <string name="settings_recording_track_name_date_local_value">DATE_LOCAL</string>
-  <string name="settings_recording_track_name_location_value">LOCATION</string>
-  <string name="settings_recording_track_name_number_value">NUMBER</string>
-  <string name="track_action_end">com.google.android.apps.mytracks.END_CURRENT_TRACK</string>
-  <string name="track_action_pause">com.google.android.apps.mytracks.PAUSE_CURRENT_TRACK</string>
-  <string name="track_action_resume">com.google.android.apps.mytracks.RESUME_CURRENT_TRACK</string>
-  <string name="track_action_start">com.google.android.apps.mytracks.START_NEW_TRACK</string>
-  <string name="value_unknown">-</string>
+전화번호 : (02) 531-9000\n</string>
+    <string name="maps_public_unlisted_url">support.google.com/maps/bin/answer.py?answer=144365</string>
+    <string name="marker_statistics_icon_url">http://maps.google.com/mapfiles/ms/micons/ylw-pushpin.png</string>
+    <string name="marker_waypoint_icon_url">http://maps.google.com/mapfiles/ms/micons/blue-pushpin.png</string>
+    <string name="my_tracks_privacy_url">blog.nogago.com/en/privacy/</string>
+    <string name="my_tracks_recording_service_name">My Tracks Recording Service</string>
+    <string name="my_tracks_support_url">support@nogago.com</string>
+    <string name="my_tracks_web_url">www.nogago.com</string>
+    <string name="permission_notification_value">com.google.android.apps.mytracks.MYTRACKS_NOTIFICATIONS</string>
+    <string name="send_google_docs_url">docs.google.com</string>
+    <string name="send_google_fusion_tables_url">google.com/fusiontables</string>
+    <string name="send_google_maps_url">maps.google.com</string>
+    <string name="sensor_type_value_ant">ANT</string>
+    <string name="sensor_type_value_none">NONE</string>
+    <string name="sensor_type_value_polar">POLAR</string>
+    <string name="sensor_type_value_zephyr">ZEPHYR</string>
+    <string name="settings_map_track_color_mode_dynamic_value">DYNAMIC</string>
+    <string name="settings_map_track_color_mode_fixed_value">FIXED</string>
+    <string name="settings_map_track_color_mode_single_value">SINGLE</string>
+    <string name="settings_recording_track_name_date_iso_8601_value">DATE_ISO_8601</string>
+    <string name="settings_recording_track_name_date_local_value">DATE_LOCAL</string>
+    <string name="settings_recording_track_name_location_value">LOCATION</string>
+    <string name="settings_recording_track_name_number_value">NUMBER</string>
+    <string name="track_action_end">com.google.android.apps.mytracks.END_CURRENT_TRACK</string>
+    <string name="track_action_pause">com.google.android.apps.mytracks.PAUSE_CURRENT_TRACK</string>
+    <string name="track_action_resume">com.google.android.apps.mytracks.RESUME_CURRENT_TRACK</string>
+    <string name="track_action_start">com.google.android.apps.mytracks.START_NEW_TRACK</string>
+    <string name="value_unknown">-</string>
+
+    <!-- Descriptions for GPX metadata -->
+
+    <string name="description_average_moving_pace_XML" translation_description="Average moving pace description.
+
+      %1$.2f pace in minutes per kilometer
+      %2$.1f pace in minutes per mile"><![CDATA[<n:average_moving_pace km=\"%1$.2f\" mi=\"%2$.1f\"/>]]></string>
+    <string name="description_average_moving_speed_XML" translation_description="Average moving speed description.
+
+      %1$.2f speed in kilometers per hour
+      %2$.1f speed in miles per hour"><![CDATA[<n:average_moving_speed km=\"%1$.2f\" mi=\"%2$.1f\"/>]]></string>
+    <string name="description_average_pace_XML" translation_description="Average pace description.
+
+      %1$.2f pace in minutes per kilometer
+      %2$.1f pace in minutes per mile"><![CDATA[<n:average_pace km=\"%2$.1f\" mi=\"%2$.1f\"/>]]></string>
+    <string name="description_average_speed_XML" translation_description="Average speed description.
+
+      %1$.2f speed in kilometers per hour
+      %2$.1f speed in miles per hour"><![CDATA[<n:average_speed km=\"%1$.2f\" mi=\"%2$.1f\"/>]]></string>
+    <string name="description_fastest_pace_XML" translation_description="Fastest pace description.
+
+      %1$.2f pace in minutes per kilometer
+      %2$.1f pace in minutes per mile"><![CDATA[<n:fastest_pace km=\"%1$.2f\" mi=\"%2$.1f\"/>]]></string>
+    <string name="description_elevation_gain_XML" translation_description="Elevation gain description.
+
+      %1$d elevation in meters
+      %2$d elevation in feet"><![CDATA[<n:elevation_gain km=\"%1$d\" mi=\"%2$d\"/>]]></string>
+    <string name="description_max_elevation_XML" translation_description="Max elevation description.
+
+      %1$d elevation in meters
+      %2$d elevation in feet"><![CDATA[<n:max_elevation km=\"%1$d\" mi=\"%2$d\"/>]]></string>
+    <string name="description_max_grade_XML" translation_description="Max grade description. %% is the escape sequence for the percent
+      symbol.
+
+      %1$d grade in percentage"><![CDATA[<n:max_grade>%1$d</n:max_grade>]]></string>
+    
+    <string name="description_max_speed_XML" translation_description="Max speed description.
+
+      %1$.2f speed in kilometers per hour
+      %2$.1f speed in miles per hour"> <![CDATA[<n:max_speed km=\"%1$.2f\" mi=\"%2$.1f\"/>]]></string>
+    <string name="description_min_elevation_XML" translation_description="Min elevation description.
+
+      %1$d elevation in meters
+      %2$d elevation in feet"><![CDATA[<n:min_elevation km=\"%1$d\" mi=\"%2$d\"/>]]></string>
+    <string name="description_min_grade_XML" translation_description="Min grade description. %% is the escape sequence for the percent
+      symbol.
+
+      %1$d grade in percentage"><![CDATA[<n:min_grade>%1$d</n:min_grade>]]></string>
+    <string name="description_moving_time_XML" translation_description="Moving time description.
+
+      %1$s time. E.g., &apos;1:08:59&apos;"><![CDATA[<n:moving_time>%1$s</n:moving_time>]]></string>
+    
+
+    <string name="description_recorded_time_XML" translation_description="Recorded time description.
+
+      %1$s time. E.g, &apos;2/15/2012 1:40 PM&apos;"><![CDATA[<n:recorded_on>%1$s</n:recorded_on>]]></string>
+    
+    <string name="description_total_distance_XML" translation_description="Total distance description.
+
+      %1$.2f distance in kilometers
+      %2$.1f distance in miles"><![CDATA[<n:total_distance km=\"%1$.2f\" mi=\"%2$.1f\"/>]]></string>
+    
+    <string name="description_total_time_XML" translation_description="Total time description.
+
+      %1$s time. E.g., &apos;1:08:59&apos;"><![CDATA[<n:total_time>%1$s</n:total_time>]]></string>
+
 </resources>

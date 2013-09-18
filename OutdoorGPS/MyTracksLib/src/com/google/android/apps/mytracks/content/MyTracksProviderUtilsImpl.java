@@ -1021,7 +1021,14 @@ public class MyTracksProviderUtilsImpl implements MyTracksProviderUtils {
       speedIndex = cursor.getColumnIndexOrThrow(TrackPointsColumns.SPEED);
       bearingIndex = cursor.getColumnIndexOrThrow(TrackPointsColumns.BEARING);
       sensorIndex = cursor.getColumnIndexOrThrow(TrackPointsColumns.SENSOR);
-      gsmSignalIndex = cursor.getColumnIndexOrThrow(TrackPointsColumns.GSMSTRENGTH);
+      // Workaround for not getting gsmstrength out of the data structure.
+      int value = -120;
+      try {
+        value = cursor.getColumnIndexOrThrow(TrackPointsColumns.GSMSTRENGTH);
+      } catch (IllegalArgumentException e) {
+        // Column does not exist...
+      }
+      gsmSignalIndex = value;
     }
   }
 
