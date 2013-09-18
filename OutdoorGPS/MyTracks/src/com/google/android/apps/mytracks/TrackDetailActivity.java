@@ -368,7 +368,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     insertMarkerMenuItem = menu.findItem(R.id.track_detail_insert_marker);
     playNogagoMenuItem = menu.findItem(R.id.track_detail_play);
     playEarthMenuItem = menu.findItem(R.id.track_detail_earth_play); // Not Supported
-                                                              // on
+    if(Constants.IS_BLACKBERRY) menu.removeItem(R.id.track_detail_earth_play);                                                         // on
     // BB
     // shareMenuItem = menu.findItem(R.id.track_detail_share);
     sendGoogleMenuItem = menu.findItem(R.id.track_detail_send_nogago);

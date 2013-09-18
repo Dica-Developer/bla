@@ -8,6 +8,7 @@ import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileForm
 import com.nogago.android.task.TrackableTask;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -30,7 +31,7 @@ import org.apache.http.protocol.BasicHttpContext;
  * @author Raphael Volz
  */
 public class GPXUploadTask extends TrackableTask {
-  
+  private final static String TAG = GPXUploadTask.class.getName();
   private TrackWriter trackWriter;
   private final Context context;
   private final MyTracksProviderUtils myTracksProviderUtils;
@@ -159,9 +160,10 @@ public class GPXUploadTask extends TrackableTask {
                 .execute(post, new BasicHttpContext());
 
         // read the status
+
         StatusLine statusLine = response.getStatusLine();
         int status = statusLine.getStatusCode();
-
+        Log.i(TAG,statusLine.toString());
         // if the
         switch (status) {
         case 400:
@@ -172,6 +174,7 @@ public class GPXUploadTask extends TrackableTask {
         ;
 
     } catch (IOException e3) {
+      Log.e(TAG,e3.getMessage());
       return new UploadTaskException(this, UploadTaskException.IO_PROBLEM);
     } finally {
         publishProgress(100);

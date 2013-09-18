@@ -149,7 +149,8 @@ public abstract class Constants {
   /**
    * URL to upload tracks to nogago
    */
-  public final static String TRACKS_UPLOAD_URL = "https://www.nogago.com:443/tracks/uploadTrack";
+  public final static String TRACKS_UPLOAD_URL = "https://www.nogago.com:443/tracks/uploadTrack"; // Test with "http://test.testing01.nogago.com/tracks/uploadTrack"; // TODO Set Back 
+  // public final static String TRACKS_UPLOAD_URL = "http://test.testing01.nogago.com/tracks/uploadTrack"; // TODO Set Back 
 
   /**
    * URL to dowload nogagoMaps from AppWorld

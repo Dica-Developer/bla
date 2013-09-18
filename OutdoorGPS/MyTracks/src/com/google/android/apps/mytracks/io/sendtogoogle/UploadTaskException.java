@@ -13,6 +13,7 @@ public class UploadTaskException extends TrackableTaskException {
     public static final byte INVALID_GPX = 0x01;
     public static final byte CREDENTIALS_WRONG = 0x02;
     public static final byte IO_PROBLEM = 0x03;
+    public static final byte OTHER_PROBLEM = 0x04;
 
     public UploadTaskException(TrackableTask task, byte id) {
         super(task, id);
@@ -49,6 +50,8 @@ public class UploadTaskException extends TrackableTaskException {
           return "Credentials Wrong";
         case IO_PROBLEM:
           return "IO Problem";
+        case OTHER_PROBLEM:
+          return "Unknown Problem";
         default:
             return super.getMessageById(id);
         }

@@ -20,7 +20,6 @@ import static com.google.android.apps.mytracks.Constants.RESUME_TRACK_EXTRA_NAME
 
 import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.TrackDetailActivity;
-import com.google.android.apps.mytracks.content.DescriptionGeneratorImpl;
 import com.google.android.apps.mytracks.content.MyTracksLocation;
 import com.google.android.apps.mytracks.content.MyTracksProvider;
 import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
@@ -38,7 +37,6 @@ import com.google.android.apps.mytracks.services.tasks.SplitPeriodicTaskFactory;
 import com.google.android.apps.mytracks.signalstrength.SignalStrengthListener;
 import com.google.android.apps.mytracks.signalstrength.SignalStrengthListener.SignalStrengthCallback;
 import com.google.android.apps.mytracks.signalstrength.SignalStrengthListenerFactory;
-import com.google.android.apps.mytracks.signalstrength.SignalStrengthService;
 import com.google.android.apps.mytracks.stats.TripStatistics;
 import com.google.android.apps.mytracks.stats.TripStatisticsUpdater;
 import com.google.android.apps.mytracks.util.IntentUtils;
@@ -446,7 +444,8 @@ public class TrackRecordingService extends Service implements SignalStrengthCall
       markerTripStatisticsUpdater.updateTime(now);
       tripStatistics = markerTripStatisticsUpdater.getTripStatistics();
       markerTripStatisticsUpdater = new TripStatisticsUpdater(now);
-      description = new DescriptionGeneratorImpl(this).generateWaypointDescription(tripStatistics);
+      // TODO Check why serializing statistics as text breaks upload... Do not serialize statistics as text
+      description = ""; // new DescriptionGeneratorImpl(this).generateWaypointDescription(tripStatistics);
     } else {
       tripStatistics = null;
       description = waypointCreationRequest.getDescription() != null ? waypointCreationRequest
@@ -570,8 +569,13 @@ public class TrackRecordingService extends Service implements SignalStrengthCall
     // SignalStrength register for signal sampling
     signalListener = signalListenerFactory.create(this, this);
     signalListener.register();
+
+    /* Unclear whether service is at all needed...
+    Intent intent = new Intent(this, SignalStrengthService.class);
+    intent.setAction(SignalStrengthConstants.START_SAMPLING);
+    startService(intent);
     // SignalStrength Stop
-    
+    */
     trackTripStatisticsUpdater = new TripStatisticsUpdater(now);
     markerTripStatisticsUpdater = new TripStatisticsUpdater(now);
 
@@ -708,7 +712,7 @@ public class TrackRecordingService extends Service implements SignalStrengthCall
     }
 
 
-    SignalStrengthService.stopService(this);
+    // SignalStrengthService.stopService(this);
     
     // Need to remember the recordingTrackId before setting it to -1L
     long trackId = recordingTrackId;

@@ -29,6 +29,7 @@ import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment.D
 import com.google.android.apps.mytracks.fragments.MarketDialogFragment;
 import com.google.android.apps.mytracks.fragments.ReviewDialogFragment;
 import com.google.android.apps.mytracks.fragments.WelcomeDialogFragment;
+import com.google.android.apps.mytracks.io.backup.BackupActivity;
 import com.google.android.apps.mytracks.io.file.SaveActivity;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
 import com.google.android.apps.mytracks.services.ITrackRecordingService;
@@ -180,9 +181,15 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         recordingTrackPaused = PreferencesUtils.getBoolean(TrackListActivity.this,
             R.string.recording_track_paused_key, PreferencesUtils.RECORDING_TRACK_PAUSED_DEFAULT);
         if (key != null) {
-          resourceCursorAdapter.notifyDataSetChanged();
-          trackController.update(recordingTrackId != PreferencesUtils.RECORDING_TRACK_ID_DEFAULT,
-              recordingTrackPaused);
+          boolean success = true;
+          try {
+            resourceCursorAdapter.notifyDataSetChanged();
+          } catch (android.database.StaleDataException e) {
+            success = false;
+          }
+          if (success)
+            trackController.update(recordingTrackId != PreferencesUtils.RECORDING_TRACK_ID_DEFAULT,
+                recordingTrackPaused);
           return;
         }
       }
@@ -345,16 +352,18 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     setContentView(R.layout.track_list);
 
     ApiAdapterFactory.getApiAdapter().hideActionBar(this);
-    
+
     Display display = getWindowManager().getDefaultDisplay();
-    boolean devicesZ =display.getWidth() > 720 || display.getHeight() > 720;
-    if(devicesZ) {
+    boolean devicesZ = display.getWidth() > 720 || display.getHeight() > 720;
+    if (devicesZ) {
       // Disable the Keyboard help link
       View v = findViewById(R.id.help_keyboard_q);
-      if (v!= null) v.setVisibility(View.GONE);
+      if (v != null)
+        v.setVisibility(View.GONE);
       v = findViewById(R.id.help_keyboard_a);
-      if (v!= null) v.setVisibility(View.GONE);
-    } 
+      if (v != null)
+        v.setVisibility(View.GONE);
+    }
     trackRecordingServiceConnection = new TrackRecordingServiceConnection(this, bindChangedCallback);
 
     SharedPreferences sharedPreferences = getSharedPreferences(Constants.SETTINGS_NAME,
@@ -367,14 +376,15 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
 
     // START MOD
     ImageButton helpButton = (ImageButton) findViewById(R.id.listBtnBarHelp);
-    if(helpButton != null) helpButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        // TODO Test
-        Intent intent = IntentUtils.newIntent(TrackListActivity.this, HelpActivity.class);
-        startActivity(intent);
-      }
-    });
+    if (helpButton != null)
+      helpButton.setOnClickListener(new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          // TODO Test
+          Intent intent = IntentUtils.newIntent(TrackListActivity.this, HelpActivity.class);
+          startActivity(intent);
+        }
+      });
     /*
      * Record = Pause and Stop managed by track controller ImageButton
      * recordButton = (ImageButton) findViewById(R.id.listBtnBarRecord);
@@ -546,17 +556,18 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         return true;
       case R.id.track_list_import:
         AnalyticsUtils.sendPageViews(this, "/action/import");
-        String msg = String.format(getResources().getString(R.string.dlg_import), FileUtils.buildExternalDirectoryPath("gpx").toString());
-        Builder builder =          
-            new AlertDialog.Builder(TrackListActivity.this);
+        String msg = String.format(getResources().getString(R.string.dlg_import), FileUtils
+            .buildExternalDirectoryPath("gpx").toString());
+        Builder builder = new AlertDialog.Builder(TrackListActivity.this);
         builder.setMessage(msg).setNeutralButton(getString(android.R.string.cancel), null);
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialog, int which) {
-            Intent myintent = IntentUtils.newIntent(TrackListActivity.this, ImportActivity.class).putExtra(
-                ImportActivity.EXTRA_IMPORT_ALL, true);
+            Intent myintent = IntentUtils.newIntent(TrackListActivity.this, ImportActivity.class)
+                .putExtra(ImportActivity.EXTRA_IMPORT_ALL, true);
             startActivity(myintent);
-          }});
+          }
+        });
         builder.show();
         return true;
       case R.id.track_list_save_all_gpx:
@@ -701,24 +712,34 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         new CheckUnitsDialogFragment().show(getSupportFragmentManager(),
             CheckUnitsDialogFragment.CHECK_UNITS_DIALOG_TAG);
       }
-    } else if(EulaUtils.getShowReview(this) && EulaUtils.getAppStart(this) > 3) {
-      // Ask For Review
-      Fragment fragment =getSupportFragmentManager().findFragmentByTag(ReviewDialogFragment.REVIEW_DIALOG_TAG); if (fragment == null) {
-        ReviewDialogFragment.newInstance(false)
-           .show(getSupportFragmentManager(), ReviewDialogFragment.REVIEW_DIALOG_TAG); }    
-    } else if((EulaUtils.getAppStart(this) % 10) == 5 ) {
-      // Ask For Review
-      Fragment fragment = getSupportFragmentManager().findFragmentByTag(MarketDialogFragment.MARKET_DIALOG_TAG); if (fragment == null) {
-        MarketDialogFragment.newInstance(false)
-           .show(getSupportFragmentManager(), MarketDialogFragment.MARKET_DIALOG_TAG); }    
-    } else {
+    } else if (EulaUtils.getShowReview(this) && EulaUtils.getAppStart(this) > 3) {
+      // Ask For Review at 4th start, continue bugging the user
+      Fragment fragment = getSupportFragmentManager().findFragmentByTag(
+          ReviewDialogFragment.REVIEW_DIALOG_TAG);
+      if (fragment == null) {
+        ReviewDialogFragment.newInstance(false).show(getSupportFragmentManager(),
+            ReviewDialogFragment.REVIEW_DIALOG_TAG);
+      }
+    } else if ((EulaUtils.getAppStart(this) % 10) == 5) {
+      // Show our other apps every tenth start with starting with the fifth start
+      Fragment fragment = getSupportFragmentManager().findFragmentByTag(
+          MarketDialogFragment.MARKET_DIALOG_TAG);
+      if (fragment == null) {
+        MarketDialogFragment.newInstance(false).show(getSupportFragmentManager(),
+            MarketDialogFragment.MARKET_DIALOG_TAG);
+      }
+    } else if ((EulaUtils.getAppStart(this) % 10) == 0) {
+      // Perform a backup at every tenth app start.
+      Intent intent = IntentUtils.newIntent(this, BackupActivity.class);
+      startActivity(intent);
+      } else {
       /*
        * Before the welcome sequence, the empty view is not visible so that it
        * doesn't show through.
        */
       findViewById(R.id.track_list_empty_view).setVisibility(View.VISIBLE);
     }
-     checkPriorExceptions(false);
+    checkPriorExceptions(false);
   }
 
   /*
@@ -772,7 +793,9 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
           intent.putExtra(Intent.EXTRA_TEXT, text.toString());
           startActivity(Intent.createChooser(intent, getString(R.string.send_report)));
 
-          if(!file.delete()) Toast.makeText(getApplicationContext(), "Exceptions file not deleted",Toast.LENGTH_LONG).show();
+          if (!file.delete())
+            Toast.makeText(getApplicationContext(), "Exceptions file not deleted",
+                Toast.LENGTH_LONG).show();
         }
 
       });
