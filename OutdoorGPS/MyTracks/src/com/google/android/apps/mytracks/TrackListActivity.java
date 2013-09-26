@@ -380,7 +380,6 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
       helpButton.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View v) {
-          // TODO Test
           Intent intent = IntentUtils.newIntent(TrackListActivity.this, HelpActivity.class);
           startActivity(intent);
         }
@@ -401,12 +400,13 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
           onSearchRequested();
         }
       });
-    ImageButton gpsiesButton = (ImageButton) findViewById(R.id.listBtnBarGpsies);
-    if (gpsiesButton != null)
-      gpsiesButton.setOnClickListener(new OnClickListener() {
+    ImageButton settingsButton = (ImageButton) findViewById(R.id.listBtnBarSettings);
+    if (settingsButton != null)
+      settingsButton.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View v) {
-          Toast.makeText(TrackListActivity.this, R.string.gpsies_todo, Toast.LENGTH_LONG).show();
+          Intent intent = IntentUtils.newIntent(TrackListActivity.this, SettingsActivity.class);
+          startActivity(intent);
         }
       });
 
@@ -644,7 +644,6 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         }
         break;
       case KeyEvent.KEYCODE_P:
-        // TODO Review Pause Log
         if (isRecording) {
           if (recordingTrackPaused) {
             // Paused -> Resume
