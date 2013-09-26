@@ -97,12 +97,12 @@ limitations under the License.
           android:scaleType="centerInside"  />
 
       <ImageButton
-          android:id="@+id/listBtnBarGpsies"
+          android:id="@+id/listBtnBarSettings"
           android:layout_width="0dp"
           android:layout_weight="1"
         android:layout_height="wrap_content"
           android:layout_toRightOf="@id/listBtnBarSearch"
-          android:src="@drawable/ic_gpsies"
+          android:src="@drawable/ic_settings"
          
       android:background="@color/actionBarBG"
           android:scaleType="centerInside" />
