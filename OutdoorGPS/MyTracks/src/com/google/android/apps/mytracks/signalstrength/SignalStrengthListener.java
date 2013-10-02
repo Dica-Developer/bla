@@ -15,6 +15,7 @@
  */
 package com.google.android.apps.mytracks.signalstrength;
 
+import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 
 /**
@@ -28,6 +29,7 @@ public interface SignalStrengthListener {
    */
   public interface SignalStrengthCallback {
     void onSignalStrengthSampled(SignalStrength signal);
+    void onServiceStateChanged (ServiceState serviceState);
   }
 
   /**

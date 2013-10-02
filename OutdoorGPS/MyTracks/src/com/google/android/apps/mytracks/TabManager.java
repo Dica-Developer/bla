@@ -150,7 +150,7 @@ public class TabManager implements TabHost.OnTabChangeListener {
   @Override
   public void onTabChanged(String tabId) {
     TabInfo newTabInfo = tabs.get(tabId);
-    if (PreferencesUtils.getBoolean(fragmentActivity, R.string.settings_mapsprovider, false)
+    if (PreferencesUtils.getBoolean(fragmentActivity, R.string.settings_mapsprovider, true)
         && (tabId.compareTo(MapFragment.MAP_FRAGMENT_TAG) == 0)) {
       if(!isMapsInstalled(fragmentActivity)) {
         Fragment fragment =fragmentActivity.getSupportFragmentManager().findFragmentByTag(InstallMapsDialogFragment.INSTALL_MAPS_DIALOG_TAG);

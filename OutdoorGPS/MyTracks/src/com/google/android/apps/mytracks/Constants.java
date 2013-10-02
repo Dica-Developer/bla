@@ -24,6 +24,8 @@ import android.content.ComponentName;
  */
 public abstract class Constants {
 
+
+  public final static int UNKNOWN_SIGNAL = -999; // dBM
   /**
    * Should be used by all log statements
    */
@@ -150,7 +152,7 @@ public abstract class Constants {
    * URL to upload tracks to nogago
    */
   public final static String TRACKS_UPLOAD_URL = "https://www.nogago.com:443/tracks/uploadTrack"; // Test with "http://test.testing01.nogago.com/tracks/uploadTrack"; // TODO Set Back 
-  // public final static String TRACKS_UPLOAD_URL = "http://test.testing01.nogago.com/tracks/uploadTrack"; // TODO Set Back 
+  //public final static String TRACKS_UPLOAD_URL = "http://test.testing01.nogago.com/tracks/uploadTrack"; // TODO Set Back 
 
   /**
    * URL to dowload nogagoMaps from AppWorld
@@ -159,7 +161,7 @@ public abstract class Constants {
   /**
   * URL to dowload nogagoMaps from PlayStore
   */
- public final static String PLAY_MAPS_DOWNLOAD_URL = "market://details?id=pname:com.nogago.android.maps";
+ public final static String PLAY_MAPS_DOWNLOAD_URL = "market://details?id=com.nogago.android.maps";
   
  /**
   * URL to dowload and review nogago Tracks from AppWorld
@@ -168,7 +170,7 @@ public abstract class Constants {
  /**
  * URL to dowload and review nogago Tracks from PlayStore
  */
-public final static String PLAY_TRACKS_DOWNLOAD_URL = "market://details?id=pname:com.nogago.android.tracks";
+public final static String PLAY_TRACKS_DOWNLOAD_URL = "market://details?id=com.nogago.android.tracks";
  
  /**
    * URL to download nogago Apps in BB
@@ -184,6 +186,7 @@ public final static String PLAY_TRACKS_DOWNLOAD_URL = "market://details?id=pname
   public final static String WWW_VENDOR_URL = "http://www.nogago.com/";
 
   public final static String SUPPORT_MAIL = "support@nogago.com";
+  public final static String BUGS_MAIL = "bugs@nogago.com";
   
   public final static boolean IS_BLACKBERRY = java.lang.System.getProperty("os.name").equals("qnx");
 

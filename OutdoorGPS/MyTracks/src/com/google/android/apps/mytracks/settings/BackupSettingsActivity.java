@@ -16,6 +16,7 @@
 
 package com.google.android.apps.mytracks.settings;
 
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.io.backup.BackupActivity;
 import com.google.android.apps.mytracks.io.backup.RestoreChooserActivity;
@@ -151,4 +152,18 @@ public class BackupSettingsActivity extends AbstractSettingsActivity {
     restorePreference.setSummary(isRecording ? R.string.settings_not_while_recording
         : R.string.settings_backup_restore_summary);
   }
+  
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    EasyTracker.getInstance(this).activityStop(this);  // Add this method.
+  }
+  
 }

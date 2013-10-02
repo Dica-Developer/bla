@@ -71,4 +71,6 @@ public class AbstractSettingsActivity extends PreferenceActivity {
     preferenceManager.getSharedPreferences()
         .unregisterOnSharedPreferenceChangeListener(backupPreferencesListener);
   }
+  
+  
 }

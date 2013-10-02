@@ -16,6 +16,7 @@
 
 package com.google.android.apps.mytracks;
 
+import com.google.android.apps.mytracks.util.AnalyticsUtils;
 import com.google.android.apps.mytracks.util.ApiAdapterFactory;
 
 import android.os.Bundle;
@@ -45,6 +46,9 @@ public abstract class AbstractMyTracksActivity extends FragmentActivity {
     // Configure action bar must be after setContentView
     ApiAdapterFactory.getApiAdapter().configureActionBarHomeAsUp(this);
     if (hideTitle()) ApiAdapterFactory.getApiAdapter().hideActionBar(this);
+    
+
+    AnalyticsUtils.sendPageViews(this, this.getLocalClassName() + "/create" );
   }
 
   /**
@@ -74,4 +78,5 @@ public abstract class AbstractMyTracksActivity extends FragmentActivity {
   protected void onHomeSelected() {
     finish();
   }
+  
 }

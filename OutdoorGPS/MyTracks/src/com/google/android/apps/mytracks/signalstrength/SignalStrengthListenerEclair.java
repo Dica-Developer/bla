@@ -27,6 +27,7 @@ import android.net.Uri;
 import android.telephony.CellLocation;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.PhoneStateListener;
+import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -34,37 +35,41 @@ import android.util.Log;
 import java.util.List;
 
 /**
- * A class to monitor the network signal strength.
- *
- * TODO: i18n
- *
+ * A class to monitor the network signal strength. TODO: i18n
+ * 
  * @author Sandor Dornbush
  */
-public class SignalStrengthListenerEclair extends PhoneStateListener implements SignalStrengthListener {
+public class SignalStrengthListenerEclair extends PhoneStateListener implements
+    SignalStrengthListener {
 
   private SignalStrength signalStrength = null;
 
   public SignalStrengthListenerEclair(Context ctx, SignalStrengthCallback callback) {
     this.context = ctx;
     this.callback = callback;
+    manager = null;
   }
 
   protected int getListenEvents() {
     return PhoneStateListener.LISTEN_SIGNAL_STRENGTHS;
   }
 
-  /*
-  @SuppressWarnings("hiding")
+  @Override
+  public void onServiceStateChanged(ServiceState serviceState) {
+    Log.d(TAG, "TODO Service Change State");
+    // Todo;
+  }
+
+  @Override
   public void onSignalStrengthsChanged(SignalStrength signalStrength) {
     Log.d(TAG, "Signal Strength Modern: " + signalStrength);
     this.signalStrength = signalStrength;
-    notifySignalSampled();
+    callback.onSignalStrengthSampled(signalStrength);
   }
-  */
 
   /**
    * Gets a human readable description for the network type.
-   *
+   * 
    * @param type The integer constant for the network type
    * @return A human readable description of the network type
    */
@@ -98,7 +103,7 @@ public class SignalStrengthListenerEclair extends PhoneStateListener implements 
 
   /**
    * Gets the url for the waypoint icon for the current network type.
-   *
+   * 
    * @param type The network type
    * @return A url to a image to use as the waypoint icon
    */
@@ -128,26 +133,19 @@ public class SignalStrengthListenerEclair extends PhoneStateListener implements 
     }
     StringBuffer sb = new StringBuffer();
     if (signalStrength.isGsm()) {
-      appendSignal(signalStrength.getGsmSignalStrength(),
-                   R.string.gsm_strength,
-                   sb);
-      maybeAppendSignal(signalStrength.getGsmBitErrorRate(),
-                        R.string.error_rate,
-                        sb);
+      appendSignal(signalStrength.getGsmSignalStrength(), R.string.gsm_strength, sb);
+      maybeAppendSignal(signalStrength.getGsmBitErrorRate(), R.string.error_rate, sb);
     } else {
       appendSignal(signalStrength.getCdmaDbm(), R.string.cdma_strength, sb);
       appendSignal(signalStrength.getCdmaEcio() / 10.0, R.string.ecio, sb);
       appendSignal(signalStrength.getEvdoDbm(), R.string.evdo_strength, sb);
       appendSignal(signalStrength.getEvdoEcio() / 10.0, R.string.ecio, sb);
-      appendSignal(signalStrength.getEvdoSnr(),
-                   R.string.signal_to_noise_ratio,
-                   sb);
+      appendSignal(signalStrength.getEvdoSnr(), R.string.signal_to_noise_ratio, sb);
     }
     return sb.toString();
   }
 
-  private void maybeAppendSignal(
-      int signal, int signalFormat, StringBuffer sb) {
+  private void maybeAppendSignal(int signal, int signalFormat, StringBuffer sb) {
     if (signal > 0) {
       sb.append(getContext().getString(signalFormat, signal));
     }
@@ -162,7 +160,7 @@ public class SignalStrengthListenerEclair extends PhoneStateListener implements 
     sb.append(getContext().getString(signalFormat, signal));
     sb.append("\n");
   }
-  
+
   private static final Uri APN_URI = Uri.parse("content://telephony/carriers");
 
   private final Context context;
@@ -170,30 +168,19 @@ public class SignalStrengthListenerEclair extends PhoneStateListener implements 
 
   private TelephonyManager manager;
 
-
-
   public void register() {
-    manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
     if (manager == null) {
-      Log.e(TAG, "Cannot get telephony manager.");
-    } else {
-      manager.listen(this, getListenEvents());
+      manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+      if (manager == null) {
+        Log.e(TAG, "Cannot get telephony manager.");
+      } else {
+        manager.listen(this, getListenEvents());
+      }
     }
   }
-
-
- 
-
-  protected void notifySignalSampled() {
-    int networkType = manager.getNetworkType();
-    callback.onSignalStrengthSampled(signalStrength);
-  }
-
-
-
   /**
    * Builds a description for the current signal strength.
-   *
+   * 
    * @return A human readable description of the network state
    */
   private String getDescription() {
@@ -240,8 +227,8 @@ public class SignalStrengthListenerEclair extends PhoneStateListener implements 
   private void appendCurrentApns(StringBuilder output) {
     ContentResolver contentResolver = context.getContentResolver();
 
-    Cursor cursor = contentResolver.query(
-        APN_URI, new String[] { "name", "apn" }, "current=1", null, null);
+    Cursor cursor = contentResolver.query(APN_URI, new String[] { "name", "apn" }, "current=1",
+        null, null);
 
     if (cursor == null) {
       return;
@@ -275,8 +262,6 @@ public class SignalStrengthListenerEclair extends PhoneStateListener implements 
     }
   }
 
- 
-
   @Override
   public void unregister() {
     if (manager != null) {
@@ -284,7 +269,6 @@ public class SignalStrengthListenerEclair extends PhoneStateListener implements 
       manager = null;
     }
   }
-
 
   protected Context getContext() {
     return context;

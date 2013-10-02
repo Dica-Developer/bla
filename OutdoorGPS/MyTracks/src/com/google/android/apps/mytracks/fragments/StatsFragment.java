@@ -16,6 +16,7 @@
 
 package com.google.android.apps.mytracks.fragments;
 
+import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.TrackDetailActivity;
 import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.content.TrackDataHub;
@@ -34,6 +35,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +49,7 @@ import java.util.EnumSet;
  * @author Sandor Dornbush
  * @author Rodrigo Damazio
  */
-public class StatsFragment extends Fragment implements TrackDataListener, SignalStrengthCallback  {
+public class StatsFragment extends Fragment implements TrackDataListener, SignalStrengthCallback {
 
   public static final String STATS_FRAGMENT_TAG = "statsFragment";
 
@@ -75,8 +77,7 @@ public class StatsFragment extends Fragment implements TrackDataListener, Signal
   };
 
   @Override
-  public View onCreateView(
-      LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     signalListenerFactory = new SignalStrengthListenerFactory();
     signalListener = signalListenerFactory.create(getActivity(), this);
     signalListener.register();
@@ -114,7 +115,7 @@ public class StatsFragment extends Fragment implements TrackDataListener, Signal
   public void onLocationStateChanged(LocationState state) {
     if (isResumed() && state != LocationState.GOOD_FIX) {
       getActivity().runOnUiThread(new Runnable() {
-          @Override
+        @Override
         public void run() {
           if (isResumed()) {
             lastLocation = null;
@@ -129,7 +130,7 @@ public class StatsFragment extends Fragment implements TrackDataListener, Signal
   public void onLocationChanged(final Location location) {
     if (isResumed()) {
       getActivity().runOnUiThread(new Runnable() {
-          @Override
+        @Override
         public void run() {
           if (isResumed()) {
             if (isSelectedTrackRecording() && !isSelectedTrackPaused()) {
@@ -166,7 +167,7 @@ public class StatsFragment extends Fragment implements TrackDataListener, Signal
   public void onTrackUpdated(final Track track) {
     if (isResumed()) {
       getActivity().runOnUiThread(new Runnable() {
-          @Override
+        @Override
         public void run() {
           if (isResumed()) {
             lastTripStatistics = track != null ? track.getTripStatistics() : null;
@@ -221,7 +222,7 @@ public class StatsFragment extends Fragment implements TrackDataListener, Signal
   public boolean onMetricUnitsChanged(final boolean metric) {
     if (isResumed()) {
       getActivity().runOnUiThread(new Runnable() {
-          @Override
+        @Override
         public void run() {
           if (isResumed()) {
             updateUi(getActivity());
@@ -236,7 +237,7 @@ public class StatsFragment extends Fragment implements TrackDataListener, Signal
   public boolean onReportSpeedChanged(final boolean speed) {
     if (isResumed()) {
       getActivity().runOnUiThread(new Runnable() {
-          @Override
+        @Override
         public void run() {
           if (isResumed()) {
             updateUi(getActivity());
@@ -296,31 +297,40 @@ public class StatsFragment extends Fragment implements TrackDataListener, Signal
     StatsUtils.setLocationValues(activity, lastLocation, gsmSignal, true);
   }
 
-  final static int UNKNOWN_SIGNAL = -114;
   SignalStrength signalStrength = null;
   int gsmBitErrorRate = -1;
-  int gsmSignal = UNKNOWN_SIGNAL; // in dBM
-  
+  int gsmSignal = Constants.UNKNOWN_SIGNAL; // in dBM
+
+  /**
+   * <rssi>: 
+0 -113 dBm or less 
+1 -111 dBm 
+2...30 -109... -53 dBm 
+31 -51 dBm or greater 
+99 not known or not detectable 
+<ber> (in percent): 
+0...7 as RXQUAL values in the table in TS 45.008 [20] subclause 8.2.4 
+99 not known or not detectable
+   */
   @Override
   public void onSignalStrengthSampled(SignalStrength signal) {
-    if(signal.isGsm()) {
-      signalStrength = signal;  
+    if (signal.isGsm()) {
+      signalStrength = signal;
       gsmBitErrorRate = signal.getGsmBitErrorRate();
-      if(signal.getGsmSignalStrength()<2 || signal.getGsmSignalStrength()>30) {
-      switch(signal.getGsmSignalStrength()) {
-        case 0: 
-          gsmSignal = -113;
-        case 1:
-          gsmSignal = -111;
-        case 31:
-          gsmSignal = -51; // or better
-        case 99:
-          gsmSignal = UNKNOWN_SIGNAL;
-      }
+      if (signal.getGsmSignalStrength() < 2 || signal.getGsmSignalStrength() > 30) {
+        switch (signal.getGsmSignalStrength()) {
+          case 0:
+            gsmSignal = -113;
+          case 1:
+            gsmSignal = -111;
+          case 31:
+            gsmSignal = -51; // or better
+          case 99:
+            gsmSignal = Constants.UNKNOWN_SIGNAL;
+        }
       } else {
-        gsmSignal = -109 + (signal.getGsmSignalStrength()-2) * 2;
+        gsmSignal = -109 + (signal.getGsmSignalStrength() - 2) * 2;
       }
-      gsmSignal += 113;
     }
   }
 
@@ -330,7 +340,7 @@ public class StatsFragment extends Fragment implements TrackDataListener, Signal
     super.onDestroy();
     if (signalListenerFactory != null && signalListener != null)
       signalListener.unregister();
-    
+
   }
 
   @Override
@@ -347,5 +357,13 @@ public class StatsFragment extends Fragment implements TrackDataListener, Signal
     super.onStop();
     if (signalListenerFactory != null && signalListener != null)
       signalListener.unregister();
+  }
+
+  @Override
+  public void onServiceStateChanged(ServiceState serviceState) {
+    if (serviceState.getState() == serviceState.STATE_OUT_OF_SERVICE
+        || serviceState.getState() == serviceState.STATE_POWER_OFF)
+      gsmSignal = Constants.UNKNOWN_SIGNAL;
+
   }
 }
