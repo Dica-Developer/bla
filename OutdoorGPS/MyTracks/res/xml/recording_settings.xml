@@ -17,13 +17,13 @@ limitations under the License.
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
   android:title="@string/settings_recording" >
   <com.google.android.apps.mytracks.IntegerListPreference
-    android:defaultValue="0"
+    android:defaultValue="1"
     android:entryValues="@array/frequency_values"
     android:key="@string/voice_frequency_key"
     android:summary="@string/settings_voice_frequency_title"
     android:title="@string/menu_voice_frequency" />
   <com.google.android.apps.mytracks.IntegerListPreference
-    android:defaultValue="0"
+    android:defaultValue="1"
     android:entryValues="@array/frequency_values"
     android:key="@string/split_frequency_key"
     android:summary="@string/settings_split_frequency_title"
