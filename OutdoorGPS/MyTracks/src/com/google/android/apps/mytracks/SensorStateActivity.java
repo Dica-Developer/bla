@@ -16,6 +16,7 @@
 
 package com.google.android.apps.mytracks;
 
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.mytracks.content.Sensor;
 import com.google.android.apps.mytracks.services.ITrackRecordingService;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
@@ -23,8 +24,8 @@ import com.google.android.apps.mytracks.services.sensors.SensorManager;
 import com.google.android.apps.mytracks.services.sensors.SensorManagerFactory;
 import com.google.android.apps.mytracks.services.sensors.SensorUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
-import com.nogago.bb10.tracks.R;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.nogago.bb10.tracks.R;
 
 import android.os.Bundle;
 import android.os.RemoteException;
@@ -299,5 +300,18 @@ public class SensorStateActivity extends AbstractMyTracksActivity {
               : Sensor.SensorState.NONE, this);
     }
     return value;
+  }
+  
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    EasyTracker.getInstance(this).activityStop(this);  // Add this method.
   }
 }

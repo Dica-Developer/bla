@@ -17,6 +17,8 @@
 package com.google.android.apps.mytracks.fragments;
 
 import com.google.android.apps.mytracks.Constants;
+import com.google.android.apps.mytracks.settings.MapSettingsActivity;
+import com.google.android.apps.mytracks.util.IntentUtils;
 import com.nogago.bb10.tracks.R;
 
 import android.app.AlertDialog;
@@ -49,10 +51,8 @@ public class InstallMapsDialogFragment extends DialogFragment {
         .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialog, int which) {
-            
-              Toast.makeText(
-                  activity, R.string.track_detail_install_maps_online, Toast.LENGTH_LONG)
-                  .show();
+            Intent intent = IntentUtils.newIntent(activity, MapSettingsActivity.class);
+            startActivity(intent);
           }
         })
         .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {

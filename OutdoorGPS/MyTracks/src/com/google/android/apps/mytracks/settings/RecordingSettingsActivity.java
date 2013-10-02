@@ -16,6 +16,7 @@
 
 package com.google.android.apps.mytracks.settings;
 
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.StringUtils;
 import com.google.android.apps.mytracks.util.UnitConversions;
@@ -233,4 +234,18 @@ public class RecordingSettingsActivity extends AbstractSettingsActivity {
     }
     return options;
   }
+  
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    EasyTracker.getInstance(this).activityStop(this);  // Add this method.
+  }
+  
 }

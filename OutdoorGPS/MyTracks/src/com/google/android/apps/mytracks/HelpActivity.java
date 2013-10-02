@@ -16,6 +16,7 @@
 
 package com.google.android.apps.mytracks;
 
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.mytracks.fragments.AboutDialogFragment;
 import com.nogago.bb10.tracks.R;
 
@@ -71,5 +72,18 @@ public class HelpActivity extends AbstractMyTracksActivity {
   @Override
   protected int getLayoutResId() {
     return R.layout.help;
+  }
+  
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    EasyTracker.getInstance(this).activityStop(this);  // Add this method.
   }
 }

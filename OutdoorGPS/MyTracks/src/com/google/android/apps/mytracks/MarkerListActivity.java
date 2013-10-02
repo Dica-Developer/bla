@@ -16,6 +16,7 @@
 
 package com.google.android.apps.mytracks;
 
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
 import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.content.WaypointsColumns;
@@ -300,5 +301,17 @@ public class MarkerListActivity extends AbstractMyTracksActivity {
       if (ApiAdapterFactory.getApiAdapter().handleSearchKey(searchMenuItem)) { return true; }
     }
     return super.onKeyUp(keyCode, event);
+  }
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    EasyTracker.getInstance(this).activityStop(this);  // Add this method.
   }
 }

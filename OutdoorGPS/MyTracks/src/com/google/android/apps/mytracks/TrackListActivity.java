@@ -16,6 +16,7 @@
 
 package com.google.android.apps.mytracks;
 
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.content.TrackDataHub;
 import com.google.android.apps.mytracks.content.TrackDataListener;
@@ -99,6 +100,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
 
   private static final String TAG = TrackListActivity.class.getSimpleName();
   private static final String START_GPS_KEY = "start_gps_key";
+  private static boolean started = false;
 
   private static final String[] PROJECTION = new String[] { TracksColumns._ID, TracksColumns.NAME,
       TracksColumns.DESCRIPTION, TracksColumns.CATEGORY, TracksColumns.STARTTIME,
@@ -351,6 +353,8 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     setVolumeControlStream(TextToSpeech.Engine.DEFAULT_STREAM);
     setContentView(R.layout.track_list);
 
+    AnalyticsUtils.sendPageViews(this, this.getLocalClassName() + "/create" );
+    
     ApiAdapterFactory.getApiAdapter().hideActionBar(this);
 
     Display display = getWindowManager().getDefaultDisplay();
@@ -472,14 +476,15 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     trackDataHub = TrackDataHub.newInstance(this);
     if (savedInstanceState != null) {
       startGps = savedInstanceState.getBoolean(START_GPS_KEY);
-    }
-    showStartupDialogs();
+    } // Test repeated messaging
+      if(!started) showStartupDialogs();
   }
 
   @Override
   protected void onStart() {
     super.onStart();
     trackDataHub.start();
+    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
   }
 
   @Override
@@ -508,7 +513,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   protected void onStop() {
     super.onStop();
     trackDataHub.stop();
-    AnalyticsUtils.dispatch();
+    EasyTracker.getInstance(this).activityStop(this);  // Add this method.
   }
 
   @Override
@@ -711,16 +716,16 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         new CheckUnitsDialogFragment().show(getSupportFragmentManager(),
             CheckUnitsDialogFragment.CHECK_UNITS_DIALOG_TAG);
       }
-    } else if (EulaUtils.getShowReview(this) && EulaUtils.getAppStart(this) > 3) {
-      // Ask For Review at 4th start, continue bugging the user
+    } else if (EulaUtils.getShowReview(this) && EulaUtils.getAppStart(this) > 7) {
+      // Ask For Review at 7th start, continue bugging the user
       Fragment fragment = getSupportFragmentManager().findFragmentByTag(
           ReviewDialogFragment.REVIEW_DIALOG_TAG);
       if (fragment == null) {
         ReviewDialogFragment.newInstance(false).show(getSupportFragmentManager(),
             ReviewDialogFragment.REVIEW_DIALOG_TAG);
       }
-    } else if ((EulaUtils.getAppStart(this) % 10) == 5) {
-      // Show our other apps every tenth start with starting with the fifth start
+    } else if ((EulaUtils.getAppStart(this) % 10) == 9) {
+      // Show our other apps every tenth start with starting with the ninth start
       Fragment fragment = getSupportFragmentManager().findFragmentByTag(
           MarketDialogFragment.MARKET_DIALOG_TAG);
       if (fragment == null) {
@@ -739,6 +744,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
       findViewById(R.id.track_list_empty_view).setVisibility(View.VISIBLE);
     }
     checkPriorExceptions(false);
+    started = true;
   }
 
   /*
@@ -750,12 +756,22 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     if (file != null && file.exists() && file.length() > 0) {
       String msg = getString(R.string.previous_run_crashed);
       Builder builder = new AlertDialog.Builder(TrackListActivity.this);
-      builder.setMessage(msg).setNeutralButton(getString(R.string.donot_send_report), null);
+      // User says no
+      builder.setMessage(msg).setNeutralButton(getString(R.string.donot_send_report), new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+          // Delete Exceptions File when user presses Ignore
+          if (!file.delete())
+            Toast.makeText(getApplicationContext(), "Exceptions file not deleted",
+                Toast.LENGTH_LONG).show();
+        }
+      });
+      // User says yes
       builder.setPositiveButton(R.string.send_report, new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
           Intent intent = new Intent(Intent.ACTION_SEND);
-          intent.putExtra(Intent.EXTRA_EMAIL, new String[] { Constants.SUPPORT_MAIL }); //$NON-NLS-1$
+          intent.putExtra(Intent.EXTRA_EMAIL, new String[] { Constants.BUGS_MAIL }); //$NON-NLS-1$
           intent.setType("vnd.android.cursor.dir/email"); //$NON-NLS-1$
           intent.putExtra(Intent.EXTRA_SUBJECT, "nogago bug"); //$NON-NLS-1$
           StringBuilder text = new StringBuilder();
@@ -912,4 +928,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
       trackDataHub.unregisterTrackDataListener(trackDataListener);
     }
   }
+  
+
+  
 }

@@ -16,6 +16,7 @@
 
 package com.google.android.apps.mytracks.settings;
 
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.util.DialogUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
@@ -64,7 +65,8 @@ public class SettingsActivity extends AbstractSettingsActivity {
         editor.commit();
       } else if (PreferencesUtils.getKey(SettingsActivity.this, R.string.user_password).equals(key)) {
         SharedPreferences.Editor editor = preferences.edit();
-        String value = PreferencesUtils.getString(SettingsActivity.this, R.string.user_password, "");
+        String value = PreferencesUtils
+            .getString(SettingsActivity.this, R.string.user_password, "");
         editor.putString(key, value);
         editor.commit();
       }
@@ -76,16 +78,17 @@ public class SettingsActivity extends AbstractSettingsActivity {
   protected void onCreate(Bundle bundle) {
     super.onCreate(bundle);
     addPreferencesFromResource(R.xml.settings);
-    
+
     setContentView(R.layout.settings);
 
     ImageButton backButton = (ImageButton) findViewById(R.id.listBtnBarBack);
-    if(backButton != null) backButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        SettingsActivity.this.finish();
-      }
-    });
+    if (backButton != null)
+      backButton.setOnClickListener(new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          SettingsActivity.this.finish();
+        }
+      });
 
     Preference registerPreference = findPreference(getString(R.string.settings_register_key));
     registerPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
@@ -97,7 +100,6 @@ public class SettingsActivity extends AbstractSettingsActivity {
         return true;
       }
     });
-
 
     Preference mapPreference = findPreference(getString(R.string.settings_map_key));
     mapPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
@@ -139,23 +141,27 @@ public class SettingsActivity extends AbstractSettingsActivity {
         return true;
       }
     });
+/*
+    Preference sharingPreference = findPreference(getString(R.string.settings_sharing_key));
+    sharingPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+      @Override
+      public boolean onPreferenceClick(Preference preference) {
+        Intent intent = IntentUtils.newIntent(SettingsActivity.this, SharingSettingsActivity.class);
+        startActivity(intent);
+        return true;
+      }
+    });
+    */
+    Preference sensorPreference = findPreference(getString(R.string.settings_sensor_key));
+    sensorPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+      @Override
+      public boolean onPreferenceClick(Preference preference) {
+        Intent intent = IntentUtils.newIntent(SettingsActivity.this, SensorSettingsActivity.class);
+        startActivity(intent);
+        return true;
+      }
+    });
 
-    /*
-     * Preference sharingPreference =
-     * findPreference(getString(R.string.settings_sharing_key));
-     * sharingPreference.setOnPreferenceClickListener(new
-     * OnPreferenceClickListener() {
-     * @Override public boolean onPreferenceClick(Preference preference) {
-     * Intent intent = IntentUtils.newIntent(SettingsActivity.this,
-     * SharingSettingsActivity.class); startActivity(intent); return true; } });
-     * Preference sensorPreference =
-     * findPreference(getString(R.string.settings_sensor_key));
-     * sensorPreference.setOnPreferenceClickListener(new
-     * OnPreferenceClickListener() {
-     * @Override public boolean onPreferenceClick(Preference preference) {
-     * Intent intent = IntentUtils.newIntent(SettingsActivity.this,
-     * SensorSettingsActivity.class); startActivity(intent); return true; } });
-     */
     Preference backupPreference = findPreference(getString(R.string.settings_backup_key));
     backupPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
       @Override
@@ -261,4 +267,17 @@ public class SettingsActivity extends AbstractSettingsActivity {
       }
     }.start();
   }
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    EasyTracker.getInstance(this).activityStart(this); // Add this method.
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    EasyTracker.getInstance(this).activityStop(this); // Add this method.
+  }
+
 }

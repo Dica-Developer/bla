@@ -16,6 +16,7 @@
 
 package com.google.android.apps.mytracks;
 
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
 import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.content.TrackDataHub;
@@ -223,6 +224,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    AnalyticsUtils.sendPageViews(this, this.getLocalClassName() + "/create" );
     handleIntent(getIntent());
     SharedPreferences sharedPreferences = getSharedPreferences(Constants.SETTINGS_NAME,
         Context.MODE_PRIVATE);
@@ -302,6 +304,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   @Override
   protected void onStart() {
     super.onStart();
+    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
     trackDataHub.start();
   }
 
@@ -328,8 +331,8 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   @Override
   protected void onStop() {
     super.onStop();
+    EasyTracker.getInstance(this).activityStop(this); 
     trackDataHub.stop();
-    AnalyticsUtils.dispatch();
   }
 
   @Override
@@ -893,4 +896,5 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       Toast.makeText(this, getString(R.string.sd_card_canceled), Toast.LENGTH_SHORT).show();
     }
   }
+  
 }

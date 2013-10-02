@@ -16,6 +16,7 @@
 
 package com.google.android.apps.mytracks.settings;
 
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.nogago.bb10.tracks.R;
@@ -87,5 +88,17 @@ public class StatsSettingsActivity extends AbstractSettingsActivity {
         : getString(R.string.description_speed_imperial));
     reportSpeedCheckBoxPreference.setSummaryOff(metric ? getString(R.string.description_pace_metric)
         : getString(R.string.description_pace_imperial));
+  }
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    EasyTracker.getInstance(this).activityStop(this);  // Add this method.
   }
 }

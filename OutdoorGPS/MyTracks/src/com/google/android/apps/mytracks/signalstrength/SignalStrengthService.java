@@ -35,6 +35,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
+import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.util.Log;
 import android.widget.Toast;
@@ -256,5 +257,11 @@ public class SignalStrengthService extends Service
     intent.setClass(context, SignalStrengthService.class);
     intent.setAction(STOP_SAMPLING);
     context.startService(intent);
+  }
+
+  @Override
+  public void onServiceStateChanged(ServiceState serviceState) {
+    // TODO Auto-generated method stub
+    
   }
 }

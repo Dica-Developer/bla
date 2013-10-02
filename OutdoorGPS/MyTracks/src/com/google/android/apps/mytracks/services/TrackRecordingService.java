@@ -68,6 +68,7 @@ import android.os.PowerManager.WakeLock;
 import android.os.Process;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.util.Log;
 
@@ -1267,10 +1268,9 @@ public class TrackRecordingService extends Service implements SignalStrengthCall
     }
   }
 
-  final static int UNKNOWN_SIGNAL = -114;
   SignalStrength signalStrength = null;
   int gsmBitErrorRate = -1;
-  int gsmSignal = UNKNOWN_SIGNAL; // in dBM
+  int gsmSignal = Constants.UNKNOWN_SIGNAL; // in dBM
   @Override
   public void onSignalStrengthSampled(SignalStrength signal) {
     if(signal.isGsm()) {
@@ -1283,15 +1283,20 @@ public class TrackRecordingService extends Service implements SignalStrengthCall
         case 1:
           gsmSignal = -111;
         case 31:
-          gsmSignal = -51; // or better
+          gsmSignal = -51; // or better 100%
         case 99:
-          gsmSignal = UNKNOWN_SIGNAL;
+          gsmSignal = Constants.UNKNOWN_SIGNAL;
       }
       } else {
         gsmSignal = -109 + (signal.getGsmSignalStrength()-2) * 2;
       }
-      gsmSignal += 113;
     }
+  }
+
+  @Override
+  public void onServiceStateChanged(ServiceState serviceState) {
+    if(serviceState.getState() == serviceState.STATE_OUT_OF_SERVICE || serviceState.getState() == serviceState.STATE_POWER_OFF) gsmSignal = Constants.UNKNOWN_SIGNAL;
+    
   }
 
 

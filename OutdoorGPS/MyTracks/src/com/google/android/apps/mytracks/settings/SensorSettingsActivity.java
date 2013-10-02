@@ -17,6 +17,7 @@
 package com.google.android.apps.mytracks.settings;
 
 import com.dsi.ant.AntInterface;
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.apps.mytracks.services.sensors.ant.AntSensorManager;
 import com.google.android.apps.mytracks.util.BluetoothDeviceUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
@@ -178,5 +179,18 @@ public class SensorSettingsActivity extends AbstractSettingsActivity {
     if (entries.size() == 1) {
       bluetoothSensorListPreference.setValueIndex(0);
     }
+  }
+  
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    EasyTracker.getInstance(this).activityStop(this);  // Add this method.
   }
 }

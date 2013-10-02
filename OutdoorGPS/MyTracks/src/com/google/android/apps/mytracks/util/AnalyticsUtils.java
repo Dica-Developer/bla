@@ -16,7 +16,9 @@
 
 package com.google.android.apps.mytracks.util;
 
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
 
 import android.content.Context;
 
@@ -27,9 +29,7 @@ import android.content.Context;
  */
 public class AnalyticsUtils {
 
-  private static final String UA = "UA-43663510-1"; 
-  private static final String PRODUCT_NAME = "nogago Tracks";
-  private static GoogleAnalyticsTracker tracker;
+  private static EasyTracker tracker;
 
   private AnalyticsUtils() {}
 
@@ -40,19 +40,10 @@ public class AnalyticsUtils {
    * @param page the page
    */
   public static void sendPageViews(Context context, String page) {
-    
-    if (tracker == null) {
-      tracker = GoogleAnalyticsTracker.getInstance();
-      tracker.startNewSession(UA, context);
-      tracker.setProductVersion(PRODUCT_NAME, SystemUtils.getMyTracksVersion(context));
-    }
-    tracker.trackPageView(page);
-    
-  }
 
-  public static void dispatch() {
-    if (tracker != null) {
-      tracker.dispatch();
-    }
+    tracker = EasyTracker.getInstance(context);
+    tracker.set(Fields.SCREEN_NAME, page);
+    tracker.send(MapBuilder.createAppView().build());
+
   }
 }
