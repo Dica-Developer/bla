@@ -70,10 +70,11 @@ limitations under the License.
     android:background="@color/actionBarSeperator"
     android:layout_height="1dp"
     android:layout_width="fill_parent" />
+  
   <LinearLayout
       android:layout_width="fill_parent"
       android:orientation="horizontal"
-      android:layout_height="140px"
+      android:layout_height="50dp"
           android:layout_weight="1"
       android:background="@color/actionBarBG">
 
@@ -82,20 +83,19 @@ limitations under the License.
           android:layout_width="0dp"
           android:layout_weight="1"
         android:layout_height="wrap_content"
-          android:src="@drawable/ic_back"
+          android:src="@drawable/ic_previous"
           android:layout_margin="0dp"
       android:background="@color/actionBarBG"
           android:scaleType="centerInside" />
 
-  <LinearLayout
-   	  android:id="@+id/track_controller_container"
+      <LinearLayout
+      android:id="@+id/track_controller_container"
       android:layout_width="fill_parent"
+      android:layout_height="50dp"
+      android:background="@color/actionBarBG"
       android:orientation="horizontal"
-      android:layout_height="140px"
-      android:paddingTop="29px"
-      android:paddingBottom="30px"
-          android:layout_weight="4"
-      android:background="@color/actionBarBG">
+      android:paddingBottom="4dp"
+      android:paddingTop="4dp" >
       <ImageButton
           android:id="@+id/listBtnBarShowOnMap"
           android:layout_width="0dp"

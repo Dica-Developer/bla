@@ -58,6 +58,72 @@ limitations under the License.
     <include layout="@layout/track_controller" />
   </LinearLayout>
       -->
- 
+    <!--  Start of the actionBar  -->
+  <View
+    android:background="@color/actionBarSeperator"
+    android:layout_height="1dp"
+    android:layout_width="fill_parent" />
+  <LinearLayout
+      android:id="@+id/track_controller_container"
+      android:layout_width="fill_parent"
+      android:layout_height="50dp"
+      android:background="@color/actionBarBG"
+      android:orientation="horizontal"
+      android:paddingBottom="4dp"
+      android:paddingTop="4dp" >
+
+      <ImageButton
+          android:id="@+id/listBtnBarBack"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+        android:layout_height="wrap_content"
+          android:src="@drawable/ic_previous"
+          android:layout_margin="0dp"
+      android:background="@color/actionBarBG"
+          android:scaleType="centerInside" />
+
+      <ImageButton
+          android:id="@+id/listBtnBarRecord"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+        android:layout_height="wrap_content"
+          android:src="@drawable/ic_record"
+          android:contentDescription="@string/icon_record_track"
+          
+      android:background="@color/actionBarBG"
+          android:scaleType="centerInside" />
+
+      <ImageButton
+          android:id="@+id/listBtnBarStop"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+        android:layout_height="wrap_content"
+          android:src="@drawable/ic_stop_0"
+          android:contentDescription="@string/icon_stop_recording"
+          
+      android:background="@color/actionBarBG"
+          android:scaleType="centerInside"  />
+      
+      <ImageButton
+          android:id="@+id/listBtnBarMarker"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+        android:layout_height="wrap_content"
+          android:src="@drawable/ic_marker"
+          
+      android:background="@color/actionBarBG"
+          android:scaleType="centerInside"  />
+
+      <ImageButton
+          android:id="@+id/listBtnBarMore"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+        android:layout_height="wrap_content"
+          android:src="@drawable/ic_more_new"
+         
+      android:background="@color/actionBarBG"
+          android:scaleType="centerInside" />
+
+</LinearLayout>
 
 </LinearLayout>

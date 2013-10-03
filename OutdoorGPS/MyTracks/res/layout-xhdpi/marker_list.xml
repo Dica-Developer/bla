@@ -45,16 +45,16 @@ limitations under the License.
         android:layout_below="@id/marker_list"
         android:background="@color/actionBarSeperator" />
 
-    <LinearLayout
-        android:id="@+id/track_controller_container"
-        android:layout_width="fill_parent"
-        android:layout_height="140px"
-      android:paddingTop="29px"
-      android:paddingBottom="30px"
+     <LinearLayout
+      android:id="@+id/track_controller_container"
+      android:layout_width="fill_parent"
+      android:layout_height="50dp"
+      android:background="@color/actionBarBG"
+      android:orientation="horizontal"
+      android:paddingBottom="4dp"
+      android:paddingTop="4dp"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/action_bar_seperator"
-        android:background="@color/actionBarBG"
-        android:orientation="horizontal" >
+        android:layout_below="@id/action_bar_seperator">
 
         <ImageButton
             android:id="@+id/listBtnBarBack"
@@ -64,7 +64,7 @@ limitations under the License.
             android:layout_weight="1"
             android:background="@color/actionBarBG"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_previous" />
 
         <ImageButton
             android:id="@+id/listBtnBarSearch"

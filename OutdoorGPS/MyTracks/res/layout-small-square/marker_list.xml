@@ -64,7 +64,7 @@ limitations under the License.
             android:layout_weight="1"
             android:background="@color/actionBarBG"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_previous" />
 
         <ImageButton
             android:id="@+id/listBtnBarSearch"
