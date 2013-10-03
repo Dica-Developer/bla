@@ -39,7 +39,7 @@
           android:id="@+id/listBtnBarBack"
           android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-          android:src="@drawable/ic_back"
+          android:src="@drawable/ic_previous"
           android:layout_margin="0dp"
       android:background="@color/actionBarBG"
       android:layout_gravity="left"

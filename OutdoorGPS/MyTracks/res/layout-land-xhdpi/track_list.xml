@@ -43,14 +43,14 @@ limitations under the License.
     android:layout_height="1dp"
     android:layout_width="fill_parent" />
   <LinearLayout
-   	  android:id="@+id/track_controller_container"
+      android:id="@+id/track_controller_container"
       android:layout_width="fill_parent"
+      android:layout_height="50dp"
+      android:background="@color/actionBarBG"
       android:orientation="horizontal"
-      android:layout_height="101px"
-      android:paddingTop="10px"
-      android:paddingBottom="10px"
-      android:background="@color/actionBarBG">
-
+      android:paddingBottom="4dp"
+      android:paddingTop="4dp" >
+      
       <ImageButton
           android:id="@+id/listBtnBarHelp"
           android:layout_width="0dp"
