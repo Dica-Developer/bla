@@ -58,7 +58,7 @@ limitations under the License.
     <include layout="@layout/track_controller" />
   </LinearLayout>
       -->
-    <!--  Start of the actionBar  -->
+    <!--  Start of the actionBar  
   <View
     android:background="@color/actionBarSeperator"
     android:layout_height="1dp"
@@ -125,5 +125,5 @@ limitations under the License.
           android:scaleType="centerInside" />
 
 </LinearLayout>
-
+-->
 </LinearLayout>

@@ -20,6 +20,7 @@ import com.google.android.apps.mytracks.ContextualActionModeCallback;
 import com.nogago.bb10.tracks.R;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
@@ -130,5 +131,13 @@ public class Api11Adapter extends Api10Adapter {
   @Override
   public void disableHardwareAccelerated(View view) {
     view.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+  }
+  
+  
+  @Override
+  public void hideActionBar(Activity activity) {
+    // TODO Use Android Support Library hiding
+    ActionBar actionBar = activity.getActionBar();
+    actionBar.hide();
   }
 }
