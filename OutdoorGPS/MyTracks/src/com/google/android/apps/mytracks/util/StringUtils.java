@@ -138,6 +138,35 @@ public class StringUtils {
   }
   
   /**
+   * Formats the distance.
+   * 
+   * @param context the context
+   * @param distance the distance in meters
+   * @param metricUnits true to use metric units. False to use imperial units
+   */
+  public static String formatDistanceNoM(Context context, double distance, boolean metricUnits) {
+    if (Double.isNaN(distance) || Double.isInfinite(distance)) {
+      return context.getString(R.string.value_unknown);
+    }
+    if (metricUnits) {
+      if (distance > 500.0) {
+        distance *= UnitConversions.M_TO_KM;
+        return context.getString(R.string.value_float_kilometer_nom, distance);
+      } else {
+        return context.getString(R.string.value_float_meter_nom, distance);
+      }
+    } else {
+      if (distance * UnitConversions.M_TO_MI > 0.5) {
+        distance *= UnitConversions.M_TO_MI;
+        return context.getString(R.string.value_float_mile_nom, distance);
+      } else {
+        distance *= UnitConversions.M_TO_FT;
+        return context.getString(R.string.value_float_feet_nom, distance);
+      }
+    }
+  }
+  
+  /**
    * Formats the speed.
    * 
    * @param context the context
@@ -171,6 +200,41 @@ public class StringUtils {
     }
   }
 
+  /**
+   * Formats the speed.
+   * 
+   * @param context the context
+   * @param speed the speed in meters per second
+   * @param metricUnits true to use metric units. False to use imperial units
+   * @param reportSpeed true to report as speed. False to report as pace
+   */
+  public static String formatSpeedNoM(
+      Context context, double speed, boolean metricUnits, boolean reportSpeed) {
+    if (Double.isNaN(speed) || Double.isInfinite(speed)) {
+      return context.getString(R.string.value_unknown);
+    }
+    speed *= UnitConversions.MS_TO_KMH;
+    if (metricUnits) {
+      if (reportSpeed) {
+        return context.getString(R.string.value_float_kilometer_hour_nom, speed);
+      } else {
+        // convert from hours to minutes
+        double pace = (speed == 0.0) ? 0 : (  60.0 / speed );
+        return context.getString(R.string.value_float_minute_kilometer_nom, pace);
+      }
+    } else {
+      speed *= UnitConversions.KM_TO_MI;
+      if (reportSpeed) {
+        return context.getString(R.string.value_float_mile_hour_nom, speed);
+      } else {
+        // convert from hours to minutes
+        double pace = speed == 0 ? 0 : ( 60.0 / speed );
+        return context.getString(R.string.value_float_minute_mile_nom, pace);
+      }
+    }
+  }
+
+  
   /**
    * Formats the given text as a XML CDATA element. This includes adding the
    * starting and ending CDATA tags. Please notice that this may result in

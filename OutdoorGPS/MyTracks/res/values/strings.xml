@@ -1080,6 +1080,37 @@ limitations under the License.
     <string name="value_float_mile" translation_description="Display a float value in miles (mi).
 
       %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.2f mi</string>
+     <string name="value_float_feet" translation_description="Display a float value in feet (ft).
+
+      %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.2f ft</string>
+     <!-- No Measure -->
+    <string name="value_float_kilometer_nom" translation_description="Display a float value in kilometers (km).
+
+      %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.1f</string>
+    <string name="value_float_kilometer_hour_nom" translation_description="Display a float value in kilometers per hour (km/h).
+
+      %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.1f</string>
+    <string name="value_float_meter_nom" translation_description="Display a float value in meters (m).
+
+      %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.1f</string>
+    <string name="value_float_mile_nom" translation_description="Display a float value in miles (mi).
+
+      %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.1f</string>
+        <string name="value_float_feet_nom" translation_description="In a setting picker, the string format to display an integer value in
+      feet (ft).
+
+      %1$d: an integer value. E.g., &apos;2&apos;">%1$.1f</string>
+        <string name="value_float_mile_hour_nom" translation_description="Display a float value in miles per hour (mi/h).
+
+      %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.1f</string>
+            <string name="value_float_minute_kilometer_nom" translation_description="Display a float value in minutes per kilometer (min/km).
+
+      %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.1f</string>
+                <string name="value_float_minute_mile_nom" translation_description="Display a float value in minutes per mile (min/mi).
+
+      %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.2f</string>
+
+    <!--  End MOD -->
     <string name="value_float_mile_hour" translation_description="Display a float value in miles per hour (mi/h).
 
       %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.2f mi/h</string>

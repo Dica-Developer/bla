@@ -15,100 +15,112 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:background="@drawable/track_widget_background"
-  android:layout_height="fill_parent"
-  android:layout_width="fill_parent"
-  android:padding="@dimen/widget_margin" >
-  <LinearLayout
-    android:layout_height="fill_parent"
     android:layout_width="fill_parent"
-    android:orientation="vertical"
-    android:paddingBottom="8dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="8dp" >
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:padding="@dimen/widget_margin" >
+
     <LinearLayout
-      android:clickable="true"
-      android:id="@+id/track_widget_statistics"
-      android:layout_height="wrap_content"
-      android:layout_width="fill_parent"
-      android:orientation="vertical" >
-      <LinearLayout style="@style/TrackWidgetStat" >
-        <TextView
-          android:text="@string/stats_total_distance"
-          style="@style/TrackWidgetLabel" />
-        <TextView style="@style/TrackWidgetSpacer" />
-        <TextView
-          android:id="@+id/track_widget_total_distance_value"
-          style="@style/TrackWidgetLabel" />
-      </LinearLayout>
-      <LinearLayout style="@style/TrackWidgetSeparator" />
-      <LinearLayout style="@style/TrackWidgetStat" >
-        <TextView
-          android:text="@string/stats_total_time"
-          style="@style/TrackWidgetLabel" />
-        <TextView style="@style/TrackWidgetSpacer" />
-        <Chronometer
-          android:id="@+id/track_widget_total_time_value"
-          style="@style/TrackWidgetLabel" />
-      </LinearLayout>
-      <LinearLayout style="@style/TrackWidgetSeparator" />
-      <LinearLayout style="@style/TrackWidgetStat" >
-        <TextView
-          android:id="@+id/track_widget_average_speed_label"
-          style="@style/TrackWidgetLabel" />
-        <TextView style="@style/TrackWidgetSpacer" />
-        <TextView
-          android:id="@+id/track_widget_average_speed_value"
-          style="@style/TrackWidgetLabel" />
-      </LinearLayout>
-      <LinearLayout
-        android:id="@+id/track_widget_moving_time_container"
-        android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:orientation="vertical" >
-        <LinearLayout style="@style/TrackWidgetSeparator" />
-        <LinearLayout style="@style/TrackWidgetStat" >
-          <TextView
-            android:text="@string/stats_moving_time"
-            style="@style/TrackWidgetLabel" />
-          <TextView style="@style/TrackWidgetSpacer" />
-          <TextView
-            android:id="@+id/track_widget_moving_time_value"
-            style="@style/TrackWidgetLabel" />
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp" >
+
+        
+                <LinearLayout
+            android:id="@+id/track_widget_labels"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/TrackWidgetLabel"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+                android:text="D" />
+
+
+            <TextView
+                style="@style/TrackWidgetLabel"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+                android:text="T" />
+
+
+            <TextView
+                style="@style/TrackWidgetLabel"
+                android:text="Ø" />
+                 />
         </LinearLayout>
-      </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/track_widget_statistics"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/track_widget_total_distance_value"
+                style="@style/TrackWidgetValue"
+                android:paddingLeft="0dp"
+                android:paddingRight="4dp" />
+
+
+            <Chronometer
+                android:id="@+id/track_widget_total_time_value"
+                style="@style/TrackWidgetValue"
+                android:paddingLeft="0dp"
+                android:paddingRight="4dp" />
+
+
+            <TextView
+                android:id="@+id/track_widget_average_speed_value"
+                android:paddingLeft="0dp"
+                style="@style/TrackWidgetValue"
+                 />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp" >
+
+            <ImageButton
+                android:id="@+id/track_widget_record_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/icon_record_track"
+                android:paddingRight="10dp"
+                android:src="@drawable/ic_record" />
+
+            <ImageButton
+                android:id="@+id/track_widget_logo_button"
+                android:layout_width="180dp"
+                android:layout_height="20dp"
+                android:alpha="0.3"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/nogago" />
+
+            <ImageButton
+                android:id="@+id/track_widget_stop_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/icon_stop_recording"
+                android:paddingLeft="10dp"
+                android:src="@drawable/ic_stop_0" />
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-      android:clipChildren="false"
-      android:layout_height="wrap_content"
-      android:layout_width="fill_parent"
-      android:orientation="horizontal"
-      android:paddingLeft="4dp"
-      android:paddingRight="4dp"
-      android:paddingTop="4dp" >
-      <ImageButton
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/icon_record_track"
-        android:id="@+id/track_widget_record_button"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:src="@drawable/btn_record" />
-      <TextView
-        android:id="@+id/track_widget_record_status"
-        android:layout_gravity="center_vertical"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:singleLine="true"
-        style="@style/TextSmall" />
-      <ImageButton
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/icon_stop_recording"
-        android:id="@+id/track_widget_stop_button"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:src="@drawable/btn_stop_0" />
-    </LinearLayout>
-  </LinearLayout>
+
 </FrameLayout>
