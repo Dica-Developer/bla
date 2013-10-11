@@ -35,7 +35,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v4.app.TaskStackBuilder;
-import android.view.View;
 import android.widget.RemoteViews;
 
 /**
@@ -128,6 +127,9 @@ public class TrackWidgetProvider extends AppWidgetProvider {
     taskStackBuilder.addNextIntent(intent);
     PendingIntent pendingIntent = taskStackBuilder.getPendingIntent(0, 0);
     remoteViews.setOnClickPendingIntent(R.id.track_widget_statistics, pendingIntent);
+    remoteViews.setOnClickPendingIntent(R.id.track_widget_labels, pendingIntent);
+    remoteViews.setOnClickPendingIntent(R.id.track_widget_logo_button, pendingIntent);
+    
   }
 
   /**
@@ -141,7 +143,7 @@ public class TrackWidgetProvider extends AppWidgetProvider {
   private void updateTotalDistance(Context context, RemoteViews remoteViews,
       TripStatistics tripStatistics, boolean metricUnits) {
     String totalDistanceValue = tripStatistics == null ? context.getString(R.string.value_unknown)
-        : StringUtils.formatDistance(context, tripStatistics.getTotalDistance(), metricUnits);
+        : StringUtils.formatDistanceNoM(context, tripStatistics.getTotalDistance(), metricUnits);
     remoteViews.setTextViewText(R.id.track_widget_total_distance_value, totalDistanceValue);
   }
 
@@ -180,11 +182,13 @@ public class TrackWidgetProvider extends AppWidgetProvider {
       TripStatistics tripStatistics, boolean metricUnits) {
     boolean reportSpeed = PreferencesUtils.getBoolean(
         context, R.string.report_speed_key, PreferencesUtils.REPORT_SPEED_DEFAULT);
-    String averageSpeedLabel = context.getString(
+    /*
+     String averageSpeedLabel = context.getString(
         reportSpeed ? R.string.stats_average_speed : R.string.stats_average_pace);
-    remoteViews.setTextViewText(R.id.track_widget_average_speed_label, averageSpeedLabel);
+     remoteViews.setTextViewText(R.id.track_widget_average_speed_label, averageSpeedLabel);
+    */
     String averageSpeedValue = tripStatistics == null ? context.getString(R.string.value_unknown)
-        : StringUtils.formatSpeed(
+        : StringUtils.formatSpeedNoM(
             context, tripStatistics.getAverageSpeed(), metricUnits, reportSpeed);
     remoteViews.setTextViewText(R.id.track_widget_average_speed_value, averageSpeedValue);
   }
@@ -198,6 +202,7 @@ public class TrackWidgetProvider extends AppWidgetProvider {
    */
   private void updateMovingTime(
       Context context, RemoteViews remoteViews, TripStatistics tripStatistics) {
+    /*
     boolean showMovingTime = PreferencesUtils.getBoolean(context,
         R.string.stats_show_moving_time_key, PreferencesUtils.STATS_SHOW_MOVING_TIME_DEFAULT);
     remoteViews.setViewVisibility(
@@ -207,6 +212,7 @@ public class TrackWidgetProvider extends AppWidgetProvider {
           : StringUtils.formatElapsedTime(tripStatistics.getMovingTime());
       remoteViews.setTextViewText(R.id.track_widget_moving_time_value, movingTimeValue);
     }
+    */
   }
 
   /**
@@ -220,7 +226,7 @@ public class TrackWidgetProvider extends AppWidgetProvider {
   private void updateRecordButton(
       Context context, RemoteViews remoteViews, boolean isRecording, boolean recordingTrackPaused) {
     remoteViews.setImageViewResource(R.id.track_widget_record_button,
-        isRecording && !recordingTrackPaused ? R.drawable.btn_pause : R.drawable.btn_record);
+        isRecording && !recordingTrackPaused ? R.drawable.ic_pause : R.drawable.ic_record);
     int recordActionId;
     if (isRecording) {
       recordActionId = recordingTrackPaused ? R.string.track_action_resume
@@ -255,9 +261,11 @@ public class TrackWidgetProvider extends AppWidgetProvider {
       status = "";
       colorId = android.R.color.white;
     }
+    /* Record Status out
     remoteViews.setTextColor(
         R.id.track_widget_record_status, context.getResources().getColor(colorId));
     remoteViews.setTextViewText(R.id.track_widget_record_status, status);
+    */
   }
 
   /**
@@ -269,7 +277,7 @@ public class TrackWidgetProvider extends AppWidgetProvider {
    */
   private void updateStopButton(Context context, RemoteViews remoteViews, boolean isRecording) {
     remoteViews.setImageViewResource(
-        R.id.track_widget_stop_button, isRecording ? R.drawable.btn_stop_1 : R.drawable.btn_stop_0);
+        R.id.track_widget_stop_button, isRecording ? R.drawable.ic_stop_1 : R.drawable.ic_stop_0);
     remoteViews.setBoolean(R.id.track_widget_stop_button, "setEnabled", isRecording);
     if (isRecording) {
       Intent intent = new Intent(context, ControlRecordingService.class).setAction(
