@@ -353,8 +353,8 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     setVolumeControlStream(TextToSpeech.Engine.DEFAULT_STREAM);
     setContentView(R.layout.track_list);
 
-    AnalyticsUtils.sendPageViews(this, this.getLocalClassName() + "/create" );
-    
+    AnalyticsUtils.sendPageViews(this, this.getLocalClassName() + "/create");
+
     ApiAdapterFactory.getApiAdapter().hideActionBar(this);
 
     Display display = getWindowManager().getDefaultDisplay();
@@ -477,14 +477,15 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
     if (savedInstanceState != null) {
       startGps = savedInstanceState.getBoolean(START_GPS_KEY);
     } // Test repeated messaging
-      if(!started) showStartupDialogs();
+    if (!started)
+      showStartupDialogs();
   }
 
   @Override
   protected void onStart() {
     super.onStart();
     trackDataHub.start();
-    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+    EasyTracker.getInstance(this).activityStart(this); // Add this method.
   }
 
   @Override
@@ -513,7 +514,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
   protected void onStop() {
     super.onStop();
     trackDataHub.stop();
-    EasyTracker.getInstance(this).activityStop(this);  // Add this method.
+    EasyTracker.getInstance(this).activityStop(this); // Add this method.
   }
 
   @Override
@@ -725,7 +726,8 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
             ReviewDialogFragment.REVIEW_DIALOG_TAG);
       }
     } else if ((EulaUtils.getAppStart(this) % 10) == 9) {
-      // Show our other apps every tenth start with starting with the ninth start
+      // Show our other apps every tenth start with starting with the ninth
+      // start
       Fragment fragment = getSupportFragmentManager().findFragmentByTag(
           MarketDialogFragment.MARKET_DIALOG_TAG);
       if (fragment == null) {
@@ -736,7 +738,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
       // Perform a backup at every tenth app start.
       Intent intent = IntentUtils.newIntent(this, BackupActivity.class);
       startActivity(intent);
-      } else {
+    } else {
       /*
        * Before the welcome sequence, the empty view is not visible so that it
        * doesn't show through.
@@ -757,15 +759,16 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
       String msg = getString(R.string.previous_run_crashed);
       Builder builder = new AlertDialog.Builder(TrackListActivity.this);
       // User says no
-      builder.setMessage(msg).setNeutralButton(getString(R.string.donot_send_report), new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-          // Delete Exceptions File when user presses Ignore
-          if (!file.delete())
-            Toast.makeText(getApplicationContext(), "Exceptions file not deleted",
-                Toast.LENGTH_LONG).show();
-        }
-      });
+      builder.setMessage(msg).setNeutralButton(getString(R.string.donot_send_report),
+          new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+              // Delete Exceptions File when user presses Ignore
+              if (!file.delete())
+                Toast.makeText(getApplicationContext(), "Exceptions file not deleted",
+                    Toast.LENGTH_LONG).show();
+            }
+          });
       // User says yes
       builder.setPositiveButton(R.string.send_report, new DialogInterface.OnClickListener() {
         @Override
@@ -928,7 +931,5 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
       trackDataHub.unregisterTrackDataListener(trackDataListener);
     }
   }
-  
 
-  
 }
