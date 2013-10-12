@@ -37,7 +37,6 @@ import android.view.View;
 import android.widget.TabHost;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
-import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -160,13 +159,10 @@ public class TabManager implements TabHost.OnTabChangeListener {
           }    
       } else {
         // Open Maps
-        if(Constants.IS_BLACKBERRY) {
-          Toast.makeText(fragmentActivity, R.string.track_detail_maps_blackberry_msg, Toast.LENGTH_LONG);
-        }
         // Need to save the track first
         Intent intent = IntentUtils.newIntent(fragmentActivity, SaveActivity.class)
             .putExtra(SaveActivity.EXTRA_TRACK_ID, fragmentActivity.trackId)
-            .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.GPX)
+            .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.GPXM)
             .putExtra(SaveActivity.EXTRA_SHOW_TRACK, true);
         // Then automatically opens nogago Maps based on the extras
         fragmentActivity.startActivity(intent);

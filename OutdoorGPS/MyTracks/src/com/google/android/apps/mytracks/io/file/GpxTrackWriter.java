@@ -55,9 +55,11 @@ public class GpxTrackWriter implements TrackFormatWriter {
   private final Context context;
   private Track track;
   private PrintWriter printWriter;
+  private boolean extensiveMode; // Write a lot
 
-  public GpxTrackWriter(Context context) {
+  public GpxTrackWriter(Context context, boolean mode) {
     this.context = context;
+    this.extensiveMode = mode;
   }
 
   @Override
@@ -84,8 +86,10 @@ public class GpxTrackWriter implements TrackFormatWriter {
     if (printWriter != null) {
       printWriter.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
       printWriter.println("<gpx version=\"1.1\"");
-      printWriter.println("creator=\""
-          + context.getString(R.string.n_send_google_by_my_tracks, "", "") + "\"");
+      if (extensiveMode) {
+        printWriter.println("creator=\""
+            + context.getString(R.string.n_send_google_by_my_tracks, "", "") + "\"");
+      }
       printWriter.println("xmlns=\"http://www.topografix.com/GPX/1/1\"");
       printWriter
           .println("xmlns:topografix=\"http://www.topografix.com/GPX/Private/TopoGrafix/0/1\"");
@@ -95,16 +99,17 @@ public class GpxTrackWriter implements TrackFormatWriter {
           + " http://www.topografix.com/GPX/1/1/gpx.xsd"
           + " http://www.topografix.com/GPX/Private/TopoGrafix/0/1"
           + " http://www.topografix.com/GPX/Private/TopoGrafix/0/1/topografix.xsd\">");
-
-      printWriter.println("<metadata>");
-      printWriter.println("<name>" + StringUtils.formatCData(track.getName()) + "</name>");
-      printWriter.println("<desc>" + StringUtils.formatCData(track.getDescription()) + "</desc>");
-      printWriter.println("<extensions>");
-      // Extensions go here
-      printWriter.println(new DescriptionGeneratorImpl(context)
-          .generateXMLTripStatisticsDescription(track.getTripStatistics()));
-      printWriter.println("</extensions>");
-      printWriter.println("</metadata>");
+      if (extensiveMode) {
+        printWriter.println("<metadata>");
+        printWriter.println("<name>" + StringUtils.formatCData(track.getName()) + "</name>");
+        printWriter.println("<desc>" + StringUtils.formatCData(track.getDescription()) + "</desc>");
+        printWriter.println("<extensions>");
+        // Extensions go here
+        printWriter.println(new DescriptionGeneratorImpl(context)
+            .generateXMLTripStatisticsDescription(track.getTripStatistics()));
+        printWriter.println("</extensions>");
+        printWriter.println("</metadata>");
+      }
     }
   }
 
@@ -119,9 +124,12 @@ public class GpxTrackWriter implements TrackFormatWriter {
   public void writeBeginTrack(Location firstLocation) {
     if (printWriter != null) {
       printWriter.println("<trk>");
-      printWriter.println("<name>" + StringUtils.formatCData(track.getName()) + "</name>");
-      printWriter.println("<desc>" + StringUtils.formatCData(track.getDescription()) + "</desc>");
-      printWriter.println("<extensions><topografix:color>c0c0c0</topografix:color></extensions>");
+      if (extensiveMode) {
+        printWriter.println("<name>" + StringUtils.formatCData(track.getName()) + "</name>");
+        printWriter.println("<desc>" + StringUtils.formatCData(track.getDescription()) + "</desc>");
+        printWriter.println("<type>" + StringUtils.formatCData(track.getCategory()) + "</type>");
+        printWriter.println("<extensions><topografix:color>c0c0c0</topografix:color></extensions>");
+      }
     }
   }
 
@@ -146,11 +154,13 @@ public class GpxTrackWriter implements TrackFormatWriter {
   public void writeLocation(Location location) {
     if (printWriter != null) {
       printWriter.println("<trkpt " + formatLocation(location) + ">");
-      printWriter.println("<ele>" + ELEVATION_FORMAT.format(location.getAltitude()) + "</ele>");
+      if (extensiveMode) {
+        printWriter.println("<ele>" + ELEVATION_FORMAT.format(location.getAltitude()) + "</ele>");
+      }
       printWriter.println("<time>" + StringUtils.formatDateTimeIso8601(location.getTime())
           + "</time>");
 
-      if (!Constants.IS_BLACKBERRY && (location instanceof MyTracksLocation)) {
+      if (extensiveMode && !Constants.IS_BLACKBERRY && (location instanceof MyTracksLocation)) {
         printWriter.println("<extensions><n:gs>"
             + ((MyTracksLocation) location).getGsmSignalStrength() + "</n:gs></extensions>");
       }
