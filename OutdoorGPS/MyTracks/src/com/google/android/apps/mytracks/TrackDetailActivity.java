@@ -427,13 +427,9 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
           }
         } else {
           // Open Maps with command to navigate
-          if (Constants.IS_BLACKBERRY) {
-            Toast.makeText(this, R.string.track_detail_maps_blackberry_msg, Toast.LENGTH_LONG);
-          }
-          // TODO Need to save the track first
           intent =  IntentUtils.newIntent(this, SaveActivity.class)
               .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
-              .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.GPX )
+              .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.GPXM )
               .putExtra(SaveActivity.EXTRA_FOLLOW_TRACK, true);
           // Then automatically opens nogago Maps based on the extras
           startActivity(intent);

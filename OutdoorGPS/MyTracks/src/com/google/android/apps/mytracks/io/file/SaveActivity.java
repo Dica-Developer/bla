@@ -100,7 +100,7 @@ public class SaveActivity extends Activity {
       // useTempDir = playTrack nur da in gpx/tmp speichern
       // launchMail nur bei mailTrack
       // silent für playTrack, showTrack, followTrack, mailTrack ?
-      saveAsyncTask = new SaveAsyncTask(this, trackFileFormat, trackId, playTrack, mailTrack, false);
+      saveAsyncTask = new SaveAsyncTask(this, trackFileFormat, trackId, (playTrack), mailTrack, false); // ||followTrack||mailTrack||showTrack
       saveAsyncTask.execute();
     }
   }
