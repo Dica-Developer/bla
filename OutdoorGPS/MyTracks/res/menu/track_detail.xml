@@ -27,14 +27,14 @@ limitations under the License.
     android:orderInCategory="2"
     android:showAsAction="ifRoom|withText"
     android:title="@string/menu_nogago_play"/>
- <!-- NOT SUPPORTED ON BB   <item
+ <item
     android:icon="@drawable/menu_share"
     android:id="@+id/track_detail_share"
     android:orderInCategory="3"
     android:showAsAction="ifRoom"
     android:title="@string/menu_share">
   </item>
-   -->
+  
   <item
     android:icon="@drawable/menu_markers"
     android:id="@+id/track_detail_markers"
