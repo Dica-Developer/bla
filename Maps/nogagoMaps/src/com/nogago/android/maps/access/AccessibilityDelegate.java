@@ -55,8 +55,8 @@ public class AccessibilityDelegate extends AccessibleLayout {
     // as an argument must either be an instance of FrameLayout
     // or have a parent that is an instance of ViewGroup.
     public static void takeCareOf(View hierarchy) {
-        final AccessibilityDelegate delegate = new AccessibilityDelegate(hierarchy.getContext());
-        delegate.attach(hierarchy);
+        // final AccessibilityDelegate delegate = new AccessibilityDelegate();
+        // delegate.attach(hierarchy);
     }
 
     // Provide touch exploration capability for given window.

@@ -91,7 +91,7 @@ public class NavigationService extends Service implements LocationListener {
 	public void onCreate() {
 		super.onCreate();
 		// initializing variables
-		setForeground(true);
+		// setForeground(true); // Deprecated and does nothing anyhow since Android 2.0
 		handler = new Handler();
 		settings = OsmandApplication.getSettings();
 		serviceOffInterval = settings.SERVICE_OFF_INTERVAL.get();
