@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.AsyncTask;
+import android.util.Log;
 
 /**
  * Utility Manager handling ProgressDialog display for arbitrary long running
@@ -119,7 +120,11 @@ public final class AsyncTaskManager implements IProgressTracker,
 	@Override
 	public void onComplete() {
 		// Close progress dialog
-		mProgressDialog.dismiss();
+		try {
+		if(mProgressDialog != null) mProgressDialog.dismiss();
+		} catch (IllegalArgumentException e) {
+			Log.e("AsyncTaskManager", "Dialog no longer visible", e);
+		}
 		// Notify activity about completion
 		mTaskCompleteListener.onTaskComplete(mAsyncTask);
 		// Reset task

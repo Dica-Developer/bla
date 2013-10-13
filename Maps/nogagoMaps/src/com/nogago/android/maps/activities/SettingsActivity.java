@@ -277,7 +277,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 		}
 		registerListPreference(osmandSettings.AUTO_FOLLOW_ROUTE, screen, entries, intValues);
 		
-		Float[] floatValues = new Float[] {0.6f, 0.8f, 1.0f, 1.2f, 1.5f};
+		Float[] floatValues = new Float[] {0.6f, 0.8f, 1.0f, 1.2f, 1.5f, 2.0f, 2.5f, 3.0f};
 		entries = new String[floatValues.length];
 		for (int i = 0; i < floatValues.length; i++) {
 			entries[i] = (int) (floatValues[i] * 100) +" %";
