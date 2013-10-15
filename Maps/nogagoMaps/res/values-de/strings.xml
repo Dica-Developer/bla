@@ -804,8 +804,8 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 	<string name="close">Schließen</string>
 	<string name="loading_data">Daten werden geladen …</string>
 	<string name="reading_indexes">Verarbeite Indizes …</string>
-	<string name="previous_run_crashed">Die vorherige Programminstanz war abgestürzt. Logdatei unter {0}. Fehler bitte melden und Logdatei anhängen.</string>
-	<string name="saving_gpx_tracks">GPX-Track wird auf der SD-Karte gespeichert…</string>
+	   <string name="previous_run_crashed">Leider ist die App bei der letzten Nutzung abgestürzt. \n\nBitte schicken Sie den Absturzbericht, damit wir diese App verbessern können.</string>
+   <string name="saving_gpx_tracks">GPX-Track wird auf der SD-Karte gespeichert…</string>
 	<string name="finished_task">Abgeschlossen</string>
     <string name="reload_indexes_descr">Offline-Vektor-Karten und Adressdaten von SD-Karte neu laden</string>
     <string name="reload_indexes">Offline-Daten erneut einbinden</string>
