@@ -42,7 +42,7 @@ public final class AsyncTaskManager implements IProgressTracker,
 		mProgressDialog = new ProgressDialog(context);
 		if (message != null && loadContours == false)
 			mProgressDialog.setMessage(message);
-		if(message != null && loadContours == true) {
+		if (message != null && loadContours == true) {
 			mProgressDialog.setMessage("Lade Höhenlinien");
 		}
 		if (countable)
@@ -51,22 +51,23 @@ public final class AsyncTaskManager implements IProgressTracker,
 			mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		mProgressDialog.setProgress(0);
 		mProgressDialog.setCancelable(false);
-		mProgressDialog.setButton(context.getString(R.string.button_cancel), new DialogInterface.OnClickListener() {
-			
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				if (mProgressDialog.isShowing())
-					mProgressDialog.dismiss();
-				if (mAsyncTask == null) {
-					return;
-				}
-				mAsyncTask.cancel(true);
-				// Notify activity about completion
-				mTaskCompleteListener.onTaskComplete(mAsyncTask);
-				// Reset task
-				mAsyncTask = null;
-			}
-		});
+		mProgressDialog.setButton(context.getString(R.string.button_cancel),
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						if (mProgressDialog.isShowing())
+							mProgressDialog.dismiss();
+						if (mAsyncTask == null) {
+							return;
+						}
+						mAsyncTask.cancel(true);
+						// Notify activity about completion
+						mTaskCompleteListener.onTaskComplete(mAsyncTask);
+						// Reset task
+						mAsyncTask = null;
+					}
+				});
 		mProgressDialog.setOnCancelListener(this);
 	}
 
@@ -99,29 +100,30 @@ public final class AsyncTaskManager implements IProgressTracker,
 	}
 
 	/** Call back to notify of cancellation */
-	
+
 	@Override
 	public void onCancel(DialogInterface dialog) {
-		
+
 		// Cancel task
-		if(mProgressDialog.isShowing()) mProgressDialog.dismiss();
-		if(mAsyncTask == null) {
+		if (mProgressDialog.isShowing())
+			mProgressDialog.dismiss();
+		if (mAsyncTask == null) {
 			return;
 		}
 		mAsyncTask.cancel(true);
-//		 Notify activity about completion
+		// Notify activity about completion
 		mTaskCompleteListener.onTaskComplete(mAsyncTask);
 		// Reset task
-		mAsyncTask = null;	
+		mAsyncTask = null;
 	}
 
-	
 	/** Call back to notify of completion */
 	@Override
 	public void onComplete() {
 		// Close progress dialog
 		try {
-		if(mProgressDialog != null) mProgressDialog.dismiss();
+		if (mProgressDialog != null && mProgressDialog.isShowing())
+				mProgressDialog.dismiss();
 		} catch (IllegalArgumentException e) {
 			Log.e("AsyncTaskManager", "Dialog no longer visible", e);
 		}
