@@ -803,8 +803,8 @@ Have fun with our apps, maps and tracks for your next adventures !
 	<string name="close">Close</string>
 	<string name="loading_data">Loading data&#8230;</string>
 	<string name="reading_indexes">Reading local data&#8230;</string>
-	<string name="previous_run_crashed">Last nogago Maps run crashed. Log file is at {0}. Please report the issue and attach the log file.</string>
-	<string name="saving_gpx_tracks">Saving GPX tracks to SD&#8230;</string>
+  <string name="previous_run_crashed">Sorry, our app crashed at last use. \n\nPlease help us improve this app by sending in your report.</string>
+  	<string name="saving_gpx_tracks">Saving GPX tracks to SD&#8230;</string>
 	<string name="finished_task">Finished</string>
     <string name="reload_indexes_descr">Re-read offline vector maps and data from SD card</string>
     <string name="reload_indexes">Re-read offline data</string>
