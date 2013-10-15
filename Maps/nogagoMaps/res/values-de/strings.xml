@@ -701,7 +701,7 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 	<string name="route_head">Kopf</string>
 	<string name="first_time_continue">Weiter</string>
 	<string name="first_time_download">Download über nogago einrichten</string>
-	<string name="first_time_msg">Danke, dass Sie nogago Maps verwenden. \nUm alle Funktionen verwenden zu können, sind Offline-Daten erforderlich, die sie mit Ihren nogago Account
+	<string name="first_time_msg">Danke, dass Sie nogago Maps verwenden. \nUm alle Funktionen verwenden zu können, sind Offline-Daten erforderlich, die sie mit Ihrem nogago Account
 	    herunterladen können. Danach benötigen Sie keine Netzverbindung mehr und können Adressen, POI und ÖPNV finden.</string>
 	<string name="search_poi_location">Suche Signal …</string>
 	<string name="search_near_map">Suche um Lokation</string>
