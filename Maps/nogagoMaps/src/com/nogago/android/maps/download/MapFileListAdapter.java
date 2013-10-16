@@ -38,7 +38,6 @@ public class MapFileListAdapter extends BaseAdapter implements ListAdapter{
 
 	private void readMapsFromDisk() {
 		File dir = new File(OsmandApplication.getSettings().extendOsmandPath(ResourceManager.APP_DIR).toString());
-//		File dir = new File(Environment.getExternalStorageDirectory().toString() + Constants.STORAGE_PATH);
 		File[] filelist = dir.listFiles();
 		mapFiles = new ArrayList<MapFile>();
 		for (int i = 0; i < filelist.length; i++) {
@@ -54,7 +53,9 @@ public class MapFileListAdapter extends BaseAdapter implements ListAdapter{
 				}
 			}
 		}
+		notifyDataSetChanged();
 	}
+	
 	public void setMapFiles(List<MapFile> mapFiles) {
 		this.mapFiles = mapFiles;
 	}
