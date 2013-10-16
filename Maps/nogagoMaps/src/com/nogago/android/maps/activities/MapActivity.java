@@ -324,7 +324,6 @@ public class MapActivity extends Activity implements IMapLocationListener,
 		}
 
 		mapLayers.updateMapSource(mapView, null);
-		mapLayers.bindMyTracksService();
 		updateApplicationModeSettings();
 
 		mapLayers
@@ -827,7 +826,6 @@ public class MapActivity extends Activity implements IMapLocationListener,
 			progressDlg.dismiss();
 			progressDlg = null;
 		}
-		mapLayers.unbindMyTracksService();
 		super.onStop();
 	}
 
