@@ -468,9 +468,10 @@ public class MainMenuActivity extends Activity {
 		return super.onCreateDialog(id);
 	}
 	
-
+	/* Few Devices have a search key
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+    	
         if (keyCode == KeyEvent.KEYCODE_SEARCH
                 && event.getRepeatCount() == 0) {
 			final Intent search = new Intent(MainMenuActivity.this, SearchActivity.class);
@@ -481,5 +482,6 @@ public class MainMenuActivity extends Activity {
         return super.onKeyDown(keyCode, event);
     }
 	
+        */
 	
 }
