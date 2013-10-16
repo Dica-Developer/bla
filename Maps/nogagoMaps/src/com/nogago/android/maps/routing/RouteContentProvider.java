@@ -75,7 +75,7 @@ public class RouteContentProvider extends ContentProvider {
 			start.setLongitude(startLon);
 			LatLon end = new LatLon(endLat, endLon);
 			result = provider.calculateRouteImpl(start, end, mode, RouteService.OSMAND, getContext(), null, fast);
-			locations = result.getLocations();
+			locations = (result != null) ? result.getLocations() : null;
 		}else{
 			locations = RouteProvider.routeList;
 		}

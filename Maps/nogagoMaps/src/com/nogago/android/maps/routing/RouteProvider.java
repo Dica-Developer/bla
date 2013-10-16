@@ -276,8 +276,8 @@ public class RouteProvider {
 			float[] d = new float[3];
 			Location.distanceBetween(start.getLatitude(), start.getLongitude(),
 					end.getLatitude(), end.getLongitude(), d);
-			
-			if(gpxRoute != null && !gpxRoute.points.isEmpty()){
+
+			if (gpxRoute != null && !gpxRoute.points.isEmpty()) {
 				res = calculateGpxRoute(start, end, gpxRoute);
 				addMissingTurnsToRoute(res, start, end, mode, ctx);
 			} else {
@@ -306,7 +306,7 @@ public class RouteProvider {
 					}
 				}
 			}
-			routeList = res.getLocations();
+			routeList = (res != null) ? res.getLocations() : null;
 			return res;
 			/*
 			 * try { RouteCalculationResult res; if(gpxRoute != null &&
@@ -680,20 +680,19 @@ public class RouteProvider {
 			ctx.setRouter(new BicycleRouter());
 			ctx.setUseStrategyOfIncreasingRoadPriorities(false);
 			ctx.setUseDynamicRoadPrioritising(true);
-		} 
-		//MTB-Router
-		/* else if (mode == ApplicationMode.CAR) {
-			ctx.setRouter(new MtbRouter());
-			ctx.setUseStrategyOfIncreasingRoadPriorities(false);
-			ctx.setUseDynamicRoadPrioritising(true);
-			ctx.setHeuristicCoefficient(2);
-		} 
-		*/
+		}
+		// MTB-Router
+		/*
+		 * else if (mode == ApplicationMode.CAR) { ctx.setRouter(new
+		 * MtbRouter()); ctx.setUseStrategyOfIncreasingRoadPriorities(false);
+		 * ctx.setUseDynamicRoadPrioritising(true);
+		 * ctx.setHeuristicCoefficient(2); }
+		 */
 		else {
 			ctx.setRouter(new HikingRouter());
 			ctx.setUseStrategyOfIncreasingRoadPriorities(false);
 			ctx.setUseDynamicRoadPrioritising(true);
-		} 
+		}
 		RouteSegment st = router.findRouteSegment(start.getLatitude(),
 				start.getLongitude(), ctx);
 		if (st == null) {
