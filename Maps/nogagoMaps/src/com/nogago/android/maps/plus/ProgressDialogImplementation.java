@@ -9,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
+import android.view.WindowManager.BadTokenException;
 
 public class ProgressDialogImplementation implements IProgress {
 	
@@ -47,7 +49,11 @@ public class ProgressDialogImplementation implements IProgress {
 								dialog.setIndeterminate(false);
 								dialog.setMax(work);
 							}
+							try {
 							dialog.show();
+							} catch (BadTokenException e) {
+								Log.e("ProgressDialogImplementation","Activity not started", e);
+							}
 							break;
 						case HADLER_UPDATE_PROGRESS:
 							dialog.setProgress(msg.arg1);
