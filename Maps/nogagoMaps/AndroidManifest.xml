@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.nogago.android.maps" android:installLocation="auto" 
-        android:versionName="@string/app_version" android:versionCode="58">
+        android:versionName="@string/app_version" android:versionCode="59">
         <meta-data android:name="com.google.android.backup.api_key"
     android:value="AEdPqrEAAAAIryCv2NfC5dyOvdicK4veDWik9LvqxRwFdy0PRw" />
         <supports-screens android:smallScreens="true" 
@@ -10,7 +10,7 @@
         <!--  comment change build properties for release & set targetSdkVersion="7", build and  reverse changes-->
         <!--  <uses-sdk android:minSdkVersion="3"/> -->
         <!--   uncomment it to allow different screen supports (large/small)-->
-        <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="4"/>  
+        <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="17"/>  
 
         <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
         <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
@@ -20,9 +20,6 @@
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
         <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
         <uses-permission android:name="android.permission.RUN_INSTRUMENTATION" />
-        
-        <uses-permission android:name="com.google.android.apps.mytracks.READ_TRACK_DATA" />
-  		<uses-permission android:name="com.google.android.apps.mytracks.WRITE_TRACK_DATA" />
 		               
         <application android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@style/OsmandTheme"
                 android:debuggable="false" android:name=".plus.OsmandApplication"

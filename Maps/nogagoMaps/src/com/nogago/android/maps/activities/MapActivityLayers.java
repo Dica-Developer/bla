@@ -3,9 +3,6 @@ package com.nogago.android.maps.activities;
 import gnu.trove.list.array.TIntArrayList;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -13,10 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
-import com.google.android.apps.mytracks.services.ITrackRecordingService;
 import com.nogago.android.maps.CallbackWithObject;
-import com.nogago.android.maps.Constants;
 import com.nogago.android.maps.GPXUtilities;
 import com.nogago.android.maps.R;
 import com.nogago.android.maps.GPXUtilities.GPXFile;
@@ -48,9 +42,6 @@ import com.nogago.android.maps.views.RouteInfoLayer;
 import com.nogago.android.maps.views.RouteLayer;
 import com.nogago.android.maps.views.TransportInfoLayer;
 import com.nogago.android.maps.views.TransportStopsLayer;
-import com.nogago.android.mytracks.io.TrackWriter;
-import com.nogago.android.mytracks.io.TrackWriterFactory;
-import com.nogago.android.mytracks.io.TrackWriterFactory.TrackFileFormat;
 
 import net.osmand.Algoritms;
 import net.osmand.ResultMatcher;
@@ -59,16 +50,10 @@ import net.osmand.map.TileSourceManager.TileSourceTemplate;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnMultiChoiceClickListener;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.graphics.drawable.Drawable;
-import android.os.IBinder;
-import android.os.RemoteException;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -108,12 +93,10 @@ public class MapActivityLayers {
 	private ContextMenuLayer contextMenuLayer;
 	private RouteInfoLayer routeInfoLayer;
 	private MapControlsLayer mapControlsLayer;
-	private MyTracksProviderUtils myTracksProviderUtils;
 	private Intent mytrackIntent;
 	private OsmandMapTileView mapView;
 	int i = 0;
 
-	private ITrackRecordingService myTracksService = null;
 
 	public MapActivityLayers(MapActivity activity) {
 		this.activity = activity;
@@ -123,15 +106,6 @@ public class MapActivityLayers {
 		return (OsmandApplication) activity.getApplication();
 	}
 
-	// connection to the MyTracks service
-	private ServiceConnection serviceConnection = null;
-
-	public synchronized void resumeRecordingTrack(OsmandMapTileView mapView) {
-		if (isMyTracksRecording()) {
-			updateRecordingTrackLayer();
-			showRecordingTrackLayer(mapView);
-		}
-	}
 
 	public void createLayers(final OsmandMapTileView mapView) {
 
@@ -197,46 +171,10 @@ public class MapActivityLayers {
 		mapControlsLayer = new MapControlsLayer(activity);
 		mapView.addLayer(mapControlsLayer, 11);
 
-		myTracksProviderUtils = MyTracksProviderUtils.Factory.get(activity);
 
 	}
 
-	public void bindMyTracksService() {
-		// for the MyTracks service
-		mytrackIntent = new Intent();
-		ComponentName componentName = new ComponentName(
-				Constants.MYTRACKS_SERVICE_PACKAGE,
-				Constants.MYTRACKS_SERVICE_CLASS);
-		mytrackIntent.setComponent(componentName);
-
-		// start and bind the MyTracks service
-		serviceConnection = new ServiceConnection() {
-			@Override
-			public void onServiceConnected(ComponentName className,
-					IBinder service) {
-				myTracksService = ITrackRecordingService.Stub
-						.asInterface(service);
-				resumeRecordingTrack(mapView);
-			}
-
-			@Override
-			public void onServiceDisconnected(ComponentName className) {
-				myTracksService = null;
-				clearRecordingTrackLayer();
-			}
-		};
-		activity.startService(mytrackIntent);
-		activity.bindService(mytrackIntent, serviceConnection, 0);
-
-	}
-
-	public void unbindMyTracksService() {
-		try {
-			activity.unbindService(serviceConnection);
-		} catch (Exception e) {
-			// Service is not registered, ignore.
-		}
-	}
+	
 
 	public void updateLayers(OsmandMapTileView mapView) {
 		OsmandSettings settings = getApplication().getSettings();
@@ -248,12 +186,7 @@ public class MapActivityLayers {
 				mapView.removeLayer(transportStopsLayer);
 			}
 		}
-		/*
-		 * if(mapView.getLayers().contains(osmBugsLayer) !=
-		 * settings.SHOW_OSM_BUGS.get()){ if(settings.SHOW_OSM_BUGS.get()){
-		 * mapView.addLayer(osmBugsLayer, 2); } else {
-		 * mapView.removeLayer(osmBugsLayer); } }
-		 */
+
 
 		if (mapView.getLayers().contains(poiMapLayer) != settings.SHOW_POI_OVER_MAP
 				.get()) {
@@ -518,16 +451,6 @@ public class MapActivityLayers {
 		dlg.show();
 	}
 
-	public void showRecordingTrackLayer(final OsmandMapTileView mapView) {
-		final OsmandSettings settings = getApplication().getSettings();
-		selectRecordingTrackLayer(new CallbackWithObject<GPXFile>() {
-			@Override
-			public boolean processResult(GPXFile result) {
-				return displayGPXFile(settings, mapView, result, true);
-			}
-		}, true, true);
-	}
-
 	public void showGPXFileLayer(final OsmandMapTileView mapView) {
 		final OsmandSettings settings = getApplication().getSettings();
 		selectGPXFileLayer(new CallbackWithObject<GPXFile>() {
@@ -596,78 +519,7 @@ public class MapActivityLayers {
 		}
 	}
 
-	public void selectRecordingTrackLayer(
-			final CallbackWithObject<GPXFile> callbackWithObject,
-			final boolean convertCloudmade, final boolean showCurrentGpx) {
-		final ProgressDialog dlg = new ProgressDialog(activity);
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				final long trackId = getMyTracksRecordingTrackId();
-				if (trackId != Constants.BAD_MYTRACKS_TRACK_ID) {
-					dlg.setTitle(getString(R.string.loading));
-					dlg.setMessage(getString(R.string.loading_recording_track));
-					activity.runOnUiThread(new Runnable() {
-						@Override
-						public void run() {
-							dlg.show();
-						}
-					});
-					final GPXFile res = getRecordingTrackFromMyTracks(trackId,
-							convertCloudmade);
-					dlg.dismiss();
-					if (res == null) {
-						clearRecordingTrackLayer();
-					} else {
-						getApplication().setGpxFileToDisplay(null, false);
-						activity.runOnUiThread(new Runnable() {
-							@Override
-							public void run() {
-								if (res.warning != null) {
-									AccessibleToast.makeText(activity,
-											res.warning, Toast.LENGTH_LONG)
-											.show();
-								} else {
-									callbackWithObject.processResult(res);
-								}
-							}
-						});
-					}
-				} else {
-					clearRecordingTrackLayer();
-				}
-			}
 
-		}, "Loading gpx").start();
-	}
-
-	private GPXFile getRecordingTrackFromMyTracks(final long trackId,
-			boolean convertCloudmade) {
-		try {
-			if (trackId == Constants.BAD_MYTRACKS_TRACK_ID) {
-				return null;
-			}
-
-			PipedInputStream in = new PipedInputStream();
-			final PipedOutputStream out = new PipedOutputStream(in);
-			new Thread(new Runnable() {
-				@Override
-				public void run() {
-					TrackWriter writer = TrackWriterFactory.newWriter(activity,
-							myTracksProviderUtils, trackId,
-							TrackFileFormat.GPX, out);
-					writer.writeTrack();
-				}
-			}).start();
-			GPXFile res = GPXUtilities.loadGPXFile(activity, in,
-					convertCloudmade);
-			out.close();
-			in.close();
-			return res;
-		} catch (IOException e) {
-			return null;
-		}
-	}
 
 	public void selectGPXFileLayer(
 			final CallbackWithObject<GPXFile> callbackWithObject,
@@ -746,27 +598,6 @@ public class MapActivityLayers {
 		}
 	}
 
-	public boolean isMyTracksRecording() {
-		if (myTracksService != null) {
-			try {
-				return myTracksService.isRecording();
-			} catch (Exception e) {
-				return false;
-			}
-		} else
-			return false;
-	}
-
-	private long getMyTracksRecordingTrackId() {
-		if (myTracksService != null) {
-			try {
-				return myTracksService.getRecordingTrackId();
-			} catch (Exception e) {
-				return Constants.BAD_MYTRACKS_TRACK_ID;
-			}
-		} else
-			return Constants.BAD_MYTRACKS_TRACK_ID;
-	}
 
 	private void selectPOIFilterLayer(final OsmandMapTileView mapView) {
 		final List<PoiFilter> userDefined = new ArrayList<PoiFilter>();
