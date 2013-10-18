@@ -16,7 +16,7 @@
 
 package com.google.android.apps.mytracks.content;
 
-import static com.google.android.apps.mytracks.Constants.TAG;
+import static com.google.android.apps.mytracks.util.Constants.TAG;
 
 import android.util.Log;
 

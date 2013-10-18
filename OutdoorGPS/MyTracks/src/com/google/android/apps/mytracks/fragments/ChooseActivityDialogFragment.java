@@ -49,17 +49,19 @@ import java.util.List;
  * 
  * @author Jimmy Shih
  */
-public class ChooseActivityDialogFragment extends DialogFragment {
+public class ChooseActivityDialogFragment extends DialogFragment  {
 
   public static final String CHOOSE_ACTIVITY_DIALOG_TAG = "chooseActivityDialog";
 
   private static final String KEY_TRACK_ID = "trackId";
   private static final String KEY_TRACK_URL = "trackUrl";
-
+  
   private FragmentActivity activity;
   private PackageManager packageManager;
 
+  
   public static ChooseActivityDialogFragment newInstance(long trackId, String trackUrl) {
+
     Bundle bundle = new Bundle();
     bundle.putLong(KEY_TRACK_ID, trackId);
     bundle.putString(KEY_TRACK_URL, trackUrl);
@@ -68,7 +70,10 @@ public class ChooseActivityDialogFragment extends DialogFragment {
     chooseActivityDialogFragment.setArguments(bundle);
     return chooseActivityDialogFragment;
   }
+  
 
+
+  
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     activity = getActivity();
@@ -116,15 +121,14 @@ public class ChooseActivityDialogFragment extends DialogFragment {
             String trackUrl = getArguments().getString(KEY_TRACK_URL);
             if (trackUrl == null) {
               SendRequest sendRequest = new SendRequest(trackId);
-              sendRequest.setSendMaps(true);
-              sendRequest.setNewMap(true);
+              sendRequest.setSendNogago(true);
               sendRequest.setSharingAppPackageName(packageName);
               sendRequest.setSharingAppClassName(className);
               Intent intent = IntentUtils.newIntent(activity, ConfirmSharingActivity.class)
                   .putExtra(SendRequest.SEND_REQUEST_KEY, sendRequest);
               startActivity(intent);
               dismiss();
-            } else {
+            } else { 
               Intent intent = IntentUtils.newShareUrlIntent(
                   activity, trackId, trackUrl, packageName, className);
               startActivity(intent);
@@ -260,4 +264,6 @@ public class ChooseActivityDialogFragment extends DialogFragment {
       }
     }
   }
+  
+  
 }

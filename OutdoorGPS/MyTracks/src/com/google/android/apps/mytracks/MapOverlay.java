@@ -16,12 +16,13 @@
 
 package com.google.android.apps.mytracks;
 
-import static com.google.android.apps.mytracks.Constants.TAG;
+import static com.google.android.apps.mytracks.util.Constants.TAG;
 
 import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.maps.TrackPathPainter;
 import com.google.android.apps.mytracks.maps.TrackPathPainterFactory;
 import com.google.android.apps.mytracks.maps.TrackPathUtils;
+import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;

@@ -75,7 +75,7 @@ public abstract class AbstractSendActivity extends Activity {
       return null;
     }
     progressDialog = DialogUtils.createHorizontalProgressDialog(
-        this, R.string.send_google_progress_message, new DialogInterface.OnCancelListener() {
+        this, R.string.send_nogago_progress_message, new DialogInterface.OnCancelListener() {
           @Override
           public void onCancel(DialogInterface dialog) {
             asyncTask.cancel(true);

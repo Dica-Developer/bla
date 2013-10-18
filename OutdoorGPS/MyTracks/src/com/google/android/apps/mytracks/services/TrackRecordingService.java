@@ -16,9 +16,8 @@
 
 package com.google.android.apps.mytracks.services;
 
-import static com.google.android.apps.mytracks.Constants.RESUME_TRACK_EXTRA_NAME;
+import static com.google.android.apps.mytracks.util.Constants.RESUME_TRACK_EXTRA_NAME;
 
-import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.TrackDetailActivity;
 import com.google.android.apps.mytracks.content.MyTracksLocation;
 import com.google.android.apps.mytracks.content.MyTracksProvider;
@@ -39,6 +38,7 @@ import com.google.android.apps.mytracks.signalstrength.SignalStrengthListener.Si
 import com.google.android.apps.mytracks.signalstrength.SignalStrengthListenerFactory;
 import com.google.android.apps.mytracks.stats.TripStatistics;
 import com.google.android.apps.mytracks.stats.TripStatisticsUpdater;
+import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;

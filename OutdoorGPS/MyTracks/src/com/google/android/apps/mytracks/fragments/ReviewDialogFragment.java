@@ -16,8 +16,8 @@
 
 package com.google.android.apps.mytracks.fragments;
 
-import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.TrackListActivity;
+import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.EulaUtils;
 import com.nogago.bb10.tracks.R;
 

@@ -17,9 +17,9 @@
 package com.google.android.apps.mytracks.settings;
 
 import com.google.analytics.tracking.android.EasyTracker;
-import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.io.backup.BackupActivity;
 import com.google.android.apps.mytracks.io.backup.RestoreChooserActivity;
+import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.DialogUtils;
 import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;

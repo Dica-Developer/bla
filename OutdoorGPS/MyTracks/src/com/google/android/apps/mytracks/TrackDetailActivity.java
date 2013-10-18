@@ -23,6 +23,7 @@ import com.google.android.apps.mytracks.content.TrackDataHub;
 import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.content.WaypointCreationRequest;
 import com.google.android.apps.mytracks.fragments.ChartFragment;
+import com.google.android.apps.mytracks.fragments.ChooseActivityDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment.DeleteOneTrackCaller;
 import com.google.android.apps.mytracks.fragments.FrequencyDialogFragment;
@@ -32,33 +33,24 @@ import com.google.android.apps.mytracks.fragments.MapFragment;
 import com.google.android.apps.mytracks.fragments.StatsFragment;
 import com.google.android.apps.mytracks.io.file.SaveActivity;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
-import com.google.android.apps.mytracks.io.sendtogoogle.GPXUploadTask;
-import com.google.android.apps.mytracks.io.sendtogoogle.UploadTaskException;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
 import com.google.android.apps.mytracks.settings.SettingsActivity;
 import com.google.android.apps.mytracks.util.AnalyticsUtils;
 import com.google.android.apps.mytracks.util.ApiAdapterFactory;
+import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
-import com.nogago.android.task.AsyncTaskManager;
-import com.nogago.android.task.OnTaskCompleteListener;
 import com.nogago.bb10.tracks.R;
 
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
@@ -82,8 +74,7 @@ import java.util.List;
  * @author Leif Hendrik Wilden
  * @author Rodrigo Damazio
  */
-public class TrackDetailActivity extends AbstractMyTracksActivity implements DeleteOneTrackCaller,
-    OnTaskCompleteListener {
+public class TrackDetailActivity extends AbstractMyTracksActivity implements DeleteOneTrackCaller{
 
   public static final String EXTRA_TRACK_ID = "track_id";
   public static final String EXTRA_MARKER_ID = "marker_id";
@@ -111,7 +102,6 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   private MenuItem playNogagoMenuItem;
   private MenuItem playEarthMenuItem;
   private MenuItem shareMenuItem;
-  private MenuItem sendGoogleMenuItem;
   private MenuItem saveMenuItem;
   private MenuItem voiceFrequencyMenuItem;
   private MenuItem splitFrequencyMenuItem;
@@ -165,13 +155,13 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     public void onClick(View v) {
       if (recordingTrackPaused) {
         // Paused -> Resume
-        AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/resume_track");
+        AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/detail/resume_track");
         updateMenuItems(true, false);
         TrackRecordingServiceConnectionUtils.resumeTrack(trackRecordingServiceConnection);
         trackController.update(true, false);
       } else {
         // Recording -> Paused
-        AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/pause_track");
+        AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/detail/pause_track");
         updateMenuItems(true, true);
         TrackRecordingServiceConnectionUtils.pauseTrack(trackRecordingServiceConnection);
         trackController.update(true, true);
@@ -182,7 +172,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   private final OnClickListener stopListener = new OnClickListener() {
     @Override
     public void onClick(View v) {
-      AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/stop_recording");
+      AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/detail/stop_recording");
       updateMenuItems(false, true);
       TrackRecordingServiceConnectionUtils.stopRecording(TrackDetailActivity.this,
           trackRecordingServiceConnection, true);
@@ -197,7 +187,10 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         // Recording
         insertMarkerAction();
       } else {
-        sendTrackToNogago();
+        // Edit Track
+        Intent intent = IntentUtils.newIntent(TrackDetailActivity.this, TrackEditActivity.class).putExtra(
+            TrackEditActivity.EXTRA_TRACK_ID, trackId);
+        startActivity(intent);
       }
     }
   };
@@ -359,11 +352,11 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.track_detail, menu);
     String fileTypes[] = getResources().getStringArray(R.array.file_types);
-    menu.findItem(R.id.track_detail_save_gpx).setTitle(
+    menu.findItem(R.id.track_detail_mail_gpx).setTitle(
         getString(R.string.menu_save_format, fileTypes[0]));
-    menu.findItem(R.id.track_detail_save_kml).setTitle(
+    menu.findItem(R.id.track_detail_mail_kml).setTitle(
         getString(R.string.menu_save_format, fileTypes[1]));
-    menu.findItem(R.id.track_detail_save_csv).setTitle(
+    menu.findItem(R.id.track_detail_mail_csv).setTitle(
         getString(R.string.menu_save_format, fileTypes[2]));
     // menu.findItem(R.id.track_detail_save_tcx).setTitle(getString(R.string.menu_save_format,
     // fileTypes[3]));
@@ -371,14 +364,17 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     insertMarkerMenuItem = menu.findItem(R.id.track_detail_insert_marker);
     playNogagoMenuItem = menu.findItem(R.id.track_detail_play);
     playEarthMenuItem = menu.findItem(R.id.track_detail_earth_play); // Not Supported
-    if(Constants.IS_BLACKBERRY) menu.removeItem(R.id.track_detail_earth_play);                                                         // on
-    // BB
+    if(Constants.IS_BLACKBERRY ) menu.removeItem(R.id.track_detail_earth_play);                                                         // on
     shareMenuItem = menu.findItem(R.id.track_detail_share);
-    sendGoogleMenuItem = menu.findItem(R.id.track_detail_send_nogago);
     saveMenuItem = menu.findItem(R.id.track_detail_mail);
     voiceFrequencyMenuItem = menu.findItem(R.id.track_detail_voice_frequency);
     splitFrequencyMenuItem = menu.findItem(R.id.track_detail_split_frequency);
 
+    if(!Constants.isOnline(TrackDetailActivity.this)) { 
+      // Alternative would be to hide them
+      menu.removeItem(R.id.track_detail_share);
+      menu.removeItem(R.id.track_detail_earth_play);     
+    }
     updateMenuItems(trackId == recordingTrackId, recordingTrackPaused);
     return true;
   }
@@ -396,13 +392,19 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   public boolean onOptionsItemSelected(MenuItem item) {
     Intent intent;
     switch (item.getItemId()) {
-
       case R.id.track_detail_insert_marker:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/markerInsert");
         insertMarkerAction();
         return true;
+      case R.id.track_detail_share:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/share");
+        String mapId = MyTracksProviderUtils.Factory.get(this).getTrack(trackId).getMapId(); // URL falls schon existent
+        ChooseActivityDialogFragment.newInstance(trackId,(mapId.length()==0 ? null: mapId)).show(getSupportFragmentManager(),
+            ChooseActivityDialogFragment.CHOOSE_ACTIVITY_DIALOG_TAG);
+        return true;
       case R.id.track_detail_earth_play:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/earth");
         if (isEarthInstalled()) {
-          AnalyticsUtils.sendPageViews(this, "/action/play");
           intent = IntentUtils.newIntent(this, SaveActivity.class)
               .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
               .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.KML)
@@ -418,6 +420,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         }
         return true;
       case R.id.track_detail_play:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/navigateTrack");
         if (!TabManager.isMapsInstalled(this)) {
           Fragment fragment = getSupportFragmentManager().findFragmentByTag(
               InstallMapsDialogFragment.INSTALL_MAPS_DIALOG_TAG);
@@ -436,30 +439,33 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         }
         return true;
       case R.id.track_detail_markers:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/marker/Detail");
         intent = IntentUtils.newIntent(this, MarkerListActivity.class).putExtra(
             MarkerListActivity.EXTRA_TRACK_ID, trackId);
         startActivity(intent);
         return true;
       case R.id.track_detail_voice_frequency:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/preferences/voice_frequency");
         FrequencyDialogFragment.newInstance(R.string.voice_frequency_key,
             PreferencesUtils.VOICE_FREQUENCY_DEFAULT, R.string.settings_voice_frequency_title)
             .show(getSupportFragmentManager(), FrequencyDialogFragment.FREQUENCY_DIALOG_TAG);
         return true;
       case R.id.track_detail_split_frequency:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/preferences/split_frequency");
         FrequencyDialogFragment.newInstance(R.string.split_frequency_key,
             PreferencesUtils.SPLIT_FREQUENCY_DEFAULT, R.string.settings_split_frequency_title)
             .show(getSupportFragmentManager(), FrequencyDialogFragment.FREQUENCY_DIALOG_TAG);
         return true;
-      case R.id.track_detail_send_nogago:
-        sendTrackToNogago();
-        return true;
-      case R.id.track_detail_save_gpx:
+      case R.id.track_detail_mail_gpx:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/mail/gpx");
         startSaveActivity(TrackFileFormat.GPX);
         return true;
-      case R.id.track_detail_save_kml:
+      case R.id.track_detail_mail_kml:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/mail/kml");
         startSaveActivity(TrackFileFormat.KML);
         return true;
-      case R.id.track_detail_save_csv:
+      case R.id.track_detail_mail_csv:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/mail/csv");
         startSaveActivity(TrackFileFormat.CSV);
         return true;
         /*
@@ -467,23 +473,28 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
          * startSaveActivity(TrackFileFormat.TCX); return true;
          */
       case R.id.track_detail_edit:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/edit_track");
         intent = IntentUtils.newIntent(this, TrackEditActivity.class).putExtra(
             TrackEditActivity.EXTRA_TRACK_ID, trackId);
         startActivity(intent);
         return true;
       case R.id.track_detail_delete:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/delete_track");
         DeleteOneTrackDialogFragment.newInstance(trackId).show(getSupportFragmentManager(),
             DeleteOneTrackDialogFragment.DELETE_ONE_TRACK_DIALOG_TAG);
         return true;
       case R.id.track_detail_sensor_state:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/sensor_state");
         intent = IntentUtils.newIntent(this, SensorStateActivity.class);
         startActivity(intent);
         return true;
       case R.id.track_detail_settings:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/settings");
         intent = IntentUtils.newIntent(this, SettingsActivity.class);
         startActivity(intent);
         return true;
       case R.id.track_detail_help:
+        AnalyticsUtils.sendPageViews(this, "/action/detail/help");
         intent = IntentUtils.newIntent(this, HelpActivity.class);
         startActivity(intent);
         return true;
@@ -492,17 +503,11 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     }
   }
 
-  /*
-   * public void uploadTrackAction() { AnalyticsUtils.sendPageViews(this,
-   * "/action/send_nogago"); ChooseUploadServiceDialogFragment.newInstance(new
-   * SendRequest(trackId)).show( getSupportFragmentManager(),
-   * ChooseUploadServiceDialogFragment.CHOOSE_UPLOAD_SERVICE_DIALOG_TAG); }
-   */
 
   private void insertMarkerAction() {
     // Recording
     Intent intent;
-    AnalyticsUtils.sendPageViews(this, "/action/insert_marker");
+    AnalyticsUtils.sendPageViews(this, "/action/detail/insert_marker");
     intent = IntentUtils.newIntent(this, MarkerEditActivity.class).putExtra(
         MarkerEditActivity.EXTRA_TRACK_ID, trackId);
     startActivity(intent);
@@ -598,19 +603,16 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       playNogagoMenuItem.setVisible(!isRecording);
     }
     if (playEarthMenuItem != null) {
-      playNogagoMenuItem.setVisible(!isRecording);
+      if(!Constants.IS_BLACKBERRY) playNogagoMenuItem.setVisible(!isRecording);
     }
     if (shareMenuItem != null) {
-      shareMenuItem.setVisible(!isRecording);
-    }
-    if (sendGoogleMenuItem != null) {
-      sendGoogleMenuItem.setVisible(!isRecording);
+      if(!Constants.IS_BLACKBERRY) shareMenuItem.setVisible(!isRecording);
     }
 
     if (markerImageButton != null) {
-      markerImageButton.setImageResource(isRecording ? R.drawable.ic_marker : R.drawable.ic_upload);
+      markerImageButton.setImageResource(isRecording ? R.drawable.ic_marker : R.drawable.ic_edit);
       markerImageButton.setContentDescription(getString(isRecording ? R.string.icon_marker
-          : R.string.icon_upload));
+          : R.string.menu_edit));
     }
     if (recordImageButton != null) {
       recordImageButton.setImageResource(isRecording && !isPaused ? R.drawable.ic_pause
@@ -645,7 +647,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
    * @param trackFileFormat the track file format
    */
   private void startSaveActivity(TrackFileFormat trackFileFormat) {
-    AnalyticsUtils.sendPageViews(this, "/action/save");
+    AnalyticsUtils.sendPageViews(this, "/action/detail/save");
     if (FileUtils.isSdCardAvailable()) {
       Intent intent = IntentUtils.newIntent(this, SaveActivity.class)
           .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
@@ -765,14 +767,14 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
           if (recordingTrackPaused) {
             // Paused -> Resume
             Toast.makeText(getApplicationContext(), "Resumed Recording", Toast.LENGTH_LONG).show();
-            AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/resume_track");
+            AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/detail/resume_track");
             updateMenuItems(true, false);
             TrackRecordingServiceConnectionUtils.resumeTrack(trackRecordingServiceConnection);
             trackController.update(true, false);
           } else {
             // Recording -> Paused
             Toast.makeText(getApplicationContext(), "Paused Recording", Toast.LENGTH_LONG).show();
-            AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/pause_track");
+            AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/detail/pause_track");
             updateMenuItems(true, true);
             TrackRecordingServiceConnectionUtils.pauseTrack(trackRecordingServiceConnection);
             trackController.update(true, true);
@@ -784,7 +786,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         break;
 
       case KeyEvent.KEYCODE_S:
-        AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/stop_recording");
+        AnalyticsUtils.sendPageViews(TrackDetailActivity.this, "/action/detail/stop_recording");
         updateMenuItems(false, true);
         TrackRecordingServiceConnectionUtils.stopRecording(TrackDetailActivity.this,
             trackRecordingServiceConnection, true);
@@ -800,97 +802,5 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     return super.onKeyUp(keyCode, event);
   }
 
-  // Upload to nogago
 
-  private boolean isOnline() {
-    ConnectivityManager cm = (ConnectivityManager) getSystemService(TrackDetailActivity.this.CONNECTIVITY_SERVICE);
-    if (cm == null)
-      return false;
-    NetworkInfo ni = cm.getActiveNetworkInfo();
-    if (ni == null)
-      return false;
-    return ni.isConnectedOrConnecting();
-  }
-
-  private String getUserName() {
-    return PreferencesUtils.getString(TrackDetailActivity.this, R.string.user_name, "");
-  }
-
-  private String getPassword() {
-    return PreferencesUtils.getString(TrackDetailActivity.this, R.string.user_password, "");
-  }
-
-  private void sendTrackToNogago() {
-    if (isOnline()) {
-      if (getUserName() != null && (getUserName().length() > 0)
-          && getUserName().compareTo("username") != 0) {
-        // Create manager and set this activity as context and listener
-        AsyncTaskManager mAsyncTaskManager = new AsyncTaskManager(this, this, "TEST", false);
-        mAsyncTaskManager.handleRetainedTask(getLastNonConfigurationInstance());
-        GPXUploadTask task = new GPXUploadTask(this, getString(R.string.upload_progressbar_title),
-            getUserName(), getPassword(), trackId);
-        mAsyncTaskManager.setupTask(task);
-      } else {
-        android.content.DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-          @Override
-          public void onClick(DialogInterface dialog, int which) {
-            Intent settings = new Intent(TrackDetailActivity.this, SettingsActivity.class);
-            startActivity(settings);
-          }
-        };
-        showAlertDialog(this, getString(R.string.wrong_credential),
-            getString(R.string.error_username), listener);
-      }
-
-    } else {
-      Toast.makeText(TrackDetailActivity.this, R.string.error_network, Toast.LENGTH_LONG).show();
-    }
-  }
-
-  private void showAlertDialog(Context context, String title, String message,
-      android.content.DialogInterface.OnClickListener listener) {
-    Builder builder = new AlertDialog.Builder(context);
-    builder.setTitle(title);
-    builder.setIcon(android.R.drawable.ic_dialog_info);
-    builder.setMessage(message);
-    builder.setNeutralButton(R.string.ok_button, listener);
-    builder.show();
-  }
-
-  @Override
-  public void onTaskComplete(AsyncTask task, Object result) {
-    Toast.makeText(this, getString(R.string.successfully_uploaded_track), Toast.LENGTH_SHORT)
-        .show();
-
-  }
-
-  @Override
-  public void onTaskCancel(AsyncTask task) {
-    Toast.makeText(this, getString(R.string.sd_card_canceled), Toast.LENGTH_SHORT).show();
-
-  }
-
-  @Override
-  public void onTaskError(AsyncTask task, Exception error) {
-    if (error instanceof UploadTaskException
-        && ((UploadTaskException) error).getId() == UploadTaskException.CREDENTIALS_WRONG) {
-      android.content.DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-          Intent settings = new Intent(TrackDetailActivity.this, SettingsActivity.class);
-          startActivity(settings);
-        }
-      };
-      showAlertDialog(this, getString(R.string.wrong_credential),
-          getString(R.string.error_username), listener);
-    } else if (error instanceof UploadTaskException
-        && ((UploadTaskException) error).getId() == UploadTaskException.UNABLE_TO_CONNECT) {
-
-      Toast.makeText(TrackDetailActivity.this, R.string.error_network, Toast.LENGTH_LONG).show();
-
-    } else {
-      Toast.makeText(this, getString(R.string.sd_card_canceled), Toast.LENGTH_SHORT).show();
-    }
-  }
-  
 }

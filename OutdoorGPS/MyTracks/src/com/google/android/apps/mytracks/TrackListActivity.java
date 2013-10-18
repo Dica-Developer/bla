@@ -38,6 +38,8 @@ import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection
 import com.google.android.apps.mytracks.settings.SettingsActivity;
 import com.google.android.apps.mytracks.util.AnalyticsUtils;
 import com.google.android.apps.mytracks.util.ApiAdapterFactory;
+import com.google.android.apps.mytracks.util.Constants;
+import com.google.android.apps.mytracks.util.ContextualActionModeCallback;
 import com.google.android.apps.mytracks.util.EulaUtils;
 import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
@@ -776,7 +778,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
           Intent intent = new Intent(Intent.ACTION_SEND);
           intent.putExtra(Intent.EXTRA_EMAIL, new String[] { Constants.BUGS_MAIL }); //$NON-NLS-1$
           intent.setType("vnd.android.cursor.dir/email"); //$NON-NLS-1$
-          intent.putExtra(Intent.EXTRA_SUBJECT, "nogago bug"); //$NON-NLS-1$
+          intent.putExtra(Intent.EXTRA_SUBJECT, "nogago Tracks bug"); //$NON-NLS-1$
           StringBuilder text = new StringBuilder();
           text.append("\nDevice : ").append(Build.DEVICE); //$NON-NLS-1$
           text.append("\nBrand : ").append(Build.BRAND); //$NON-NLS-1$

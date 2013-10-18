@@ -596,7 +596,7 @@
       on the record button to start a new recording">
       Klicken Sie auf die rote \"Aufnahme\" Taste, um Ihr nächstes Abenteuer aufzuzeichnen. 
     </string>
-       <string name="previous_run_crashed">Leider ist die App bei der letzten Nutzung abgestürzt. \n\n Bitte schicken Sie den Absturzbericht, damit wir diese App verbessern können.</string>
+       <string name="previous_run_crashed">Leider ist die App bei der letzten Nutzung abgestürzt. \n\nBitte schicken Sie den Absturzbericht, damit wir diese App verbessern können.</string>
     <string name="send_report">Senden</string> 
     <string name="donot_send_report">Ignorieren</string>
     
@@ -782,4 +782,7 @@ Q\t	Statistik betrachten
 
       Character limit: ~20 (1 line)">Auf Google Earth ansehen</string>
    
+      <string name="send_nogago_progress_message" translation_description="When sending a track to nogago, the progress message.
+
+      %1$s: service name. &apos;Google Maps&apos;, &apos;Google Fusion Tables&apos;, or &apos;Google Docs&apos;.">    Auf nogago.com hochladen</string>
 </resources>

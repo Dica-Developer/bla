@@ -40,10 +40,11 @@ public class AnalyticsUtils {
    * @param page the page
    */
   public static void sendPageViews(Context context, String page) {
-
-    tracker = EasyTracker.getInstance(context);
-    tracker.set(Fields.SCREEN_NAME, page);
-    tracker.send(MapBuilder.createAppView().build());
-
+    if (Constants.isOnline(context)) {
+      tracker = EasyTracker.getInstance(context);
+      tracker.set(Fields.SCREEN_NAME, page);
+      tracker.send(MapBuilder.createAppView().build());
+    }
   }
+
 }

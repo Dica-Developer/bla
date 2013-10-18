@@ -16,7 +16,7 @@
 
 package com.google.android.apps.mytracks.maps;
 
-import static com.google.android.apps.mytracks.Constants.TAG;
+import static com.google.android.apps.mytracks.util.Constants.TAG;
 
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.nogago.bb10.tracks.R;

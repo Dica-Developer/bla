@@ -16,7 +16,7 @@ limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   android:installLocation="auto"
-  android:versionCode="62"
+  android:versionCode="63"
   android:versionName="3.1.0.2"
   package="com.nogago.bb10.tracks" >
 
@@ -213,13 +213,8 @@ limitations under the License.
     <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.backup.BackupActivity" />
     <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.backup.RestoreActivity" />
     <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.backup.RestoreChooserActivity" />
-    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.docs.SendDocsActivity" />
     <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.file.SaveActivity" />
-    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.fusiontables.SendFusionTablesActivity" />
-    <activity android:screenOrientation="portrait"
-      android:label="@string/maps_list_title"
-      android:name="com.google.android.apps.mytracks.io.maps.ChooseMapActivity" />
-    <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.maps.SendMapsActivity" />
+    <activity android:screenOrientation="portrait" android:name="com.nogago.android.apps.tracks.io.SendNogagoActivity" />
     <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.sendtogoogle.AccountChooserActivity" />
     <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.sendtogoogle.ConfirmSharingActivity" />
     <activity android:screenOrientation="portrait" android:name="com.google.android.apps.mytracks.io.sendtogoogle.UploadResultActivity" />

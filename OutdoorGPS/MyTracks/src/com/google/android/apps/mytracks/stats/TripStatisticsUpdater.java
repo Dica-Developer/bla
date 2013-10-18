@@ -16,10 +16,10 @@
 
 package com.google.android.apps.mytracks.stats;
 
-import static com.google.android.apps.mytracks.Constants.TAG;
+import static com.google.android.apps.mytracks.util.Constants.TAG;
 
-import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.services.TrackRecordingService;
+import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.common.annotations.VisibleForTesting;
 

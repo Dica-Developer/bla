@@ -31,7 +31,7 @@ limitations under the License.
     android:icon="@drawable/menu_share"
     android:id="@+id/track_detail_share"
     android:orderInCategory="3"
-    android:showAsAction="ifRoom"
+    android:showAsAction="ifRoom|withText"
     android:title="@string/menu_share">
   </item>
   
@@ -56,21 +56,15 @@ limitations under the License.
     android:showAsAction="ifRoom|withText"
     android:title="@string/menu_earth_play"/>
   <item
-    android:icon="@drawable/menu_send_google"
-    android:id="@+id/track_detail_send_nogago"
-    android:orderInCategory="7"
-    android:showAsAction="ifRoom|withText"
-    android:title="@string/menu_send_nogago"/>
-  <item
     android:icon="@android:drawable/ic_dialog_email"
     android:id="@+id/track_detail_mail"
     android:orderInCategory="8"
     android:showAsAction="ifRoom|withText"
     android:title="@string/menu_mail">
     <menu>
-      <item android:id="@+id/track_detail_save_gpx"/>
-      <item android:id="@+id/track_detail_save_kml"/>
-      <item android:id="@+id/track_detail_save_csv"/>
+      <item android:id="@+id/track_detail_mail_gpx"/>
+      <item android:id="@+id/track_detail_mail_kml"/>
+      <item android:id="@+id/track_detail_mail_csv"/>
      <!--  <item android:id="@+id/track_detail_save_tcx"/>  -->
     </menu>
   </item>

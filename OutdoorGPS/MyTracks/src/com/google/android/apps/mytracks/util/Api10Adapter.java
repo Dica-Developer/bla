@@ -15,7 +15,6 @@
  */
 package com.google.android.apps.mytracks.util;
 
-import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.services.sensors.BluetoothConnectionManager;
 
 import android.annotation.TargetApi;
