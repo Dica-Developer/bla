@@ -16,8 +16,8 @@
 
 package com.google.android.apps.mytracks.io.file;
 
-import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
+import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.DialogUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.nogago.bb10.tracks.R;

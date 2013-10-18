@@ -18,11 +18,9 @@ package com.google.android.apps.mytracks.io.sendtogoogle;
 import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
 import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.fragments.ChooseActivityDialogFragment;
-import com.google.android.apps.mytracks.io.fusiontables.SendFusionTablesUtils;
-import com.google.android.apps.mytracks.io.maps.SendMapsUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
-import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
+import com.nogago.bb10.tracks.R;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -66,8 +64,8 @@ public class UploadResultActivity extends FragmentActivity {
       return;
     }
     
-    if (sendRequest.isSendMaps() && sendRequest.isMapsSuccess()) {
-      shareUrl = SendMapsUtils.getMapUrl(track);
+    if (sendRequest.isSendNogago() && sendRequest.isNogagoSuccess()) {
+      shareUrl = track.getMapId();
       if (sendRequest.getSharingAppPackageName() != null) {
         Intent intent = IntentUtils.newShareUrlIntent(this, sendRequest.getTrackId(), shareUrl,
             sendRequest.getSharingAppPackageName(), sendRequest.getSharingAppClassName());
@@ -75,10 +73,6 @@ public class UploadResultActivity extends FragmentActivity {
         finish();
         return;
       }
-    }
-    if (shareUrl == null && sendRequest.isSendFusionTables()
-        && sendRequest.isFusionTablesSuccess()) {
-      shareUrl = SendFusionTablesUtils.getMapUrl(track);
     }
     showDialog(DIALOG_RESULT_ID);
   }
@@ -91,45 +85,19 @@ public class UploadResultActivity extends FragmentActivity {
     view = getLayoutInflater().inflate(R.layout.upload_result, null);
 
     LinearLayout mapsResult = (LinearLayout) view.findViewById(R.id.upload_result_maps_result);
-    LinearLayout fusionTablesResult = (LinearLayout) view.findViewById(
-        R.id.upload_result_fusion_tables_result);
-    LinearLayout docsResult = (LinearLayout) view.findViewById(R.id.upload_result_docs_result);
-
+   
     ImageView mapsResultIcon = (ImageView) view.findViewById(R.id.upload_result_maps_result_icon);
-    ImageView fusionTablesResultIcon = (ImageView) view.findViewById(
-        R.id.upload_result_fusion_tables_result_icon);
-    ImageView docsResultIcon = (ImageView) view.findViewById(R.id.upload_result_docs_result_icon);
-
+   
     TextView successFooter = (TextView) view.findViewById(R.id.upload_result_success_footer);
     TextView errorFooter = (TextView) view.findViewById(R.id.upload_result_error_footer);
 
     boolean hasError = false;
-    if (!sendRequest.isSendMaps()) {
+    if (!sendRequest.isSendNogago()) {
       mapsResult.setVisibility(View.GONE);
     } else {
-      if (!sendRequest.isMapsSuccess()) {
+      if (!sendRequest.isNogagoSuccess()) {
         mapsResultIcon.setImageResource(R.drawable.failure);
         mapsResultIcon.setContentDescription(getString(R.string.generic_error_title));
-        hasError = true;
-      }
-    }
-
-    if (!sendRequest.isSendFusionTables()) {
-      fusionTablesResult.setVisibility(View.GONE);
-    } else {
-      if (!sendRequest.isFusionTablesSuccess()) {
-        fusionTablesResultIcon.setImageResource(R.drawable.failure);
-        fusionTablesResultIcon.setContentDescription(getString(R.string.generic_error_title));
-        hasError = true;
-      }
-    }
-
-    if (!sendRequest.isSendDocs()) {
-      docsResult.setVisibility(View.GONE);
-    } else {
-      if (!sendRequest.isDocsSuccess()) {
-        docsResultIcon.setImageResource(R.drawable.failure);
-        docsResultIcon.setContentDescription(getString(R.string.generic_error_title));
         hasError = true;
       }
     }

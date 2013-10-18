@@ -15,12 +15,12 @@
  */
 package com.google.android.apps.mytracks.io.backup;
 
-import static com.google.android.apps.mytracks.Constants.TAG;
+import static com.google.android.apps.mytracks.util.Constants.TAG;
 
-import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.content.TrackPointsColumns;
 import com.google.android.apps.mytracks.content.TracksColumns;
 import com.google.android.apps.mytracks.content.WaypointsColumns;
+import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.FileUtils;
 
 import android.content.ContentResolver;

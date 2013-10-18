@@ -16,7 +16,6 @@
 
 package com.google.android.apps.mytracks.io.sendtogoogle;
 
-import android.accounts.Account;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -33,15 +32,9 @@ public class SendRequest implements Parcelable {
   private long trackId = -1L;
   private String sharingAppPackageName = null;
   private String sharingAppClassName = null;
-  private boolean sendMaps = false;
-  private boolean sendFusionTables = false;
-  private boolean sendDocs = false;
-  private boolean newMap = false;
-  private Account account = null;
+  private boolean sendNogago = false;
   private String mapId = null;
-  private boolean mapsSuccess = false;
-  private boolean docsSuccess = false;
-  private boolean fusionTablesSuccess = false;
+  private boolean nogagoSuccess = false;
 
   /**
    * Creates a new send request.
@@ -94,8 +87,8 @@ public class SendRequest implements Parcelable {
   /**
    * True if the user has selected the send to Google Maps option.
    */
-  public boolean isSendMaps() {
-    return sendMaps;
+  public boolean isSendNogago() {
+    return sendNogago;
   }
 
   /**
@@ -104,74 +97,8 @@ public class SendRequest implements Parcelable {
    * @param sendMaps true if the user has selected the send to Google Maps
    *          option
    */
-  public void setSendMaps(boolean sendMaps) {
-    this.sendMaps = sendMaps;
-  }
-
-  /**
-   * True if the user has selected the send to Google Fusion Tables option.
-   */
-  public boolean isSendFusionTables() {
-    return sendFusionTables;
-  }
-
-  /**
-   * Sets the send to Google Fusion Tables option.
-   *
-   * @param sendFusionTables true if the user has selected the send to Google
-   *          Fusion Tables option
-   */
-  public void setSendFusionTables(boolean sendFusionTables) {
-    this.sendFusionTables = sendFusionTables;
-  }
-
-  /**
-   * True if the user has selected the send to Google Docs option.
-   */
-  public boolean isSendDocs() {
-    return sendDocs;
-  }
-
-  /**
-   * Sets the send to Google Docs option.
-   *
-   * @param sendDocs true if the user has selected the send to Google Docs
-   *          option
-   */
-  public void setSendDocs(boolean sendDocs) {
-    this.sendDocs = sendDocs;
-  }
-
-  /**
-   * True if the user has selected to create a new Google Maps.
-   */
-  public boolean isNewMap() {
-    return newMap;
-  }
-
-  /**
-   * Sets the new map option.
-   *
-   * @param newMap true if the user has selected to create a new Google Maps.
-   */
-  public void setNewMap(boolean newMap) {
-    this.newMap = newMap;
-  }
-
-  /**
-   * Gets the account.
-   */
-  public Account getAccount() {
-    return account;
-  }
-
-  /**
-   * Sets the account.
-   *
-   * @param account the account
-   */
-  public void setAccount(Account account) {
-    this.account = account;
+  public void setSendNogago(boolean sendMaps) {
+    this.sendNogago = sendMaps;
   }
 
   /**
@@ -194,8 +121,8 @@ public class SendRequest implements Parcelable {
   /**
    * True if sending to Google Maps is success.
    */
-  public boolean isMapsSuccess() {
-    return mapsSuccess;
+  public boolean isNogagoSuccess() {
+    return nogagoSuccess;
   }
 
   /**
@@ -203,56 +130,18 @@ public class SendRequest implements Parcelable {
    *
    * @param mapsSuccess true if sending to Google Maps is success
    */
-  public void setMapsSuccess(boolean mapsSuccess) {
-    this.mapsSuccess = mapsSuccess;
+  public void setNogagoSuccess(boolean mapsSuccess) {
+    this.nogagoSuccess = mapsSuccess;
   }
 
-  /**
-   * True if sending to Google Fusion Tables is success.
-   */
-  public boolean isFusionTablesSuccess() {
-    return fusionTablesSuccess;
-  }
-
-  /**
-   * Sets the Google Fusion Tables result.
-   *
-   * @param fusionTablesSuccess true if sending to Google Fusion Tables is
-   *          success
-   */
-  public void setFusionTablesSuccess(boolean fusionTablesSuccess) {
-    this.fusionTablesSuccess = fusionTablesSuccess;
-  }
-
-  /**
-   * True if sending to Google Docs is success.
-   */
-  public boolean isDocsSuccess() {
-    return docsSuccess;
-  }
-
-  /**
-   * Sets the Google Docs result.
-   *
-   * @param docsSuccess true if sending to Google Docs is success
-   */
-  public void setDocsSuccess(boolean docsSuccess) {
-    this.docsSuccess = docsSuccess;
-  }
 
   private SendRequest(Parcel in) {
     trackId = in.readLong();
     sharingAppPackageName = in.readString();
     sharingAppClassName = in.readString();
-    sendMaps = in.readByte() == 1;
-    sendFusionTables = in.readByte() == 1;
-    sendDocs = in.readByte() == 1;
-    newMap = in.readByte() == 1;
-    account = in.readParcelable(null);
+    sendNogago = in.readByte() == 1;
     mapId = in.readString();
-    mapsSuccess = in.readByte() == 1;
-    fusionTablesSuccess = in.readByte() == 1;
-    docsSuccess = in.readByte() == 1;
+    nogagoSuccess = in.readByte() == 1;
   }
 
   @Override
@@ -265,15 +154,9 @@ public class SendRequest implements Parcelable {
     out.writeLong(trackId);
     out.writeString(sharingAppPackageName);
     out.writeString(sharingAppClassName);
-    out.writeByte((byte) (sendMaps ? 1 : 0));
-    out.writeByte((byte) (sendFusionTables ? 1 : 0));
-    out.writeByte((byte) (sendDocs ? 1 : 0));
-    out.writeByte((byte) (newMap ? 1 : 0));
-    out.writeParcelable(account, 0);
+    out.writeByte((byte) (sendNogago ? 1 : 0));
     out.writeString(mapId);
-    out.writeByte((byte) (mapsSuccess ? 1 : 0));
-    out.writeByte((byte) (fusionTablesSuccess ? 1 : 0));
-    out.writeByte((byte) (docsSuccess ? 1 : 0));
+    out.writeByte((byte) (nogagoSuccess ? 1 : 0));
   }
 
   public static final Parcelable.Creator<SendRequest> CREATOR = new Parcelable.Creator<

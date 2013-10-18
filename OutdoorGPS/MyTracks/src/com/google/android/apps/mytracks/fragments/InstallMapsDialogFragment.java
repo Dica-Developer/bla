@@ -16,8 +16,8 @@
 
 package com.google.android.apps.mytracks.fragments;
 
-import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.settings.MapSettingsActivity;
+import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.nogago.bb10.tracks.R;
 

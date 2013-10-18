@@ -16,9 +16,9 @@
 
 package com.google.android.apps.mytracks.settings;
 
-import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.io.backup.BackupPreferencesListener;
 import com.google.android.apps.mytracks.util.ApiAdapterFactory;
+import com.google.android.apps.mytracks.util.Constants;
 
 import android.content.Context;
 import android.os.Bundle;

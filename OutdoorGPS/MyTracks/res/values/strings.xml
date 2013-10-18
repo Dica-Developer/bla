@@ -584,8 +584,8 @@ limitations under the License.
     <string name="send_google_fusion_tables_new_public_table" translation_description="When sending a track to Google, under the &apos;Send to...&apos; dialog, the
       checkbox option to send to Google Fusion Tables as a new public table. Note that \n is the new
       line character.">    Google Fusion Tables\n(new public table)</string>
-    <string name="send_google_maps" translation_description="When sending a track to Google, under the &apos;Send to...&apos; dialog, the
-      checkbox option to send to Google Maps.">    Google Maps</string>
+    <string name="send_nogago_maps" translation_description="When sending a track to Nogago, under the &apos;Send to...&apos; dialog, the
+      checkbox option to send to Google Maps.">    nogago.com</string>
     <string name="send_google_new_public_map" translation_description="When sending a track to Google Maps, the radio option to create a new
       public map as opposed to use an existing map.">    Create new public map</string>
     <string name="send_google_new_unlisted_map" translation_description="When sending a track to Google Maps, the radio option to create a new
@@ -1438,7 +1438,7 @@ limitations under the License.
       submenu.
 
       Character limit: ~20 (1 line)">    Email track</string>
-    <string name="previous_run_crashed">Sorry, our app crashed at last use. \n\n Please help us improve this app by sending in your report.</string>
+    <string name="previous_run_crashed">Sorry, our app crashed at last use. \n\nPlease help us improve this app by sending in your report.</string>
     <string name="send_report">Send</string>
     <string name="donot_send_report">Skip</string>
     <string name="map_copyright">    © 2013 MapQuest - Map data © OpenStreetMap - Licensed under ODbL</string>
@@ -1702,4 +1702,8 @@ Q\t	View statistics
   <string name="settings_min_signal_sampling_period_key">signalSamplingFrequency</string>
   <string name="settings_control_start_key">startSamplingControl</string>
   <string name="settings_control_stop_key">stopSamplingControl</string>
+  
+      <string name="send_nogago_progress_message" translation_description="When sending a track to nogago, the progress message.
+
+      %1$s: service name. &apos;Google Maps&apos;, &apos;Google Fusion Tables&apos;, or &apos;Google Docs&apos;.">    Sending track to nogago</string>
 </resources>

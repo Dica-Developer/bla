@@ -17,7 +17,7 @@
 package com.google.android.apps.mytracks.settings;
 
 import com.google.analytics.tracking.android.EasyTracker;
-import com.google.android.apps.mytracks.Constants;
+import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.nogago.bb10.tracks.R;
 

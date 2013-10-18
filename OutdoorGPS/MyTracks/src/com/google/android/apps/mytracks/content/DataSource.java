@@ -16,10 +16,10 @@
 
 package com.google.android.apps.mytracks.content;
 
-import static com.google.android.apps.mytracks.Constants.MAX_LOCATION_AGE_MS;
+import static com.google.android.apps.mytracks.util.Constants.MAX_LOCATION_AGE_MS;
 
-import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.services.MyTracksLocationManager;
+import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.GoogleLocationUtils;
 import com.nogago.bb10.tracks.R;
 

@@ -15,7 +15,7 @@
  */
 package com.google.android.apps.mytracks.io.backup;
 
-import com.google.android.apps.mytracks.Constants;
+import com.google.android.apps.mytracks.util.Constants;
 
 import android.annotation.TargetApi;
 import android.app.backup.BackupAgent;

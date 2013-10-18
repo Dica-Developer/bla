@@ -151,10 +151,7 @@ public class ChooseUploadServiceDialogFragment extends DialogFragment {
    * Starts the next activity, {@link AccountChooserActivity}.
    */
   private void startNextActivity() {
-    sendRequest.setSendMaps(mapsCheckBox.isChecked());
-    sendRequest.setSendFusionTables(fusionTablesCheckBox.isChecked());
-    sendRequest.setSendDocs(docsCheckBox.isChecked());
-    sendRequest.setNewMap(!existingMapRadioButton.isChecked());
+    sendRequest.setSendNogago(mapsCheckBox.isChecked());
     sendStats();
     Intent intent = IntentUtils.newIntent(activity, AccountChooserActivity.class)
         .putExtra(SendRequest.SEND_REQUEST_KEY, sendRequest);
@@ -165,14 +162,8 @@ public class ChooseUploadServiceDialogFragment extends DialogFragment {
    * Sends stats to Google Analytics.
    */
   private void sendStats() {
-    if (sendRequest.isSendMaps()) {
-      AnalyticsUtils.sendPageViews(activity, "/send/maps");
-    }
-    if (sendRequest.isSendFusionTables()) {
-      AnalyticsUtils.sendPageViews(activity, "/send/fusion_tables");
-    }
-    if (sendRequest.isSendDocs()) {
-      AnalyticsUtils.sendPageViews(activity, "/send/docs");
+    if (sendRequest.isSendNogago()) {
+      AnalyticsUtils.sendPageViews(activity, "/send/nogago");
     }
   }
 }

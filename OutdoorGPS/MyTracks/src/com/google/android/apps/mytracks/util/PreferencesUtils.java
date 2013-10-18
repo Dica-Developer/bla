@@ -16,7 +16,6 @@
 
 package com.google.android.apps.mytracks.util;
 
-import com.google.android.apps.mytracks.Constants;
 
 import android.content.Context;
 import android.content.SharedPreferences;

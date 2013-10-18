@@ -16,7 +16,6 @@
 
 package com.google.android.apps.mytracks.fragments;
 
-import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.TrackDetailActivity;
 import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.content.TrackDataHub;
@@ -27,6 +26,7 @@ import com.google.android.apps.mytracks.signalstrength.SignalStrengthListener;
 import com.google.android.apps.mytracks.signalstrength.SignalStrengthListener.SignalStrengthCallback;
 import com.google.android.apps.mytracks.signalstrength.SignalStrengthListenerFactory;
 import com.google.android.apps.mytracks.stats.TripStatistics;
+import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.StatsUtils;
 import com.nogago.bb10.tracks.R;
 

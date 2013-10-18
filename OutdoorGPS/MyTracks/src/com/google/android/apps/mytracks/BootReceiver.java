@@ -16,8 +16,8 @@
 package com.google.android.apps.mytracks;
 
 import static android.content.Intent.ACTION_BOOT_COMPLETED;
-import static com.google.android.apps.mytracks.Constants.RESUME_TRACK_EXTRA_NAME;
-import static com.google.android.apps.mytracks.Constants.TAG;
+import static com.google.android.apps.mytracks.util.Constants.RESUME_TRACK_EXTRA_NAME;
+import static com.google.android.apps.mytracks.util.Constants.TAG;
 
 import com.google.android.apps.mytracks.services.RemoveTempFilesService;
 import com.google.android.apps.mytracks.services.TrackRecordingService;

@@ -16,7 +16,6 @@
 
 package com.google.android.apps.mytracks.util;
 
-import com.google.android.apps.mytracks.ContextualActionModeCallback;
 import com.nogago.bb10.tracks.R;
 
 import android.annotation.TargetApi;

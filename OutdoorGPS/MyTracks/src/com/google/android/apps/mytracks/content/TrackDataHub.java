@@ -16,15 +16,15 @@
 
 package com.google.android.apps.mytracks.content;
 
-import static com.google.android.apps.mytracks.Constants.MAX_DISPLAYED_WAYPOINTS_POINTS;
-import static com.google.android.apps.mytracks.Constants.MAX_LOCATION_AGE_MS;
-import static com.google.android.apps.mytracks.Constants.MAX_NETWORK_AGE_MS;
-import static com.google.android.apps.mytracks.Constants.TARGET_DISPLAYED_TRACK_POINTS;
+import static com.google.android.apps.mytracks.util.Constants.MAX_DISPLAYED_WAYPOINTS_POINTS;
+import static com.google.android.apps.mytracks.util.Constants.MAX_LOCATION_AGE_MS;
+import static com.google.android.apps.mytracks.util.Constants.MAX_NETWORK_AGE_MS;
+import static com.google.android.apps.mytracks.util.Constants.TARGET_DISPLAYED_TRACK_POINTS;
 
-import com.google.android.apps.mytracks.Constants;
 import com.google.android.apps.mytracks.content.MyTracksProviderUtils.DoubleBufferedLocationFactory;
 import com.google.android.apps.mytracks.content.MyTracksProviderUtils.LocationIterator;
 import com.google.android.apps.mytracks.content.TrackDataListener.LocationState;
+import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.common.annotations.VisibleForTesting;
