@@ -68,6 +68,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings.Secure;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -83,8 +85,8 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.Toast;
 
-public class MapActivity extends Activity implements IMapLocationListener,
-		SensorEventListener {
+public class MapActivity extends ActionBarActivity implements
+		IMapLocationListener, SensorEventListener {
 
 	private static final String GPS_STATUS_ACTIVITY = "com.eclipsim.gpsstatus2.GPSStatus"; //$NON-NLS-1$
 	private static final String GPS_STATUS_COMPONENT = "com.eclipsim.gpsstatus2"; //$NON-NLS-1$
@@ -172,12 +174,18 @@ public class MapActivity extends Activity implements IMapLocationListener,
 		followTrack = intent.getBooleanExtra("follow", false);
 
 		settings = getMyApplication().getSettings();
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		navigationInfo = new NavigationInfo(this);
 		// Full screen is not used here
 		// getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 		// WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.main);
+		// Show Action Bar
+		ActionBar ab = getSupportActionBar();
+		ab.show();
+		// ab.setDisplayHomeAsUpEnabled(true);
+		// ab.setDisplayShowTitleEnabled(true);
+		// ab.setDisplayUseLogoEnabled(false);
 		startProgressDialog = new ProgressDialog(this);
 		startProgressDialog.setCancelable(true);
 		((OsmandApplication) getApplication())
@@ -240,7 +248,7 @@ public class MapActivity extends Activity implements IMapLocationListener,
 
 		mapView.setMapLocationListener(this);
 		mapLayers.createLayers(mapView);
-
+/* Enough if this happens in onResume only ?
 		if (displayTrackUrl != null) {
 			// mapLayers.openLayerSelectionDialog(mapView);
 			File f = new File(displayTrackUrl);
@@ -263,6 +271,7 @@ public class MapActivity extends Activity implements IMapLocationListener,
 			}
 		}
 
+			*/
 		if (!settings.isLastKnownMapLocation()) {
 			// show first time when application ran
 			LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -331,7 +340,7 @@ public class MapActivity extends Activity implements IMapLocationListener,
 				.setFilter(
 						settings.getPoiFilterForMap((OsmandApplication) getApplication()));
 
-		mapLayers.getMapInfoLayer().getBackToLocation().setEnabled(false);
+		// mapLayers.getMapInfoLayer().getBackToLocation().setEnabled(false);
 
 		// by default turn off causing unexpected movements due to network
 		// establishing
@@ -747,14 +756,7 @@ public class MapActivity extends Activity implements IMapLocationListener,
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			// some application/hardware needs that back button reacts on key
-			// up, so
-			// that they could do some key combinations with it...
-			// Victor : doing in that way doesn't close dialog properly!
-			// return true;
-		} else if (keyCode == KeyEvent.KEYCODE_SEARCH
-				&& event.getRepeatCount() == 0) {
+		if (keyCode == KeyEvent.KEYCODE_SEARCH && event.getRepeatCount() == 0) {
 			Intent newIntent = new Intent(MapActivity.this,
 					SearchActivity.class);
 			// causes wrong position caching:
@@ -871,7 +873,7 @@ public class MapActivity extends Activity implements IMapLocationListener,
 	}
 
 	public void backToLocationImpl() {
-		mapLayers.getMapInfoLayer().getBackToLocation().setEnabled(false);
+	//	mapLayers.getMapInfoLayer().getBackToLocation().setEnabled(false);
 		PointLocationLayer locationLayer = mapLayers.getLocationLayer();
 		if (!isMapLinkedToLocation()) {
 			setMapLinkedToLocation(true);
@@ -1010,11 +1012,13 @@ public class MapActivity extends Activity implements IMapLocationListener,
 				mapView.setLatLon(location.getLatitude(),
 						location.getLongitude());
 			} else {
+				/*
 				if (!mapLayers.getMapInfoLayer().getBackToLocation()
 						.isEnabled()) {
 					mapLayers.getMapInfoLayer().getBackToLocation()
 							.setEnabled(true);
 				}
+				*/
 				if (settings.AUTO_FOLLOW_ROUTE.get() > 0
 						&& routingHelper.isFollowingMode()
 						&& !uiHandler.hasMessages(AUTO_FOLLOW_MSG_ID)) {
@@ -1022,10 +1026,12 @@ public class MapActivity extends Activity implements IMapLocationListener,
 				}
 			}
 		} else {
+			/*
 			if (mapLayers.getMapInfoLayer().getBackToLocation().isEnabled()) {
 				mapLayers.getMapInfoLayer().getBackToLocation()
 						.setEnabled(false);
 			}
+			*/
 		}
 		navigationInfo.setLocation(location);
 		// When location is changed we need to refresh map in order to show
@@ -1249,15 +1255,7 @@ public class MapActivity extends Activity implements IMapLocationListener,
 
 	@Override
 	public boolean onKeyUp(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			// some application/hardware needs that back button reacts on key
-			// up, so
-			// that they could do some key combinations with it...
-			// Android 1.6 doesn't have onBackPressed() method it should be
-			// finish instead!
-			// onBackPressed();
-			// return true;
-		} else if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
+		if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
 			contextMenuPoint(mapView.getLatitude(), mapView.getLongitude());
 			return true;
 		} else
@@ -1308,6 +1306,7 @@ public class MapActivity extends Activity implements IMapLocationListener,
 		// when user start dragging
 		if (mapLayers.getLocationLayer().getLastKnownLocation() != null) {
 			setMapLinkedToLocation(false);
+			/*
 			if (!mapLayers.getMapInfoLayer().getBackToLocation().isEnabled()) {
 				runOnUiThread(new Runnable() {
 					@Override
@@ -1317,6 +1316,7 @@ public class MapActivity extends Activity implements IMapLocationListener,
 					}
 				});
 			}
+			*/
 		}
 	}
 
@@ -1347,7 +1347,7 @@ public class MapActivity extends Activity implements IMapLocationListener,
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.map_menu, menu);
-		return true;
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
@@ -1362,9 +1362,7 @@ public class MapActivity extends Activity implements IMapLocationListener,
 						.isRouteBeingCalculated()) ? R.string.stop_routing
 						: R.string.stop_navigation);
 				navigateToPointMenu.setVisible(true);
-			} else {
-				navigateToPointMenu.setVisible(false);
-			}
+			} 
 		}
 		MenuItem muteMenu = menu.findItem(R.id.map_mute);
 		if (muteMenu != null) {
@@ -1380,14 +1378,14 @@ public class MapActivity extends Activity implements IMapLocationListener,
 			}
 		}
 		// Position 2
-		/*
-		 * MenuItem directions = menu.findItem(R.id.map_get_directions);
-		 * if(routingHelper.isRouteCalculated()){
-		 * directions.setTitle(R.string.show_route); } else {
-		 * directions.setTitle(R.string.get_directions); }
-		 */
-		// Position 2 end
+		//
+		// MenuItem directions = menu.findItem(R.id.map_get_directions);
+		// if(routingHelper.isRouteCalculated()){
+		// directions.setTitle(R.string.show_route); } else {
+		// directions.setTitle(R.string.get_directions); }
 
+		// Position 2 end
+/*
 		MenuItem animateMenu = menu.findItem(R.id.map_animate_route);
 
 		if (animateMenu != null) {
@@ -1404,17 +1402,35 @@ public class MapActivity extends Activity implements IMapLocationListener,
 				animateMenu.setVisible(false);
 			}
 		}
+		*/
 		return val;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		final int itemId = item.getItemId();
+
 		if (itemId == R.id.map_show_settings) {
 			final Intent intentSettings = new Intent(MapActivity.this,
 					SettingsActivity.class);
 			startActivity(intentSettings);
 			return true;
+		} else if (itemId == android.R.id.home) {
+			onBackPressed();
+			return true;
+			// Position 1
+			/*
+			 * } else if (itemId == R.id.map_show_gps_status) {
+			 * startGpsStatusIntent(); return true; } else if (itemId ==
+			 * R.id.map_get_directions) { if (routingHelper.isRouteCalculated())
+			 * { mapActions.aboutRoute(); } else { Location loc =
+			 * getLastKnownLocation(); if (loc != null) {
+			 * mapActions.getDirections(loc.getLatitude(), loc.getLongitude(),
+			 * true); } else { mapActions.getDirections(mapView.getLatitude(),
+			 * mapView.getLongitude(), true); } } return true;
+			 */
+			// Position 1 end
+
 		} else if (itemId == R.id.map_where_am_i) {
 			backToLocationImpl();
 			return true;
@@ -1465,8 +1481,7 @@ public class MapActivity extends Activity implements IMapLocationListener,
 					navigateToPoint(null);
 				}
 			} else {
-				navigateToPoint(new LatLon(mapView.getLatitude(),
-						mapView.getLongitude()));
+				Toast.makeText(this, R.string.menu_delete_marker_msg,Toast.LENGTH_LONG).show();
 			}
 			mapView.refreshMap();
 			return true;
@@ -1475,11 +1490,13 @@ public class MapActivity extends Activity implements IMapLocationListener,
 			 * contextMenuPoint(mapView.getLatitude(), mapView.getLongitude());
 			 * return true;
 			 */
-		} else if (itemId == R.id.map_animate_route) {
+		} 
+		/* else if (itemId == R.id.map_animate_route) {
 			// animate moving on route
 			routeAnimation.startStopRouteAnimation(routingHelper, this);
 			return true;
-		} else {
+		}
+		*/ else {
 			return super.onOptionsItemSelected(item);
 		}
 	}
