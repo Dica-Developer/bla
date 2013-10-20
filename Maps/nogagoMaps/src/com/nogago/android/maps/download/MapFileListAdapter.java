@@ -53,7 +53,6 @@ public class MapFileListAdapter extends BaseAdapter implements ListAdapter{
 				}
 			}
 		}
-		notifyDataSetChanged();
 	}
 	
 	public void setMapFiles(List<MapFile> mapFiles) {
