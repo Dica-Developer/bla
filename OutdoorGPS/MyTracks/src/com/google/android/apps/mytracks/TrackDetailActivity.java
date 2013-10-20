@@ -187,10 +187,8 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         // Recording
         insertMarkerAction();
       } else {
-        // Edit Track
-        Intent intent = IntentUtils.newIntent(TrackDetailActivity.this, TrackEditActivity.class).putExtra(
-            TrackEditActivity.EXTRA_TRACK_ID, trackId);
-        startActivity(intent);
+        // Share Track
+        shareTrackAction();
       }
     }
   };
@@ -397,10 +395,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
         insertMarkerAction();
         return true;
       case R.id.track_detail_share:
-        AnalyticsUtils.sendPageViews(this, "/action/detail/share");
-        String mapId = MyTracksProviderUtils.Factory.get(this).getTrack(trackId).getMapId(); // URL falls schon existent
-        ChooseActivityDialogFragment.newInstance(trackId,(mapId.length()==0 ? null: mapId)).show(getSupportFragmentManager(),
-            ChooseActivityDialogFragment.CHOOSE_ACTIVITY_DIALOG_TAG);
+        shareTrackAction();
         return true;
       case R.id.track_detail_earth_play:
         AnalyticsUtils.sendPageViews(this, "/action/detail/earth");
@@ -501,6 +496,13 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       default:
         return super.onOptionsItemSelected(item);
     }
+  }
+
+  private void shareTrackAction() {
+    AnalyticsUtils.sendPageViews(this, "/action/detail/share");
+    String mapId = MyTracksProviderUtils.Factory.get(this).getTrack(trackId).getMapId(); // URL falls schon existent
+    ChooseActivityDialogFragment.newInstance(trackId,(mapId.length()==0 ? null: mapId)).show(getSupportFragmentManager(),
+        ChooseActivityDialogFragment.CHOOSE_ACTIVITY_DIALOG_TAG);
   }
 
 
@@ -610,7 +612,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
     }
 
     if (markerImageButton != null) {
-      markerImageButton.setImageResource(isRecording ? R.drawable.ic_marker : R.drawable.ic_edit);
+      markerImageButton.setImageResource(isRecording ? R.drawable.ic_marker :R.drawable.ic_upload);
       markerImageButton.setContentDescription(getString(isRecording ? R.string.icon_marker
           : R.string.menu_edit));
     }
