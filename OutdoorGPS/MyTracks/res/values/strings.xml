@@ -17,7 +17,7 @@ limitations under the License.
 <resources>
 
     <!-- About Page -->
-   
+
     <string name="about_license" translation_description="In the &apos;About nogago® Tracks&apos; page, the button on the bottom to open the
       &apos;Terms of service&apos; dialog.">    License</string>
     <string name="about_privacy" translation_description="In the &apos;About nogago® Tracks&apos; page, label for the privacy link. E.g.,
@@ -330,8 +330,7 @@ limitations under the License.
     <string name="help_my_tracks_question" translation_description="In the &apos;Help&apos; page, the question on what is nogago® Tracks.">    What is nogago® Tracks?</string>
     <string name="help_saved_files_answer" translation_description="In the &apos;Help&apos; page, the answer on saved files.">    You can use Google Earth or similar applications to visualize and edit GPS tracks.</string>
     <string name="help_saved_files_question" translation_description="In the &apos;Help&apos; page, the question on saved files.">    What can I do with tracks after saving them to the SD card or sharing such files with friends?</string>
-    <string name="help_send_track_answer">    
-        You can send a track to Google Maps, Google Fusion Tables, and Google Docs. Tracks sent to
+    <string name="help_send_track_answer">        You can send a track to Google Maps, Google Fusion Tables, and Google Docs. Tracks sent to
     Google Maps are at %1$s, &#8220;My Places&#8221;. Tracks sent to Google Fusion Tables are at
     %2$s. Tracks sent to Google Docs are at %3$s.</string>
     <string name="help_send_track_question" translation_description="In the &apos;Help&apos; page, the question on sending a track.">    Where can I send a track?</string>
@@ -452,7 +451,6 @@ limitations under the License.
     <string name="menu_play" translation_description="In the menu, to play a track.
 
       Character limit: ~20 (1 line)">    Play</string>
-    
     <string name="menu_satellite_mode" translation_description="In the menu, to switch the display to the satellite mode.
 
       Character limit: ~20 (1 line)">    Satellite</string>
@@ -573,11 +571,11 @@ limitations under the License.
       what will be searched for.">    Speak the name of a track or marker.</string>
 
     <!-- Send Google -->
-      <string name="send_google_choose_account_title" translation_description="When sending to Google, the dialog title to choose a Google account.">    Choose account</string>
+    <string name="send_google_choose_account_title" translation_description="When sending to Google, the dialog title to choose a Google account.">    Choose account</string>
     <string name="send_google_docs" translation_description="When sending a track to Google, under the &apos;Send to...&apos; dialog, the
       checkbox option to send to Google Docs.">    Google Docs</string>
     <string name="send_google_error" translation_description="When sending a track to Google, a message indicating that an error has
-      occurred and ask the user to try again.">    An error has occurred. Please try again.</string>
+      occurred and ask the user to try again.">    An error has occurred. Please try again. Are your nogago.com credentials correct?</string>
     <string name="send_google_existing_map" translation_description="When sending a track to Google Maps, the radio option to use an
       existing map as opposed to create a new map.">    Use existing map</string>
     <string name="send_google_fusion_tables" translation_description="When sending a track to Google, the Google Fusion Tables name.">    Google Fusion Tables</string>
@@ -1080,10 +1078,10 @@ limitations under the License.
     <string name="value_float_mile" translation_description="Display a float value in miles (mi).
 
       %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.2f mi</string>
-     <string name="value_float_feet" translation_description="Display a float value in feet (ft).
+    <string name="value_float_feet" translation_description="Display a float value in feet (ft).
 
       %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.2f ft</string>
-     <!-- No Measure -->
+    <!-- No Measure -->
     <string name="value_float_kilometer_nom" translation_description="Display a float value in kilometers (km).
 
       %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.1f</string>
@@ -1096,21 +1094,21 @@ limitations under the License.
     <string name="value_float_mile_nom" translation_description="Display a float value in miles (mi).
 
       %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.1f</string>
-        <string name="value_float_feet_nom" translation_description="In a setting picker, the string format to display an integer value in
+    <string name="value_float_feet_nom" translation_description="In a setting picker, the string format to display an integer value in
       feet (ft).
 
       %1$d: an integer value. E.g., &apos;2&apos;">%1$.1f</string>
-        <string name="value_float_mile_hour_nom" translation_description="Display a float value in miles per hour (mi/h).
+    <string name="value_float_mile_hour_nom" translation_description="Display a float value in miles per hour (mi/h).
 
       %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.1f</string>
-            <string name="value_float_minute_kilometer_nom" translation_description="Display a float value in minutes per kilometer (min/km).
+    <string name="value_float_minute_kilometer_nom" translation_description="Display a float value in minutes per kilometer (min/km).
 
       %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.1f</string>
-                <string name="value_float_minute_mile_nom" translation_description="Display a float value in minutes per mile (min/mi).
+    <string name="value_float_minute_mile_nom" translation_description="Display a float value in minutes per mile (min/mi).
 
       %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.2f</string>
 
-    <!--  End MOD -->
+    <!-- End MOD -->
     <string name="value_float_mile_hour" translation_description="Display a float value in miles per hour (mi/h).
 
       %1$.2f: a float number. E.g., &apos;2.22&apos;">    %1$.2f mi/h</string>
@@ -1420,6 +1418,7 @@ limitations under the License.
     <string name="wanna_start_maps">Start nogago® Maps?</string>
     <string name="ok_button">OK</string>
     <string name="wrong_credential">Credentials error</string>
+    <string name="dlg_btn_settings">Settings</string>
     <string name="error_username">You need to set up your nogago.com credentials first before downloading a map.</string>
     <string name="task_cancelled">Task cancelled on your request.</string>
     <string name="error_track_does_not_exist">Track does not exist!</string>
@@ -1447,119 +1446,63 @@ limitations under the License.
        adventure. \n\n Or press \"N\" for recording a new track, \"P\" for pausing the recording, \"S\" to stop recording, \"A\" for settings, \"H\" for help.</string>
     <string name="nogago_list_empty_message_z" translation_description="When the track list is empty, the message informing the user to click
       on the record button to start a new recording">    Click on the red record button to start recording your next adventure. </string>
-    
+
     <!-- Help page -->
-    <string name="n_help_data_connection_answer" translation_description="In the &apos;Help&apos; page, the answer on data connection.">    
-        Cell signal or data connection is not required to record GPS tracks. However, if there is no
+    <string name="n_help_data_connection_answer" translation_description="In the &apos;Help&apos; page, the answer on data connection.">        Cell signal or data connection is not required to record GPS tracks. However, if there is no
     data connection, you will only see a Map using the nogago® Map app. In nogago® Tracks, you will see a grey screen or a
     partial map. You can setup in the preferences, that nogago® Maps is always for map display instead of the built-in online map.
     Tracks, represented as simple lines, can still be viewed even if there is no data connection or nogago® Maps is not installed.</string>
-
-    <string name="n_help_delete_tracks_answer" translation_description="In the &apos;Help&apos; page, the answer on delete tracks.">    
-    From the track list, select &#8220;Delete all&#8221; when not recording. This permanently
+    <string name="n_help_delete_tracks_answer" translation_description="In the &apos;Help&apos; page, the answer on delete tracks.">    From the track list, select &#8220;Delete all&#8221; when not recording. This permanently
     deletes the recorded tracks from memory. If you have saved tracks or backups on the SD card, you
     must delete them separately. You can access the SD card using the built in file manager app. All tracks are stored on the memory card
     below the folder documents / Tracks (Z10) or misc/ android/ documents/ Tracks/ (Q10) and can be accessed via your PC.</string>
-    <string name="n_help_my_tracks_answer" translation_description="In the &apos;Help&apos; page, the answer on what is nogago® Tracks.">   
-    nogago® Tracks allows you to record outdoor activities using GPS signals. You can visualize your walking, running, biking or any
+    <string name="n_help_my_tracks_answer" translation_description="In the &apos;Help&apos; page, the answer on what is nogago® Tracks.">    nogago® Tracks allows you to record outdoor activities using GPS signals. You can visualize your walking, running, biking or any
     other outdoor activity while watching live performance statistics. nogago® Tracks makes it easy to archive
     your training history with nogago.com, and share your
     activities with friends and the world.</string>
-   <string name="n_help_send_track_answer">    
-      You can send a track to your friends via email or archive your adventure by uploading them to nogago.com.
-   </string>
+    <string name="n_help_send_track_answer">      You can send a track to your friends via email or archive your adventure by uploading them to nogago.com.</string>
     <string name="n_help_my_tracks_question" translation_description="In the &apos;Help&apos; page, the question on what is nogago® Tracks.">    What is nogago® Tracks?</string>
-    
-         
-       <string name="n_help_split_track_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
-            Tracks with several segments are split at import. Every segment is created as a separate track in the track list to enable accessing the segments.</string>
-            
-    <string name="n_help_split_track_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
-         Why are tracks split into multiple segments at import?</string>
-             
-       <string name="help_import_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
-            You can import tracks in the format GPX.
+    <string name="n_help_split_track_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">            Tracks with several segments are split at import. Every segment is created as a separate track in the track list to enable accessing the segments.</string>
+    <string name="n_help_split_track_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">         Why are tracks split into multiple segments at import?</string>
+    <string name="help_import_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">            You can import tracks in the format GPX.
             Navigate to the track list. Press the button with three dots. Choose \"Import track\".  Place the tracks into the folder displayed in the alert dialog prior to pressing OK.
             When the operation is finished you will find the tracks in the track list. Android users can directly import GPX tracks by clicking on GPX files in the file browser. Opening GPX files from email attachments is also supported on Android.
-            Please contact BlackBerry and request this feature in the Android Runtime to experience this convenience on BlackBerry10 as well !
-            </string>
-            
-    <string name="help_import_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
-        How can I open GPX tracks that I have downloaded from nogago.com, received from friends, or downloaded on the Web ?</string>
-         
-           <string name="help_export_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
-            Navigate to the track list. Press the button with three dots. Choose \"Export track\". You can choose the common formats
+            Please contact BlackBerry and request this feature in the Android Runtime to experience this convenience on BlackBerry10 as well !</string>
+    <string name="help_import_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">        How can I open GPX tracks that I have downloaded from nogago.com, received from friends, or downloaded on the Web ?</string>
+    <string name="help_export_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">            Navigate to the track list. Press the button with three dots. Choose \"Export track\". You can choose the common formats
             GPX, KML (for viewing on Google Maps and Google Earth), and CSV. The exported track will be available in the folder that reported after the operation finishes.
              Alternatively you can mail a single track in those formats
-            to a friend or upload the track for viewing online at nogago.com.
-            
-            </string>
-            
-    <string name="help_export_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
-         Can I export my tracks and copy them on my PC or move them to my other phone?</string>
-         
-           <string name="help_backup_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
-            Use the Backup functionality available from the settings. 
+            to a friend or upload the track for viewing online at nogago.com.</string>
+    <string name="help_export_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">         Can I export my tracks and copy them on my PC or move them to my other phone?</string>
+    <string name="help_backup_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">            Use the Backup functionality available from the settings. 
             Your backup is compatible between Android and BlackBerry versions of this app. The application reports where the backup is stored at
             the end of the operation. </string>
-            
-    <string name="help_backup_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
-         How do I backup my settings and all recorded tracks?</string>
-         
-         
-           <string name="help_restore_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
-            Use the Restore functionality available from the settings. You can choose to restore a specific backup, if you have several backups. To restore
+    <string name="help_backup_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">         How do I backup my settings and all recorded tracks?</string>
+    <string name="help_restore_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">            Use the Restore functionality available from the settings. You can choose to restore a specific backup, if you have several backups. To restore
             your backup from another phone simply place the ZIP file into the folder named in the alert dialog prior to pressing OK. 
             Backup and restore from Android and BlackBerry10 phones are compatible.
             
             Use the import function to restore your GPX tracks recorded with nogago® Outdoor GPS for BlackBerry OS 4.5-7.1 </string>
-            
-    <string name="help_restore_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
-         How do I restore my settings and all recorded tracks?</string>
-        
-     <string name="n_about_copyright_notice" translation_description="In the &apos;About nogago® Tracks&apos; page, the copyright notice.">    
-        ©2009-2013 nogago® and the My Tracks community. </string>
-      
-           <string name="help_open_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
-           This app is Open Source and licensed under the Apache license Version 2.0. This allows others to build on our work and our
+    <string name="help_restore_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">         How do I restore my settings and all recorded tracks?</string>
+    <string name="n_about_copyright_notice" translation_description="In the &apos;About nogago® Tracks&apos; page, the copyright notice.">        ©2009-2013 nogago® and the My Tracks community. </string>
+    <string name="help_open_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">           This app is Open Source and licensed under the Apache license Version 2.0. This allows others to build on our work and our
            esteemed users to investigate what is happening with their data in times where privacy is at risk. Additionally, we
-           were able to create this app only because others opened their code base. We welcome contributions by fellow developers at opensource.nogago.com.
-           </string>
-            
-    <string name="help_open_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">   
-         Why is this app open source ?</string>
-         
-    <string name="settings_map_choice_label">
-        Map provider
-    </string>
-    
-    <string name="settings_map_choice_online">
-        Internal online map
-    </string>
-    
-    
-    <string name="settings_map_choice_online">
-        External topographic offline map
-    </string>
-      
-    <string name="settings_map_choice_description">
-        Choose the map provider between the internal online map viewer powered by MapSource or use nogago Maps as
+           were able to create this app only because others opened their code base. We welcome contributions by fellow developers at opensource.nogago.com.</string>
+    <string name="help_open_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">         Why is this app open source ?</string>
+    <string name="settings_map_choice_label">        Map provider</string>
+    <string name="settings_map_choice_online">        Internal online map</string>
+    <string name="settings_map_choice_online">        External topographic offline map</string>
+    <string name="settings_map_choice_description">        Choose the map provider between the internal online map viewer powered by MapSource or use nogago Maps as
         a separate application that allows to view maps offline with topographic contours and provides search and
-        navigation functionality.
-    </string>
-    
-      <string name="n_send_google_by_my_tracks" translation_description="When sending a track to Google, a note indicating it is created by My
+        navigation functionality.</string>
+    <string name="n_send_google_by_my_tracks" translation_description="When sending a track to Google, a note indicating it is created by My
       Tracks on Android.
 
       %1$s: the html anchor opening tag. Place this placeholder before the app name, &apos;nogago® Tracks&apos;.
-      %2$s: the html anchor closing tag. Place this placeholder after the app name, &apos;nogago® Tracks&apos;.">    
-      Created by nogago(R) Tracks, available for Android and BlackBerry. Visit http://www.nogago.com to learn more!</string>
- 
-      
-      
+      %2$s: the html anchor closing tag. Place this placeholder after the app name, &apos;nogago® Tracks&apos;.">      Created by nogago(R) Tracks, available for Android and BlackBerry. Visit http://www.nogago.com to learn more!</string>
+
     <!-- EULA -->
-    <string name="n_eula_body">  
-     Licensed under the Apache License, Version 2.0 (the \"License\");
+    <string name="n_eula_body">     Licensed under the Apache License, Version 2.0 (the \"License\");
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at \n\n
 
@@ -1569,29 +1512,21 @@ limitations under the License.
    distributed under the License is distributed on an \"AS IS\" BASIS,
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
-   limitations under the License.
-   </string>
+   limitations under the License.</string>
     <string name="n_eula_footer" translation_description="The footer in the &apos;Terms of Service&apos;. See
       http://m.google.com/toscountry.
 
-      %1$s: host name, &apos;m.google.com&apos;">    
-      Any required attribution or notice for the third party content may be found at
+      %1$s: host name, &apos;m.google.com&apos;">      Any required attribution or notice for the third party content may be found at
     opensource.nogago.com. The publisher imprint can be found at http://blog.nogago.com/contact/ </string>
-    <string name="n_eula_title" translation_description="The title for the &apos;Terms of Service&apos; dialog.">    
-        Software License</string>
-    
-	<string name="n_eula_copyright_year" translation_description="The copyright year in the &apos;Terms of Service&apos;. See
+    <string name="n_eula_title" translation_description="The title for the &apos;Terms of Service&apos; dialog.">        Software License</string>
+    <string name="n_eula_copyright_year" translation_description="The copyright year in the &apos;Terms of Service&apos;. See
       http://m.google.com/toscountry. \u00A9 is the unicode value for the copyright symbol.">    \u00A9 2009-2013</string>
-    
     <string name="n_eula_date" translation_description="The date in the &apos;Terms of Service&apos;. See
       http://m.google.com/toscountry.">    June 1, 2013</string>
-    
-    <!-- 
-    
-     -->
-      
-    <string name="n_help_keyboard_answer">
-    Yes. The following keyboard assignments have been made and ensure compatibility with BlackBerry standards as well
+
+<!--   -->
+
+    <string name="n_help_keyboard_answer">    Yes. The following keyboard assignments have been made and ensure compatibility with BlackBerry standards as well
     as nogago Outdoor GPS for older BlackBerry operating systems:\n\n
     
 Through the app:\n
@@ -1612,98 +1547,84 @@ H\t	Scroll Left (only Chart)\n
 K\t	Scroll Right (only Chart)\n
 M\t	Insert Marker\n
 O\t	Zoom Out (only Chart and Map)\n
-Q\t	View statistics
-    </string>
-            
-    <string name="n_help_keyboard_question">
-         Can I control the app with the keyboard ?
-    </string>
-    
-    <!--  TO BE TRANSLATED - SIGNAL STRENGTH -->
-     <string name="settings_sampling">Sampling settings</string>
-  <string name="settings_auto_start">Automatic start</string>
-  <string name="settings_auto_start_summary_on">Automatically start inserting signal strength waypoints whenever My Tracks starts recording a track.</string>
-  <string name="settings_auto_start_summary_off">You will need to manually start signal sampling using the controls below.</string>
-  <string name="settings_auto_stop">Automatic stop</string>
-  <string name="settings_auto_stop_summary_on">Automatically stop inserting signal strength waypoints whenever My Tracks stops recording a track.</string>
-  <string name="settings_auto_stop_summary_off">You will need to manually stop signal sampling using the controls below.</string>
-  <string name="settings_min_signal_sampling_period">Min. sampling period</string>
-  <string name="settings_min_signal_sampling_period_summary">Minimum time between two recordings of the phone\'s signal strength</string>
+Q\t	View statistics</string>
+    <string name="n_help_keyboard_question">         Can I control the app with the keyboard ?</string>
 
-  <string name="settings_control">Sampling control</string>
-  <string name="settings_control_start">Start sampling</string>
-  <string name="settings_control_start_summary">Starts sampling signal strength immediately, if My Tracks is recording. Sampling will stop once My Tracks stops recording.</string>
-  <string name="settings_control_stop">Stop sampling</string>
-  <string name="settings_control_stop_summary">Stops sampling signal strength if sampling is currently active.</string>
-
-  <string name="started_sampling">Started sampling cell signal strength.</string>
-  <string name="stopped_sampling">Stopped sampling cell signal strength.</string>
-  <string name="unknown">-</string>
-  <string name="dlg_import">Please place your GPX tracks in directory %1$s \n(on BlackBerry /mnt/sdcard maps to device memory folder /misc/android )</string>
-  <string name="dlg_restore">Please place your backup.ZIP in directory %1$s \n(on BlackBerry /mnt/sdcard maps to device memory folder /misc/android )</string>
- <!--  Review Dialog -->
-  <string name="dlg_review_title" translation_description="The title for the &apos;Review&apos; dialog.">    
-        Review this app </string>
-  <string name="dlg_review_body" translation_description="The title for the &apos;Review&apos; dialog.">    
-        Please support our efforts on this free and open source app by providing a short review in the app store. 
-        We are happy to consider your feature requests for future versions via email.
-  </string>
-  <string name="dlg_review_btn_review" translation_description="The title for review button in the &apos;Review&apos; dialog.">Review</string>
-  <string name="dlg_review_btn_feature" translation_description="The title for feature request button the &apos;Review&apos; dialog.">Request</string>
-  <string name="dlg_review_btn_no" translation_description="The title for cancel button the &apos;Review&apos; dialog.">No, thanks.</string>
-  <string name="dlg_review_btn_no_msg" translation_description="The msg presented to the user when 0the &apos;Review&apos; dialog is answered with no.">Please help us to succeed with this free app with either a review or request email. Please understand that we will bother you again next time you start this app until we either receive a review or an email with feedback from you. You can opt out by not sending off the email, we will then stop bothering you.</string>
-  <string name="dlg_review_btn_feature_msg" translation_description="The email text template for the user when 0the &apos;Review&apos; dialog is answered with Request.">Hi, I would like to see the following features in your app: \n </string>
-  <!--  Marketing Dialog -->
-  <string name="dlg_market_title" translation_description="The title for the &apos;Market&apos; dialog.">    
-        Apps by nogago </string>
-  <string name="dlg_market_body" translation_description="The title for the &apos;Market&apos; dialog.">    
-        If you enjoy using nogago Tracks, you might also like our other apps and games. They are even mostly free and enjoy many good ratings.</string>      
-  <string name="dlg_market_btn_yes" translation_description="The title for review button in the &apos;Review&apos; dialog.">Show me your apps.</string>
-  <string name="dlg_market_btn_no" translation_description="The title for cancel button the &apos;Review&apos; dialog.">No, thanks.</string>
-  
-  <string name="gpsies_todo" translation_description="The title for button to trigger gpsies search.">Upcoming feature: Search and download tracks from GPSies.com (and other track sharing portals).</string>
-
-  <string name="settings_mapsprovider_online" translation_description="The settings for mapprovider summary online.">Built-in online street map.</string>
-  <string name="settings_mapsprovider_offline" translation_description="The settings for mapprovider summary offline.">External offline (topographic) map.</string>
-  <string name="settings_mapsprovider_title" translation_description="The settings for mapprovider summary offline.">Preferred map provider.</string>
-  
-   <string name="track_detail_install_maps_message" translation_description="When playing a track, the message informing the user that he needs
+    <!-- TO BE TRANSLATED - SIGNAL STRENGTH -->
+    <string name="settings_sampling">Sampling settings</string>
+    <string name="settings_auto_start">Automatic start</string>
+    <string name="settings_auto_start_summary_on">Automatically start inserting signal strength waypoints whenever My Tracks starts recording a track.</string>
+    <string name="settings_auto_start_summary_off">You will need to manually start signal sampling using the controls below.</string>
+    <string name="settings_auto_stop">Automatic stop</string>
+    <string name="settings_auto_stop_summary_on">Automatically stop inserting signal strength waypoints whenever My Tracks stops recording a track.</string>
+    <string name="settings_auto_stop_summary_off">You will need to manually stop signal sampling using the controls below.</string>
+    <string name="settings_min_signal_sampling_period">Min. sampling period</string>
+    <string name="settings_min_signal_sampling_period_summary">Minimum time between two recordings of the phone\'s signal strength</string>
+    <string name="settings_control">Sampling control</string>
+    <string name="settings_control_start">Start sampling</string>
+    <string name="settings_control_start_summary">Starts sampling signal strength immediately, if My Tracks is recording. Sampling will stop once My Tracks stops recording.</string>
+    <string name="settings_control_stop">Stop sampling</string>
+    <string name="settings_control_stop_summary">Stops sampling signal strength if sampling is currently active.</string>
+    <string name="started_sampling">Started sampling cell signal strength.</string>
+    <string name="stopped_sampling">Stopped sampling cell signal strength.</string>
+    <string name="unknown">-</string>
+    <string name="dlg_import">Please place your GPX tracks in directory %1$s \n(on BlackBerry /mnt/sdcard maps to device memory folder /misc/android )</string>
+    <string name="dlg_restore">Please place your backup.ZIP in directory %1$s \n(on BlackBerry /mnt/sdcard maps to device memory folder /misc/android )</string>
+    <!-- Review Dialog -->
+    <string name="dlg_review_title" translation_description="The title for the &apos;Review&apos; dialog.">        Review this app </string>
+    <string name="dlg_review_body" translation_description="The title for the &apos;Review&apos; dialog.">        Please support our efforts on this free and open source app by providing a short review in the app store. 
+        We are happy to consider your feature requests for future versions via email.</string>
+    <string name="dlg_review_btn_review" translation_description="The title for review button in the &apos;Review&apos; dialog.">Review</string>
+    <string name="dlg_review_btn_feature" translation_description="The title for feature request button the &apos;Review&apos; dialog.">Request</string>
+    <string name="dlg_review_btn_no" translation_description="The title for cancel button the &apos;Review&apos; dialog.">No, thanks.</string>
+    <string name="dlg_review_btn_no_msg" translation_description="The msg presented to the user when 0the &apos;Review&apos; dialog is answered with no.">Please help us to succeed with this free app with either a review or request email. Please understand that we will bother you again next time you start this app until we either receive a review or an email with feedback from you. You can opt out by not sending off the email, we will then stop bothering you.</string>
+    <string name="dlg_review_btn_feature_msg" translation_description="The email text template for the user when 0the &apos;Review&apos; dialog is answered with Request.">Hi, I would like to see the following features in your app: \n </string>
+    <!-- Marketing Dialog -->
+    <string name="dlg_market_title" translation_description="The title for the &apos;Market&apos; dialog.">        Apps by nogago </string>
+    <string name="dlg_market_body" translation_description="The title for the &apos;Market&apos; dialog.">        If you enjoy using nogago Tracks, you might also like our other apps and games. They are even mostly free and enjoy many good ratings.</string>
+    <string name="dlg_market_btn_yes" translation_description="The title for review button in the &apos;Review&apos; dialog.">Show me your apps.</string>
+    <string name="dlg_market_btn_no" translation_description="The title for cancel button the &apos;Review&apos; dialog.">No, thanks.</string>
+    <string name="gpsies_todo" translation_description="The title for button to trigger gpsies search.">Upcoming feature: Search and download tracks from GPSies.com (and other track sharing portals).</string>
+    <string name="settings_mapsprovider_online" translation_description="The settings for mapprovider summary online.">Built-in online street map.</string>
+    <string name="settings_mapsprovider_offline" translation_description="The settings for mapprovider summary offline.">External offline (topographic) map.</string>
+    <string name="settings_mapsprovider_title" translation_description="The settings for mapprovider summary offline.">Preferred map provider.</string>
+    <string name="track_detail_install_maps_message" translation_description="When playing a track, the message informing the user that he needs
       nogago Maps to play the track and asking him if he wants to install nogago Maps from the
       Play Store.">    You need nogago Maps to view offline maps as well as navigate along the track. Do you want to install nogago Maps from the app store?</string>
     <string name="track_detail_install_maps_error" translation_description="Message informing the user not able to install nogago Maps from the
       Play Store.">    Unalbe to install nogago Maps from the app store.</string>
-    <string name="track_detail_install_maps_online" 
-        translation_description="Notify user of being able to configure online map">You can configure to use a simple internal online map in the settings for the map to view maps within the app.</string>
-    <string name="track_detail_maps_blackberry_msg" >
-        Please do not forget to press the back button in nogago Maps to return to Tracks (BlackBerry !)
-        </string>
-   
+    <string name="track_detail_install_maps_online" translation_description="Notify user of being able to configure online map">You can configure to use a simple internal online map in the settings for the map to view maps within the app.</string>
+    <string name="track_detail_maps_blackberry_msg">        Please do not forget to press the back button in nogago Maps to return to Tracks (BlackBerry !)</string>
     <string name="menu_nogago_play" translation_description="In the menu, to play a track.
 
       Character limit: ~20 (1 line)">Follow track</string>
     <string name="menu_earth_play" translation_description="In the menu, to play a track.
 
       Character limit: ~20 (1 line)">Play in earth</string>
-    
-    
-  <!-- Signal Strength -->
-   <string name="stats_signal_label" >GSM Strength</string>
-  <string name="error_rate"> Error Rate: %1$d</string>
-  <string name="signal_to_noise_ratio"> Signal to Noise Ratio: %1$d</string>
-  <string name="ecio"> Ec/lo: %1$.1f dB</string>
-  <string name="gsm_strength">GSM Strength: %1$d</string>
-  <string name="cdma_strength">CDMA Strength: %1$d dBm</string>
-  <string name="evdo_strength">EVDO Strength: %1$d dBm</string>
-  <string name="description_signal_strength" translation_description="Strength in dBm">    GSM Signal (dBm)</string>
-  
-  <!-- Non-translatable strings -->
-  <string name="settings_auto_start_key">autoStartSampling</string>
-  <string name="settings_auto_stop_key">autoStopSampling</string>
-  <string name="settings_min_signal_sampling_period_key">signalSamplingFrequency</string>
-  <string name="settings_control_start_key">startSamplingControl</string>
-  <string name="settings_control_stop_key">stopSamplingControl</string>
-  
-      <string name="send_nogago_progress_message" translation_description="When sending a track to nogago, the progress message.
+
+    <!-- Signal Strength -->
+    <string name="stats_signal_label">GSM Strength</string>
+    <string name="error_rate"> Error Rate: %1$d</string>
+    <string name="signal_to_noise_ratio"> Signal to Noise Ratio: %1$d</string>
+    <string name="ecio"> Ec/lo: %1$.1f dB</string>
+    <string name="gsm_strength">GSM Strength: %1$d</string>
+    <string name="cdma_strength">CDMA Strength: %1$d dBm</string>
+    <string name="evdo_strength">EVDO Strength: %1$d dBm</string>
+    <string name="description_signal_strength" translation_description="Strength in dBm">    GSM Signal (dBm)</string>
+
+    <!-- Non-translatable strings -->
+    <string name="settings_auto_start_key">autoStartSampling</string>
+    <string name="settings_auto_stop_key">autoStopSampling</string>
+    <string name="settings_min_signal_sampling_period_key">signalSamplingFrequency</string>
+    <string name="settings_control_start_key">startSamplingControl</string>
+    <string name="settings_control_stop_key">stopSamplingControl</string>
+    <string name="send_nogago_progress_message" translation_description="When sending a track to nogago, the progress message.
 
       %1$s: service name. &apos;Google Maps&apos;, &apos;Google Fusion Tables&apos;, or &apos;Google Docs&apos;.">    Sending track to nogago</string>
+    <string name="n_share_track_confirm_message" translation_description="The confirmation message when sharing a track with friends.
+            %1$s url. E.g., &apos;support.google.com/maps/bin/answer.py?answer=144365&apos;.">
+    This will upload your track to nogago.com so that you can share the track url with friends. The
+    track will be public such that everyone with the link can access view your track. 
+    Login to nogago.com to disable public viewing of your track by deactivating the \"Share track\" check box.</string>
+
 </resources>

@@ -262,7 +262,7 @@
     <string name="send_google_by_my_tracks" translation_description="When sending a track to Google, a note indicating it is created by My       Tracks on Android.        %1$s: the html anchor opening tag. Place this placeholder before the app name, &apos;My Tracks&apos;.       %2$s: the html anchor closing tag. Place this placeholder after the app name, &apos;My Tracks&apos;.">Erstellt von %1$snogago Tracks%2$s auf Android</string>
     <string name="send_google_choose_account_title" translation_description="When sending to Google, the dialog title to choose a Google account.">Konto auswählen</string>
     <string name="send_google_docs" translation_description="When sending a track to Google, under the &apos;Send to...&apos; dialog, the       checkbox option to send to Google Docs.">Google Docs</string>
-    <string name="send_google_error" translation_description="When sending a track to Google, a message indicating that an error has       occurred and ask the user to try again.">Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.</string>
+    <string name="send_google_error" translation_description="When sending a track to Google, a message indicating that an error has       occurred and ask the user to try again.">Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut. Stimmen Ihre Zugangsdaten zu nogago.com ?</string>
     <string name="send_google_existing_map" translation_description="When sending a track to Google Maps, the radio option to use an       existing map as opposed to create a new map.">Vorhandene Karte verwenden</string>
     <string name="send_google_fusion_tables" translation_description="When sending a track to Google, the Google Fusion Tables name.">Google Fusion Tables</string>
     <string name="send_google_fusion_tables_new_public_table" translation_description="When sending a track to Google, under the &apos;Send to...&apos; dialog, the       checkbox option to send to Google Fusion Tables as a new public table. Note that \n is the new       line character.">Google Fusion Tables\n(neue öffentliche Tabelle)</string>
@@ -785,4 +785,8 @@ Q\t	Statistik betrachten
       <string name="send_nogago_progress_message" translation_description="When sending a track to nogago, the progress message.
 
       %1$s: service name. &apos;Google Maps&apos;, &apos;Google Fusion Tables&apos;, or &apos;Google Docs&apos;.">    Auf nogago.com hochladen</string>
+ <string name="n_share_track_confirm_message" translation_description="The confirmation message when sharing a track with friends.        %1$s url. E.g., &apos;support.google.com/maps/bin/answer.py?answer=144365&apos;.">Hiermit laden Sie Ihren Track auf nogago.com hoch und können die URL des Tracks mit Freunden teilen. Die
+    Karte ist zunächst \"öffentlich\" und jedem mit Zugriff auf den Link zugänglich. Sie können den Zugang zum Track jederzeit widerrufen, indem Sie sich auf nogago.com anmelden und die \"Track teilen\" Schaltfläche deaktivieren.</string>
+
+    <string name="dlg_btn_settings">Einstellungen</string>
 </resources>

@@ -18,6 +18,7 @@ package com.google.android.apps.mytracks.io.sendtogoogle;
 import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
 import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.fragments.ChooseActivityDialogFragment;
+import com.google.android.apps.mytracks.settings.SettingsActivity;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.common.annotations.VisibleForTesting;
 import com.nogago.bb10.tracks.R;
@@ -118,11 +119,19 @@ public class UploadResultActivity extends FragmentActivity {
           }
         })
         .setPositiveButton(R.string.generic_ok, new DialogInterface.OnClickListener() {
-            @Override
-          public void onClick(DialogInterface dialog, int which) {
-            finish();
-          }
-        })
+          @Override
+        public void onClick(DialogInterface dialog, int which) {
+          finish();
+        }
+      })
+      .setNeutralButton(R.string.dlg_btn_settings, new DialogInterface.OnClickListener() {
+        @Override
+      public void onClick(DialogInterface dialog, int which) {
+          finish();
+          Intent settings = new Intent(UploadResultActivity.this, SettingsActivity.class);
+          startActivity(settings);
+      }
+    })
         .setTitle(hasError ? R.string.generic_error_title : R.string.generic_success_title)
         .setView(view);
 
