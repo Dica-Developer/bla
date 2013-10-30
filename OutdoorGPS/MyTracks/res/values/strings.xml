@@ -1568,8 +1568,8 @@ Q\t	View statistics</string>
     <string name="started_sampling">Started sampling cell signal strength.</string>
     <string name="stopped_sampling">Stopped sampling cell signal strength.</string>
     <string name="unknown">-</string>
-    <string name="dlg_import">Please place your GPX tracks in directory %1$s \n(on BlackBerry /mnt/sdcard maps to device memory folder /misc/android )</string>
-    <string name="dlg_restore">Please place your backup.ZIP in directory %1$s \n(on BlackBerry /mnt/sdcard maps to device memory folder /misc/android )</string>
+    <string name="dlg_import">Please place your GPX tracks in directory %1$s</string>
+    <string name="dlg_restore">Please place your backup.ZIP in directory %1$s</string>
     <!-- Review Dialog -->
     <string name="dlg_review_title" translation_description="The title for the &apos;Review&apos; dialog.">        Review this app </string>
     <string name="dlg_review_body" translation_description="The title for the &apos;Review&apos; dialog.">        Please support our efforts on this free and open source app by providing a short review in the app store. 

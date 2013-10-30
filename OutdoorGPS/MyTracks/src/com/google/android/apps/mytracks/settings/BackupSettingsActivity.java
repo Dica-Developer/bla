@@ -115,8 +115,10 @@ public class BackupSettingsActivity extends AbstractSettingsActivity {
         R.string.settings_backup_restore_confirm_message, new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialog, int which) {
-            String msg = String.format(getResources().getString(R.string.dlg_restore), FileUtils
-                .buildExternalDirectoryPath("backups").toString());
+            String msg = String.format(getResources().getString(R.string.dlg_restore),
+                Constants.IS_BLACKBERRY ? FileUtils.buildExternalDirectoryPath("backups")
+                    .toString().replace("/mnt/sdcard", "/misc/android") : FileUtils
+                    .buildExternalDirectoryPath("backups").toString());
             Builder builder = new AlertDialog.Builder(BackupSettingsActivity.this);
             builder.setMessage(msg).setNeutralButton(getString(android.R.string.cancel), null);
             builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
@@ -152,18 +154,17 @@ public class BackupSettingsActivity extends AbstractSettingsActivity {
     restorePreference.setSummary(isRecording ? R.string.settings_not_while_recording
         : R.string.settings_backup_restore_summary);
   }
-  
 
   @Override
   public void onStart() {
     super.onStart();
-    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+    EasyTracker.getInstance(this).activityStart(this); // Add this method.
   }
 
   @Override
   public void onStop() {
     super.onStop();
-    EasyTracker.getInstance(this).activityStop(this);  // Add this method.
+    EasyTracker.getInstance(this).activityStop(this); // Add this method.
   }
-  
+
 }
