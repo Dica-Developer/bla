@@ -652,8 +652,8 @@ Was macht nogago® Tracks?
          
            <string name="help_export_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">   
           Navigieren Sie zur Track Liste. Rufen Sie die Aktion \"Exportieren\" (unter ...) auf. Sie können zwischen GPX, KML (für Google Maps und Earth)
-               und CSV als Datenformat wählen. Sie finden die exportierten Tracks dann mit einer File Manager app unter /misc/android/documents/Tracks/ Unterordnern je nach gewähltem Format. Alternativ können Sie eine einzelne GPX-Datei per E-Mail versenden oder den Track auf
-               nogago.com hochladen, und Ihn dann im Browser betrachten.
+               und CSV als Datenformat wählen.  Alternativ können Sie eine einzelne GPX-Datei per E-Mail versenden oder den Track über
+               nogago.com mit Freunden und der Welt teilen.
             
             </string>
             
@@ -741,8 +741,8 @@ Q\t	Statistik betrachten
         Kann ich die App über Tasten steuern ?
     </string>
     
-    <string name="dlg_import">Bitte legen Sie Ihre GPX tracks zum Import im Verzeichnis %1$s ab \n(bei BlackBerry ist /mnt/sdcard ein Ordner /misc/android im Gerätespeicher )</string>
-  <string name="dlg_restore">Bitte legen Sie Ihr backup.ZIP im Verzeichnis %1$s ab \n(bei BlackBerry ist /mnt/sdcard ein Ordner /misc/android im Gerätespeicher )</string>
+    <string name="dlg_import">Bitte legen Sie Ihre GPX tracks zum Import im Verzeichnis %1$s ab.</string>
+  <string name="dlg_restore">Bitte legen Sie Ihr backup.ZIP im Verzeichnis %1$s ab.</string>
     
   <string name="dlg_review_title" translation_description="The title for the &apos;Review&apos; dialog.">    
         App bewerten</string>

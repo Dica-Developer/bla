@@ -564,8 +564,9 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         return true;
       case R.id.track_list_import:
         AnalyticsUtils.sendPageViews(this, "/action/import");
-        String msg = String.format(getResources().getString(R.string.dlg_import), FileUtils
-            .buildExternalDirectoryPath("gpx").toString());
+        String msg = String.format(getResources().getString(R.string.dlg_import), Constants.IS_BLACKBERRY ? FileUtils
+            .buildExternalDirectoryPath("gpx").toString().replace("/mnt/sdcard", "/misc/android") :  FileUtils
+            .buildExternalDirectoryPath("gpx").toString()  );
         Builder builder = new AlertDialog.Builder(TrackListActivity.this);
         builder.setMessage(msg).setNeutralButton(getString(android.R.string.cancel), null);
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
