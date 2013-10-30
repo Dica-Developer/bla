@@ -626,11 +626,10 @@ Was macht nogago® Tracks?
     <string name="n_help_my_tracks_answer" translation_description="In the &apos;Help&apos; page, the answer on what is nogago® Tracks.">   
     nogago® Tracks ermöglicht die Aufzeichnung von Wegstrecken mit Hilfe von GPS-Signalen.
     Visualisieren Sie Ihre Wanderungen, Laufstrecken oder Fahrradtouren und betrachten Sie Statistiken live während der Aufzeichnung.
-    Sie können die Strecken auf nogago.com archivieren, mit Freunden teilen und mit Google Earth nachfliegen.
+    Sie können die Strecken über nogago.com  mit Freunden und der Welt teilen und auf Android mit Google Earth nachfliegen.
     </string>
    <string name="n_help_send_track_answer" > 
-      Senden Sie Ihren Track an Freunde über E-Mail oder archivieren Sie Ihre Aktivität auf nogago.com. Durch andere Portale wie GPSies.com oder Google Maps
-      kann die ganze Welt an Ihren Abenteuern teilhaben.
+      Senden Sie Ihren Track per E-Mail als Dateianhang oder teilen Sie Ihre Aktivität über nogago.com mit Ihren Freunden und der Welt. 
       </string>
    
          

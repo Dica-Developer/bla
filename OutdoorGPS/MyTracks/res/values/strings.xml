@@ -1460,7 +1460,7 @@ limitations under the License.
     other outdoor activity while watching live performance statistics. nogago® Tracks makes it easy to archive
     your training history with nogago.com, and share your
     activities with friends and the world.</string>
-    <string name="n_help_send_track_answer">      You can send a track to your friends via email or archive your adventure by uploading them to nogago.com.</string>
+    <string name="n_help_send_track_answer">      You can send a track to your friends via email or share your adventure by uploading them to nogago.com.</string>
     <string name="n_help_my_tracks_question" translation_description="In the &apos;Help&apos; page, the question on what is nogago® Tracks.">    What is nogago® Tracks?</string>
     <string name="n_help_split_track_answer" translation_description="In the &apos;Help&apos; page, the answer on splitting long tracks.">            Tracks with several segments are split at import. Every segment is created as a separate track in the track list to enable accessing the segments.</string>
     <string name="n_help_split_track_question" translation_description="In the &apos;Help&apos; page, the question on splitting long tracks.">         Why are tracks split into multiple segments at import?</string>
