@@ -23,6 +23,7 @@ import com.nogago.bb10.tracks.R;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
 
@@ -64,12 +65,12 @@ public class DynamicSpeedTrackPathPainter implements TrackPathPainter {
   }
 
   @Override
-  public void updatePath(
-      Projection projection, Rect viewRect, int startIndex, List<CachedLocation> points) {
-    boolean hasLastPoint = startIndex != 0 && points.get(startIndex -1).isValid();
+  public void updatePath(Projection projection, Rect viewRect, int startIndex,
+      List<CachedLocation> points) {
+    boolean hasLastPoint = startIndex != 0 && points.get(startIndex - 1).isValid();
     Point point = new Point();
     if (hasLastPoint) {
-      GeoPoint geoPoint = points.get(startIndex -1).getGeoPoint();
+      GeoPoint geoPoint = points.get(startIndex - 1).getGeoPoint();
       projection.toPixels(geoPoint, point);
     }
     boolean newSegment = !hasLastPoint;
@@ -126,7 +127,13 @@ public class DynamicSpeedTrackPathPainter implements TrackPathPainter {
   public void drawPath(Canvas canvas) {
     for (int i = 0; i < coloredPaths.size(); i++) {
       ColoredPath coloredPath = coloredPaths.get(i);
-      canvas.drawPath(coloredPath.getPath(), coloredPath.getPathPaint());
+      if (coloredPath != null && canvas != null) {
+        Path path = coloredPath.getPath();
+        Paint paint = coloredPath.getPathPaint();
+        if (path != null && paint != null) {
+          canvas.drawPath(path, paint);
+        }
+      }
     }
   }
 
