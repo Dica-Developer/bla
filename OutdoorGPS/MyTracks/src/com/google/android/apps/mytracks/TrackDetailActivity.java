@@ -74,7 +74,7 @@ import java.util.List;
  * @author Leif Hendrik Wilden
  * @author Rodrigo Damazio
  */
-public class TrackDetailActivity extends AbstractMyTracksActivity implements DeleteOneTrackCaller{
+public class TrackDetailActivity extends AbstractMyTracksActivity implements DeleteOneTrackCaller {
 
   public static final String EXTRA_TRACK_ID = "track_id";
   public static final String EXTRA_MARKER_ID = "marker_id";
@@ -215,7 +215,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    AnalyticsUtils.sendPageViews(this, this.getLocalClassName() + "/create" );
+    AnalyticsUtils.sendPageViews(this, this.getLocalClassName() + "/create");
     handleIntent(getIntent());
     SharedPreferences sharedPreferences = getSharedPreferences(Constants.SETTINGS_NAME,
         Context.MODE_PRIVATE);
@@ -295,7 +295,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   @Override
   protected void onStart() {
     super.onStart();
-    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+    EasyTracker.getInstance(this).activityStart(this); // Add this method.
     trackDataHub.start();
   }
 
@@ -322,7 +322,7 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
   @Override
   protected void onStop() {
     super.onStop();
-    EasyTracker.getInstance(this).activityStop(this); 
+    EasyTracker.getInstance(this).activityStop(this);
     trackDataHub.stop();
   }
 
@@ -361,17 +361,19 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
 
     insertMarkerMenuItem = menu.findItem(R.id.track_detail_insert_marker);
     playNogagoMenuItem = menu.findItem(R.id.track_detail_play);
-    playEarthMenuItem = menu.findItem(R.id.track_detail_earth_play); // Not Supported
-    if(Constants.IS_BLACKBERRY ) menu.removeItem(R.id.track_detail_earth_play);                                                         // on
+    playEarthMenuItem = menu.findItem(R.id.track_detail_earth_play); // Not
+                                                                     // Supported
+    if (Constants.IS_BLACKBERRY)
+      menu.removeItem(R.id.track_detail_earth_play); // on
     shareMenuItem = menu.findItem(R.id.track_detail_share);
     saveMenuItem = menu.findItem(R.id.track_detail_mail);
     voiceFrequencyMenuItem = menu.findItem(R.id.track_detail_voice_frequency);
     splitFrequencyMenuItem = menu.findItem(R.id.track_detail_split_frequency);
 
-    if(!Constants.isOnline(TrackDetailActivity.this)) { 
+    if (!Constants.isOnline(TrackDetailActivity.this)) {
       // Alternative would be to hide them
       menu.removeItem(R.id.track_detail_share);
-      menu.removeItem(R.id.track_detail_earth_play);     
+      menu.removeItem(R.id.track_detail_earth_play);
     }
     updateMenuItems(trackId == recordingTrackId, recordingTrackPaused);
     return true;
@@ -425,9 +427,9 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
           }
         } else {
           // Open Maps with command to navigate
-          intent =  IntentUtils.newIntent(this, SaveActivity.class)
+          intent = IntentUtils.newIntent(this, SaveActivity.class)
               .putExtra(SaveActivity.EXTRA_TRACK_ID, trackId)
-              .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.GPXM )
+              .putExtra(SaveActivity.EXTRA_TRACK_FILE_FORMAT, (Parcelable) TrackFileFormat.GPXM)
               .putExtra(SaveActivity.EXTRA_FOLLOW_TRACK, true);
           // Then automatically opens nogago Maps based on the extras
           startActivity(intent);
@@ -500,11 +502,13 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
 
   private void shareTrackAction() {
     AnalyticsUtils.sendPageViews(this, "/action/detail/share");
-    String mapId = MyTracksProviderUtils.Factory.get(this).getTrack(trackId).getMapId(); // URL falls schon existent
-    ChooseActivityDialogFragment.newInstance(trackId,(mapId.length()==0 ? null: mapId)).show(getSupportFragmentManager(),
-        ChooseActivityDialogFragment.CHOOSE_ACTIVITY_DIALOG_TAG);
+    String mapId = MyTracksProviderUtils.Factory.get(this).getTrack(trackId).getMapId(); // URL
+                                                                                         // falls
+                                                                                         // schon
+                                                                                         // existent
+    ChooseActivityDialogFragment.newInstance(trackId, (mapId.length() == 0 ? null : mapId)).show(
+        getSupportFragmentManager(), ChooseActivityDialogFragment.CHOOSE_ACTIVITY_DIALOG_TAG);
   }
-
 
   private void insertMarkerAction() {
     // Recording
@@ -605,14 +609,15 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
       playNogagoMenuItem.setVisible(!isRecording);
     }
     if (playEarthMenuItem != null) {
-      if(!Constants.IS_BLACKBERRY) playNogagoMenuItem.setVisible(!isRecording);
+      if (!Constants.IS_BLACKBERRY)
+        playNogagoMenuItem.setVisible(!isRecording);
     }
     if (shareMenuItem != null) {
-      if(!Constants.IS_BLACKBERRY) shareMenuItem.setVisible(!isRecording);
+        shareMenuItem.setVisible(!isRecording);
     }
 
     if (markerImageButton != null) {
-      markerImageButton.setImageResource(isRecording ? R.drawable.ic_marker :R.drawable.ic_upload);
+      markerImageButton.setImageResource(isRecording ? R.drawable.ic_marker : R.drawable.ic_upload);
       markerImageButton.setContentDescription(getString(isRecording ? R.string.icon_marker
           : R.string.menu_edit));
     }
@@ -803,6 +808,5 @@ public class TrackDetailActivity extends AbstractMyTracksActivity implements Del
 
     return super.onKeyUp(keyCode, event);
   }
-
 
 }
