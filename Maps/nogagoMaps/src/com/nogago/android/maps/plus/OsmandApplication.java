@@ -89,7 +89,8 @@ public class OsmandApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		
+
+	    com.nogago.android.maps.utils.EulaUtils.increaseAppStart(this);
 		long timeToStart = System.currentTimeMillis();
 		osmandSettings = createOsmandSettingsInstance();
 		routingHelper = new RoutingHelper(osmandSettings, this, player);

@@ -551,7 +551,6 @@ public class MapActivity extends ActionBarActivity implements
 				null);
 		menuView.setBackgroundColor(Color.argb(200, 150, 150, 150));
 		dlg.setContentView(menuView);
-		MainMenuActivity.onCreateMainMenu(dlg.getWindow(), this);
 		Animation anim = new Animation() {
 			@Override
 			protected void applyTransformation(float interpolatedTime,
