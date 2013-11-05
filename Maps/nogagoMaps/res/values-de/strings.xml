@@ -1399,4 +1399,7 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 	</string>
 	
     <string name="menu_delete_marker_msg">Nutzen Sie diese Taste, um ein Ziel zu löschen oder die Navigation zu beenden.</string>
+    
+    <string name="menu_map_favorites">Favoriten verwalten</string>
+    <string name="menu_map_download">Karten verwalten</string>
 </resources>

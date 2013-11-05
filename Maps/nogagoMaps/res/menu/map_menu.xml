@@ -5,8 +5,16 @@
     <item
         android:id="@+id/map_where_am_i"
         android:icon="@android:drawable/ic_menu_mylocation"
-        android:orderInCategory="2"
+        android:orderInCategory="1"
         android:title="@string/where_am_i"
+        android:visible="false"
+        yourapp:showAsAction="ifRoom|withText">
+    </item>
+    <item
+        android:id="@+id/map_layers"
+        android:icon="@android:drawable/ic_menu_mapmode"
+        android:orderInCategory="2"
+        android:title="@string/menu_layers"
         yourapp:showAsAction="ifRoom|withText">
     </item>
     <item
@@ -17,16 +25,23 @@
         yourapp:showAsAction="ifRoom|withText">
     </item>
     <item
-        android:id="@+id/map_layers"
-        android:icon="@android:drawable/ic_menu_mapmode"
-        android:orderInCategory="4"
-        android:title="@string/menu_layers"
+        android:id="@+id/map_show_dld_mgr"
+        android:icon="@android:drawable/ic_menu_save"
+        android:orderInCategory="5"
+        android:title="@string/menu_map_download"
+        yourapp:showAsAction="ifRoom|withText">
+    </item>
+    <item
+        android:id="@+id/map_show_favorites"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:orderInCategory="6"
+        android:title="@string/menu_map_favorites"
         yourapp:showAsAction="ifRoom|withText">
     </item>
     <item
         android:id="@+id/map_show_settings"
         android:icon="@android:drawable/ic_menu_preferences"
-        android:orderInCategory="5"
+        android:orderInCategory="7"
         android:title="@string/settings_Button"
         yourapp:showAsAction="ifRoom|withText">
     </item>
@@ -35,7 +50,7 @@
     <item
         android:id="@+id/map_navigate_to_point"
         android:icon="@android:drawable/ic_menu_close_clear_cancel"
-        android:orderInCategory="1"
+        android:orderInCategory="4"
         android:title="@string/stop_navigation"
         android:visible="true"
         yourapp:showAsAction="ifRoom|withText">

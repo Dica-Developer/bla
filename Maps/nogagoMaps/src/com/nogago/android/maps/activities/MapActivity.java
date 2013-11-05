@@ -183,9 +183,9 @@ public class MapActivity extends ActionBarActivity implements
 		// Show Action Bar
 		ActionBar ab = getSupportActionBar();
 		ab.show();
-		// ab.setDisplayHomeAsUpEnabled(true);
-		// ab.setDisplayShowTitleEnabled(true);
-		// ab.setDisplayUseLogoEnabled(false);
+		ab.setDisplayHomeAsUpEnabled(true);
+		ab.setDisplayShowTitleEnabled(true);
+		ab.setDisplayUseLogoEnabled(false);
 		startProgressDialog = new ProgressDialog(this);
 		startProgressDialog.setCancelable(true);
 		((OsmandApplication) getApplication())
@@ -1468,6 +1468,17 @@ public class MapActivity extends ActionBarActivity implements
 		} else if (itemId == R.id.map_mute) {
 			routingHelper.getVoiceRouter().setMute(
 					!routingHelper.getVoiceRouter().isMute());
+			return true;
+			
+		} else if (itemId == R.id.map_show_dld_mgr) {
+			final Intent mapManager = new Intent(this, MapManagerActivity.class);
+			mapManager.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+			startActivity(mapManager);
+			return true;
+		} else if (itemId == R.id.map_show_favorites) {
+			final Intent favorites = new Intent(this, FavouritesActivity.class);
+			favorites.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+			startActivity(favorites);
 			return true;
 		} else if (itemId == R.id.map_navigate_to_point) {
 			if (mapLayers.getNavigationLayer().getPointToNavigate() != null) {
