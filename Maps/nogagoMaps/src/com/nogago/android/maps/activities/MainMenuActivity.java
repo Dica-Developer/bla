@@ -276,7 +276,7 @@ public class MainMenuActivity extends Activity {
 					    notInstalled.setMessage(R.string.tracks_not_installed).setCancelable(false)
 					        .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
 					          public void onClick(DialogInterface dialog, int id) {
-					            Uri uri = Uri.parse(Constants.IS_BLACKBERRY ? Constants.BB_TRACKS_DOWNLOAD_URL : Constants.TRACKS_DOWNLOAD_URL);
+					            Uri uri = Uri.parse(Constants.IS_BLACKBERRY ? Constants.BB_TRACKS_DOWNLOAD_URL : Constants.PLAY_TRACKS_DOWNLOAD_URL);
 					            Intent showUri = new Intent(Intent.ACTION_VIEW, uri);
 					            activity.startActivity(showUri);
 					          }
