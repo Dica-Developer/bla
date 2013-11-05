@@ -1,6 +1,9 @@
 package com.nogago.android.maps;
 
 import android.content.ComponentName;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 public class Constants {
 
@@ -103,5 +106,12 @@ public class Constants {
 	
 	public final static String NOGAGO_REGISTER_URL = "https://www.nogago.com/userRegister/index";
 	public static final String BUGS_MAIL = "bugs@nogago.com";
+	public static boolean isOnline(Context context) {
+	    ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+	    if (cm == null) return false;
+	    NetworkInfo ni = cm.getActiveNetworkInfo();
+	    if (ni == null) return false;
+	    return ni.isConnectedOrConnecting();
+	}
 	
 }

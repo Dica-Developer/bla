@@ -89,6 +89,7 @@ public class SearchActivity extends TabActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		com.nogago.android.maps.utils.AnalyticsUtils.sendPageViews(this, "search/create" );
 		requestWindowFeature(Window.FEATURE_NO_TITLE); 
 		setContentView(R.layout.search_main);
 		/*

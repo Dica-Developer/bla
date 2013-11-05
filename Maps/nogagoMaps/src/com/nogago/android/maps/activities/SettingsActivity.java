@@ -170,6 +170,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	CustomTitleBar titleBar = new CustomTitleBar(this, R.string.settings_activity, R.drawable.tab_settings_screen_icon, R.style.CustomTitleTheme_Preference);
+		com.nogago.android.maps.utils.AnalyticsUtils.sendPageViews(this, "settings/create" );
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.settings_pref);
 		titleBar.afterSetContentView();

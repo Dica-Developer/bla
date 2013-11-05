@@ -89,7 +89,7 @@ public class OsmandApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-
+		com.nogago.android.maps.utils.AnalyticsUtils.sendPageViews(getApplicationContext(), "/appstart");
 	    com.nogago.android.maps.utils.EulaUtils.increaseAppStart(this);
 		long timeToStart = System.currentTimeMillis();
 		osmandSettings = createOsmandSettingsInstance();
