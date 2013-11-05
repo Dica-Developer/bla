@@ -872,8 +872,8 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 <string name="map_Button">Karte</string>
 <string name="settings_Button">Einstellungen</string>
 <string name="favorites_Button">Favoriten</string>
-<string name="search_button">Navigation</string>
-<string name="mapManager_Button">Kartendownload</string>
+<string name="search_button">Suche</string>
+<string name="mapManager_Button">Karten-Download</string>
 <string name="navigation_Button">Navigation</string>
 <string name="toTracks_Button">Track aufzeichnen</string>
 
@@ -1397,4 +1397,6 @@ Viel Spass bei Ihrem nächsten Abenteuer !
 \nKY14 6EX
 \nUnited Kingdom
 	</string>
+	
+    <string name="menu_delete_marker_msg">Nutzen Sie diese Taste, um ein Ziel zu löschen oder die Navigation zu beenden.</string>
 </resources>

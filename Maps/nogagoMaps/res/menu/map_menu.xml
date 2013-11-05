@@ -1,50 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto" >
 
-    <group
-        android:id="@+id/map_context_menu"
-        android:menuCategory="container" >
-        <item
-            android:id="@+id/map_where_am_i"
-            android:icon="@android:drawable/ic_menu_mylocation"
-            android:title="@string/where_am_i">
-        </item>
-        
-        <item
-            android:id="@+id/map_specify_point"
-            android:icon="@drawable/button_icon_navigation_grey"
-            android:title="@string/search_button">
-        </item>
-        <item
-            android:id="@+id/map_layers"
-            android:icon="@android:drawable/ic_menu_mapmode"
-            android:title="@string/menu_layers">
-        </item>
-        <item
-            android:id="@+id/map_show_settings"
-            android:icon="@drawable/button_icon_settings_grey"
-            android:title="@string/settings_Button">
-        </item>
+    <item
+        android:id="@+id/map_where_am_i"
+        android:icon="@android:drawable/ic_menu_mylocation"
+        android:orderInCategory="2"
+        android:title="@string/where_am_i"
+        yourapp:showAsAction="ifRoom|withText">
+    </item>
+    <item
+        android:id="@+id/map_specify_point"
+        android:icon="@android:drawable/ic_menu_search"
+        android:orderInCategory="3"
+        android:title="@string/search_button"
+        yourapp:showAsAction="ifRoom|withText">
+    </item>
+    <item
+        android:id="@+id/map_layers"
+        android:icon="@android:drawable/ic_menu_mapmode"
+        android:orderInCategory="4"
+        android:title="@string/menu_layers"
+        yourapp:showAsAction="ifRoom|withText">
+    </item>
+    <item
+        android:id="@+id/map_show_settings"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:orderInCategory="5"
+        android:title="@string/settings_Button"
+        yourapp:showAsAction="ifRoom|withText">
+    </item>
 
-        <!-- not visible by default -->
-        <item
-            android:id="@+id/map_navigate_to_point"
-            android:icon="@android:drawable/ic_menu_close_clear_cancel"
-            android:title="@string/stop_navigation"
-            android:visible="false">
-        </item>
-        <item
-            android:id="@+id/map_mute"
-            android:title="@string/menu_mute_off"
-            android:visible="false">
-        </item>
-        <item
-            android:id="@+id/map_animate_route"
-            android:title="@string/animate_route"
-            android:visible="false">
-        </item>
-        
-        <!-- 
+    <!-- not visible by default -->
+    <item
+        android:id="@+id/map_navigate_to_point"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:orderInCategory="1"
+        android:title="@string/stop_navigation"
+        android:visible="true"
+        yourapp:showAsAction="ifRoom|withText">
+    </item>
+    <item
+        android:id="@+id/map_mute"
+        android:orderInCategory="6"
+        android:title="@string/menu_mute_off"
+        android:visible="false"
+        yourapp:showAsAction="ifRoom|withText">
+    </item>
+    <!--
+    <item
+        android:id="@+id/map_animate_route"
+        android:orderInCategory="7"
+        android:title="@string/animate_route"
+        android:visible="false"
+        yourapp:showAsAction="ifRoom|withText">
+    </item>
+
         <item
             android:id="@+id/map_get_directions"
             android:icon="@android:drawable/ic_menu_directions"
@@ -58,8 +69,7 @@
         <item
             android:id="@+id/map_show_point_options"
             android:title="@string/show_point_options">
-        </item>
-         -->
-    </group>
+        </item>
+    -->
 
 </menu>

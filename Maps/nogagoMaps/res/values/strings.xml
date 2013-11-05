@@ -870,8 +870,8 @@ Have fun with our apps, maps and tracks for your next adventures !
 <string name="map_Button">Map</string>
 <string name="settings_Button">Settings</string>
 <string name="favorites_Button">Favorites</string>
-<string name="search_button">Navigation</string>
-<string name="mapManager_Button">Map-Download</string>
+<string name="search_button">Search</string>
+<string name="mapManager_Button">Map download</string>
 <string name="navigation_Button">Navigation</string>
 <string name="toTracks_Button">Record a Track</string>
 <string name="search_activity">Search</string>
@@ -1401,4 +1401,6 @@ Have fun with our apps, maps and tracks for your next adventures !
 \nKY14 6EX
 \nUnited Kingdom
 	</string>
+	
+    <string name="menu_delete_marker_msg">Use this button to delete a route or destination point.</string>
 </resources>

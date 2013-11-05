@@ -574,7 +574,7 @@ public class MapActivity extends ActionBarActivity implements
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								Uri uri = Uri
-										.parse(Constants.TRACKS_DOWNLOAD_URL);
+										.parse(Constants.PLAY_TRACKS_DOWNLOAD_URL);
 								Intent showUri = new Intent(Intent.ACTION_VIEW,
 										uri);
 								activity.startActivity(showUri);

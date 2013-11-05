@@ -8,7 +8,7 @@ public class Constants {
 	   * URL to upload tracks to nogago
 	   */
 	  public final static String TRACKS_UPLOAD_URL = "https://www.nogago.com:443/tracks/uploadTrack";
-	  public final static String TRACKS_PACKAGE = "com.nogago.android.tracks";
+	  public final static String TRACKS_PACKAGE = "com.nogago.bb10.tracks";
 	  public final static String BB_TRACKS_PACKAGE = "com.nogago.bb10.tracks";
 
 	  /**
@@ -18,7 +18,7 @@ public class Constants {
 	  /**
 	  * URL to dowload nogagoMaps from PlayStore
 	  */
-	 public final static String PLAY_MAPS_DOWNLOAD_URL = "market://details?id=pname:com.nogago.android.maps";
+	 public final static String PLAY_MAPS_DOWNLOAD_URL = "market://details?id=com.nogago.bb10.maps";
 	  
 	 /**
 	  * URL to dowload and review nogago Tracks from AppWorld
@@ -27,7 +27,9 @@ public class Constants {
 	 /**
 	 * URL to dowload and review nogago Tracks from PlayStore
 	 */
-	public final static String PLAY_TRACKS_DOWNLOAD_URL = "market://details?id=pname:com.nogago.android.tracks";
+	// public final static String PLAY_TRACKS_DOWNLOAD_URL = "market://details?id=pname:com.nogago.android.tracks";
+
+	public final static String PLAY_TRACKS_DOWNLOAD_URL = "market://details?id=com.nogago.bb10.tracks";
 	 
 	 /**
 	   * URL to download nogago Apps in BB
@@ -62,7 +64,7 @@ public class Constants {
 	
 	public static final String NOGAGO_MAP_MANAGER_COMPONENT = "com.nogago.android.download";
 	public static final String NOGAGO_MAP_DOWNLOADER_ACTIVITY = "com.nogago.android.download.ui.SplashActivity";
-	public static final String TRACKS_DOWNLOAD_URL = "market://search?q=pname:com.nogago.android.tracks";
+	// public static final String TRACKS_DOWNLOAD_URL = "market://search?q=com.nogago.bb10.tracks";
 	
 	public static final String STRING_LONGITUDE = "longitude";
 	public static final String STRING_LATITUDE = "latitude";
