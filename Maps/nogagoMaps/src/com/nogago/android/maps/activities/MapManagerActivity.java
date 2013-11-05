@@ -105,6 +105,7 @@ public class MapManagerActivity extends ListActivity implements
 	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		com.nogago.android.maps.utils.AnalyticsUtils.sendPageViews(this, "map_manager/create" );
 		/*
 		FileUtils.deleteQuietly(new File(Environment.getExternalStorageDirectory().
 				toString()

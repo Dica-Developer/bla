@@ -165,6 +165,7 @@ public class MapActivity extends ActionBarActivity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		com.nogago.android.maps.utils.AnalyticsUtils.sendPageViews(this, "mapactivity/create" );
 		Intent intent = getIntent();
 		/*
 		 * 
@@ -308,7 +309,7 @@ public class MapActivity extends ActionBarActivity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
-
+		com.nogago.android.maps.utils.AnalyticsUtils.sendPageViews(this, "mapactivity/resume" );
 		Intent intent = getIntent();
 		displayTrackUrl = intent.getStringExtra("track");
 		followTrack = intent.getBooleanExtra("follow", false);

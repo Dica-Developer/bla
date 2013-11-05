@@ -77,6 +77,8 @@ public class FavouritesActivity extends OsmandExpandableListActivity {
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
+
+		com.nogago.android.maps.utils.AnalyticsUtils.sendPageViews(this, "favorites/create" );
 		CustomTitleBar titleBar = new CustomTitleBar(this, R.string.favourites_activity, R.drawable.tab_icon_favourite_menu);
 		setContentView(R.layout.favourites_list);
 		titleBar.afterSetContentView();
