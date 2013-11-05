@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-    <string name="tracks_not_installed">nogagoTracks is not installed, do you want to install?</string>
+    <string name="tracks_not_installed">nogago Tracks is required for recording, do you want to download the app?</string>
     <string name="button_yes">Yes</string>
     <string name="button_no">No</string>
-    <string name="wanna_start_tracks">Do you want to start nogagoTracks?</string>
     <string name="send_files_to_osm">Send GPX files to OSM?</string>
     <string name="gpx_visibility_txt">Visibility</string>
     <string name="gpx_tags_txt">Tags</string>
@@ -1301,13 +1300,13 @@ Have fun with our apps, maps and tracks for your next adventures !
   
   <!-- nogago Map Downloader -->
   <string name="run_task">Run</string>
-  <string name="load_contours_also_title">Do you also want to load the contours for this area?</string>
+  <string name="load_contours_also_title">Do you also want to load height information (contour lines) for this area?</string>
     <string name="task_working">Working on %1$d...</string>
     <string name="task_starting">Starting...</string>
     <string name="task_cancelled">Task cancelled on your request.</string>
     <string name="task_completed">Task completed with result (%1$s)</string>
     <string name="task_download">Downloading %1$s ...</string>
-    <string name="task_download_contour">Downloading %1$s and contours</string>
+    <string name="task_download_contour">Downloading %1$s with contour lines</string>
     <string name="hint_query">Download City</string>
     <string name="list_empty">No results</string>
     <string name="error_network">Apologies, you cannot access the Internet. Please enable the Internet to download a map.</string>
@@ -1403,4 +1402,7 @@ Have fun with our apps, maps and tracks for your next adventures !
 	</string>
 	
     <string name="menu_delete_marker_msg">Use this button to delete a route or destination point.</string>
+    <string name="menu_map_favorites">Manage Favorites</string>
+    <string name="menu_map_download">Manage Offline Maps</string>
+    
 </resources>

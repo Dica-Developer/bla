@@ -65,7 +65,7 @@ public class MapControlsLayer extends OsmandMapLayer {
 	private TextPaint zoomTextPaint;
 	private Drawable zoomShadow;
 	
-	private Button backToMenuButton;
+	// private Button backToMenuButton;
 	private Drawable modeShadow;
 	
 	private Drawable rulerDrawable; 
@@ -103,7 +103,7 @@ public class MapControlsLayer extends OsmandMapLayer {
 		
 		initZoomButtons(view, parent);
 
-		initBackToMenuButton(view, parent);
+		// initBackToMenuButton(view, parent);
 		
 		initRuler(view, parent);
 		
@@ -150,9 +150,10 @@ public class MapControlsLayer extends OsmandMapLayer {
 	private void drawApplicationMode(Canvas canvas) {
 		ApplicationMode  appMode = view.getSettings().getApplicationMode();
 		if(appMode != cacheApplicationMode){
+			/*
 			modeShadow.setBounds(backToMenuButton.getLeft() + (int) (2 * scaleCoefficient), backToMenuButton.getTop() - (int) (20 * scaleCoefficient),
 					backToMenuButton.getRight() - (int) (4 * scaleCoefficient), backToMenuButton.getBottom());
-			/*
+			
 			if(appMode == ApplicationMode.CAR){
 				cacheAppModeIcon = view.getResources().getDrawable(R.drawable.car_small);
 			} else 
@@ -176,7 +177,7 @@ public class MapControlsLayer extends OsmandMapLayer {
 		}
 		
 	}
-	
+	/*
 	private void onApplicationModePress() {
 		final QuickAction mQuickAction = new QuickAction(backToMenuButton);
 		int[] icons = new int[] {R.drawable.pedestrian_small, R.drawable.bicycle_small};
@@ -201,7 +202,7 @@ public class MapControlsLayer extends OsmandMapLayer {
 		mQuickAction.setAnimStyle(QuickAction.ANIM_AUTO);
 		mQuickAction.show();
 	}
-	
+	*/
 	
 	private void drawZoomLevel(Canvas canvas) {
 		ShadowText zoomText = ShadowText.create(view.getZoom() + "");
@@ -231,7 +232,7 @@ public class MapControlsLayer extends OsmandMapLayer {
 		}
 	}
 
-
+/*
 	@Override
 	public boolean onSingleTap(PointF point) {
 		if (modeShadow.getBounds().contains((int) point.x, (int) point.y)) {
@@ -240,7 +241,6 @@ public class MapControlsLayer extends OsmandMapLayer {
 		}
 		return false;
 	}
-
 	
 	private void initBackToMenuButton(final OsmandMapTileView view, FrameLayout parent) {
 		android.widget.FrameLayout.LayoutParams params;
@@ -262,6 +262,7 @@ public class MapControlsLayer extends OsmandMapLayer {
 		});
 	}
 	
+*/
 	private void initRuler(OsmandMapTileView view, FrameLayout parent) {
 		rulerTextPaint = new TextPaint();
 		rulerTextPaint.setTextSize(20 * scaleCoefficient);
