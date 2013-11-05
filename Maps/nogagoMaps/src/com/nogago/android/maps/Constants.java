@@ -102,5 +102,6 @@ public class Constants {
 	public final static int BAD_OBF_FILE_THRESHOLD = 10000;
 	
 	public final static String NOGAGO_REGISTER_URL = "https://www.nogago.com/userRegister/index";
+	public static final String BUGS_MAIL = "bugs@nogago.com";
 	
 }

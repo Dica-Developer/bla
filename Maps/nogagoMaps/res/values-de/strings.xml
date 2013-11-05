@@ -1402,4 +1402,28 @@ Viel Spass bei Ihrem nächsten Abenteuer !
     
     <string name="menu_map_favorites">Favoriten verwalten</string>
     <string name="menu_map_download">Karten verwalten</string>
+    
+      
+  <string name="dlg_review_title" translation_description="The title for the &apos;Review&apos; dialog.">    
+        App bewerten</string>
+  <string name="dlg_review_body" translation_description="The title for the &apos;Review&apos; dialog.">    
+      Bitte belohnen Sie unsere Anstrengungen für diese Open Source App durch eine Bewertung im App Store. Gerne nehmen wir auch Ihre Wünsche für zusätzliche Features in neuen Versionen auf.
+  </string>
+  <string name="dlg_review_btn_review" translation_description="The title for review button in the &apos;Review&apos; dialog.">Bewerten</string>
+  <string name="dlg_review_btn_feature" translation_description="The title for feature request button the &apos;Review&apos; dialog.">Wünschen</string>
+  <string name="dlg_review_btn_no" translation_description="The title for cancel button the &apos;Review&apos; dialog.">Später</string>
+  <string name="dlg_review_btn_no_msg" translation_description="The msg presented to the user when 0the &apos;Review&apos; dialog is answered with no.">
+      Bitte belohnen Sie unsere Anstrengungen durch eine Bewertung oder Feedback. 
+      Wir werden Sie beim nächsten App Start daher nochmals fragen. Falls Sie nicht weiter gefragt werden wollen, dann senden Sie die Bewertung oder den Feature-Wunsch einfach nicht ab.</string>
+  <string name="dlg_review_btn_feature_msg" translation_description="The email text template for the user when 0the &apos;Review&apos; dialog is answered with Request.">Hi, I would like to see the following features in your app: \n </string>
+  
+  <!--  Marketing dialog -->
+    <!--  Marketing Dialog -->
+  <string name="dlg_market_title" translation_description="The title for the &apos;Market&apos; dialog.">    
+        Apps by nogago </string>
+  <string name="dlg_market_body" translation_description="The title for the &apos;Market&apos; dialog.">    
+        Wir hoffen, dass Ihnen nogago Tracks gefällt. Lust auf mehr? Probieren Sie doch einmal unsere anderen Apps und Spiele aus, meist ganz umsonst und mit besten Bewertungen !</string>      
+  <string name="dlg_market_btn_yes" translation_description="The title for review button in the &apos;Review&apos; dialog.">Ja, gerne.</string>
+  <string name="dlg_market_btn_no" translation_description="The title for cancel button the &apos;Review&apos; dialog.">Nein, danke.</string>
+    
 </resources>
