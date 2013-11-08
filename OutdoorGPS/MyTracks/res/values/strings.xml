@@ -1572,8 +1572,8 @@ Q\t	View statistics</string>
     <string name="dlg_restore">Please place your backup.ZIP in directory %1$s</string>
     <!-- Review Dialog -->
     <string name="dlg_review_title" translation_description="The title for the &apos;Review&apos; dialog.">        Review this app </string>
-    <string name="dlg_review_body" translation_description="The title for the &apos;Review&apos; dialog.">        Please support our efforts on this free and open source app by providing a short review in the app store. 
-        We are happy to consider your feature requests for future versions via email.</string>
+    <string name="dlg_review_body" translation_description="The title for the &apos;Review&apos; dialog.">        Please support our efforts on this open source app by providing a short review in the app store. 
+        We are happy to consider your feature requests for future versions.</string>
     <string name="dlg_review_btn_review" translation_description="The title for review button in the &apos;Review&apos; dialog.">Review</string>
     <string name="dlg_review_btn_feature" translation_description="The title for feature request button the &apos;Review&apos; dialog.">Request</string>
     <string name="dlg_review_btn_no" translation_description="The title for cancel button the &apos;Review&apos; dialog.">No, thanks.</string>
@@ -1621,6 +1621,8 @@ Q\t	View statistics</string>
     <string name="send_nogago_progress_message" translation_description="When sending a track to nogago, the progress message.
 
       %1$s: service name. &apos;Google Maps&apos;, &apos;Google Fusion Tables&apos;, or &apos;Google Docs&apos;.">    Sending track to nogago</string>
+   <string name="send_nogago_title" translation_description="When sending a track to Google, under the &apos;Send to...&apos; dialog, the       checkbox option to send to Google Maps.">Nogago.com</string>
+    
     <string name="n_share_track_confirm_message" translation_description="The confirmation message when sharing a track with friends.
             %1$s url. E.g., &apos;support.google.com/maps/bin/answer.py?answer=144365&apos;.">
     This will upload your track to nogago.com so that you can share the track url with friends. The
