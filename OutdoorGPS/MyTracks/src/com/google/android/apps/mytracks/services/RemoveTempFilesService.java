@@ -34,7 +34,7 @@ import java.io.File;
 
 /**
  * A service to remove My Tracks temp files older than one hour on the SD card.
- *
+ * 
  * @author Jimmy Shih
  */
 public class RemoveTempFilesService extends Service {
@@ -49,12 +49,11 @@ public class RemoveTempFilesService extends Service {
 
     // Setup an alarm to repeatedly call this service
     Intent alarmIntent = new Intent(this, RemoveTempFilesService.class);
-    PendingIntent pendingIntent = PendingIntent.getService(
-        this, 0, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+    PendingIntent pendingIntent = PendingIntent.getService(this, 0, alarmIntent,
+        PendingIntent.FLAG_CANCEL_CURRENT);
     AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-    alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,
-        System.currentTimeMillis() + ONE_HOUR_IN_MILLISECONDS, AlarmManager.INTERVAL_HOUR,
-        pendingIntent);
+    alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
+        + ONE_HOUR_IN_MILLISECONDS, AlarmManager.INTERVAL_HOUR, pendingIntent);
 
     // Invoke the AsyncTask to cleanup the temp files
     if (removeTempFilesAsyncTask == null
@@ -93,7 +92,7 @@ public class RemoveTempFilesService extends Service {
   private void cleanTempDirectory(String name) {
     cleanTempDirectory(new File(FileUtils.buildExternalDirectoryPath(name, "tmp")));
   }
-  
+
   /**
    * Removes temp files in a directory older than one hour.
    * 
@@ -102,19 +101,23 @@ public class RemoveTempFilesService extends Service {
    */
   @VisibleForTesting
   int cleanTempDirectory(File dir) {
-    if (!dir.exists()) {
+    if (dir == null || !dir.exists()) {
       return 0;
     }
     int count = 0;
     long oneHourAgo = System.currentTimeMillis() - ONE_HOUR_IN_MILLISECONDS;
-    for (File f : dir.listFiles()) {
-      if (f.lastModified() < oneHourAgo) {
-        if (!f.delete()) {
-          Log.e(TAG, "Unable to delete file: " + f.getAbsolutePath());
-        } else {
-          count++;
+    try {
+      for (File f : dir.listFiles()) {
+        if (f.lastModified() < oneHourAgo) {
+          if (!f.delete()) {
+            Log.e(TAG, "Unable to delete file: " + f.getAbsolutePath());
+          } else {
+            count++;
+          }
         }
       }
+    } catch (NullPointerException npe) {
+      return 0;
     }
     return count;
   }
