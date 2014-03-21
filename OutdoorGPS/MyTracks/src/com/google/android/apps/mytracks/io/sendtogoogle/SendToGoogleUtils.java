@@ -16,10 +16,10 @@
 
 package com.google.android.apps.mytracks.io.sendtogoogle;
 
-import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.stats.TripStatistics;
 import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.common.annotations.VisibleForTesting;
+import com.nogago.android.apps.tracks.content.Track;
 
 import android.location.Location;
 import android.util.Log;

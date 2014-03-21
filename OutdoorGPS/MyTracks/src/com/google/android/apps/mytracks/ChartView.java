@@ -16,13 +16,13 @@
 
 package com.google.android.apps.mytracks;
 
-import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.stats.ExtremityMonitor;
 import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.StringUtils;
 import com.google.android.apps.mytracks.util.UnitConversions;
 import com.google.common.annotations.VisibleForTesting;
+import com.nogago.android.apps.tracks.content.Waypoint;
 import com.nogago.bb10.tracks.R;
 
 import android.content.Context;

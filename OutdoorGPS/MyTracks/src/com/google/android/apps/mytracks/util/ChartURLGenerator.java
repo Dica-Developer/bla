@@ -16,8 +16,8 @@
 
 package com.google.android.apps.mytracks.util;
 
-import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.stats.TripStatistics;
+import com.nogago.android.apps.tracks.content.Track;
 import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
 

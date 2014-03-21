@@ -17,13 +17,9 @@
 package com.google.android.apps.mytracks;
 
 import com.google.analytics.tracking.android.EasyTracker;
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
 import com.google.android.apps.mytracks.content.SearchEngine;
 import com.google.android.apps.mytracks.content.SearchEngine.ScoredResult;
 import com.google.android.apps.mytracks.content.SearchEngine.SearchQuery;
-import com.google.android.apps.mytracks.content.SearchEngineProvider;
-import com.google.android.apps.mytracks.content.Track;
-import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.fragments.DeleteOneMarkerDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment.DeleteOneTrackCaller;
@@ -39,6 +35,10 @@ import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.StringUtils;
 import com.google.android.apps.mytracks.util.TrackIconUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils;
+import com.nogago.android.apps.tracks.content.SearchEngineProvider;
+import com.nogago.android.apps.tracks.content.Track;
+import com.nogago.android.apps.tracks.content.Waypoint;
 import com.nogago.bb10.tracks.R;
 
 import android.app.SearchManager;

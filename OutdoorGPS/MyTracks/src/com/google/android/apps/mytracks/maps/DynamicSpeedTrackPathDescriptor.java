@@ -18,12 +18,12 @@ package com.google.android.apps.mytracks.maps;
 
 import static com.google.android.apps.mytracks.util.Constants.TAG;
 
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
-import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.stats.TripStatistics;
 import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.UnitConversions;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils;
+import com.nogago.android.apps.tracks.content.Track;
 import com.nogago.bb10.tracks.R;
 import com.google.common.annotations.VisibleForTesting;
 

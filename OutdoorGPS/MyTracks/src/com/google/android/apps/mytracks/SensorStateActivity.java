@@ -17,7 +17,6 @@
 package com.google.android.apps.mytracks;
 
 import com.google.analytics.tracking.android.EasyTracker;
-import com.google.android.apps.mytracks.content.Sensor;
 import com.google.android.apps.mytracks.services.ITrackRecordingService;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
 import com.google.android.apps.mytracks.services.sensors.SensorManager;
@@ -25,6 +24,7 @@ import com.google.android.apps.mytracks.services.sensors.SensorManagerFactory;
 import com.google.android.apps.mytracks.services.sensors.SensorUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.nogago.android.apps.tracks.content.Sensor;
 import com.nogago.bb10.tracks.R;
 
 import android.os.Bundle;

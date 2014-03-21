@@ -16,8 +16,8 @@ limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   android:installLocation="auto"
-  android:versionCode="66"
-  android:versionName="3.1.1.1"
+  android:versionCode="67"
+  android:versionName="3.1.1.2"
   package="com.nogago.bb10.tracks" >
 
   <!-- Permission to initialize services -->
@@ -261,16 +261,16 @@ limitations under the License.
     <!-- Providers -->
     <!-- My Tracks data provider -->
     <provider
-      android:authorities="com.google.android.maps.mytracks"
+      android:authorities="com.nogago.android.apps.tracks"
       android:exported="true"
-      android:name="com.google.android.apps.mytracks.content.MyTracksProvider"
+      android:name="com.nogago.android.apps.tracks.content.MyTracksProvider"
       android:readPermission="com.google.android.apps.mytracks.READ_TRACK_DATA"
       android:writePermission="com.google.android.apps.mytracks.WRITE_TRACK_DATA" />
     <!-- Search suggestion provider -->
     <provider
-      android:authorities="com.google.android.maps.mytracks.search"
+      android:authorities="com.nogago.android.apps.tracks.search"
       android:exported="false"
-      android:name="com.google.android.apps.mytracks.content.SearchEngineProvider" />
+      android:name="com.nogago.android.apps.tracks.content.SearchEngineProvider" />
 
     <!--  <uses-library android:name="com.google.android.maps" />  -->
   </application>

@@ -17,14 +17,14 @@ package com.google.android.apps.mytracks.io.file;
 
 import static com.google.android.apps.mytracks.util.Constants.TAG;
 
-import com.google.android.apps.mytracks.content.MyTracksLocation;
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils.LocationIterator;
-import com.google.android.apps.mytracks.content.Track;
-import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.LocationUtils;
+import com.nogago.android.apps.tracks.content.MyTracksLocation;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils;
+import com.nogago.android.apps.tracks.content.Track;
+import com.nogago.android.apps.tracks.content.Waypoint;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils.LocationIterator;
 import com.nogago.bb10.tracks.R;
 
 import android.app.Activity;

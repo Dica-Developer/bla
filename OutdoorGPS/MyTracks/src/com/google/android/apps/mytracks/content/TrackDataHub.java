@@ -21,13 +21,16 @@ import static com.google.android.apps.mytracks.util.Constants.MAX_LOCATION_AGE_M
 import static com.google.android.apps.mytracks.util.Constants.MAX_NETWORK_AGE_MS;
 import static com.google.android.apps.mytracks.util.Constants.TARGET_DISPLAYED_TRACK_POINTS;
 
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils.DoubleBufferedLocationFactory;
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils.LocationIterator;
 import com.google.android.apps.mytracks.content.TrackDataListener.LocationState;
 import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.common.annotations.VisibleForTesting;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils;
+import com.nogago.android.apps.tracks.content.Track;
+import com.nogago.android.apps.tracks.content.Waypoint;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils.DoubleBufferedLocationFactory;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils.LocationIterator;
 import com.nogago.bb10.tracks.R;
 
 import android.content.Context;

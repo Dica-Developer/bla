@@ -17,12 +17,9 @@
 package com.google.android.apps.mytracks;
 
 import com.google.analytics.tracking.android.EasyTracker;
-import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.content.TrackDataHub;
 import com.google.android.apps.mytracks.content.TrackDataListener;
 import com.google.android.apps.mytracks.content.TrackDataType;
-import com.google.android.apps.mytracks.content.TracksColumns;
-import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.fragments.CheckUnitsDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteAllTrackDialogFragment;
 import com.google.android.apps.mytracks.fragments.DeleteOneTrackDialogFragment;
@@ -48,6 +45,9 @@ import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.StringUtils;
 import com.google.android.apps.mytracks.util.TrackIconUtils;
 import com.google.android.apps.mytracks.util.TrackRecordingServiceConnectionUtils;
+import com.nogago.android.apps.tracks.content.Track;
+import com.nogago.android.apps.tracks.content.TracksColumns;
+import com.nogago.android.apps.tracks.content.Waypoint;
 import com.nogago.bb10.tracks.R;
 
 import android.app.AlertDialog;
@@ -720,7 +720,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         new CheckUnitsDialogFragment().show(getSupportFragmentManager(),
             CheckUnitsDialogFragment.CHECK_UNITS_DIALOG_TAG);
       }
-    } else if (EulaUtils.getShowReview(this) && EulaUtils.getAppStart(this) > 7) {
+    } else if (!Constants.IS_BLACKBERRY && EulaUtils.getShowReview(this) && EulaUtils.getAppStart(this) > 7) {
       // Ask For Review at 7th start, continue bugging the user
       Fragment fragment = getSupportFragmentManager().findFragmentByTag(
           ReviewDialogFragment.REVIEW_DIALOG_TAG);
@@ -728,7 +728,7 @@ public class TrackListActivity extends FragmentActivity implements DeleteOneTrac
         ReviewDialogFragment.newInstance(false).show(getSupportFragmentManager(),
             ReviewDialogFragment.REVIEW_DIALOG_TAG);
       }
-    } else if ((EulaUtils.getAppStart(this) % 10) == 9) {
+    } else if (!Constants.IS_BLACKBERRY && (EulaUtils.getAppStart(this) % 10) == 9) {
       // Show our other apps every tenth start with starting with the ninth
       // start
       Fragment fragment = getSupportFragmentManager().findFragmentByTag(

@@ -17,11 +17,11 @@ package com.google.android.apps.mytracks.io.backup;
 
 import static com.google.android.apps.mytracks.util.Constants.TAG;
 
-import com.google.android.apps.mytracks.content.TrackPointsColumns;
-import com.google.android.apps.mytracks.content.TracksColumns;
-import com.google.android.apps.mytracks.content.WaypointsColumns;
 import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.FileUtils;
+import com.nogago.android.apps.tracks.content.TrackPointsColumns;
+import com.nogago.android.apps.tracks.content.TracksColumns;
+import com.nogago.android.apps.tracks.content.WaypointsColumns;
 
 import android.content.ContentResolver;
 import android.content.Context;

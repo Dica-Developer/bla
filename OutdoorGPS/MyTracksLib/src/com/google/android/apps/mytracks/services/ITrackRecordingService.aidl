@@ -15,7 +15,7 @@
  */
 package com.google.android.apps.mytracks.services;
 
-import com.google.android.apps.mytracks.content.WaypointCreationRequest;
+import com.nogago.android.apps.tracks.content.WaypointCreationRequest;
 
 /**
  * MyTracks service.

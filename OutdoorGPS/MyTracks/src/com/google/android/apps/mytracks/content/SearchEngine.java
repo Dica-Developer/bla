@@ -18,6 +18,11 @@ package com.google.android.apps.mytracks.content;
 import com.google.android.apps.mytracks.stats.TripStatistics;
 import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.android.apps.mytracks.util.UnitConversions;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils;
+import com.nogago.android.apps.tracks.content.Track;
+import com.nogago.android.apps.tracks.content.TracksColumns;
+import com.nogago.android.apps.tracks.content.Waypoint;
+import com.nogago.android.apps.tracks.content.WaypointsColumns;
 
 import android.database.Cursor;
 import android.location.Location;

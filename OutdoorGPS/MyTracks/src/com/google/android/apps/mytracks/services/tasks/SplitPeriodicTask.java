@@ -16,8 +16,8 @@
 
 package com.google.android.apps.mytracks.services.tasks;
 
-import com.google.android.apps.mytracks.content.WaypointCreationRequest;
 import com.google.android.apps.mytracks.services.TrackRecordingService;
+import com.nogago.android.apps.tracks.content.WaypointCreationRequest;
 
 /**
  * A simple task to insert statistics markers periodically.
