@@ -16,11 +16,11 @@
 
 package com.google.android.apps.mytracks;
 
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
 import com.google.android.apps.mytracks.io.file.GpxImporter;
 import com.google.android.apps.mytracks.util.FileUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.SystemUtils;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils;
 import com.nogago.bb10.tracks.R;
 
 import android.os.AsyncTask;

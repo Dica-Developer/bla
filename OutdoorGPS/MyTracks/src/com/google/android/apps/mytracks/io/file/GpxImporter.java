@@ -15,13 +15,13 @@
  */
 package com.google.android.apps.mytracks.io.file;
 
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
-import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.services.TrackRecordingService;
 import com.google.android.apps.mytracks.stats.TripStatisticsUpdater;
 import com.google.android.apps.mytracks.util.Constants;
 import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.android.apps.mytracks.util.StringUtils;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils;
+import com.nogago.android.apps.tracks.content.Track;
 
 import android.location.Location;
 import android.location.LocationManager;

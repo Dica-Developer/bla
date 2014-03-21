@@ -18,7 +18,6 @@ package com.google.android.apps.mytracks;
 
 import static com.google.android.apps.mytracks.util.Constants.TAG;
 
-import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.maps.TrackPathPainter;
 import com.google.android.apps.mytracks.maps.TrackPathPainterFactory;
 import com.google.android.apps.mytracks.maps.TrackPathUtils;
@@ -28,6 +27,7 @@ import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.UnitConversions;
 import com.google.common.annotations.VisibleForTesting;
+import com.nogago.android.apps.tracks.content.Waypoint;
 import com.nogago.bb10.tracks.R;
 
 import android.content.Context;

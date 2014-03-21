@@ -15,8 +15,8 @@
  */
 package com.google.android.apps.mytracks.io.file;
 
-import com.google.android.apps.mytracks.content.Track;
-import com.google.android.apps.mytracks.content.Waypoint;
+import com.nogago.android.apps.tracks.content.Track;
+import com.nogago.android.apps.tracks.content.Waypoint;
 
 import android.location.Location;
 

@@ -16,7 +16,7 @@
 
 package com.google.android.apps.mytracks.services.sensors;
 
-import com.google.android.apps.mytracks.content.Sensor;
+import com.nogago.android.apps.tracks.content.Sensor;
 
 /**
  * An interface for parsing a byte array to a SensorData object.

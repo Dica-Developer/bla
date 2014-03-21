@@ -18,18 +18,18 @@ package com.google.android.apps.mytracks.fragments;
 
 import com.google.android.apps.mytracks.MapOverlay;
 import com.google.android.apps.mytracks.TrackDetailActivity;
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils.Factory;
-import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.content.TrackDataHub;
 import com.google.android.apps.mytracks.content.TrackDataListener;
 import com.google.android.apps.mytracks.content.TrackDataType;
-import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.stats.TripStatistics;
 import com.google.android.apps.mytracks.util.ApiAdapterFactory;
 import com.google.android.apps.mytracks.util.GeoRect;
 import com.google.android.apps.mytracks.util.GoogleLocationUtils;
 import com.google.android.apps.mytracks.util.LocationUtils;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils;
+import com.nogago.android.apps.tracks.content.Track;
+import com.nogago.android.apps.tracks.content.Waypoint;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils.Factory;
 import com.nogago.bb10.tracks.R;
 
 import android.content.Intent;

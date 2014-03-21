@@ -16,8 +16,8 @@
 
 package com.google.android.apps.mytracks.services.sensors;
 
-import com.google.android.apps.mytracks.content.Sensor.SensorDataSet;
-import com.google.android.apps.mytracks.content.Sensor.SensorState;
+import com.nogago.android.apps.tracks.content.Sensor.SensorDataSet;
+import com.nogago.android.apps.tracks.content.Sensor.SensorState;
 
 import android.util.Log;
 

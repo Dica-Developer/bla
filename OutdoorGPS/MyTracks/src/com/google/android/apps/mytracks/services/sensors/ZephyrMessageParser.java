@@ -15,8 +15,8 @@
  */
 package com.google.android.apps.mytracks.services.sensors;
 
-import com.google.android.apps.mytracks.content.Sensor;
 import com.google.android.apps.mytracks.util.ApiAdapterFactory;
+import com.nogago.android.apps.tracks.content.Sensor;
 
 import java.util.Arrays;
 

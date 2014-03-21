@@ -18,8 +18,8 @@ package com.google.android.apps.mytracks.io.file;
 
 import static com.google.android.apps.mytracks.util.Constants.TAG;
 
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
-import com.google.android.apps.mytracks.content.Track;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils;
+import com.nogago.android.apps.tracks.content.Track;
 
 import android.content.Context;
 import android.os.Parcel;

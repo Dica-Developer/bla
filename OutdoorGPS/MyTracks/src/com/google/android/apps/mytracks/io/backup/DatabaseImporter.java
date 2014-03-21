@@ -15,7 +15,7 @@
  */
 package com.google.android.apps.mytracks.io.backup;
 
-import com.google.android.apps.mytracks.content.ContentTypeIds;
+import com.nogago.android.apps.tracks.content.ContentTypeIds;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;

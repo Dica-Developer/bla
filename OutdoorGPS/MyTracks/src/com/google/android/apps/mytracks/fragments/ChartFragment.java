@@ -18,20 +18,20 @@ package com.google.android.apps.mytracks.fragments;
 
 import com.google.android.apps.mytracks.ChartView;
 import com.google.android.apps.mytracks.TrackDetailActivity;
-import com.google.android.apps.mytracks.content.MyTracksLocation;
-import com.google.android.apps.mytracks.content.Sensor;
-import com.google.android.apps.mytracks.content.Sensor.SensorDataSet;
-import com.google.android.apps.mytracks.content.Track;
 import com.google.android.apps.mytracks.content.TrackDataHub;
 import com.google.android.apps.mytracks.content.TrackDataListener;
 import com.google.android.apps.mytracks.content.TrackDataType;
-import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.stats.TripStatistics;
 import com.google.android.apps.mytracks.stats.TripStatisticsUpdater;
 import com.google.android.apps.mytracks.util.LocationUtils;
 import com.google.android.apps.mytracks.util.PreferencesUtils;
 import com.google.android.apps.mytracks.util.UnitConversions;
 import com.google.common.annotations.VisibleForTesting;
+import com.nogago.android.apps.tracks.content.MyTracksLocation;
+import com.nogago.android.apps.tracks.content.Sensor;
+import com.nogago.android.apps.tracks.content.Track;
+import com.nogago.android.apps.tracks.content.Waypoint;
+import com.nogago.android.apps.tracks.content.Sensor.SensorDataSet;
 import com.nogago.bb10.tracks.R;
 
 import android.location.Location;

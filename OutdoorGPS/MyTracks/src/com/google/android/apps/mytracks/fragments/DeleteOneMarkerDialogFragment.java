@@ -18,9 +18,9 @@ package com.google.android.apps.mytracks.fragments;
 
 import com.google.android.apps.mytracks.MarkerListActivity;
 import com.google.android.apps.mytracks.content.DescriptionGeneratorImpl;
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
 import com.google.android.apps.mytracks.util.DialogUtils;
 import com.google.android.apps.mytracks.util.IntentUtils;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils;
 import com.nogago.bb10.tracks.R;
 
 import android.app.Dialog;

@@ -15,17 +15,17 @@
  */
 package com.google.android.apps.mytracks.io.file;
 
-import com.google.android.apps.mytracks.content.DescriptionGenerator;
 import com.google.android.apps.mytracks.content.DescriptionGeneratorImpl;
-import com.google.android.apps.mytracks.content.MyTracksLocation;
-import com.google.android.apps.mytracks.content.Sensor;
-import com.google.android.apps.mytracks.content.Sensor.SensorData;
-import com.google.android.apps.mytracks.content.Sensor.SensorDataSet;
-import com.google.android.apps.mytracks.content.Track;
-import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.io.file.TrackWriterFactory.TrackFileFormat;
 import com.google.android.apps.mytracks.util.StringUtils;
 import com.google.common.annotations.VisibleForTesting;
+import com.nogago.android.apps.tracks.content.DescriptionGenerator;
+import com.nogago.android.apps.tracks.content.MyTracksLocation;
+import com.nogago.android.apps.tracks.content.Sensor;
+import com.nogago.android.apps.tracks.content.Track;
+import com.nogago.android.apps.tracks.content.Waypoint;
+import com.nogago.android.apps.tracks.content.Sensor.SensorData;
+import com.nogago.android.apps.tracks.content.Sensor.SensorDataSet;
 import com.nogago.bb10.tracks.R;
 
 import android.content.Context;

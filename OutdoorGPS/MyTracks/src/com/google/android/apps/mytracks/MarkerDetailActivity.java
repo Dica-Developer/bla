@@ -17,11 +17,11 @@
 package com.google.android.apps.mytracks;
 
 import com.google.analytics.tracking.android.EasyTracker;
-import com.google.android.apps.mytracks.content.MyTracksProviderUtils;
-import com.google.android.apps.mytracks.content.Waypoint;
 import com.google.android.apps.mytracks.fragments.DeleteOneMarkerDialogFragment;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.apps.mytracks.util.StatsUtils;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils;
+import com.nogago.android.apps.tracks.content.Waypoint;
 import com.nogago.bb10.tracks.R;
 
 import android.content.Intent;
