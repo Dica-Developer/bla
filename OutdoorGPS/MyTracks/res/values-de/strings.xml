@@ -739,4 +739,20 @@ Q\t	Statistik betrachten
     <string name="n_share_track_confirm_message" translation_description="The confirmation message when sharing a track with friends.        %1$s url. E.g., 'support.google.com/maps/bin/answer.py?answer=144365'.">Hiermit laden Sie Ihren Track auf nogago.com hoch und können die URL des Tracks mit Freunden teilen. Die
     Track ist zunächst \"öffentlich\" und jedem mit Zugriff auf den Link zugänglich. Sie können den Zugang zum Track jederzeit widerrufen, indem Sie sich auf nogago.com anmelden und die \"Track teilen\" Schaltfläche deaktivieren.</string>
     <string name="dlg_btn_settings">Einstellungen</string>
+    
+        <string name="tilesource_DRIVING">Straßen</string>
+    <string name="tilesource_PUBLIC_TRANSPORT">ÖPNV</string>
+    <string name="tilesource_CYCLING">Fahrradwege</string>
+    <string name="tilesource_HIKING">Wanderwege</string>
+    <string name="tilesource_BLACKNWHITE">Schwarz/Weiß</string>
+    <string name="tilesource_CLOUDS">Wolken (Wetter)</string>
+    <string name="tilesource_PRECIPATION">Niederschlag (Wetter)</string>
+    <string name="tilesource_RAIN">Regen (Wetter)</string>
+    <string name="tilesource_PRESSURE">Druck (Wetter)</string>
+    <string name="tilesource_WIND">Wind (Wetter)</string>
+    <string name="tilesource_TEMPERATURE">Temperatur (Wetter)</string>
+    
+     <string name="settings_tile_source_summary">Kartenstil für die Anzeige wählen.</string>
+     <string name="settings_tile_source_title">Kartenstil</string>
+    
 </resources>

@@ -68,6 +68,18 @@ public class MapSettingsActivity extends AbstractSettingsActivity {
       }
     });
     
+    
+    // TODO Att ListPreference based on Layout and Array for Tile Sources matching those of TileSourceFactory
+    ListPreference mapStylePreference = (ListPreference) findPreference(
+        getString(R.string.settings_tile_source_key));
+    mapStylePreference.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+        @Override
+      public boolean onPreferenceChange(Preference preference, Object newValue) {
+        // TODO // updateUiByTrackColorMode((String) newValue);
+        return true;
+      }
+    });
+    // TODO Att ListPreference based on Layout and Array for Tile Sources matching those of TileSourceFactory
     ListPreference trackColorModeListPreference = (ListPreference) findPreference(
         getString(R.string.track_color_mode_key));
     trackColorModeListPreference.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {

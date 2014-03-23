@@ -280,4 +280,45 @@ limitations under the License.
     <item>30</item>
     <item>60</item>
   </string-array>
+  
+    <!-- DO NOT TRANSLATE MUST MATCH TO nogagos TileSourceFactory, see java sourec 
+    mTileSources.add(DRIVING);
+mTileSources.add(PUBLIC_TRANSPORT);
+mTileSources.add(CYCLING);
+mTileSources.add(HIKING);
+mTileSources.add(BLACKNWHITE);
+mTileSources.add(CLOUDS);
+mTileSources.add(PRECIPATION);
+mTileSources.add(RAIN);
+mTileSources.add(PRESSURE);
+mTileSources.add(WIND);
+mTileSources.add(TEMPERATURE);
+    -->
+  <string-array name="tile_source_keys">
+    <item>DRIVING</item>
+    <item>PUBLIC_TRANSPORT</item>
+    <item>CYCLING</item>
+    <item>HIKING</item>
+    <item>BLACKNWHITE</item>
+    <item>CLOUDS</item>
+    <item>PRECIPATION</item>
+    <item>RAIN</item>
+    <item>PRESSURE</item>
+    <item>WIND</item>
+    <item>TEMPERATURE</item>
+  </string-array>
+  
+    <string-array name="tile_source_values">
+    <item>@string/tilesource_DRIVING</item>
+    <item>@string/tilesource_PUBLIC_TRANSPORT</item>
+    <item>@string/tilesource_CYCLING</item>
+    <item>@string/tilesource_HIKING</item>
+    <item>@string/tilesource_BLACKNWHITE</item>
+    <item>@string/tilesource_CLOUDS</item>
+    <item>@string/tilesource_PRECIPATION</item>
+    <item>@string/tilesource_RAIN</item>
+    <item>@string/tilesource_PRESSURE</item>
+    <item>@string/tilesource_WIND</item>
+    <item>@string/tilesource_TEMPERATURE</item>
+  </string-array>
 </resources>

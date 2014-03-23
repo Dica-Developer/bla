@@ -1629,4 +1629,18 @@ Q\t	View statistics</string>
     track will be public such that everyone with the link can access view your track. 
     Login to nogago.com to disable public viewing of your track by deactivating the \"Share track\" check box.</string>
 
+    <string name="tilesource_DRIVING">Streets</string>
+    <string name="tilesource_PUBLIC_TRANSPORT">Public Transport</string>
+    <string name="tilesource_CYCLING">Cycling</string>
+    <string name="tilesource_HIKING">Hiking</string>
+    <string name="tilesource_BLACKNWHITE">Black/White</string>
+    <string name="tilesource_CLOUDS">Weather Clouds</string>
+    <string name="tilesource_PRECIPATION">Weather Precipation</string>
+    <string name="tilesource_RAIN">Weather Rain</string>
+    <string name="tilesource_PRESSURE">Weather Pressure</string>
+    <string name="tilesource_WIND">Weather Wind</string>
+    <string name="tilesource_TEMPERATURE">Weather Temperature</string>
+    
+     <string name="settings_tile_source_summary"> The style of online map to display.</string>
+     <string name="settings_tile_source_title">Map style</string>
 </resources>
