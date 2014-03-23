@@ -23,6 +23,14 @@ limitations under the License.
     android:summaryOn="@string/settings_mapsprovider_offline"
     android:title="@string/settings_mapsprovider_title" />
     
+   <ListPreference
+    android:defaultValue="DRIVING"
+    android:entries="@array/tile_source_values"
+    android:entryValues="@array/tile_source_keys"
+    android:key="@string/settings_tile_source_key"
+    android:summary="@string/settings_tile_source_summary"
+    android:title="@string/settings_tile_source_title" />
+      
   <ListPreference
     android:defaultValue="@string/settings_map_track_color_mode_single_value"
     android:entries="@array/track_color_mode_options"

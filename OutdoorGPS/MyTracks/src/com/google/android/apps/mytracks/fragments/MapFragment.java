@@ -26,10 +26,13 @@ import com.google.android.apps.mytracks.util.ApiAdapterFactory;
 import com.google.android.apps.mytracks.util.GeoRect;
 import com.google.android.apps.mytracks.util.GoogleLocationUtils;
 import com.google.android.apps.mytracks.util.LocationUtils;
+import com.google.android.apps.mytracks.util.PreferencesUtils;
+import com.nogago.android.apps.tracks.content.AnnotatedXYTileSource;
 import com.nogago.android.apps.tracks.content.MyTracksProviderUtils;
+import com.nogago.android.apps.tracks.content.MyTracksProviderUtils.Factory;
+import com.nogago.android.apps.tracks.content.TileSourceFactory;
 import com.nogago.android.apps.tracks.content.Track;
 import com.nogago.android.apps.tracks.content.Waypoint;
-import com.nogago.android.apps.tracks.content.MyTracksProviderUtils.Factory;
 import com.nogago.bb10.tracks.R;
 
 import android.content.Intent;
@@ -55,7 +58,6 @@ import java.util.List;
 import org.osmdroid.DefaultResourceProxyImpl;
 import org.osmdroid.ResourceProxy;
 import org.osmdroid.api.IGeoPoint;
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapController;
 import org.osmdroid.views.MapView;
@@ -68,8 +70,8 @@ import org.osmdroid.views.overlay.compass.CompassOverlay;
  * @author Leif Hendrik Wilden
  * @author Rodrigo Damazio
  */
-public class MapFragment extends Fragment
-    implements View.OnTouchListener, View.OnClickListener, TrackDataListener {
+public class MapFragment extends Fragment implements View.OnTouchListener, View.OnClickListener,
+    TrackDataListener {
 
   public static final String MAP_FRAGMENT_TAG = "mapFragment";
 
@@ -79,11 +81,11 @@ public class MapFragment extends Fragment
   private TrackDataHub trackDataHub;
 
   // True to keep my location visible.
-  private boolean keepMyLocationVisible ;
+  private boolean keepMyLocationVisible;
 
-  // True to keep my location visible.
+  // True show satelliteMap instead
   private boolean satelliteMap = false;
-  
+
   // True to zoom to my location. Only apply when keepMyLocationVisible is true.
   private boolean zoomToMyLocation;
 
@@ -104,12 +106,14 @@ public class MapFragment extends Fragment
   private MapView mapView;
   private MapOverlay mapOverlay;
   private ImageButton myLocationImageButton;
+  private ImageButton myMapModeImageButton;
   private TextView messageTextView;
+  private TextView attributionTextView;
+
   protected ResourceProxy mResourceProxy;
-  
 
   private CompassOverlay mCompassOverlay;
-  
+
   @Override
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
@@ -117,19 +121,18 @@ public class MapFragment extends Fragment
   }
 
   @Override
-  public View onCreateView(
-      LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-    // mResourceProxy = new ResourceProxyImpl(inflater.getContext().getApplicationContext());
-    mapView = new MapView(inflater.getContext(), 256, new DefaultResourceProxyImpl(inflater.getContext().getApplicationContext()));
+    // mResourceProxy = new
+    // ResourceProxyImpl(inflater.getContext().getApplicationContext());
+    mapView = new MapView(inflater.getContext(), 256, new DefaultResourceProxyImpl(inflater
+        .getContext().getApplicationContext()));
     mapView.setUseSafeCanvas(true);
-    
+
     mapViewContainer = ((TrackDetailActivity) getActivity()).getMapViewContainer();
     FrameLayout fl = (FrameLayout) mapViewContainer.findViewById(R.id.map_container);
     fl.addView(mapView);
     // MOD
-    mapView.setTileSource(isSatellite() ? TileSourceFactory.MAPQUESTAERIAL : TileSourceFactory.MAPQUESTOSM);
-
     mapOverlay = new MapOverlay(getActivity());
 
     List<Overlay> overlays = mapView.getOverlays();
@@ -143,21 +146,32 @@ public class MapFragment extends Fragment
     mapView.setBuiltInZoomControls(true);
     myLocationImageButton = (ImageButton) mapViewContainer.findViewById(R.id.map_my_location);
     myLocationImageButton.setOnClickListener(new View.OnClickListener() {
-        @Override
+      @Override
       public void onClick(View v) {
         showMyLocation();
       }
     });
-    messageTextView = (TextView) mapViewContainer.findViewById(R.id.map_message);
 
+    myMapModeImageButton = (ImageButton) mapViewContainer.findViewById(R.id.map_mode);
+    myMapModeImageButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        setSatellite(!isSatellite());
+      }
+    });
+    //
+    messageTextView = (TextView) mapViewContainer.findViewById(R.id.map_message);
+    attributionTextView = (TextView) mapViewContainer.findViewById(R.id.map_copyright);
+    // map_copyright
     ApiAdapterFactory.getApiAdapter().invalidMenu(getActivity());
-   return mapViewContainer;
+    setSatellite(isSatellite());
+    return mapViewContainer;
     // return mapView;
   }
 
   @Override
   public void onActivityCreated(Bundle savedInstanceState) {
-    super.onActivityCreated(savedInstanceState);        
+    super.onActivityCreated(savedInstanceState);
     if (savedInstanceState != null) {
       keepMyLocationVisible = savedInstanceState.getBoolean(KEEP_MY_LOCATION_VISIBLE_KEY, false);
       currentLocation = (Location) savedInstanceState.getParcelable(CURRENT_LOCATION_KEY);
@@ -208,12 +222,11 @@ public class MapFragment extends Fragment
   @Override
   public void onPrepareOptionsMenu(Menu menu) {
     /*
-    int titleId = R.string.menu_satellite_mode;
-    if (mapView != null) {
-     titleId = isSatellite() ? R.string.menu_map_mode : R.string.menu_satellite_mode;
-    }
-    menu.findItem(R.id.map_satellite_mode).setTitle(titleId);
-    */
+     * int titleId = R.string.menu_satellite_mode; if (mapView != null) {
+     * titleId = isSatellite() ? R.string.menu_map_mode :
+     * R.string.menu_satellite_mode; }
+     * menu.findItem(R.id.map_satellite_mode).setTitle(titleId);
+     */
     super.onPrepareOptionsMenu(menu);
   }
 
@@ -225,16 +238,23 @@ public class MapFragment extends Fragment
   @Override
   public boolean onOptionsItemSelected(MenuItem menuItem) {
     if (mapView != null && menuItem.getItemId() == R.id.map_satellite_mode) {
-       setSatellite(!isSatellite());
-       
+      setSatellite(!isSatellite());
+
       return true;
     }
     return super.onOptionsItemSelected(menuItem);
   }
 
+  // TODO
+
   private void setSatellite(boolean b) {
-    mapView.setTileSource(b ? TileSourceFactory.MAPQUESTAERIAL : TileSourceFactory.MAPQUESTOSM);
-    satelliteMap = b ;
+    String v = PreferencesUtils.getString(getActivity(),
+        R.string.settings_tile_source_key, "DRIVING");
+    AnnotatedXYTileSource t = (AnnotatedXYTileSource) (b ? TileSourceFactory.SATELLITE
+        : TileSourceFactory.getTileSource(v));
+    mapView.setTileSource(t);
+    if(attributionTextView !=null && (t.getAnnotation() != null) ) attributionTextView.setText(t.getAnnotation());
+    satelliteMap = b;
 
   }
 
@@ -243,7 +263,7 @@ public class MapFragment extends Fragment
    */
   public void showMyLocation() {
     updateTrackDataHub();
-   // keepMyLocationVisible = true;
+    // keepMyLocationVisible = true;
     zoomToMyLocation = true;
     if (currentLocation != null) {
       updateCurrentLocation();
@@ -259,7 +279,7 @@ public class MapFragment extends Fragment
     MyTracksProviderUtils MyTracksProviderUtils = Factory.get(getActivity());
     Waypoint waypoint = MyTracksProviderUtils.getWaypoint(id);
     if (waypoint != null && waypoint.getLocation() != null) {
-    keepMyLocationVisible = false;
+      keepMyLocationVisible = false;
       GeoPoint center = new GeoPoint((int) (waypoint.getLocation().getLatitude() * 1E6),
           (int) (waypoint.getLocation().getLongitude() * 1E6));
       mapView.getController().setCenter(center);
@@ -296,11 +316,11 @@ public class MapFragment extends Fragment
     // keepMyLocationVisible = false;
     if (keepMyLocationVisible && event.getAction() == MotionEvent.ACTION_MOVE) {
       // if (!isVisible(currentLocation)) {
-        /*
-         * Only set to false when no longer visible. Thus can keep showing the
-         * current location with the next location update.
-         */
-        keepMyLocationVisible = false;
+      /*
+       * Only set to false when no longer visible. Thus can keep showing the
+       * current location with the next location update.
+       */
+      keepMyLocationVisible = false;
       // }
     }
     return false;
@@ -310,8 +330,8 @@ public class MapFragment extends Fragment
   public void onClick(View v) {
     if (v == messageTextView) {
       Intent intent = GoogleLocationUtils.isAvailable(getActivity()) ? new Intent(
-          GoogleLocationUtils.ACTION_GOOGLE_LOCATION_SETTINGS)
-          : new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+          GoogleLocationUtils.ACTION_GOOGLE_LOCATION_SETTINGS) : new Intent(
+          Settings.ACTION_LOCATION_SOURCE_SETTINGS);
       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       startActivity(intent);
     }
@@ -328,9 +348,8 @@ public class MapFragment extends Fragment
       } else {
         switch (state) {
           case DISABLED:
-            String setting = getString(
-                GoogleLocationUtils.isAvailable(getActivity()) ? R.string.gps_google_location_settings
-                    : R.string.gps_location_access);
+            String setting = getString(GoogleLocationUtils.isAvailable(getActivity()) ? R.string.gps_google_location_settings
+                : R.string.gps_location_access);
             message = getString(R.string.gps_disabled, setting);
             isGpsDisabled = true;
             currentLocation = null;
@@ -353,7 +372,7 @@ public class MapFragment extends Fragment
         }
       }
       getActivity().runOnUiThread(new Runnable() {
-          @Override
+        @Override
         public void run() {
           if (isResumed()) {
             if (message == null) {
@@ -397,7 +416,7 @@ public class MapFragment extends Fragment
   public void onSelectedTrackChanged(final Track track) {
     if (isResumed()) {
       getActivity().runOnUiThread(new Runnable() {
-          @Override
+        @Override
         public void run() {
           if (isResumed()) {
             boolean hasTrack = track != null;
@@ -574,10 +593,9 @@ public class MapFragment extends Fragment
      * height from the visible area.
      */
     IGeoPoint zoomControlBottom = mapView.getProjection().fromPixels(0, mapView.getHeight());
-    IGeoPoint zoomControlTop = mapView.getProjection().fromPixels(
-        0, mapView.getHeight() );
-    int zoomControlMargin = Math.abs(
-        zoomControlTop.getLatitudeE6() - zoomControlBottom.getLatitudeE6());
+    IGeoPoint zoomControlTop = mapView.getProjection().fromPixels(0, mapView.getHeight());
+    int zoomControlMargin = Math.abs(zoomControlTop.getLatitudeE6()
+        - zoomControlBottom.getLatitudeE6());
     GeoRect geoRect = new GeoRect(mapCenter, latitudeSpan, longitudeSpan);
     geoRect.top += zoomControlMargin;
 
@@ -600,14 +618,14 @@ public class MapFragment extends Fragment
       GeoPoint geoPoint = LocationUtils.getGeoPoint(currentLocation);
       MapController mapController = mapView.getController();
       mapController.animateTo(geoPoint);
-     // mapController.setCenter(geoPoint);
-     if (zoomToMyLocation) {
+      mapController.setCenter(geoPoint);
+      if (zoomToMyLocation) {
         // Only zoom in the first time we show the location.
         zoomToMyLocation = false;
         if (mapView.getZoomLevel() < mapView.getMaxZoomLevel()) {
           mapController.setZoom(mapView.getMaxZoomLevel());
         }
-     }
+      }
     }
   }
 
@@ -644,6 +662,5 @@ public class MapFragment extends Fragment
   public void zoomOut() {
     mapView.getController().zoomOut();
   }
-  
-  
+
 }

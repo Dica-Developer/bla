@@ -56,6 +56,18 @@ limitations under the License.
     android:layout_marginRight="8dp"
     android:layout_marginTop="8dp"
     android:layout_width="wrap_content" />
+  
+  <ImageButton
+    android:background="@android:drawable/ic_menu_mapmode"
+    android:contentDescription="@string/icon_my_location"
+    android:id="@+id/map_mode"
+    android:layout_below="@id/map_message"
+    android:layout_alignParentLeft="true"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_width="wrap_content" />
+  
     <TextView
     android:gravity="center"
     android:id="@+id/map_copyright"

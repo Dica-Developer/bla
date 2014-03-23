@@ -90,4 +90,5 @@ limitations under the License.
   <string name="user_name">settingsUserName</string>
   <string name="user_password">settingsUserPassword</string> 
   <string name="settings_mapsprovider">settingsMapsProvider</string> 
+  <string name="settings_tile_source_key">settingsTileSource</string> 
 </resources>
